@@ -31,11 +31,21 @@ Completion criterion: each sentence advances the reader from their question to t
 
 ### 3. Apply the language branch
 
-- **English:** For substantial drafting or copyediting, consult the relevant sections of [`elements-of-style.md`](elements-of-style.md). For a comprehensive style pass, read the full reference. Treat its 1918 usage advice as historical guidance; current usage, audience, and the user's house style take precedence.
-- **Japanese:** Read and apply [`clear-japanese.md`](clear-japanese.md) when drafting or revising substantial Japanese prose. Preserve natural Japanese information flow rather than translating English rules mechanically.
-- **Mixed language:** Apply each reference only to its language and keep terminology aligned across both.
+For substantial drafting or revision, read only the matching section of [`language-guides.md`](language-guides.md): **Clear English**, **明快な日本語**, or both for mixed-language text. Keep terminology aligned across languages.
 
-Completion criterion: the result sounds native in its language and uses one consistent register.
+#### Load *The Elements of Style* only when needed
+
+[`elements-of-style.md`](elements-of-style.md) consumes about 12,000 tokens. Load it only for:
+
+- a specific English grammar, punctuation, or usage question that needs its detailed rules or examples;
+- a comprehensive English copyedit or formal style pass; or
+- an explicit request to apply Strunk's rules.
+
+For a specific question, locate and read only the relevant section: **II** for grammar and punctuation, **III** for composition, or **V** for word usage. Read the full reference only for a comprehensive pass. When the full reference would crowd the working context, dispatch a subagent with the English draft and the reference, then use its revision.
+
+Treat the reference's 1918 usage advice as historical guidance. Current usage, audience, and the user's house style take precedence.
+
+Completion criterion: the result sounds native in its language, uses one consistent register, and no unneeded reference entered the working context.
 
 ### 4. Crystal pass
 

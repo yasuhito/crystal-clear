@@ -8,7 +8,8 @@ Crystal Clear:
 - orders context around the reader's needs
 - makes references, qualifications, and logical connections explicit
 - preserves meaning, emphasis, constraints, and uncertainty while editing
-- applies language-specific guidance instead of forcing English rules onto Japanese
+- applies dedicated English and Japanese guidance
+- loads the 12,000-token *Elements of Style* reference only when the task needs it
 
 ## Install
 
@@ -29,8 +30,8 @@ The skill is model-invoked when answering complex questions, explaining a subjec
 ## Contents
 
 - [`SKILL.md`](SKILL.md) — the writing and revision process
-- [`clear-japanese.md`](clear-japanese.md) — guidance for clear, natural Japanese
-- [`elements-of-style.md`](elements-of-style.md) — an adapted public-domain reference for English usage and composition
+- [`language-guides.md`](language-guides.md) — concise guidance for clear English and natural Japanese
+- [`elements-of-style.md`](elements-of-style.md) — the public-domain reference for detailed English usage and composition, sourced from [obra/the-elements-of-style](https://github.com/obra/the-elements-of-style)
 
 ## License
 
