@@ -12,9 +12,9 @@
   ],
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "git_revision": "1dbe7c1ae40731720fb06897dc275f0092980bce",
-  "started_at": "2026-08-01T08:48:22.510867+00:00",
-  "duration_ms": 4867,
+  "git_revision": "59969acec1a2316f9f53a2444e4ee58ba221dcda",
+  "started_at": "2026-08-01T08:56:37.458981+00:00",
+  "duration_ms": 4627,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -27,13 +27,17 @@
     "skill_body_injected": true
   },
   "skill_inventory": [],
-  "skill_hash": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
   "injected_skill": {
     "condition": "current-skill",
     "source_ref": "178eaf8",
     "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
   },
-  "session_id": "019fbc82-973f-75a4-a7a9-6b038b5dfff5",
+  "session_id": "019fbc8a-24df-7817-8566-c19803f7e980",
   "activation": {
     "automatic": false,
     "skill_loaded": true,
