@@ -101,11 +101,11 @@ def score_preservation(scenario: dict[str, Any], output: str) -> dict[str, Any]:
 
 
 def assign_blind_pairs(pairs: list[tuple[str, int]], *, seed: int, skill_arm: str) -> list[dict[str, Any]]:
-    """Seed presentation order while balancing A/B orientation within scenarios."""
-    scenario_order = {scenario_id: index for index, scenario_id in enumerate(dict.fromkeys(pair[0] for pair in pairs))}
+    """Seed both anonymous A/B orientation and presentation order, then balance A/B."""
+    rng = random.Random(seed)
     assignments = []
     for scenario_id, repeat in pairs:
-        skill_first = (scenario_order[scenario_id] + repeat) % 2 == 0
+        skill_first = bool(rng.getrandbits(1))
         a_arm, b_arm = ((skill_arm, "no-skill") if skill_first else ("no-skill", skill_arm))
         assignments.append({
             "pair_id": f"{scenario_id}--r{repeat:02d}",
@@ -114,7 +114,16 @@ def assign_blind_pairs(pairs: list[tuple[str, int]], *, seed: int, skill_arm: st
             "a_arm": a_arm,
             "b_arm": b_arm,
         })
-    random.Random(seed).shuffle(assignments)
+    target_skill_a = len(assignments) // 2
+    skill_a = [row for row in assignments if row["a_arm"] == skill_arm]
+    if len(skill_a) > target_skill_a:
+        for row in rng.sample(skill_a, len(skill_a) - target_skill_a):
+            row["a_arm"], row["b_arm"] = row["b_arm"], row["a_arm"]
+    elif len(skill_a) < target_skill_a:
+        no_skill_a = [row for row in assignments if row["a_arm"] == "no-skill"]
+        for row in rng.sample(no_skill_a, target_skill_a - len(skill_a)):
+            row["a_arm"], row["b_arm"] = row["b_arm"], row["a_arm"]
+    rng.shuffle(assignments)
     for index, assignment in enumerate(assignments, 1):
         assignment["presentation_index"] = index
     return assignments

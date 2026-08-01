@@ -72,6 +72,7 @@ class BlindJudgmentTests(unittest.TestCase):
         first = assign_blind_pairs(pairs, seed=178, skill_arm="178eaf8")
         second = assign_blind_pairs(pairs, seed=178, skill_arm="178eaf8")
         self.assertEqual(first, second)
+        self.assertNotEqual(first, assign_blind_pairs(pairs, seed=179, skill_arm="178eaf8"))
         self.assertLessEqual(abs(Counter(row["a_arm"] for row in first)["178eaf8"] - Counter(row["b_arm"] for row in first)["178eaf8"]), 1)
 
     def test_parses_strict_judgment_and_disallows_multilingual_naturalness(self) -> None:
