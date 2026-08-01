@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -19,7 +20,7 @@ class TraceObservation:
 
 
 def _normalized_path(value: str | Path) -> str:
-    return os.path.abspath(os.path.expanduser(str(value)))
+    return os.path.realpath(os.path.expanduser(str(value)))
 
 
 def _text_content(message: dict[str, Any]) -> list[str]:
@@ -54,10 +55,10 @@ def observe_trace(trace_path: Path, skill_path: Path) -> TraceObservation:
         role = message.get("role")
         if role == "user":
             for text in _text_content(message):
-                if (
-                    '<skill name="crystal-clear"' in text
-                    and f'location="{expected_path}"' in text
-                ):
+                location = re.search(
+                    r'<skill name="crystal-clear" location="([^"]+)">', text
+                )
+                if location and _normalized_path(location.group(1)) == expected_path:
                     direct_invocation = True
 
         if role != "assistant":
@@ -87,6 +88,22 @@ def observe_trace(trace_path: Path, skill_path: Path) -> TraceObservation:
         final_output=final_output,
         session_id=session_id,
     )
+
+
+def activation_record(
+    observation: TraceObservation, *, skill_body_injected: bool
+) -> dict[str, Any]:
+    if skill_body_injected:
+        return {
+            "automatic": False,
+            "skill_loaded": True,
+            "source": "system-injection",
+        }
+    return {
+        "automatic": observation.automatic_activation,
+        "skill_loaded": observation.skill_loaded,
+        "source": observation.activation_source,
+    }
 
 
 def score_result(result: dict[str, Any]) -> dict[str, Any]:
@@ -152,7 +169,7 @@ def render_markdown(
         ]
         if score["activation_matches_expectation"] is not None:
             checks.append(score["activation_matches_expectation"])
-        outcome = "pass" if all(checks) else "fail"
+        outcome = "harness-ok" if all(checks) else "harness-fail"
         trace = row["trace_file"]
         lines.append(
             "| {scenario} | {kind} | {arm} | {source} | {outcome} | "

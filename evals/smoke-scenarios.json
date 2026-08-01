@@ -5,7 +5,7 @@
       "id": "routing-positive",
       "invocation": "automatic",
       "expected_activation": true,
-      "prompt": "Please rewrite this Japanese status update so it is clear and natural. Return only the revised text: 現在、一部のユーザーにおいてアクセスできない可能性がある事象を確認しております。"
+      "prompt": "Use the relevant installed skill for clear English or Japanese communication. Then rewrite this Japanese status update so it is clear and natural. Return only the revised text: 現在、一部のユーザーにおいてアクセスできない可能性がある事象を確認しております。"
     },
     {
       "id": "routing-negative",

@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from evals.evaluation import (
+    activation_record,
     observe_trace,
     render_markdown,
     score_result,
@@ -91,6 +92,40 @@ class ObserveTraceTests(unittest.TestCase):
             self.assertFalse(observation.automatic_activation)
             self.assertTrue(observation.skill_loaded)
 
+    def test_resolves_symlinks_when_matching_direct_invocation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            real_skill = root / "installed" / "SKILL.md"
+            real_skill.parent.mkdir()
+            real_skill.write_text("skill")
+            linked_directory = root / "linked-skill"
+            linked_directory.symlink_to(real_skill.parent, target_is_directory=True)
+            linked_skill = linked_directory / "SKILL.md"
+            trace = write_trace(
+                root,
+                [
+                    {
+                        "type": "message",
+                        "message": {
+                            "role": "user",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": (
+                                        '<skill name="crystal-clear" '
+                                        f'location="{linked_skill}">instructions</skill>'
+                                    ),
+                                }
+                            ],
+                        },
+                    }
+                ],
+            )
+
+            observation = observe_trace(trace, real_skill)
+
+            self.assertEqual(observation.activation_source, "direct-invocation")
+
     def test_known_negative_has_no_activation(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             trace = write_trace(
@@ -111,6 +146,34 @@ class ObserveTraceTests(unittest.TestCase):
             self.assertEqual(observation.activation_source, "none")
             self.assertFalse(observation.skill_loaded)
             self.assertEqual(observation.final_output, "323")
+
+    def test_records_system_injection_as_loaded_but_not_automatic(self) -> None:
+        observation = observe_trace(
+            write_trace(
+                Path(self.enterContext(tempfile.TemporaryDirectory())),
+                [
+                    {
+                        "type": "message",
+                        "message": {
+                            "role": "assistant",
+                            "content": [{"type": "text", "text": "Clear output."}],
+                        },
+                    }
+                ],
+            ),
+            SKILL_PATH,
+        )
+
+        record = activation_record(observation, skill_body_injected=True)
+
+        self.assertEqual(
+            record,
+            {
+                "automatic": False,
+                "skill_loaded": True,
+                "source": "system-injection",
+            },
+        )
 
 
 class ScoreAndReportTests(unittest.TestCase):
@@ -181,7 +244,10 @@ class ScoreAndReportTests(unittest.TestCase):
         self.assertEqual(summary["runs"], 2)
         self.assertEqual(summary["routing_expectations_met"], 1)
         self.assertEqual(summary["protected_string_failures"], 0)
-        self.assertIn("| routing-positive | routing | auto | automatic-read | pass |", markdown)
+        self.assertIn(
+            "| routing-positive | routing | auto | automatic-read | harness-ok |",
+            markdown,
+        )
         self.assertIn("Raw trace", markdown)
 
 

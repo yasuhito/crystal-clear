@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from evals.evaluation import (
+    activation_record,
     observe_trace,
     render_markdown,
     score_result,
@@ -26,6 +27,9 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SCENARIOS = Path(__file__).resolve().parent / "smoke-scenarios.json"
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "smoke"
 CURRENT_SKILL_REF = "178eaf8"
+DEFAULT_DISCOVERED_SKILL = (
+    Path.home() / ".pi" / "agent" / "skills" / "crystal-clear" / "SKILL.md"
+)
 
 
 def run_command(command: list[str], cwd: Path | None = None) -> str:
@@ -79,8 +83,8 @@ def execute_pi(
     prompt: str,
     model: str,
     session_root: Path,
-    skill_path: Path | None = None,
     appended_instructions: Path | None = None,
+    normal_skill_discovery: bool = False,
 ) -> Path:
     provider, model_id = split_model(model)
     sessions = session_root / "sessions"
@@ -103,12 +107,10 @@ def execute_pi(
         "--no-context-files",
         "--no-extensions",
         "--no-prompt-templates",
-        "--no-skills",
-        "--tools",
-        "read",
     ]
-    if skill_path is not None:
-        command.extend(["--skill", str(skill_path)])
+    if not normal_skill_discovery:
+        command.append("--no-skills")
+    command.extend(["--tools", "read"])
     if appended_instructions is not None:
         command.extend(["--append-system-prompt", str(appended_instructions)])
 
@@ -141,6 +143,7 @@ def run_one(
     output: Path,
     pi_release: str,
     revision: str,
+    discovered_skill_path: Path,
 ) -> dict[str, Any]:
     run_id = f"{scenario['id']}--{arm}"
     raw_dir = output / "raw"
@@ -152,12 +155,14 @@ def run_one(
         tmp = Path(tmp_value)
         worktree_skill = REPO_ROOT / "SKILL.md"
         prompt = scenario["prompt"]
-        skill_path: Path | None = None
         appended_instructions: Path | None = None
         injected_skill: dict[str, Any] | None = None
+        normal_skill_discovery = kind == "routing"
+        observed_skill_path = (
+            discovered_skill_path if kind == "routing" else worktree_skill
+        )
 
         if kind == "routing":
-            skill_path = worktree_skill
             if scenario["invocation"] == "direct":
                 prompt = f"/skill:crystal-clear {prompt}"
         elif arm != "no-skill":
@@ -180,22 +185,27 @@ def run_one(
             prompt=prompt,
             model=model,
             session_root=tmp / "pi",
-            skill_path=skill_path,
             appended_instructions=appended_instructions,
+            normal_skill_discovery=normal_skill_discovery,
         )
         duration_ms = round((time.monotonic() - start) * 1000)
         shutil.copy2(live_trace, trace_destination)
-        observation = observe_trace(trace_destination, worktree_skill)
+        observation = observe_trace(trace_destination, observed_skill_path)
 
     skill_inventory = []
     if kind == "routing":
         skill_inventory.append(
             {
                 "name": "crystal-clear",
-                "path": str(worktree_skill.resolve()),
-                "sha256": sha256(worktree_skill),
+                "path": str(discovered_skill_path.resolve()),
+                "sha256": sha256(discovered_skill_path),
             }
         )
+    loaded_skill_hash = (
+        injected_skill["sha256"]
+        if injected_skill is not None
+        else (sha256(discovered_skill_path) if kind == "routing" else None)
+    )
 
     result: dict[str, Any] = {
         "schema_version": 1,
@@ -217,18 +227,17 @@ def run_one(
             "context_files": False,
             "extensions": False,
             "prompt_templates": False,
-            "automatic_skill_discovery": False,
+            "automatic_skill_discovery": normal_skill_discovery,
             "tools": ["read"],
             "skill_body_injected": appended_instructions is not None,
         },
         "skill_inventory": skill_inventory,
+        "skill_hash": loaded_skill_hash,
         "injected_skill": injected_skill,
         "session_id": observation.session_id,
-        "activation": {
-            "automatic": observation.automatic_activation,
-            "skill_loaded": observation.skill_loaded,
-            "source": observation.activation_source,
-        },
+        "activation": activation_record(
+            observation, skill_body_injected=appended_instructions is not None
+        ),
         "final_output": observation.final_output,
         "trace_file": relative_trace_path(output, trace_destination),
     }
@@ -251,8 +260,18 @@ def write_reports(output: Path, results: list[dict[str, Any]]) -> None:
     (output / "SUMMARY.md").write_text(render_markdown(summary, results))
 
 
-def run_smoke(scenarios_path: Path, output: Path, model: str) -> list[dict[str, Any]]:
+def run_smoke(
+    scenarios_path: Path,
+    output: Path,
+    model: str,
+    discovered_skill_path: Path = DEFAULT_DISCOVERED_SKILL,
+) -> list[dict[str, Any]]:
     scenarios = load_scenarios(scenarios_path)
+    if not discovered_skill_path.is_file():
+        raise FileNotFoundError(
+            "normal Pi discovery requires an installed crystal-clear skill at "
+            f"{discovered_skill_path}"
+        )
     release = pi_version()
     revision = git_revision()
     results: list[dict[str, Any]] = []
@@ -267,6 +286,7 @@ def run_smoke(scenarios_path: Path, output: Path, model: str) -> list[dict[str, 
                 output=output,
                 pi_release=release,
                 revision=revision,
+                discovered_skill_path=discovered_skill_path,
             )
         )
     behavior = scenarios["behavior"][0]
@@ -281,6 +301,7 @@ def run_smoke(scenarios_path: Path, output: Path, model: str) -> list[dict[str, 
                 output=output,
                 pi_release=release,
                 revision=revision,
+                discovered_skill_path=discovered_skill_path,
             )
         )
     write_reports(output, results)
@@ -292,6 +313,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--scenarios", type=Path, default=DEFAULT_SCENARIOS)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--model", default="openai-codex/gpt-5.6-sol")
+    parser.add_argument(
+        "--discovered-skill",
+        type=Path,
+        default=DEFAULT_DISCOVERED_SKILL,
+        help="resolved SKILL.md expected from normal Pi discovery",
+    )
     parser.add_argument(
         "--report-only",
         action="store_true",
@@ -308,7 +335,9 @@ def main() -> None:
             raise SystemExit(f"no raw result records under {args.output / 'raw'}")
         write_reports(args.output, results)
     else:
-        run_smoke(args.scenarios, args.output, args.model)
+        run_smoke(
+            args.scenarios, args.output, args.model, args.discovered_skill
+        )
     print(args.output / "SUMMARY.md")
 
 
