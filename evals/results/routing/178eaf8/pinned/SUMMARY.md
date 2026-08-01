@@ -33,8 +33,9 @@ This pinned inventory is the only result eligible for later pass/fail comparison
 `not-selected` means Crystal Clear was not read. `selected-with-little-visible-change` means it was read but the final output was identical or at least 98% similar to the supplied source text. Generated outputs without a source text are reported as `selected-effect-not-deterministically-assessed`; the report does not infer a behavioral effect merely from selection.
 
 - not-selected: 104
-- selected-effect-not-deterministically-assessed: 70
+- selected-with-little-visible-change: 0
 - selected-with-visible-change: 26
+- selected-effect-not-deterministically-assessed: 70
 
 ## Raw runs
 

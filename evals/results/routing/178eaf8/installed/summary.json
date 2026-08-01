@@ -118,7 +118,8 @@
   },
   "selection_outcomes": {
     "not-selected": 146,
-    "selected-effect-not-deterministically-assessed": 53,
-    "selected-with-visible-change": 1
+    "selected-with-little-visible-change": 0,
+    "selected-with-visible-change": 1,
+    "selected-effect-not-deterministically-assessed": 53
   }
 }

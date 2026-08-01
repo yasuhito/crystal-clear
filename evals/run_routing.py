@@ -232,6 +232,16 @@ def _metric_group(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def summarize_routing_results(results: Iterable[dict[str, Any]]) -> dict[str, Any]:
     rows = list(results)
+    outcome_counts = Counter(row["selection_outcome"] for row in rows)
+    selection_outcomes = {
+        outcome: outcome_counts[outcome]
+        for outcome in (
+            "not-selected",
+            "selected-with-little-visible-change",
+            "selected-with-visible-change",
+            "selected-effect-not-deterministically-assessed",
+        )
+    }
     return {
         "runs": len(rows),
         "overall": _metric_group(rows),
@@ -247,9 +257,7 @@ def summarize_routing_results(results: Iterable[dict[str, Any]]) -> dict[str, An
             language: _metric_group([row for row in rows if row["language"] == language])
             for language in sorted({row["language"] for row in rows})
         },
-        "selection_outcomes": dict(
-            sorted(Counter(row["selection_outcome"] for row in rows).items())
-        ),
+        "selection_outcomes": selection_outcomes,
     }
 
 

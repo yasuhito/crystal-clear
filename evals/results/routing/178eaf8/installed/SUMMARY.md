@@ -33,8 +33,9 @@ This complete installed inventory is ecological reference only and is not eligib
 `not-selected` means Crystal Clear was not read. `selected-with-little-visible-change` means it was read but the final output was identical or at least 98% similar to the supplied source text. Generated outputs without a source text are reported as `selected-effect-not-deterministically-assessed`; the report does not infer a behavioral effect merely from selection.
 
 - not-selected: 146
-- selected-effect-not-deterministically-assessed: 53
+- selected-with-little-visible-change: 0
 - selected-with-visible-change: 1
+- selected-effect-not-deterministically-assessed: 53
 
 ## Raw runs
 
