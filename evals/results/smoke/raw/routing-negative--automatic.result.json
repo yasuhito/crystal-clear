@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "scenario_version": "smoke-v1",
+  "scenario_id": "routing-negative",
+  "kind": "routing",
+  "arm": "automatic",
+  "repeat": 1,
+  "prompt": "What is 17 multiplied by 19? Return only the number.",
+  "expected_activation": false,
+  "protected_strings": [],
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "git_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "started_at": "2026-08-01T08:36:15.673038+00:00",
+  "duration_ms": 10269,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [
+    {
+      "name": "crystal-clear",
+      "path": "/home/yasuhito/Work/crystal-clear/SKILL.md",
+      "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+    }
+  ],
+  "injected_skill": null,
+  "session_id": "019fbc77-8079-7546-8ba3-ecf3ea6ce55f",
+  "activation": {
+    "automatic": false,
+    "skill_loaded": false,
+    "source": "none"
+  },
+  "final_output": "323",
+  "trace_file": "raw/routing-negative--automatic.trace.jsonl",
+  "score": {
+    "activation_matches_expectation": true,
+    "final_output_present": true,
+    "protected_strings_preserved": true,
+    "missing_protected_strings": []
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "runs": 6,
+  "routing_runs": 2,
+  "routing_expectations_met": 2,
+  "missing_final_outputs": 0,
+  "protected_string_failures": 0
+}

@@ -1,0 +1,30 @@
+{
+  "version": "smoke-v1",
+  "routing": [
+    {
+      "id": "routing-positive",
+      "invocation": "automatic",
+      "expected_activation": true,
+      "prompt": "Please rewrite this Japanese status update so it is clear and natural. Return only the revised text: 現在、一部のユーザーにおいてアクセスできない可能性がある事象を確認しております。"
+    },
+    {
+      "id": "routing-negative",
+      "invocation": "automatic",
+      "expected_activation": false,
+      "prompt": "What is 17 multiplied by 19? Return only the number."
+    },
+    {
+      "id": "routing-direct",
+      "invocation": "direct",
+      "expected_activation": null,
+      "prompt": "Rewrite this clearly and return only the revision: Due to the fact that the server is down, users may not be able to log in."
+    }
+  ],
+  "behavior": [
+    {
+      "id": "behavior-rewrite",
+      "prompt": "Rewrite the source as one clear status update. Preserve the identifier exactly. Return only the revised text. SOURCE: Due to the fact that API-17 is currently unavailable, users may potentially be unable to log in.",
+      "protected_strings": ["API-17"]
+    }
+  ]
+}

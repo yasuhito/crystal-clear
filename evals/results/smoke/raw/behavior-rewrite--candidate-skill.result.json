@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "scenario_version": "smoke-v1",
+  "scenario_id": "behavior-rewrite",
+  "kind": "behavior",
+  "arm": "candidate-skill",
+  "repeat": 1,
+  "prompt": "Rewrite the source as one clear status update. Preserve the identifier exactly. Return only the revised text. SOURCE: Due to the fact that API-17 is currently unavailable, users may potentially be unable to log in.",
+  "expected_activation": null,
+  "protected_strings": [
+    "API-17"
+  ],
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "git_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "started_at": "2026-08-01T08:36:40.367327+00:00",
+  "duration_ms": 4557,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "injected_skill": {
+    "condition": "candidate-skill",
+    "source_ref": "worktree",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "session_id": "019fbc77-e0c7-7348-9d7a-07d32055da4e",
+  "activation": {
+    "automatic": false,
+    "skill_loaded": false,
+    "source": "none"
+  },
+  "final_output": "Because API-17 is unavailable, users may be unable to log in.",
+  "trace_file": "raw/behavior-rewrite--candidate-skill.trace.jsonl",
+  "score": {
+    "activation_matches_expectation": null,
+    "final_output_present": true,
+    "protected_strings_preserved": true,
+    "missing_protected_strings": []
+  }
+}
