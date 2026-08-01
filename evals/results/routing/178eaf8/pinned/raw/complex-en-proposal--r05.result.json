@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 5,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "harness_git_revision": "7e7c2a9a9d82e9a330e40a9462610b885c9ad6c0",
+  "started_at": "2026-08-01T09:49:45.930627+00:00",
+  "duration_ms": 36825,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbcba-cb8c-7687-af83-b35a7a838c0f",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update schedule for actively maintained repositories, replacing the current monthly cycle. Weekly updates will shorten exposure to known vulnerabilities, reduce the size and complexity of each review, and make failures easier to diagnose.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave a newly disclosed vulnerability unresolved for up to four weeks before routine review begins. Weekly updates reduce that routine exposure window to seven days or less.\n\nCritical vulnerabilities should continue to follow the incident-response process and receive immediate attention. The weekly cycle is not a substitute for emergency patching; it improves our baseline response for high-, medium-, and low-severity issues that do not trigger an incident.\n\n### Smaller, More Predictable Reviews\n\nMonthly updates often combine many unrelated version changes into one pull request or review period. Large batches:\n\n- Require more release notes and compatibility changes to review at once.\n- Increase the chance that multiple updates interact.\n- Make test failures harder to trace to one dependency.\n- Encourage teams to postpone risky updates, creating additional backlog.\n\nWeekly updates create smaller batches. Reviewers can assess changes more quickly, identify the cause of failures with less investigation, and revert individual updates more safely. Although reviews will occur more often, each review should require less effort. The total workload should become more predictable and may decrease as update debt stops accumulating.\n\n## Proposed Process\n\n1. Automation opens dependency update pull requests on a fixed weekday.\n2. Compatible patch and minor updates are grouped where practical.\n3. Major-version updates remain separate and require explicit owner review.\n4. CI runs the standard test, security, and build checks.\n5. The owning team reviews and merges passing updates within the same week.\n6. Critical vulnerabilities bypass the schedule and follow emergency procedures.\n\nWe should pilot this process for six weeks in a representative set of repositories. During the pilot, we will measure review time, number of updates, CI failures, time to remediate vulnerabilities, and any regressions linked to dependency changes.\n\n## Risks and Mitigations\n\nThe main risk is increased notification and pull-request volume. Grouping low-risk updates, assigning clear repository owners, and scheduling updates on one predictable day will limit interruptions. Repositories with weak test coverage may need manual validation or a slower rollout, but that limitation exists under the monthly process as well.\n\n## Decision Needed\n\nThe engineering manager should approve:\n\n- A six-week pilot of weekly dependency updates.\n- Participation by selected actively maintained repositories.\n- Team capacity for weekly review and merge ownership.\n- Success criteria based on security response time, review effort, and update-related failures.\n\nAt the end of the pilot, engineering will review the results and decide whether to adopt weekly updates across all maintained repositories.",
+  "trace_file": "raw/complex-en-proposal--r05.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r05.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

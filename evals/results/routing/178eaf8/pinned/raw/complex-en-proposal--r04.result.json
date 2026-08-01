@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "harness_git_revision": "7e7c2a9a9d82e9a330e40a9462610b885c9ad6c0",
+  "started_at": "2026-08-01T09:49:45.578155+00:00",
+  "duration_ms": 27952,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbcba-ca2e-764b-8b42-df87e427f213",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update schedule for production repositories, replacing the current monthly cycle. Weekly updates will reduce security exposure, keep changes small enough to review efficiently, and make dependency maintenance a routine engineering task rather than a larger monthly event.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave known vulnerabilities unresolved for several weeks. Weekly updates shorten the normal response window and reduce the time between a security fix becoming available and its deployment.\n\nCritical vulnerabilities should still follow the incident-response process and be patched immediately. The weekly cycle would improve handling of routine security fixes without replacing emergency procedures.\n\n### Smaller, More Predictable Reviews\n\nMonthly updates tend to combine many version changes into one pull request or review period. Large batches increase the chance of interacting changes, make regressions harder to isolate, and require reviewers to evaluate more release notes and test results at once.\n\nWeekly updates distribute the same maintenance work across smaller batches. Each review should contain fewer changes, making compatibility issues easier to identify and failures easier to trace. Although reviews will occur more often, each should require less effort and carry less risk. Automated tests and dependency tooling can further limit manual work.\n\n## Proposed Process\n\n1. Generate dependency update pull requests once per week.\n2. Group compatible patch and minor updates where practical.\n3. Run the standard automated test, security, and build checks.\n4. Assign a rotating engineer to review and merge passing updates.\n5. Escalate major-version upgrades for separate planning and review.\n6. Continue to patch critical vulnerabilities immediately, outside the weekly cycle.\n\nAfter an eight-week trial, the team should review:\n\n- Average time from update availability to deployment\n- Number and size of dependency pull requests\n- Reviewer time spent per week\n- Test failures or regressions caused by updates\n- Outstanding security alerts\n\n## Risks and Mitigations\n\nThe main risk is increased review frequency. A rotating owner, grouped updates, and automated checks should prevent weekly reviews from becoming disruptive. Updates that fail tests or require significant migration work can be deferred and tracked separately rather than blocking routine updates.\n\nAnother risk is unnecessary churn from low-value releases. We can control this by defining update policies by dependency type and excluding unstable or non-production packages where appropriate.\n\n## Decision Requested\n\nApprove an eight-week pilot of weekly dependency updates for production repositories. The engineering manager should also approve:\n\n- A rotating weekly owner\n- Automated creation and testing of update pull requests\n- Separate handling of major-version upgrades\n- A review of pilot results after eight weeks\n\nIf approved, the team can begin the weekly schedule in the next development cycle and use the pilot metrics to decide whether to adopt it permanently.",
+  "trace_file": "raw/complex-en-proposal--r04.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r04.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

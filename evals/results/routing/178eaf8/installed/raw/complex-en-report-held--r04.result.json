@@ -1,0 +1,444 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-report-held",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "held-out",
+  "paraphrase_of": "complex-en-proposal",
+  "rationale": "Held-out paraphrase of the weekly dependency-update proposal.",
+  "expected_activation": true,
+  "prompt": "Prepare a brief decision memo recommending that dependency updates move from a monthly to a weekly schedule. Explain the security benefit, acknowledge the added review load, and end with the approval needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "installed",
+  "inventory_role": "ecological-reference",
+  "inventory_snapshot": "installed-b62d71afc30f",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "harness_git_revision": "7e7c2a9a9d82e9a330e40a9462610b885c9ad6c0",
+  "started_at": "2026-08-01T09:55:13.810701+00:00",
+  "duration_ms": 16996,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "ask-matt",
+      "path": "/home/yasuhito/.pi/agent/skills/ask-matt/SKILL.md",
+      "sha256": "b7dbb3249695841cf28f87555acc77dc630dafba0f1d544ecce252ff63b0933e",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "basecamp",
+      "path": "/home/yasuhito/.pi/agent/skills/basecamp/SKILL.md",
+      "sha256": "d6f131a5825cd819a7eaedab9d58c00dc27c1a9caee85fed8c2e659a04a5a0ff",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "claude-handoff",
+      "path": "/home/yasuhito/.pi/agent/skills/claude-handoff/SKILL.md",
+      "sha256": "bbb25773158d78f610461e4041ffb56fe871cb297626e1f52b0535a9083b7996",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "code-review",
+      "path": "/home/yasuhito/.pi/agent/skills/code-review/SKILL.md",
+      "sha256": "6a65cc61114f96db07ec41e3920e67c9c5bf70dd6e0901eb9460ebcb2bdc209f",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "codebase-design",
+      "path": "/home/yasuhito/.pi/agent/skills/codebase-design/SKILL.md",
+      "sha256": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "computer-use",
+      "path": "/home/yasuhito/.pi/agent/skills/computer-use/SKILL.md",
+      "sha256": "7f5a7bbe8b2fb51a9637e8df71cd1dca1a84b213ffe5bf56dcdd3417d7fb1601",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "git:178eaf8:SKILL.md",
+      "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "decision-mapping",
+      "path": "/home/yasuhito/.pi/agent/skills/decision-mapping/SKILL.md",
+      "sha256": "08a19e9bdc9e094b1653dc0862154dd096e40fc8015c1783024be63f9b26870a",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "design-an-interface",
+      "path": "/home/yasuhito/.pi/agent/skills/design-an-interface/SKILL.md",
+      "sha256": "a2596e9fa2d50e23ba014f64a5b8f9df4eb56b846a52cad152899ef5eb97b085",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "diagnosing-bugs",
+      "path": "/home/yasuhito/.pi/agent/skills/diagnosing-bugs/SKILL.md",
+      "sha256": "7a0779480f323a66d109404646bcc1a14bf0232b45b3e3ea93b652a035718acb",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "domain-modeling",
+      "path": "/home/yasuhito/.pi/agent/skills/domain-modeling/SKILL.md",
+      "sha256": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "edit-article",
+      "path": "/home/yasuhito/.pi/agent/skills/edit-article/SKILL.md",
+      "sha256": "e10fba546f45357fe0aaa7494b9e186910d4525818d19f9b2ad6f28cc506aa5e",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "find-skills",
+      "path": "/home/yasuhito/.pi/agent/skills/find-skills/SKILL.md",
+      "sha256": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "git-guardrails-claude-code",
+      "path": "/home/yasuhito/.pi/agent/skills/git-guardrails-claude-code/SKILL.md",
+      "sha256": "03c4de7613c712aea336d64c467ea3ed14be2cbd52345925fe949c75c01c29f7",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "grill-me",
+      "path": "/home/yasuhito/.pi/agent/skills/grill-me/SKILL.md",
+      "sha256": "6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "grill-with-docs",
+      "path": "/home/yasuhito/.pi/agent/skills/grill-with-docs/SKILL.md",
+      "sha256": "610d091047bcfb9db0f75c057d15538481a721111579fc5ec7f83ad9131a2165",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "grilling",
+      "path": "/home/yasuhito/.pi/agent/skills/grilling/SKILL.md",
+      "sha256": "5a35925d03a391bcfa46940868b649b72dba89ec9c19525e785bbb6bd3a7f478",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "handoff",
+      "path": "/home/yasuhito/.pi/agent/skills/handoff/SKILL.md",
+      "sha256": "57c9f1f392d7352cdc85b1e39ca49eddc70ce1dc278bd9653fb4f23dfc2560fc",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "herdr",
+      "path": "/home/yasuhito/.pi/agent/skills/herdr/SKILL.md",
+      "sha256": "75826452ca09623a7309c0a0d9bd6b29b24c55cf100632fc83bd69a685241f17",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "implement",
+      "path": "/home/yasuhito/.pi/agent/skills/implement/SKILL.md",
+      "sha256": "6d3fd9e83b8f36e5213854779db49b256a457a7ebb4a503e53fa7dcff696adc3",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "path": "/home/yasuhito/.pi/agent/skills/improve-codebase-architecture/SKILL.md",
+      "sha256": "0026900866ed2a542af0559cef11dd7ae707633b75cc6f668c2e7c0a33e35032",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "loop-me",
+      "path": "/home/yasuhito/.pi/agent/skills/loop-me/SKILL.md",
+      "sha256": "2b2c725f8b6e8b8f3f6e6bc2c18f0cf3ab029a270b5ac23132fbebdeb6b443aa",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "migrate-to-shoehorn",
+      "path": "/home/yasuhito/.pi/agent/skills/migrate-to-shoehorn/SKILL.md",
+      "sha256": "de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "obsidian-vault",
+      "path": "/home/yasuhito/.pi/agent/skills/obsidian-vault/SKILL.md",
+      "sha256": "7bed1d552aa5e9345e493cd62cb13e65c5d829d153c349afdb2cb91c809fa6c4",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "omarchy",
+      "path": "/home/yasuhito/.pi/agent/skills/omarchy/SKILL.md",
+      "sha256": "becd149e4d1c0767a80bcc1eb84e86e509149dc1e4b3d680cf24ab54bea5256d",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "orca-cli",
+      "path": "/home/yasuhito/.pi/agent/skills/orca-cli/SKILL.md",
+      "sha256": "9d10496ccc998f58472e902b4131910d7bde48f305f70a400c211deecd670c0b",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "orchestration",
+      "path": "/home/yasuhito/.pi/agent/skills/orchestration/SKILL.md",
+      "sha256": "ee559224b6047d01db02d9aabdfbcc94475394e6f11f4076ce785c42faee63c6",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "prototype",
+      "path": "/home/yasuhito/.pi/agent/skills/prototype/SKILL.md",
+      "sha256": "efa2a92a2f0f8e7d9d0ecb0cfc65ffd5748c73fa3a25fe164e1c8f426938fb52",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "qa",
+      "path": "/home/yasuhito/.pi/agent/skills/qa/SKILL.md",
+      "sha256": "d9727aac6503981bf69bdd8b37e0d85b32b8fbd353a57528c252dac1337ab761",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "request-refactor-plan",
+      "path": "/home/yasuhito/.pi/agent/skills/request-refactor-plan/SKILL.md",
+      "sha256": "d59de4ba6cc1fe2dd267e8b9b5a1fd88e3e739e2130bc9dd78061d2a072830b8",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research",
+      "path": "/home/yasuhito/.pi/agent/skills/research/SKILL.md",
+      "sha256": "af378829f015775a3bcd65ff466826722e99359017ae6bae227ca4c9bd14049c",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "resolving-merge-conflicts",
+      "path": "/home/yasuhito/.pi/agent/skills/resolving-merge-conflicts/SKILL.md",
+      "sha256": "c7c9ba81362a786aac05d2223123bf1bd2f8a99c3243a72882ede9c68bedfb24",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "review",
+      "path": "/home/yasuhito/.pi/agent/skills/review/SKILL.md",
+      "sha256": "0f1c3edf07b730ae7644c68d716faaa43be0fd81a27c06e13baf6b55712e7edb",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "scaffold-exercises",
+      "path": "/home/yasuhito/.pi/agent/skills/scaffold-exercises/SKILL.md",
+      "sha256": "75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "path": "/home/yasuhito/.pi/agent/skills/setup-matt-pocock-skills/SKILL.md",
+      "sha256": "8cd1fa43ff89492320404e5b18fb06d9488256be5dffc291ff038fc98bb98fb9",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "setup-pre-commit",
+      "path": "/home/yasuhito/.pi/agent/skills/setup-pre-commit/SKILL.md",
+      "sha256": "872f4037cb7e6e0e340d4175c086550072959925dffc87b160d1a30dc9f63bbd",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "tdd",
+      "path": "/home/yasuhito/.pi/agent/skills/tdd/SKILL.md",
+      "sha256": "5363bb2775679fe9311fbb67947f95359169c6e7f1fac77c0f25e190bca6cf2f",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "teach",
+      "path": "/home/yasuhito/.pi/agent/skills/teach/SKILL.md",
+      "sha256": "6d2dbe5e03084cf26fef66b535127b36cd1bcbe9478e26b0626029cd51dc2259",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "to-issues",
+      "path": "/home/yasuhito/.pi/agent/skills/to-issues/SKILL.md",
+      "sha256": "f8a72a5bc88aa830ae62b323a52b08934da52851b010984c55829a644c7f6ba6",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "to-prd",
+      "path": "/home/yasuhito/.pi/agent/skills/to-prd/SKILL.md",
+      "sha256": "db7e7188ac4fd47f4925ae6550e0233365b3b05be40f45235ab3a0a6b0165156",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "to-spec",
+      "path": "/home/yasuhito/.pi/agent/skills/to-spec/SKILL.md",
+      "sha256": "267638edd513b5918de626ad5605d261952abb7428cb308869c663ca924e93e7",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "to-tickets",
+      "path": "/home/yasuhito/.pi/agent/skills/to-tickets/SKILL.md",
+      "sha256": "918bdefab9313100cb1f7ccb412e2a773fe2f2801dd20d44f6b2acf7a42ca456",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "triage",
+      "path": "/home/yasuhito/.pi/agent/skills/triage/SKILL.md",
+      "sha256": "d45827c299c021f77b0f146fefa3ee679b13f99e9a2ffdf48e8de2347adeefe1",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "ubiquitous-language",
+      "path": "/home/yasuhito/.pi/agent/skills/ubiquitous-language/SKILL.md",
+      "sha256": "2449e2345b96b9f1e861c697b5eab50d03ae1254481a4306b6f815684e523b3a",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "wayfinder",
+      "path": "/home/yasuhito/.pi/agent/skills/wayfinder/SKILL.md",
+      "sha256": "bef437de697fb6984a8a90b7fd82f128609148d6e02f635ce419d03555b351e1",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "wizard",
+      "path": "/home/yasuhito/.pi/agent/skills/wizard/SKILL.md",
+      "sha256": "e113612095b14178e680022153f2409fb14ea8b992e55d59ad8ce94071ffaf49",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "writing-beats",
+      "path": "/home/yasuhito/.pi/agent/skills/writing-beats/SKILL.md",
+      "sha256": "668185cfb6eb6a324b8d864404c398e21f3cddbb637b760e39b7784c8c5e4fee",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "writing-fragments",
+      "path": "/home/yasuhito/.pi/agent/skills/writing-fragments/SKILL.md",
+      "sha256": "c61b6608f227b0eee1b832273360cf5088ad68c343c15ec9c06673086662e64e",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "writing-great-skills",
+      "path": "/home/yasuhito/.pi/agent/skills/writing-great-skills/SKILL.md",
+      "sha256": "4d6ccbc3760b1bd4107c495a79872286ea69494003f3b0a719fc95b147457061",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "writing-shape",
+      "path": "/home/yasuhito/.pi/agent/skills/writing-shape/SKILL.md",
+      "sha256": "67d34422bbe43cfd523dea9fe7b3ec5260791aed8ea52309b5b85f9d76f32745",
+      "disable_model_invocation": true
+    },
+    {
+      "name": "interface-craft",
+      "path": "/home/yasuhito/.agents/skills/interface-craft/SKILL.md",
+      "sha256": "9240e2d76f6561e3e3145b42c12603c882006c7c0d84465e08cee481f4024959",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "pdf-proofreader",
+      "path": "/home/yasuhito/.agents/skills/pdf-proofreader/SKILL.md",
+      "sha256": "5a63ecb140208f4d14a424daec2d48bcfcd35e6e44daf01cc4625e6c00b10692",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "stripe-best-practices",
+      "path": "/home/yasuhito/.agents/skills/stripe-best-practices/SKILL.md",
+      "sha256": "40d4ec6a029f08e3aca896352efd3b04a4e7af1438c95c5ab86b742c1f43bf72",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "stripe-directory",
+      "path": "/home/yasuhito/.agents/skills/stripe-directory/SKILL.md",
+      "sha256": "fce5cadab2a88bc6f67c4006488f623e6d96196c3f0fa2dab4e5f7cd24270c0b",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "stripe-projects",
+      "path": "/home/yasuhito/.agents/skills/stripe-projects/SKILL.md",
+      "sha256": "b7733e67c3923d99ded1470f84a4b77c7814e8cfd0f6ab5c4f20ea956c70c6a5",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "upgrade-stripe",
+      "path": "/home/yasuhito/.agents/skills/upgrade-stripe/SKILL.md",
+      "sha256": "8ad99efd61c3e89ce0dd42273e597bbc69e1085726266c8723ac20dab4000688",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "pi-subagents",
+      "path": "/home/yasuhito/.pi/agent/npm/node_modules/pi-subagents/skills/pi-subagents/SKILL.md",
+      "sha256": "ad22dafbc327e6f021523bed4bd7d9561ef5f02adf194b3d4d93843f91a70661",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "pi-messenger-crew",
+      "path": "/home/yasuhito/.pi/agent/npm/node_modules/pi-messenger/skills/pi-messenger-crew/SKILL.md",
+      "sha256": "64ee26f5d5172a1d7e6f1b209ca1f83ce725ad776ae94f876b25dce512291001",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "autoresearch-create",
+      "path": "/home/yasuhito/.pi/agent/git/github.com/davebcn87/pi-autoresearch/skills/autoresearch-create/SKILL.md",
+      "sha256": "084ba6d1c9459be06ac4939cad4010af5a31d02fa2fa94cc7925aa2158b734ec",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "autoresearch-finalize",
+      "path": "/home/yasuhito/.pi/agent/git/github.com/davebcn87/pi-autoresearch/skills/autoresearch-finalize/SKILL.md",
+      "sha256": "d75294731acbe7c167f855a3eb5f433cd077aa0007ff9ca8c337ab8b50a7b7c6",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "autoresearch-hooks",
+      "path": "/home/yasuhito/.pi/agent/git/github.com/davebcn87/pi-autoresearch/skills/autoresearch-hooks/SKILL.md",
+      "sha256": "6130e3244baeb67530c70ce49f388ed49bf09c67fda2fccf97efccd52b1dc3ae",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "pi-intercom",
+      "path": "/home/yasuhito/.pi/agent/npm/node_modules/pi-intercom/skills/pi-intercom/SKILL.md",
+      "sha256": "3667b9da28fee5df1a847609b7d127a5687d30761d1860bd845847d6f7adba0f",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "deadloop",
+      "path": "/home/yasuhito/Work/deadloop/skills/deadloop/SKILL.md",
+      "sha256": "103cf5e4286044e1f9bbaf315d68bbe90a3e5778e8601b1cd038a69ef70d2cab",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbcbf-cc58-7fb4-adc7-00aaf572a8c0",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "**Decision Memo: Weekly Dependency Updates**\n\n**Recommendation:** Move dependency updates from a monthly to a weekly schedule.\n\nWeekly updates will reduce the time known vulnerabilities remain in production and allow the team to apply smaller, lower-risk changes more frequently. This schedule should also make compatibility problems easier to identify and resolve.\n\nThe change will increase review and testing workload. We can manage this by batching routine updates, relying on automated checks, and escalating only higher-risk changes for deeper review.\n\n**Approval needed:** Engineering manager approval to adopt the weekly schedule and allocate the required review capacity.",
+  "trace_file": "raw/complex-en-report-held--r04.trace.jsonl",
+  "result_file": "raw/complex-en-report-held--r04.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-procedure",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A safety procedure depends on information order and qualification scope.",
+  "expected_activation": true,
+  "prompt": "Write a deployment rollback procedure for an on-call engineer. The database migration is backward-compatible, traffic must be drained before rollback, and rollback must stop if error rate rises above 2%.",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "harness_git_revision": "7e7c2a9a9d82e9a330e40a9462610b885c9ad6c0",
+  "started_at": "2026-08-01T09:49:21.949618+00:00",
+  "duration_ms": 23980,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbcba-6de5-7147-b20c-2f98f098aaa1",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Deployment Rollback Procedure\n\n## Preconditions\n\n- Confirm the database migration is backward-compatible. **Do not roll back the database migration.**\n- Open the deployment dashboard, traffic controls, logs, and error-rate monitor.\n- Notify the incident channel and assign one engineer to monitor error rate continuously.\n- Record the current deployment version and the last known-good version.\n\n## Rollback Steps\n\n1. **Drain traffic**\n   - Remove the affected deployment from load-balancer rotation or set its traffic weight to `0%`.\n   - Wait until active connections and in-flight requests reach the approved safe threshold.\n   - **Do not start the rollback while the deployment is receiving traffic.**\n\n2. **Verify the drain**\n   - Confirm no new requests are reaching the affected deployment.\n   - Confirm remaining requests have completed or timed out safely.\n\n3. **Roll back the application**\n   - Deploy the last known-good application version.\n   - Leave the backward-compatible database migration in place.\n   - Watch deployment events, health checks, logs, latency, and error rate.\n\n4. **Apply the error-rate stop condition**\n   - If the error rate rises above **2% at any point**, stop the rollback immediately.\n   - Do not shift or restore traffic.\n   - Preserve the current state, collect logs and metrics, and escalate to the incident commander or service owner.\n\n5. **Validate the rolled-back version**\n   - Confirm all instances are healthy.\n   - Run smoke tests against the deployment while it remains out of rotation.\n   - Verify the error rate is at or below `2%` and key service metrics are stable.\n\n6. **Restore traffic gradually**\n   - Increase traffic in controlled stages, such as `10% → 25% → 50% → 100%`.\n   - Validate health and error rate after each stage.\n   - If the error rate exceeds `2%`, stop immediately, set traffic back to `0%`, and escalate.\n\n7. **Close out**\n   - Confirm normal service health at `100%` traffic.\n   - Record the rolled-back version, timestamps, validation results, and any errors.\n   - Update the incident channel and create follow-up actions for root-cause analysis.",
+  "trace_file": "raw/complex-en-procedure--r01.trace.jsonl",
+  "result_file": "raw/complex-en-procedure--r01.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

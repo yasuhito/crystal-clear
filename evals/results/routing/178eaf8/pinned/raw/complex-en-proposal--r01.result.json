@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "harness_git_revision": "7e7c2a9a9d82e9a330e40a9462610b885c9ad6c0",
+  "started_at": "2026-08-01T09:49:28.849318+00:00",
+  "duration_ms": 41675,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-7ny5gj69/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbcba-88e0-7670-b56f-041d4a8afac8",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update cycle for production repositories. Weekly updates will shorten exposure to known vulnerabilities, keep changes small enough to review efficiently, and reduce the risk of large, disruptive monthly update batches.\n\n## Why Change\n\nUnder the monthly schedule, a newly released security fix may wait several weeks before entering our normal update process. Urgent vulnerabilities still require immediate action, but the monthly cadence makes routine security fixes slower than necessary and increases reliance on exceptions.\n\nA weekly cycle would reduce the average delay between a dependency release and our review. Critical vulnerabilities would continue to follow the existing emergency response process; weekly updates would improve our handling of high-, medium-, and low-severity issues that do not justify an emergency release.\n\n## Review Workload\n\nWeekly updates should redistribute—not materially increase—the total review workload. Smaller batches are easier to understand, test, and troubleshoot than a month’s worth of accumulated changes. Reviewers can identify the cause of a regression more quickly, and teams are less likely to postpone an update because the batch appears risky.\n\nTo control interruptions, automated tooling should open dependency pull requests on a fixed day each week. Teams should:\n\n- Group compatible patch and minor updates where practical.\n- Run the standard test suite and security checks automatically.\n- Require manual review for major-version updates or failed checks.\n- Defer low-risk updates when release-critical work takes priority.\n- Track review time, update backlog, and dependency-related failures.\n\nA short pilot will confirm whether the weekly cadence fits current team capacity. If reviews create excessive overhead, we can adjust grouping rules or assign a rotating weekly reviewer.\n\n## Proposed Rollout\n\nRun an eight-week pilot across selected production repositories. Schedule updates early in the week so teams have time to address test failures before release windows. At the end of the pilot, compare results with the monthly process using:\n\n- Time from dependency release to merge.\n- Time spent reviewing dependency updates.\n- Number and size of update pull requests.\n- Update-related test failures, regressions, and rollbacks.\n- Number and age of outstanding security updates.\n\nUnless the pilot reveals a significant workload or reliability problem, weekly updates should become the default. Major upgrades and emergency security fixes should remain separate from the routine weekly cycle.\n\n## Decision Needed\n\nThe engineering manager is asked to approve:\n\n1. An eight-week pilot of weekly dependency updates.\n2. Participation by selected production repositories and their owners.\n3. A fixed weekly review window, supported by automated update tooling.\n4. Adoption of weekly updates as the default if the pilot meets the security, workload, and reliability criteria above.\n\nThis change offers a practical improvement in security response without requiring more dependency work overall. It replaces large monthly batches with smaller, faster, and more manageable reviews.",
+  "trace_file": "raw/complex-en-proposal--r01.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r01.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

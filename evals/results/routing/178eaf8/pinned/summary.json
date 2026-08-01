@@ -1,0 +1,124 @@
+{
+  "runs": 200,
+  "overall": {
+    "runs": 200,
+    "positive_runs": 125,
+    "negative_runs": 75,
+    "true_positives": 96,
+    "false_positives": 0,
+    "recall": 0.768,
+    "precision": 1.0,
+    "false_positive_rate": 0.0,
+    "activation_rate": 0.48
+  },
+  "categories": {
+    "boundary": {
+      "runs": 50,
+      "positive_runs": 25,
+      "negative_runs": 25,
+      "true_positives": 20,
+      "false_positives": 0,
+      "recall": 0.8,
+      "precision": 1.0,
+      "false_positive_rate": 0.0,
+      "activation_rate": 0.4
+    },
+    "complex-communication": {
+      "runs": 50,
+      "positive_runs": 50,
+      "negative_runs": 0,
+      "true_positives": 50,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    },
+    "explicit-request": {
+      "runs": 50,
+      "positive_runs": 50,
+      "negative_runs": 0,
+      "true_positives": 26,
+      "false_positives": 0,
+      "recall": 0.52,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 0.52
+    },
+    "unrelated-control": {
+      "runs": 50,
+      "positive_runs": 0,
+      "negative_runs": 50,
+      "true_positives": 0,
+      "false_positives": 0,
+      "recall": null,
+      "precision": null,
+      "false_positive_rate": 0.0,
+      "activation_rate": 0.0
+    }
+  },
+  "splits": {
+    "train": {
+      "runs": 140,
+      "positive_runs": 90,
+      "negative_runs": 50,
+      "true_positives": 63,
+      "false_positives": 0,
+      "recall": 0.7,
+      "precision": 1.0,
+      "false_positive_rate": 0.0,
+      "activation_rate": 0.45
+    },
+    "held-out": {
+      "runs": 60,
+      "positive_runs": 35,
+      "negative_runs": 25,
+      "true_positives": 33,
+      "false_positives": 0,
+      "recall": 0.9429,
+      "precision": 1.0,
+      "false_positive_rate": 0.0,
+      "activation_rate": 0.55
+    }
+  },
+  "languages": {
+    "en": {
+      "runs": 140,
+      "positive_runs": 80,
+      "negative_runs": 60,
+      "true_positives": 59,
+      "false_positives": 0,
+      "recall": 0.7375,
+      "precision": 1.0,
+      "false_positive_rate": 0.0,
+      "activation_rate": 0.4214
+    },
+    "ja": {
+      "runs": 55,
+      "positive_runs": 40,
+      "negative_runs": 15,
+      "true_positives": 32,
+      "false_positives": 0,
+      "recall": 0.8,
+      "precision": 1.0,
+      "false_positive_rate": 0.0,
+      "activation_rate": 0.5818
+    },
+    "mixed-ja-en": {
+      "runs": 5,
+      "positive_runs": 5,
+      "negative_runs": 0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    }
+  },
+  "selection_outcomes": {
+    "not-selected": 104,
+    "selected-effect-not-deterministically-assessed": 70,
+    "selected-with-visible-change": 26
+  }
+}
