@@ -30,7 +30,7 @@
       "id": "existing",
       "kind": "constraint",
       "values": [
-        "existing files"
+        "does not inspect existing files"
       ]
     }
   ],
@@ -100,7 +100,7 @@
         "id": "existing",
         "kind": "constraint",
         "values": [
-          "existing files"
+          "does not inspect existing files"
         ],
         "missing": [],
         "passed": true

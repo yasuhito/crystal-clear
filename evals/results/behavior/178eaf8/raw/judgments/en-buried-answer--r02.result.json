@@ -6,49 +6,45 @@
   "category": "english",
   "language": "en",
   "repeat": 2,
-  "presentation_index": 41,
+  "presentation_index": 22,
   "judge_seed": 178,
-  "prompt_sha256": "c27d2f9687f5f09b6191e87249f8151cdb871b1d2cb683b0e526e25ce9dc592f",
-  "presented_output_a": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; however, do not begin the rollout until security signs off. The legacy exporter remains available.",
-  "presented_output_b": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; the legacy exporter remains available, and rollout must not begin until security signs off.",
-  "a_arm": "178eaf8",
-  "b_arm": "no-skill",
+  "prompt_sha256": "bb8ed745a10e0004d1dba3cf2c0ac391a588dc461fe1df5e23ee1ad09a512c30",
+  "presented_output_a": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; the legacy exporter remains available, and rollout must not begin until security signs off.",
+  "presented_output_b": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; however, do not begin the rollout until security signs off. The legacy exporter remains available.",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
   "judgment": {
     "output_a": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "changed-certainty"
-      ],
-      "preservation": 3,
-      "first_pass_understanding": 5,
-      "core_structure": 4,
-      "referent_scope_terminology": 4,
-      "register_preserved": true,
-      "naturalness": 5,
-      "evidence": "Changes the source’s recommendation into a direct approval decision; otherwise preserves the date, exporter availability, and security precondition."
-    },
-    "output_b": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "changed-certainty"
-      ],
-      "preservation": 3,
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
       "first_pass_understanding": 5,
       "core_structure": 5,
-      "referent_scope_terminology": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "Preserves the recommendation, date, discussion and review context, exporter availability, and security-sign-off constraint; the single sentence is slightly dense."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Changes the recommendation into a direct approval decision, but clearly retains the date, exporter availability, and mandatory security sign-off constraint."
+      "evidence": "Preserves all facts and constraints while stating the security-sign-off condition especially clearly in professional memo language."
     },
     "preference": "B",
-    "preference_evidence": "Both alter certainty, but B more explicitly preserves the rollout’s mandatory prohibition with “must not” and presents the facts cohesively."
+    "preference_evidence": "Both fully preserve the source, but B separates the rollout condition for clearer, more natural reading."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changes the source’s recommendation into a direct approval decision; otherwise preserves the date, exporter availability, and security precondition.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changes the recommendation into a direct approval decision, but clearly retains the date, exporter availability, and mandatory security sign-off constraint.\"},\"preference\":\"B\",\"preference_evidence\":\"Both alter certainty, but B more explicitly preserves the rollout’s mandatory prohibition with “must not” and presents the facts cohesively.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves the recommendation, date, discussion and review context, exporter availability, and security-sign-off constraint; the single sentence is slightly dense.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts and constraints while stating the security-sign-off condition especially clearly in professional memo language.\"},\"preference\":\"B\",\"preference_evidence\":\"Both fully preserve the source, but B separates the rollout condition for clearer, more natural reading.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:10:11.416598+00:00",
-  "duration_ms": 15121,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:17:42.475120+00:00",
+  "duration_ms": 13688,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -60,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf97-9b1c-7ef8-b5c9-9363e90ae377",
+  "session_id": "019fbf9e-7d0b-7f03-a09f-f10a1b09b7d9",
   "trace_file": "raw/judgments/en-buried-answer--r02.trace.jsonl",
   "result_file": "raw/judgments/en-buried-answer--r02.result.json"
 }

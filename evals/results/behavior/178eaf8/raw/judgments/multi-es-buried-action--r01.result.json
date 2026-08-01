@@ -6,7 +6,7 @@
   "category": "multilingual-core",
   "language": "es",
   "repeat": 1,
-  "presentation_index": 47,
+  "presentation_index": 3,
   "judge_seed": 178,
   "prompt_sha256": "85e8fe967f609803d794a59a9e07d840d62e2c1ee1886fb28d5a7902bfab30b9",
   "presented_output_a": "Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo, sin iniciar la migración hasta contar con la aprobación de Seguridad; el sistema anterior seguirá disponible tras dos semanas de revisión de opciones.",
@@ -17,13 +17,13 @@
     "output_a": {
       "critical_preservation_failure": false,
       "critical_failure_types": [],
-      "preservation": 5,
+      "preservation": 4,
       "first_pass_understanding": null,
       "core_structure": 5,
       "referent_scope_terminology": null,
       "register_preserved": null,
       "naturalness": null,
-      "evidence": "Preserva la aprobación requerida de Ana, el proyecto, la fecha límite, la condición de Seguridad, la disponibilidad del sistema anterior y las dos semanas de revisión en una sola solicitud."
+      "evidence": "Conserva la aprobación de Ana, la fecha límite, la condición de Seguridad y la disponibilidad del sistema, pero convierte «durante dos semanas» en «tras dos semanas»."
     },
     "output_b": {
       "critical_preservation_failure": true,
@@ -36,17 +36,17 @@
       "referent_scope_terminology": null,
       "register_preserved": null,
       "naturalness": null,
-      "evidence": "Cambia «Necesitamos que Ana apruebe» por la orden «Solicita a Ana», añadiendo una acción distinta para el destinatario; conserva los demás hechos y restricciones."
+      "evidence": "Cambia la solicitud a una orden de pedirle a Ana la aprobación, usa varias instrucciones y también altera «durante dos semanas» a «tras dos semanas»."
     },
     "preference": "A",
-    "preference_evidence": "A mantiene la necesidad original sin convertirla en una orden de solicitar la aprobación a Ana."
+    "preference_evidence": "A preserva mejor quién debe aprobar y presenta el contenido como una única solicitud, aunque altera la relación temporal de la revisión."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Preserva la aprobación requerida de Ana, el proyecto, la fecha límite, la condición de Seguridad, la disponibilidad del sistema anterior y las dos semanas de revisión en una sola solicitud.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":3,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Cambia «Necesitamos que Ana apruebe» por la orden «Solicita a Ana», añadiendo una acción distinta para el destinatario; conserva los demás hechos y restricciones.\"},\"preference\":\"A\",\"preference_evidence\":\"A mantiene la necesidad original sin convertirla en una orden de solicitar la aprobación a Ana.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Conserva la aprobación de Ana, la fecha límite, la condición de Seguridad y la disponibilidad del sistema, pero convierte «durante dos semanas» en «tras dos semanas».\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":3,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Cambia la solicitud a una orden de pedirle a Ana la aprobación, usa varias instrucciones y también altera «durante dos semanas» a «tras dos semanas».\"},\"preference\":\"A\",\"preference_evidence\":\"A preserva mejor quién debe aprobar y presenta el contenido como una única solicitud, aunque altera la relación temporal de la revisión.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:10:26.538582+00:00",
-  "duration_ms": 16424,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:16:32.228791+00:00",
+  "duration_ms": 18612,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -58,7 +58,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf97-d62e-76e9-8d26-1d4d186f387e",
+  "session_id": "019fbf9d-6ae3-7415-95ac-47c981a13885",
   "trace_file": "raw/judgments/multi-es-buried-action--r01.trace.jsonl",
   "result_file": "raw/judgments/multi-es-buried-action--r01.result.json"
 }

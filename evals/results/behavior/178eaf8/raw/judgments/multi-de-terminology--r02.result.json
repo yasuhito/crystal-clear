@@ -6,7 +6,7 @@
   "category": "multilingual-core",
   "language": "de",
   "repeat": 2,
-  "presentation_index": 57,
+  "presentation_index": 75,
   "judge_seed": 178,
   "prompt_sha256": "6a567dea1c988de3081dcac3d4603714e77f37a2220cd481987880ada1eab43c",
   "presented_output_a": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Die Datenprüfung prüft keine vorhandenen Dateien.",
@@ -36,15 +36,15 @@
       "naturalness": null,
       "evidence": "Alle Fakten und Einschränkungen bleiben in drei formellen Sätzen erhalten; der Produktname Datenprüfung wird durchgehend verwendet."
     },
-    "preference": "B",
-    "preference_evidence": "Beide Ausgaben bewahren den Inhalt vollständig; B formuliert die Einschränkung mit „Beachten Sie“ geringfügig deutlicher als Anleitung."
+    "preference": "A",
+    "preference_evidence": "A bewahrt die knappe Satzstruktur der Quelle genauer; B ergänzt die nicht erforderliche Aufforderung „Beachten Sie“."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und Einschränkungen bleiben in drei formellen Sätzen erhalten; der Produktname Datenprüfung wird durchgehend verwendet.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und Einschränkungen bleiben in drei formellen Sätzen erhalten; der Produktname Datenprüfung wird durchgehend verwendet.\"},\"preference\":\"B\",\"preference_evidence\":\"Beide Ausgaben bewahren den Inhalt vollständig; B formuliert die Einschränkung mit „Beachten Sie“ geringfügig deutlicher als Anleitung.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und Einschränkungen bleiben in drei formellen Sätzen erhalten; der Produktname Datenprüfung wird durchgehend verwendet.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und Einschränkungen bleiben in drei formellen Sätzen erhalten; der Produktname Datenprüfung wird durchgehend verwendet.\"},\"preference\":\"A\",\"preference_evidence\":\"A bewahrt die knappe Satzstruktur der Quelle genauer; B ergänzt die nicht erforderliche Aufforderung „Beachten Sie“.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:11:02.611255+00:00",
-  "duration_ms": 16023,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:20:51.070973+00:00",
+  "duration_ms": 10338,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf98-630f-7d62-a5bd-0f7090b0ea80",
+  "session_id": "019fbfa1-5dc5-7a48-b9d9-2afeda3677cd",
   "trace_file": "raw/judgments/multi-de-terminology--r02.trace.jsonl",
   "result_file": "raw/judgments/multi-de-terminology--r02.result.json"
 }

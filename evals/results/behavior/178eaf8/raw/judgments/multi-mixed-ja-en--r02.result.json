@@ -6,7 +6,7 @@
   "category": "multilingual-core",
   "language": "mixed-ja-en",
   "repeat": 2,
-  "presentation_index": 74,
+  "presentation_index": 40,
   "judge_seed": 178,
   "prompt_sha256": "634803eaa07ee28e9860d65d2f96b32d147cbdf8f23eb7c6dad1da8c3ada30e9",
   "presented_output_a": "管理者は、Team Syncを有効にしてください。Team Syncは、有効化後に追加された新規メンバーのみを同期します。既存メンバーは同期の対象外です。UI上の名称は「Team Sync」から変更しないでください。",
@@ -23,7 +23,7 @@
       "referent_scope_terminology": null,
       "register_preserved": null,
       "naturalness": null,
-      "evidence": "新規メンバーのみを同期し、既存メンバーは対象外である点と、UI名称Team Syncを維持する制約を保持している。"
+      "evidence": "新規メンバーのみが同期対象で、既存メンバーは対象外という条件と、Team Syncの名称維持をすべて保持している。"
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": null,
       "register_preserved": null,
       "naturalness": null,
-      "evidence": "同期対象と除外対象、およびUI名称Team Syncを変更しない制約を保持している。"
+      "evidence": "新規メンバーのみが同期対象で、既存メンバーは対象外という条件と、Team Syncの名称維持をすべて保持している。"
     },
-    "preference": "A",
-    "preference_evidence": "両方とも内容を保持するが、Aは原文の「既存メンバー」「UI上の名称」により忠実である。"
+    "preference": "tie",
+    "preference_evidence": "両出力とも原文の事実、対象範囲、指示、製品名を同等に保持している。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"新規メンバーのみを同期し、既存メンバーは対象外である点と、UI名称Team Syncを維持する制約を保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"同期対象と除外対象、およびUI名称Team Syncを変更しない制約を保持している。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも内容を保持するが、Aは原文の「既存メンバー」「UI上の名称」により忠実である。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"新規メンバーのみが同期対象で、既存メンバーは対象外という条件と、Team Syncの名称維持をすべて保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"新規メンバーのみが同期対象で、既存メンバーは対象外という条件と、Team Syncの名称維持をすべて保持している。\"},\"preference\":\"tie\",\"preference_evidence\":\"両出力とも原文の事実、対象範囲、指示、製品名を同等に保持している。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:12:07.346800+00:00",
-  "duration_ms": 14863,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:18:47.500455+00:00",
+  "duration_ms": 11101,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf99-5ff4-79a6-8c0a-ef1619ed06f4",
+  "session_id": "019fbf9f-7b0b-75cc-a4e6-2fc7ed7ec269",
   "trace_file": "raw/judgments/multi-mixed-ja-en--r02.trace.jsonl",
   "result_file": "raw/judgments/multi-mixed-ja-en--r02.result.json"
 }

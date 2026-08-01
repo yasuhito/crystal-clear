@@ -6,7 +6,7 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 1,
-  "presentation_index": 44,
+  "presentation_index": 34,
   "judge_seed": 178,
   "prompt_sha256": "749e799e6b6ccacb0cf4679c89f528b7af8cfca00efe67baf7d333645c1982b7",
   "presented_output_a": "先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
@@ -22,8 +22,8 @@
       "core_structure": 5,
       "referent_scope_terminology": 5,
       "register_preserved": true,
-      "naturalness": 5,
-      "evidence": "全事実、期限、承認対象、作業開始禁止を維持し、原文の順序と丁寧な依頼調も保っている。"
+      "naturalness": 4,
+      "evidence": "全事実・期限・対象案・承認前の作業禁止を保持し、原文の順序も維持している。「田中様におかれましては」はやや重いが丁寧。"
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "全情報と制約を正確に維持しているが、宛名を追加し、会議と現行環境の記述順を入れ替えている。"
+      "evidence": "全事実・期限・制約を保持し、宛名によって承認依頼の相手も明確。文の順序は原文から変更されているが、意味は明瞭で自然。"
     },
     "preference": "A",
-    "preference_evidence": "両方とも忠実で自然だが、Aの方が原文の情報順序と依頼構造をより厳密に保持している。"
+    "preference_evidence": "両方とも内容を完全に保持しているが、Aは原文の情報順序と依頼構造をより忠実に維持している。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実、期限、承認対象、作業開始禁止を維持し、原文の順序と丁寧な依頼調も保っている。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全情報と制約を正確に維持しているが、宛名を追加し、会議と現行環境の記述順を入れ替えている。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも忠実で自然だが、Aの方が原文の情報順序と依頼構造をより厳密に保持している。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全事実・期限・対象案・承認前の作業禁止を保持し、原文の順序も維持している。「田中様におかれましては」はやや重いが丁寧。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実・期限・制約を保持し、宛名によって承認依頼の相手も明確。文の順序は原文から変更されているが、意味は明瞭で自然。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも内容を完全に保持しているが、Aは原文の情報順序と依頼構造をより忠実に維持している。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:10:15.241679+00:00",
-  "duration_ms": 15831,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:18:25.771602+00:00",
+  "duration_ms": 15713,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf97-aa0c-74d1-8fd0-883435f011c9",
+  "session_id": "019fbf9f-2629-7c4e-a936-02b1494ade79",
   "trace_file": "raw/judgments/ja-buried-action--r01.trace.jsonl",
   "result_file": "raw/judgments/ja-buried-action--r01.result.json"
 }

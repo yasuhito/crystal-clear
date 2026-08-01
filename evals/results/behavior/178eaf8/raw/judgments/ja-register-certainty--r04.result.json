@@ -6,26 +6,15 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 4,
-  "presentation_index": 3,
+  "presentation_index": 67,
   "judge_seed": 178,
-  "prompt_sha256": "8c8f7c53d4dbfe59c0f10d6d97a7222692c460757b65cd4a32b3a625e93d1641",
-  "presented_output_a": "現在、決済処理の遅延について調査を進めております。初期調査ではネットワーク障害の可能性がございますが、現時点で原因は特定されておりません。約12%のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。ご不便をおかけしておりますことを、深くお詫び申し上げます。",
-  "presented_output_b": "現在、決済処理の遅延について調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、原因は現時点では確定しておりません。約12％のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "3c12f6ab0cf40478b3642a63e88281e1af9e3e9aba9b1f21e0a64e47b76a1582",
+  "presented_output_a": "現在、決済処理の遅延について調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、原因は現時点では確定しておりません。約12％のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。",
+  "presented_output_b": "現在、決済処理の遅延について調査を進めております。初期調査ではネットワーク障害の可能性がございますが、現時点で原因は特定されておりません。約12%のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。ご不便をおかけしておりますことを、深くお詫び申し上げます。",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
-      "critical_preservation_failure": false,
-      "critical_failure_types": [],
-      "preservation": 4,
-      "first_pass_understanding": 5,
-      "core_structure": 5,
-      "referent_scope_terminology": 5,
-      "register_preserved": true,
-      "naturalness": 5,
-      "evidence": "全事実・数値・不確実性・更新時刻を保持しているが、原文にない謝罪を追加している。"
-    },
-    "output_b": {
       "critical_preservation_failure": false,
       "critical_failure_types": [],
       "preservation": 5,
@@ -34,17 +23,28 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "遅延、ネットワーク障害の可能性、原因未確定、約12％への影響可能性、18時更新を丁寧かつ忠実に保持している。"
+      "evidence": "原因が未確定であること、約12％という影響範囲、18時の次回更新を含め、原文の事実と確度を丁寧かつ自然に保持している。"
     },
-    "preference": "B",
-    "preference_evidence": "Bは原文の情報と確実性を過不足なく保持し、不要な追加もない。"
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "主要な事実、数値、確度、更新時刻は保持しているが、「可能性が示されています」を「可能性がございます」とし、初期調査による示唆というニュアンスがやや弱い。謝罪も追加されている。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは追加情報なく、初期調査で可能性が示されたという根拠関係までより忠実に保持している。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実・数値・不確実性・更新時刻を保持しているが、原文にない謝罪を追加している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"遅延、ネットワーク障害の可能性、原因未確定、約12％への影響可能性、18時更新を丁寧かつ忠実に保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは原文の情報と確実性を過不足なく保持し、不要な追加もない。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原因が未確定であること、約12％という影響範囲、18時の次回更新を含め、原文の事実と確度を丁寧かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"主要な事実、数値、確度、更新時刻は保持しているが、「可能性が示されています」を「可能性がございます」とし、初期調査による示唆というニュアンスがやや弱い。謝罪も追加されている。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは追加情報なく、初期調査で可能性が示されたという根拠関係までより忠実に保持している。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:07:45.764238+00:00",
-  "duration_ms": 15350,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:20:28.779027+00:00",
+  "duration_ms": 15228,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf95-623a-7584-adae-6ea8b005b628",
+  "session_id": "019fbfa1-06af-740f-bd67-0a18682d9de2",
   "trace_file": "raw/judgments/ja-register-certainty--r04.trace.jsonl",
   "result_file": "raw/judgments/ja-register-certainty--r04.result.json"
 }

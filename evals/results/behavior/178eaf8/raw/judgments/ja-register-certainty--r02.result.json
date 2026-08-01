@@ -6,7 +6,7 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 2,
-  "presentation_index": 4,
+  "presentation_index": 41,
   "judge_seed": 178,
   "prompt_sha256": "a0135692036b372e08670808104bec2059334654de1b50f72de23bee6269d07b",
   "presented_output_a": "現在、決済処理に遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、現時点で原因は確定しておりません。約12%のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。ご不便をおかけしておりますことをお詫び申し上げます。",
@@ -23,7 +23,7 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "原因未確定、ネットワーク障害の可能性、約12%、18時という要点と慎重な確度を保持している。末尾の謝罪は自然だが原文にはない追加。"
+      "evidence": "原因未確定、ネットワーク障害の可能性、約12%、次回更新18時を保持。末尾に原文にない謝罪を追加している。"
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "原文の全事実、数値、未確定性、更新時刻を過不足なく保持し、丁寧で落ち着いた障害報告として自然。"
+      "evidence": "調査中、原因未特定という確度、ネットワーク障害の可能性、約12%、次回更新18時を過不足なく保持している。"
     },
     "preference": "B",
-    "preference_evidence": "両方とも高品質だが、Bは原文にない謝罪を追加せず、内容をより厳密に保持している。"
+    "preference_evidence": "両方とも丁寧で自然だが、Bは追加情報を含まず、原文の事実と確度をより厳密に保存している。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原因未確定、ネットワーク障害の可能性、約12%、18時という要点と慎重な確度を保持している。末尾の謝罪は自然だが原文にはない追加。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原文の全事実、数値、未確定性、更新時刻を過不足なく保持し、丁寧で落ち着いた障害報告として自然。\"},\"preference\":\"B\",\"preference_evidence\":\"両方とも高品質だが、Bは原文にない謝罪を追加せず、内容をより厳密に保持している。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原因未確定、ネットワーク障害の可能性、約12%、次回更新18時を保持。末尾に原文にない謝罪を追加している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"調査中、原因未特定という確度、ネットワーク障害の可能性、約12%、次回更新18時を過不足なく保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"両方とも丁寧で自然だが、Bは追加情報を含まず、原文の事実と確度をより厳密に保存している。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:07:45.764883+00:00",
-  "duration_ms": 16409,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:18:50.702491+00:00",
+  "duration_ms": 14672,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf95-6236-7949-bcd3-c9f1ae6af72e",
+  "session_id": "019fbf9f-8798-7bee-b0fa-357fb37356e8",
   "trace_file": "raw/judgments/ja-register-certainty--r02.trace.jsonl",
   "result_file": "raw/judgments/ja-register-certainty--r02.result.json"
 }

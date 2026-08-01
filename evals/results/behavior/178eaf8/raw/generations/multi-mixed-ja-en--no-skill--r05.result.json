@@ -31,8 +31,7 @@
       "id": "existing",
       "kind": "condition",
       "values": [
-        "既存メンバー",
-        "対象外"
+        "既存メンバーは対象外"
       ]
     }
   ],
@@ -73,7 +72,7 @@
   "result_file": "raw/generations/multi-mixed-ja-en--no-skill--r05.result.json",
   "deterministic_score": {
     "output_present": true,
-    "passed": true,
+    "passed": false,
     "checks": [
       {
         "id": "term",
@@ -98,13 +97,16 @@
         "id": "existing",
         "kind": "condition",
         "values": [
-          "既存メンバー",
-          "対象外"
+          "既存メンバーは対象外"
         ],
-        "missing": [],
-        "passed": true
+        "missing": [
+          "既存メンバーは対象外"
+        ],
+        "passed": false
       }
     ],
-    "failures_by_kind": {}
+    "failures_by_kind": {
+      "condition": 1
+    }
   }
 }

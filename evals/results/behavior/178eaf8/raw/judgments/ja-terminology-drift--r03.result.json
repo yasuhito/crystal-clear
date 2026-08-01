@@ -6,49 +6,45 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 3,
-  "presentation_index": 49,
+  "presentation_index": 63,
   "judge_seed": 178,
-  "prompt_sha256": "79a78acae66510dec9fefccaadbb5f4ed979f141376d73a86f5994bd4a4de645",
-  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースでは外部ユーザーを招待できません。",
-  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "e0c881e2d5d94b7f05730fea4e9b792b4a8ee7ccd00ec0bdc5c6b3f4c62cbee8",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースでは外部ユーザーを招待できません。",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "removed-constraint"
-      ],
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
       "preservation": 3,
       "first_pass_understanding": 5,
       "core_structure": 5,
-      "referent_scope_terminology": 2,
+      "referent_scope_terminology": 3,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "「このワークスペースでは」を「この共有スペースでは」に変え、外部招待不可の適用範囲をワークスペースから共有スペースへ狭めている。"
+      "evidence": "3文構成と用語統一、招待不可の制約は維持しているが、「このワークスペース」を一般的な「共有スペース」に変え、制約の適用範囲を広げている。"
     },
     "output_b": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "removed-constraint"
-      ],
-      "preservation": 2,
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
       "first_pass_understanding": 5,
       "core_structure": 5,
-      "referent_scope_terminology": 1,
+      "referent_scope_terminology": 4,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "「このワークスペースでは」を「共有スペースには」に変え、適用範囲を変更したうえ「この」という特定性も失っている。"
+      "evidence": "3文構成、用語、招待不可の制約を維持し、「この」によって個別の対象範囲も保っている。ただし「ワークスペース」を「共有スペース」に置換している。"
     },
-    "preference": "A",
-    "preference_evidence": "両方とも外部招待不可の範囲を誤るが、Aは「この」と「では」を保ち、Bより原文の指示対象と条件表現に近い。"
+    "preference": "B",
+    "preference_evidence": "Bは「この」を保持しており、外部ユーザーを招待できない制約が特定の対象に適用されるという原文の範囲をAより正確に保っている。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"removed-constraint\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":2,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"「このワークスペースでは」を「この共有スペースでは」に変え、外部招待不可の適用範囲をワークスペースから共有スペースへ狭めている。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"removed-constraint\"],\"preservation\":2,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":1,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"「このワークスペースでは」を「共有スペースには」に変え、適用範囲を変更したうえ「この」という特定性も失っている。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも外部招待不可の範囲を誤るが、Aは「この」と「では」を保ち、Bより原文の指示対象と条件表現に近い。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":3,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成と用語統一、招待不可の制約は維持しているが、「このワークスペース」を一般的な「共有スペース」に変え、制約の適用範囲を広げている。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成、用語、招待不可の制約を維持し、「この」によって個別の対象範囲も保っている。ただし「ワークスペース」を「共有スペース」に置換している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは「この」を保持しており、外部ユーザーを招待できない制約が特定の対象に適用されるという原文の範囲をAより正確に保っている。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:10:35.413678+00:00",
-  "duration_ms": 14061,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:20:10.023534+00:00",
+  "duration_ms": 19977,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -60,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf97-f8dc-7655-a776-523e13b1fbd9",
+  "session_id": "019fbfa0-bd73-7536-bd92-ee15d8b1fda6",
   "trace_file": "raw/judgments/ja-terminology-drift--r03.trace.jsonl",
   "result_file": "raw/judgments/ja-terminology-drift--r03.result.json"
 }

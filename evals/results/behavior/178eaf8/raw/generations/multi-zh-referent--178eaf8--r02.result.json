@@ -19,11 +19,11 @@
       ]
     },
     {
-      "id": "people",
+      "id": "roles",
       "kind": "fact",
       "values": [
-        "李敏",
-        "王伟"
+        "关闭工单的人是王伟",
+        "李敏负责最终确认"
       ]
     },
     {
@@ -82,7 +82,7 @@
   "result_file": "raw/generations/multi-zh-referent--178eaf8--r02.result.json",
   "deterministic_score": {
     "output_present": true,
-    "passed": true,
+    "passed": false,
     "checks": [
       {
         "id": "ticket",
@@ -94,14 +94,17 @@
         "passed": true
       },
       {
-        "id": "people",
+        "id": "roles",
         "kind": "fact",
         "values": [
-          "李敏",
-          "王伟"
+          "关闭工单的人是王伟",
+          "李敏负责最终确认"
         ],
-        "missing": [],
-        "passed": true
+        "missing": [
+          "关闭工单的人是王伟",
+          "李敏负责最终确认"
+        ],
+        "passed": false
       },
       {
         "id": "deadline",
@@ -122,6 +125,8 @@
         "passed": true
       }
     ],
-    "failures_by_kind": {}
+    "failures_by_kind": {
+      "fact": 1
+    }
   }
 }

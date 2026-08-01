@@ -6,15 +6,26 @@
   "category": "english",
   "language": "en",
   "repeat": 4,
-  "presentation_index": 14,
+  "presentation_index": 51,
   "judge_seed": 178,
-  "prompt_sha256": "71d13eae71a188439f1c99abda474ef887f56b0bd508a7f2db5020f2d62bb6a1",
-  "presented_output_a": "Enable Secure Review in Settings. Secure Review checks new uploads, but Secure Review does not inspect existing files.",
-  "presented_output_b": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled to check future uploads.",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "ff0865c83a00162799d09ac5b4e4ff04b3935e41d560ee25144779559695036f",
+  "presented_output_a": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled to check future uploads.",
+  "presented_output_b": "Enable Secure Review in Settings. Secure Review checks new uploads, but Secure Review does not inspect existing files.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the setting, product term, new-upload scope, and existing-file limitation in three clear sentences."
+    },
+    "output_b": {
       "critical_preservation_failure": true,
       "critical_failure_types": [
         "changed-instruction"
@@ -24,32 +35,18 @@
       "core_structure": 2,
       "referent_scope_terminology": 5,
       "register_preserved": true,
-      "naturalness": 4,
-      "evidence": "Faithfully preserves the setting, product term, upload scope, and existing-file limitation, but violates the required three-sentence format by providing only two sentences."
-    },
-    "output_b": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "invented-fact",
-        "changed-instruction"
-      ],
-      "preservation": 3,
-      "first_pass_understanding": 5,
-      "core_structure": 5,
-      "referent_scope_terminology": 5,
-      "register_preserved": true,
-      "naturalness": 5,
-      "evidence": "Preserves the source facts and required product term in three clear sentences, but invents an additional recommendation to keep the feature enabled."
+      "naturalness": 3,
+      "evidence": "Preserves the facts and product term, but violates the required three-sentence format and repeats Secure Review awkwardly."
     },
     "preference": "A",
-    "preference_evidence": "A is more faithful to the source content; its format violation is preferable to B's unsupported added recommendation when preservation is prioritized."
+    "preference_evidence": "A fully preserves the content while satisfying the three-sentence contract and reading more naturally."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":2,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Faithfully preserves the setting, product term, upload scope, and existing-file limitation, but violates the required three-sentence format by providing only two sentences.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\",\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the source facts and required product term in three clear sentences, but invents an additional recommendation to keep the feature enabled.\"},\"preference\":\"A\",\"preference_evidence\":\"A is more faithful to the source content; its format violation is preferable to B's unsupported added recommendation when preservation is prioritized.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the setting, product term, new-upload scope, and existing-file limitation in three clear sentences.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":2,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":3,\"evidence\":\"Preserves the facts and product term, but violates the required three-sentence format and repeats Secure Review awkwardly.\"},\"preference\":\"A\",\"preference_evidence\":\"A fully preserves the content while satisfying the three-sentence contract and reading more naturally.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:08:26.145356+00:00",
-  "duration_ms": 19887,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:19:27.592144+00:00",
+  "duration_ms": 20625,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -61,7 +58,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf95-ffdb-75cd-ac37-d64223b36e6f",
+  "session_id": "019fbfa0-17af-7d57-b475-5c889ef94c1f",
   "trace_file": "raw/judgments/en-terminology-drift--r04.trace.jsonl",
   "result_file": "raw/judgments/en-terminology-drift--r04.result.json"
 }

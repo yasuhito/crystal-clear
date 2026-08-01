@@ -19,11 +19,11 @@
       ]
     },
     {
-      "id": "people",
+      "id": "roles",
       "kind": "fact",
       "values": [
-        "Maya",
-        "Priya"
+        "Priya must export the audit log",
+        "Maya retains access"
       ]
     },
     {
@@ -94,11 +94,11 @@
         "passed": true
       },
       {
-        "id": "people",
+        "id": "roles",
         "kind": "fact",
         "values": [
-          "Maya",
-          "Priya"
+          "Priya must export the audit log",
+          "Maya retains access"
         ],
         "missing": [],
         "passed": true

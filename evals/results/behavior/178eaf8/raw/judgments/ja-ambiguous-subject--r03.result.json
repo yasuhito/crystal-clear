@@ -6,7 +6,7 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 3,
-  "presentation_index": 55,
+  "presentation_index": 50,
   "judge_seed": 178,
   "prompt_sha256": "6039c43c622fd5e0bd6595a25d4006387c951b186bf97fff1b4f524324f303e7",
   "presented_output_a": "案件ID「JP-42」について、佐藤さんは鈴木さんに「レビュー後に鈴木さんが報告書を送る」と伝えました。佐藤さんは報告書の承認を担当します。",
@@ -23,30 +23,28 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "送付者が鈴木さん、承認担当が佐藤さん、案件IDがJP-42であることを明確かつ自然に保持している。"
+      "evidence": "送付者が鈴木さん、承認担当が佐藤さん、時期がレビュー後、案件IDがJP-42であることを自然かつ明確に保持している。"
     },
     "output_b": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "invented-fact"
-      ],
-      "preservation": 3,
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
       "first_pass_understanding": 5,
-      "core_structure": 4,
-      "referent_scope_terminology": 4,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "担当者と案件IDは保持しているが、「送るよう伝えました」は佐藤さんが鈴木さんに送付を指示・依頼したという原文にない意味を加えている。"
+      "evidence": "全事実は保持しているが、「送るよう伝えました」は依頼・指示の意味合いを帯び、単に送ると伝えた原文から発話行為がわずかに変化する。"
     },
     "preference": "A",
-    "preference_evidence": "Aは伝達内容と担当関係を変えずに曖昧さを解消しているが、Bは伝達を指示・依頼へ変えている。"
+    "preference_evidence": "Aは送付者を明示しつつ、原文の「伝えました」という発話の性質もより忠実に保っている。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送付者が鈴木さん、承認担当が佐藤さん、案件IDがJP-42であることを明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"担当者と案件IDは保持しているが、「送るよう伝えました」は佐藤さんが鈴木さんに送付を指示・依頼したという原文にない意味を加えている。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは伝達内容と担当関係を変えずに曖昧さを解消しているが、Bは伝達を指示・依頼へ変えている。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送付者が鈴木さん、承認担当が佐藤さん、時期がレビュー後、案件IDがJP-42であることを自然かつ明確に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実は保持しているが、「送るよう伝えました」は依頼・指示の意味合いを帯び、単に送ると伝えた原文から発話行為がわずかに変化する。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは送付者を明示しつつ、原文の「伝えました」という発話の性質もより忠実に保っている。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:10:52.132608+00:00",
-  "duration_ms": 20687,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:19:26.907748+00:00",
+  "duration_ms": 11489,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -58,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf98-3a21-77fe-b998-7d013d41f29a",
+  "session_id": "019fbfa0-14fb-762e-8300-6b9f72b61b66",
   "trace_file": "raw/judgments/ja-ambiguous-subject--r03.trace.jsonl",
   "result_file": "raw/judgments/ja-ambiguous-subject--r03.result.json"
 }

@@ -65,6 +65,20 @@ class DeterministicScoringTests(unittest.TestCase):
         self.assertEqual(score["failures_by_kind"], {"condition": 1})
         self.assertEqual(score["checks"][1]["missing"], ["Friday"])
 
+    def test_relational_fact_check_rejects_reversed_roles(self) -> None:
+        scenario = {
+            "checks": [{
+                "id": "roles", "kind": "fact",
+                "values": ["Priya must export the audit log", "Maya retains access"],
+            }]
+        }
+        score = score_preservation(
+            scenario,
+            "Maya must export the audit log. Priya retains access.",
+        )
+        self.assertFalse(score["passed"])
+        self.assertEqual(score["failures_by_kind"], {"fact": 1})
+
 
 class BlindJudgmentTests(unittest.TestCase):
     def test_assignment_is_seeded_and_balanced(self) -> None:

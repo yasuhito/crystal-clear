@@ -26,7 +26,7 @@
       "prompt": "Rewrite the SOURCE to remove the ambiguous referent without inventing facts. Return only the clarified text in two professional English sentences. Preserve identifiers, timing, and access distinctions. SOURCE: Maya told Priya that her access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
       "checks": [
         {"id": "account", "kind": "protected-string", "values": ["ACCT-74"]},
-        {"id": "people", "kind": "fact", "values": ["Maya", "Priya"]},
+        {"id": "roles", "kind": "fact", "values": ["Priya must export the audit log", "Maya retains access"]},
         {"id": "timing", "kind": "condition", "values": ["Friday"]},
         {"id": "must-export", "kind": "constraint", "values": ["must"]}
       ]
@@ -57,7 +57,7 @@
       "checks": [
         {"id": "term", "kind": "protected-string", "values": ["Secure Review", "Settings"]},
         {"id": "new", "kind": "fact", "values": ["new uploads"]},
-        {"id": "existing", "kind": "constraint", "values": ["existing files"]}
+        {"id": "existing", "kind": "constraint", "values": ["does not inspect existing files"]}
       ]
     },
     {
@@ -98,7 +98,7 @@
       "prompt": "SOURCEの主語と役割が一読で分かるように書き直してください。曖昧さをなくした自然な日本語だけを返してください。新しい事実は加えないでください。SOURCE: 佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
       "checks": [
         {"id": "id", "kind": "protected-string", "values": ["JP-42"]},
-        {"id": "people", "kind": "fact", "values": ["佐藤さん", "鈴木さん"]},
+        {"id": "roles", "kind": "fact", "values": ["報告書を送るのは鈴木さん", "佐藤さんは承認"]},
         {"id": "timing", "kind": "condition", "values": ["レビュー後"]}
       ]
     },
@@ -127,7 +127,7 @@
       "prompt": "SOURCEの製品用語を統一して書き直してください。用語を統一した3文の操作説明だけを返してください。制約を保持してください。SOURCE: 管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
       "checks": [
         {"id": "term", "kind": "protected-string", "values": ["共有スペース", "管理画面"]},
-        {"id": "external", "kind": "constraint", "values": ["外部ユーザー"]}
+        {"id": "external", "kind": "constraint", "values": ["外部ユーザーを招待できません"]}
       ]
     },
     {
@@ -167,7 +167,7 @@
       "prompt": "改写 SOURCE，明确每个人的职责，不要添加事实。只返回消除指代歧义后的简体中文文本。保留编号、期限和必须条件。SOURCE: 李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
       "checks": [
         {"id": "ticket", "kind": "protected-string", "values": ["CN-88"]},
-        {"id": "people", "kind": "fact", "values": ["李敏", "王伟"]},
+        {"id": "roles", "kind": "fact", "values": ["关闭工单的人是王伟", "李敏负责最终确认"]},
         {"id": "deadline", "kind": "condition", "values": ["周五之前"]},
         {"id": "must", "kind": "constraint", "values": ["必须"]}
       ]
@@ -198,7 +198,7 @@
       "checks": [
         {"id": "term", "kind": "protected-string", "values": ["Datenprüfung", "Einstellungen"]},
         {"id": "new", "kind": "fact", "values": ["neue Uploads"]},
-        {"id": "existing", "kind": "constraint", "values": ["vorhandenen Dateien"]}
+        {"id": "existing", "kind": "constraint", "values": ["prüft keine vorhandenen Dateien"]}
       ]
     },
     {
@@ -212,7 +212,7 @@
       "checks": [
         {"id": "term", "kind": "protected-string", "values": ["Team Sync", "UI"]},
         {"id": "new", "kind": "fact", "values": ["新規メンバー"]},
-        {"id": "existing", "kind": "condition", "values": ["既存メンバー", "対象外"]}
+        {"id": "existing", "kind": "condition", "values": ["既存メンバーは対象外"]}
       ]
     }
   ]

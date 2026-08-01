@@ -31,8 +31,7 @@
       "id": "existing",
       "kind": "condition",
       "values": [
-        "既存メンバー",
-        "対象外"
+        "既存メンバーは対象外"
       ]
     }
   ],
@@ -104,14 +103,16 @@
         "id": "existing",
         "kind": "condition",
         "values": [
-          "既存メンバー",
-          "対象外"
+          "既存メンバーは対象外"
         ],
-        "missing": [],
-        "passed": true
+        "missing": [
+          "既存メンバーは対象外"
+        ],
+        "passed": false
       }
     ],
     "failures_by_kind": {
+      "condition": 1,
       "protected-string": 1
     }
   }

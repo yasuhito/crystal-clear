@@ -6,7 +6,7 @@
   "category": "english",
   "language": "en",
   "repeat": 4,
-  "presentation_index": 29,
+  "presentation_index": 30,
   "judge_seed": 178,
   "prompt_sha256": "2c78c5bde25c5167a3a5e51bc721960005e490e0a69e46db70871f8d8d3394eb",
   "presented_output_a": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; however, do not begin the rollout until security signs off. The legacy exporter remains available.",
@@ -25,7 +25,7 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Preserves the date, discussion, risk review, exporter availability, and security condition, but turns a recommendation to approve into an approval decision."
+      "evidence": "Preserves the date, availability, and security condition clearly, but changes a recommendation to an approval directive."
     },
     "output_b": {
       "critical_preservation_failure": true,
@@ -38,17 +38,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 4,
-      "evidence": "Preserves all underlying details and constraints, but changes the recommendation into a decision; the final semicolon makes the structure slightly less natural."
+      "evidence": "Preserves the date, availability, and security condition, but changes a recommendation to an approval directive; the semicolon creates a slightly crowded sentence."
     },
     "preference": "A",
-    "preference_evidence": "Both change the source's recommendation into a decision, but A presents the independent exporter fact more clearly and naturally."
+    "preference_evidence": "Both alter certainty equally, but A separates the legacy-exporter fact more naturally and clearly."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the date, discussion, risk review, exporter availability, and security condition, but turns a recommendation to approve into an approval decision.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves all underlying details and constraints, but changes the recommendation into a decision; the final semicolon makes the structure slightly less natural.\"},\"preference\":\"A\",\"preference_evidence\":\"Both change the source's recommendation into a decision, but A presents the independent exporter fact more clearly and naturally.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the date, availability, and security condition clearly, but changes a recommendation to an approval directive.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves the date, availability, and security condition, but changes a recommendation to an approval directive; the semicolon creates a slightly crowded sentence.\"},\"preference\":\"A\",\"preference_evidence\":\"Both alter certainty equally, but A separates the legacy-exporter fact more naturally and clearly.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:09:21.490886+00:00",
-  "duration_ms": 9901,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:18:11.080348+00:00",
+  "duration_ms": 14691,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -60,7 +60,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf96-d817-7f29-98d6-3ed40f22948e",
+  "session_id": "019fbf9e-ecc6-7bee-88c0-a95c386a570e",
   "trace_file": "raw/judgments/en-buried-answer--r04.trace.jsonl",
   "result_file": "raw/judgments/en-buried-answer--r04.result.json"
 }

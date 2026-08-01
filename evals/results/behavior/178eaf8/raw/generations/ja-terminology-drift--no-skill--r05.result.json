@@ -23,7 +23,7 @@
       "id": "external",
       "kind": "constraint",
       "values": [
-        "外部ユーザー"
+        "外部ユーザーを招待できません"
       ]
     }
   ],
@@ -80,7 +80,7 @@
         "id": "external",
         "kind": "constraint",
         "values": [
-          "外部ユーザー"
+          "外部ユーザーを招待できません"
         ],
         "missing": [],
         "passed": true

@@ -6,7 +6,7 @@
   "category": "multilingual-core",
   "language": "mixed-ja-en",
   "repeat": 3,
-  "presentation_index": 1,
+  "presentation_index": 60,
   "judge_seed": 178,
   "prompt_sha256": "df2491aac3d0a4aff6fff618af5c2dbb12db5c61b05d64d10b3303cc82f88e1c",
   "presented_output_a": "管理者は「Team Sync」を有効にしてください。Team Syncは、有効化後に追加された新規メンバーのみを同期します。有効化前から存在する既存メンバーは同期対象外です。UI上の名称は「Team Sync」から変更しないでください。",
@@ -23,7 +23,7 @@
       "referent_scope_terminology": null,
       "register_preserved": null,
       "naturalness": null,
-      "evidence": "主要事項は保持しているが、「有効化後に追加」「有効化前から存在」と同期対象の時間的基準を原文より明示的に追加している。"
+      "evidence": "主要な事実と指示を保持しているが、「有効化後」「有効化前」という時点の解釈を明示的に追加している。"
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": null,
       "register_preserved": null,
       "naturalness": null,
-      "evidence": "管理者による有効化、新規メンバーのみの同期、既存メンバーの除外、UI名称を変更しない制約を過不足なく保持している。"
+      "evidence": "新規メンバーのみが同期対象で既存メンバーは対象外という条件、およびUI名称を変更しない指示を忠実に保持している。"
     },
     "preference": "B",
-    "preference_evidence": "Bは原文の事実と制約をそのまま保持し、Aにある時間的基準の追加がない。"
+    "preference_evidence": "Bは追加の時点条件を導入せず、原文の事実と制約をより直接的に保持している。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"主要事項は保持しているが、「有効化後に追加」「有効化前から存在」と同期対象の時間的基準を原文より明示的に追加している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"管理者による有効化、新規メンバーのみの同期、既存メンバーの除外、UI名称を変更しない制約を過不足なく保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは原文の事実と制約をそのまま保持し、Aにある時間的基準の追加がない。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"主要な事実と指示を保持しているが、「有効化後」「有効化前」という時点の解釈を明示的に追加している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"新規メンバーのみが同期対象で既存メンバーは対象外という条件、およびUI名称を変更しない指示を忠実に保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは追加の時点条件を導入せず、原文の事実と制約をより直接的に保持している。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:07:45.763739+00:00",
-  "duration_ms": 13345,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:19:58.755859+00:00",
+  "duration_ms": 17449,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf95-624c-7c13-ba21-aef4de726515",
+  "session_id": "019fbfa0-915e-7132-8653-a958fd3d5342",
   "trace_file": "raw/judgments/multi-mixed-ja-en--r03.trace.jsonl",
   "result_file": "raw/judgments/multi-mixed-ja-en--r03.result.json"
 }

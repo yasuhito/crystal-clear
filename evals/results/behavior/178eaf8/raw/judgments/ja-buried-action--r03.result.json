@@ -6,15 +6,26 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 3,
-  "presentation_index": 38,
+  "presentation_index": 58,
   "judge_seed": 178,
-  "prompt_sha256": "df6895d56e46c02682428976c4994a816b943243e286df51368b2843e661a480",
-  "presented_output_a": "先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
-  "presented_output_b": "田中様におかれましては、現行環境が7月末まで利用可能であることを踏まえ、移行案Aを6月20日までにご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
-  "a_arm": "178eaf8",
-  "b_arm": "no-skill",
+  "prompt_sha256": "3c5248a9fecc1eff7d8c8c4d36b43c5099c78a24458bba971a24914ff5ec90f8",
+  "presented_output_a": "田中様におかれましては、現行環境が7月末まで利用可能であることを踏まえ、移行案Aを6月20日までにご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
   "judgment": {
     "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "会議で移行時期について複数の意見が出たという事実が省略されているが、期限、承認対象、作業開始条件は正確で丁寧。"
+    },
+    "output_b": {
       "critical_preservation_failure": false,
       "critical_failure_types": [],
       "preservation": 5,
@@ -22,29 +33,18 @@
       "core_structure": 5,
       "referent_scope_terminology": 5,
       "register_preserved": true,
-      "naturalness": 4,
-      "evidence": "会議で複数意見が出た事実、7月末、田中様、6月20日、移行案A、承認前の作業禁止をすべて丁寧に保持している。"
-    },
-    "output_b": {
-      "critical_preservation_failure": false,
-      "critical_failure_types": [],
-      "preservation": 4,
-      "first_pass_understanding": 5,
-      "core_structure": 4,
-      "referent_scope_terminology": 5,
-      "register_preserved": true,
       "naturalness": 5,
-      "evidence": "期限、対象者、承認対象、作業開始条件は保持しているが、先日の会議で移行時期について複数の意見が出た事実を省略している。"
+      "evidence": "会議での複数意見、現行環境の利用期限、承認期限と対象、承認前の作業禁止をすべて自然なビジネス日本語で保持している。"
     },
-    "preference": "A",
-    "preference_evidence": "Aはやや硬い表現ながら、Bが省略した会議の事実を含め、原文の情報をより完全に保持している。"
+    "preference": "B",
+    "preference_evidence": "Bは依頼の背景を含む全事実と制約を保持しており、Aより原文の情報保存性が高い。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"会議で複数意見が出た事実、7月末、田中様、6月20日、移行案A、承認前の作業禁止をすべて丁寧に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"期限、対象者、承認対象、作業開始条件は保持しているが、先日の会議で移行時期について複数の意見が出た事実を省略している。\"},\"preference\":\"A\",\"preference_evidence\":\"Aはやや硬い表現ながら、Bが省略した会議の事実を含め、原文の情報をより完全に保持している。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"会議で移行時期について複数の意見が出たという事実が省略されているが、期限、承認対象、作業開始条件は正確で丁寧。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"会議での複数意見、現行環境の利用期限、承認期限と対象、承認前の作業禁止をすべて自然なビジネス日本語で保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは依頼の背景を含む全事実と制約を保持しており、Aより原文の情報保存性が高い。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:09:59.974783+00:00",
-  "duration_ms": 14096,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:19:55.055551+00:00",
+  "duration_ms": 14967,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf97-6e72-7104-b855-2b4af6c2c9c9",
+  "session_id": "019fbfa0-82f1-7531-85ac-5a068a1218a4",
   "trace_file": "raw/judgments/ja-buried-action--r03.trace.jsonl",
   "result_file": "raw/judgments/ja-buried-action--r03.result.json"
 }

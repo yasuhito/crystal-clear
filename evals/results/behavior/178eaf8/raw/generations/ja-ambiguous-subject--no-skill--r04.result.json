@@ -19,11 +19,11 @@
       ]
     },
     {
-      "id": "people",
+      "id": "roles",
       "kind": "fact",
       "values": [
-        "佐藤さん",
-        "鈴木さん"
+        "報告書を送るのは鈴木さん",
+        "佐藤さんは承認"
       ]
     },
     {
@@ -71,7 +71,7 @@
   "result_file": "raw/generations/ja-ambiguous-subject--no-skill--r04.result.json",
   "deterministic_score": {
     "output_present": true,
-    "passed": true,
+    "passed": false,
     "checks": [
       {
         "id": "id",
@@ -83,14 +83,17 @@
         "passed": true
       },
       {
-        "id": "people",
+        "id": "roles",
         "kind": "fact",
         "values": [
-          "佐藤さん",
-          "鈴木さん"
+          "報告書を送るのは鈴木さん",
+          "佐藤さんは承認"
         ],
-        "missing": [],
-        "passed": true
+        "missing": [
+          "報告書を送るのは鈴木さん",
+          "佐藤さんは承認"
+        ],
+        "passed": false
       },
       {
         "id": "timing",
@@ -102,6 +105,8 @@
         "passed": true
       }
     ],
-    "failures_by_kind": {}
+    "failures_by_kind": {
+      "fact": 1
+    }
   }
 }

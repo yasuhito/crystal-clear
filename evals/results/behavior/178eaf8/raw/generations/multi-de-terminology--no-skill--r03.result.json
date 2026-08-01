@@ -31,7 +31,7 @@
       "id": "existing",
       "kind": "constraint",
       "values": [
-        "vorhandenen Dateien"
+        "prüft keine vorhandenen Dateien"
       ]
     }
   ],
@@ -97,7 +97,7 @@
         "id": "existing",
         "kind": "constraint",
         "values": [
-          "vorhandenen Dateien"
+          "prüft keine vorhandenen Dateien"
         ],
         "missing": [],
         "passed": true

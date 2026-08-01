@@ -6,13 +6,13 @@
   "category": "english",
   "language": "en",
   "repeat": 3,
-  "presentation_index": 7,
+  "presentation_index": 8,
   "judge_seed": 178,
-  "prompt_sha256": "1e31bf8aa226d1c3962fddf0085b988de5e56b2c1483abf9916aae9b7d0e67ba",
-  "presented_output_a": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces, though recovery may take up to 48 hours.",
-  "presented_output_b": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. Restoration may take up to 48 hours.",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "8cf8f17ad2546cbf72dec0f4803123d973bff4893ebf67c60203f24405041de9",
+  "presented_output_a": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. Restoration may take up to 48 hours.",
+  "presented_output_b": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces, though recovery may take up to 48 hours.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
       "critical_preservation_failure": false,
@@ -22,8 +22,8 @@
       "core_structure": 5,
       "referent_scope_terminology": 5,
       "register_preserved": true,
-      "naturalness": 4,
-      "evidence": "Preserves the Enterprise account creation-date condition, restoration capability, and 48-hour maximum; “though” is slightly awkward."
+      "naturalness": 5,
+      "evidence": "Preserves the Enterprise account creation-date restriction, restoration capability, and maximum 48-hour recovery time clearly and naturally."
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -33,18 +33,18 @@
       "core_structure": 5,
       "referent_scope_terminology": 5,
       "register_preserved": true,
-      "naturalness": 5,
-      "evidence": "Clearly preserves all facts, constraints, scope, and timing in natural customer-facing language."
+      "naturalness": 4,
+      "evidence": "Preserves all facts and constraints, but “though” introduces a slightly unnecessary contrast."
     },
-    "preference": "B",
-    "preference_evidence": "Both fully preserve the source, but B presents the recovery timeframe more directly and naturally."
+    "preference": "A",
+    "preference_evidence": "Both fully preserve the source, but A presents the timing caveat more directly and naturally."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves the Enterprise account creation-date condition, restoration capability, and 48-hour maximum; “though” is slightly awkward.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clearly preserves all facts, constraints, scope, and timing in natural customer-facing language.\"},\"preference\":\"B\",\"preference_evidence\":\"Both fully preserve the source, but B presents the recovery timeframe more directly and naturally.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the Enterprise account creation-date restriction, restoration capability, and maximum 48-hour recovery time clearly and naturally.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves all facts and constraints, but “though” introduces a slightly unnecessary contrast.\"},\"preference\":\"A\",\"preference_evidence\":\"Both fully preserve the source, but A presents the timing caveat more directly and naturally.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:08:02.174592+00:00",
-  "duration_ms": 12264,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:16:50.841119+00:00",
+  "duration_ms": 13773,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf95-a244-721c-8f79-45e637f48dfe",
+  "session_id": "019fbf9d-b358-7825-9c63-a9b0cfdb3ac4",
   "trace_file": "raw/judgments/en-detached-qualification--r03.trace.jsonl",
   "result_file": "raw/judgments/en-detached-qualification--r03.result.json"
 }

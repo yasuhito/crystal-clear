@@ -6,28 +6,15 @@
   "category": "english",
   "language": "en",
   "repeat": 3,
-  "presentation_index": 15,
+  "presentation_index": 57,
   "judge_seed": 178,
-  "prompt_sha256": "e4d6ada2f6a4b0891e317f7d354f0e537d7145cb71d6d69788f57884508abeda",
-  "presented_output_a": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; the rollout must not begin before security signs off, and the legacy exporter will remain available.",
-  "presented_output_b": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review. Do not begin the rollout until security signs off; the legacy exporter remains available.",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "6bfffc0124a2a184c784f77cdfa53621f541bb1bce7d3fd22529297eb4be0eb2",
+  "presented_output_a": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review. Do not begin the rollout until security signs off; the legacy exporter remains available.",
+  "presented_output_b": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; the rollout must not begin before security signs off, and the legacy exporter will remain available.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
-      "critical_preservation_failure": true,
-      "critical_failure_types": [
-        "changed-certainty"
-      ],
-      "preservation": 3,
-      "first_pass_understanding": 5,
-      "core_structure": 4,
-      "referent_scope_terminology": 4,
-      "register_preserved": true,
-      "naturalness": 4,
-      "evidence": "Clear and professional, but converts a recommendation into a direct approval decision and changes the exporter's current availability to future availability."
-    },
-    "output_b": {
       "critical_preservation_failure": true,
       "critical_failure_types": [
         "changed-certainty"
@@ -38,17 +25,30 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Preserves the date, discussion, risk review, security prerequisite, and current exporter availability, but converts the recommendation into a direct approval decision."
+      "evidence": "Preserves all facts, deadline, and security condition, but turns a recommendation to approve into a direct approval decision."
     },
-    "preference": "B",
-    "preference_evidence": "B is more natural and preserves the legacy exporter's current availability, whereas A shifts it to a future commitment."
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Turns the recommendation into a direct decision and changes the exporter's current availability into a future assurance that it will remain available."
+    },
+    "preference": "A",
+    "preference_evidence": "A better preserves the legacy exporter's stated present availability while retaining the deadline and rollout constraint."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Clear and professional, but converts a recommendation into a direct approval decision and changes the exporter's current availability to future availability.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the date, discussion, risk review, security prerequisite, and current exporter availability, but converts the recommendation into a direct approval decision.\"},\"preference\":\"B\",\"preference_evidence\":\"B is more natural and preserves the legacy exporter's current availability, whereas A shifts it to a future commitment.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, deadline, and security condition, but turns a recommendation to approve into a direct approval decision.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Turns the recommendation into a direct decision and changes the exporter's current availability into a future assurance that it will remain available.\"},\"preference\":\"A\",\"preference_evidence\":\"A better preserves the legacy exporter's stated present availability while retaining the deadline and rollout constraint.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:08:33.776825+00:00",
-  "duration_ms": 14282,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:19:50.125499+00:00",
+  "duration_ms": 16803,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -60,7 +60,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf96-1da4-7c78-bef3-1191645defd5",
+  "session_id": "019fbfa0-6fac-7f3e-a82e-3d63869d64e1",
   "trace_file": "raw/judgments/en-buried-answer--r03.trace.jsonl",
   "result_file": "raw/judgments/en-buried-answer--r03.result.json"
 }

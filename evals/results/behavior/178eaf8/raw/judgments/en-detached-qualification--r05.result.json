@@ -6,13 +6,13 @@
   "category": "english",
   "language": "en",
   "repeat": 5,
-  "presentation_index": 75,
+  "presentation_index": 9,
   "judge_seed": 178,
-  "prompt_sha256": "c1b634439e9298dbb1a0fc8efd4ff9449d4391d3184c648004599ce8eaaf2a6a",
-  "presented_output_a": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces, and the recovery process may take up to 48 hours.",
-  "presented_output_b": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. The restoration process may take up to 48 hours.",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "fe390cf04f04195473fc75b446aa3e8ccc698f5108bc0a8474591cbf8d3e3030",
+  "presented_output_a": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. The restoration process may take up to 48 hours.",
+  "presented_output_b": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces, and the recovery process may take up to 48 hours.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
       "critical_preservation_failure": false,
@@ -23,7 +23,7 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Preserves the Enterprise account creation-date condition, restoration capability, and 48-hour maximum recovery time clearly and naturally."
+      "evidence": "Preserves the Enterprise-account creation-date restriction and the maximum 48-hour restoration time clearly and naturally."
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Preserves all facts, constraints, and certainty; the two-sentence presentation is clear and customer-facing."
+      "evidence": "Preserves all facts, conditions, and timing while clearly linking workspace restoration with the recovery process."
     },
     "preference": "tie",
-    "preference_evidence": "Both outputs faithfully preserve the source and are equally clear, natural, and appropriate."
+    "preference_evidence": "Both outputs accurately and naturally preserve every source fact and constraint; the minor wording difference does not affect quality."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the Enterprise account creation-date condition, restoration capability, and 48-hour maximum recovery time clearly and naturally.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, constraints, and certainty; the two-sentence presentation is clear and customer-facing.\"},\"preference\":\"tie\",\"preference_evidence\":\"Both outputs faithfully preserve the source and are equally clear, natural, and appropriate.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the Enterprise-account creation-date restriction and the maximum 48-hour restoration time clearly and naturally.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, conditions, and timing while clearly linking workspace restoration with the recovery process.\"},\"preference\":\"tie\",\"preference_evidence\":\"Both outputs accurately and naturally preserve every source fact and constraint; the minor wording difference does not affect quality.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:12:08.185568+00:00",
-  "duration_ms": 7772,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:17:02.319649+00:00",
+  "duration_ms": 9111,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf99-6338-7a9c-af13-e2afc4a1d5f3",
+  "session_id": "019fbf9d-e032-7594-8faf-5679f24ff36a",
   "trace_file": "raw/judgments/en-detached-qualification--r05.trace.jsonl",
   "result_file": "raw/judgments/en-detached-qualification--r05.result.json"
 }

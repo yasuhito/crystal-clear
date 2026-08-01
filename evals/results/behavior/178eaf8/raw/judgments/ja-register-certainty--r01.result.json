@@ -6,24 +6,24 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 1,
-  "presentation_index": 36,
+  "presentation_index": 62,
   "judge_seed": 178,
-  "prompt_sha256": "82609acaa9175503fba8074c8031957d762f320088c797ff78d596d7dbd7206b",
-  "presented_output_a": "現在、決済処理の遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されていますが、原因は現時点では特定できておりません。約12%のお客様に影響が及んでいる可能性があります。次回の状況更新は18時を予定しております。",
-  "presented_output_b": "現在、決済処理に遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、現時点で原因は確定しておりません。約12%のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。ご不便をおかけし、申し訳ございません。",
-  "a_arm": "178eaf8",
-  "b_arm": "no-skill",
+  "prompt_sha256": "9e332b9c2cd6bb5be94e0805262f869cb0422a3a4dc04626d36e05f9fd99ea33",
+  "presented_output_a": "現在、決済処理に遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、現時点で原因は確定しておりません。約12%のお客様に影響が生じている可能性がございます。次回の状況更新は18時を予定しております。ご不便をおかけし、申し訳ございません。",
+  "presented_output_b": "現在、決済処理の遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されていますが、原因は現時点では特定できておりません。約12%のお客様に影響が及んでいる可能性があります。次回の状況更新は18時を予定しております。",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
   "judgment": {
     "output_a": {
       "critical_preservation_failure": false,
       "critical_failure_types": [],
-      "preservation": 5,
+      "preservation": 4,
       "first_pass_understanding": 5,
       "core_structure": 5,
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "遅延、ネットワーク障害の可能性、原因未確定、約12%、18時更新をすべて丁寧かつ明確に保持している。"
+      "evidence": "原因未確定、約12%、18時という主要情報と不確実性を正確に保持しているが、原文にない謝罪を追加している。"
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "全事実と不確実性を正確に保持し、丁寧で落ち着いた障害報告になっている。謝罪の追記も内容を変更していない。"
+      "evidence": "調査状況、ネットワーク障害の可能性、原因未特定、約12%への影響可能性、18時更新を過不足なく保持している。"
     },
     "preference": "B",
-    "preference_evidence": "「原因は確定しておりません」が原文の「原因は未確定」により忠実で、全体の敬語も自然に統一されている。"
+    "preference_evidence": "Bは原文の事実と確実性を自然かつ忠実に保持し、Aにある原文外の謝罪追加もない。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"遅延、ネットワーク障害の可能性、原因未確定、約12%、18時更新をすべて丁寧かつ明確に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実と不確実性を正確に保持し、丁寧で落ち着いた障害報告になっている。謝罪の追記も内容を変更していない。\"},\"preference\":\"B\",\"preference_evidence\":\"「原因は確定しておりません」が原文の「原因は未確定」により忠実で、全体の敬語も自然に統一されている。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原因未確定、約12%、18時という主要情報と不確実性を正確に保持しているが、原文にない謝罪を追加している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"調査状況、ネットワーク障害の可能性、原因未特定、約12%への影響可能性、18時更新を過不足なく保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは原文の事実と確実性を自然かつ忠実に保持し、Aにある原文外の謝罪追加もない。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:09:52.483789+00:00",
-  "duration_ms": 14318,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:20:07.357336+00:00",
+  "duration_ms": 12626,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf97-5124-7e86-928b-310bdd787bae",
+  "session_id": "019fbfa0-b301-7bad-bd64-0cdf5c6be028",
   "trace_file": "raw/judgments/ja-register-certainty--r01.trace.jsonl",
   "result_file": "raw/judgments/ja-register-certainty--r01.result.json"
 }

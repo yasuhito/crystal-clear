@@ -31,7 +31,7 @@
       "id": "existing",
       "kind": "constraint",
       "values": [
-        "vorhandenen Dateien"
+        "prüft keine vorhandenen Dateien"
       ]
     }
   ],
@@ -76,7 +76,7 @@
   "result_file": "raw/generations/multi-de-terminology--178eaf8--r04.result.json",
   "deterministic_score": {
     "output_present": true,
-    "passed": true,
+    "passed": false,
     "checks": [
       {
         "id": "term",
@@ -101,12 +101,16 @@
         "id": "existing",
         "kind": "constraint",
         "values": [
-          "vorhandenen Dateien"
+          "prüft keine vorhandenen Dateien"
         ],
-        "missing": [],
-        "passed": true
+        "missing": [
+          "prüft keine vorhandenen Dateien"
+        ],
+        "passed": false
       }
     ],
-    "failures_by_kind": {}
+    "failures_by_kind": {
+      "constraint": 1
+    }
   }
 }

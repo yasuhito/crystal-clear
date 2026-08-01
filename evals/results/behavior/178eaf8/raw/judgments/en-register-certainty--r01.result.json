@@ -6,13 +6,13 @@
   "category": "english",
   "language": "en",
   "repeat": 1,
-  "presentation_index": 30,
+  "presentation_index": 2,
   "judge_seed": 178,
-  "prompt_sha256": "9e244c0bf9d2bda47c01f571fdc0470d46c4beb9eaeaaa6d68da234a7a6ca189",
-  "presented_output_a": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a potential cache issue, but the cause has not been confirmed.",
-  "presented_output_b": "We are investigating elevated latency in eu-west-2. Approximately 8% of requests may be affected. Early evidence suggests a cache-related issue, but the cause has not been confirmed.",
-  "a_arm": "no-skill",
-  "b_arm": "178eaf8",
+  "prompt_sha256": "f0a14b821904cad5347e77f7d1c71e5bbdf15668fb6aab9a5444463da639d673",
+  "presented_output_a": "We are investigating elevated latency in eu-west-2. Approximately 8% of requests may be affected. Early evidence suggests a cache-related issue, but the cause has not been confirmed.",
+  "presented_output_b": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a potential cache issue, but the cause has not been confirmed.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
   "judgment": {
     "output_a": {
       "critical_preservation_failure": false,
@@ -23,7 +23,7 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Preserves the location, elevated latency, approximate 8% impact, cache hypothesis, and unconfirmed cause in a calm, formal register."
+      "evidence": "Preserves the region, 8% estimate, tentative cache evidence, and unconfirmed cause in a calm, formal update."
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Preserves all facts, uncertainty, impact estimate, location, and formal incident-update register."
+      "evidence": "Preserves all facts and uncertainty; adding 'region' only clarifies the eu-west-2 referent without changing scope."
     },
-    "preference": "tie",
-    "preference_evidence": "Both outputs faithfully preserve the source meaning, certainty, numerical estimate, and requested register with equally natural wording."
+    "preference": "A",
+    "preference_evidence": "Both fully preserve the source, but A is marginally more concise and closer to the original wording."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the location, elevated latency, approximate 8% impact, cache hypothesis, and unconfirmed cause in a calm, formal register.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, uncertainty, impact estimate, location, and formal incident-update register.\"},\"preference\":\"tie\",\"preference_evidence\":\"Both outputs faithfully preserve the source meaning, certainty, numerical estimate, and requested register with equally natural wording.\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the region, 8% estimate, tentative cache evidence, and unconfirmed cause in a calm, formal update.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts and uncertainty; adding 'region' only clarifies the eu-west-2 referent without changing scope.\"},\"preference\":\"A\",\"preference_evidence\":\"Both fully preserve the source, but A is marginally more concise and closer to the original wording.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:09:29.469443+00:00",
-  "duration_ms": 23013,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:16:32.228740+00:00",
+  "duration_ms": 12872,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf96-f745-7ca8-92ad-90ccf836edeb",
+  "session_id": "019fbf9d-6acc-7cc6-b5f6-548e7283d91b",
   "trace_file": "raw/judgments/en-register-certainty--r01.trace.jsonl",
   "result_file": "raw/judgments/en-register-certainty--r01.result.json"
 }

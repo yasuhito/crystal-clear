@@ -6,7 +6,7 @@
   "category": "english",
   "language": "en",
   "repeat": 5,
-  "presentation_index": 16,
+  "presentation_index": 35,
   "judge_seed": 178,
   "prompt_sha256": "a75ef2a60c1e597a7ba778e12699ceded963ca7e56ff58c5490da82a9bd423ae",
   "presented_output_a": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then, while Maya retains access.",
@@ -17,13 +17,13 @@
     "output_a": {
       "critical_preservation_failure": false,
       "critical_failure_types": [],
-      "preservation": 5,
+      "preservation": 4,
       "first_pass_understanding": 5,
       "core_structure": 5,
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Clearly resolves “her” as Priya and preserves the deadline, export requirement, and Maya’s continued access."
+      "evidence": "Clarifies the pronoun and preserves all facts, though “while” adds a slight contrast or simultaneity nuance."
     },
     "output_b": {
       "critical_preservation_failure": false,
@@ -34,17 +34,17 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "Clearly resolves “her” as Priya while preserving every fact, constraint, term, and the source’s professional structure."
+      "evidence": "Clarifies Priya as the access holder while preserving every fact, constraint, relationship, and the professional two-sentence form."
     },
     "preference": "B",
-    "preference_evidence": "Both fully satisfy the contract, but B more exactly preserves the source’s clause relationship without introducing the slight temporal or contrastive nuance of “while.”"
+    "preference_evidence": "B resolves the ambiguity without adding the subtle relational nuance introduced by “while” in A."
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clearly resolves “her” as Priya and preserves the deadline, export requirement, and Maya’s continued access.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clearly resolves “her” as Priya while preserving every fact, constraint, term, and the source’s professional structure.\"},\"preference\":\"B\",\"preference_evidence\":\"Both fully satisfy the contract, but B more exactly preserves the source’s clause relationship without introducing the slight temporal or contrastive nuance of “while.”\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clarifies the pronoun and preserves all facts, though “while” adds a slight contrast or simultaneity nuance.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clarifies Priya as the access holder while preserving every fact, constraint, relationship, and the professional two-sentence form.\"},\"preference\":\"B\",\"preference_evidence\":\"B resolves the ambiguity without adding the subtle relational nuance introduced by “while” in A.\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:08:35.345223+00:00",
-  "duration_ms": 12358,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:18:29.432559+00:00",
+  "duration_ms": 10191,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -56,7 +56,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf96-23d4-7cac-ab7f-7c1fda9d8e2c",
+  "session_id": "019fbf9f-347a-79ad-af1c-195d5de9307c",
   "trace_file": "raw/judgments/en-ambiguous-referent--r05.trace.jsonl",
   "result_file": "raw/judgments/en-ambiguous-referent--r05.result.json"
 }

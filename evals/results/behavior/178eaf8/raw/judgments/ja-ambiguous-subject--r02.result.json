@@ -6,7 +6,7 @@
   "category": "japanese",
   "language": "ja",
   "repeat": 2,
-  "presentation_index": 22,
+  "presentation_index": 47,
   "judge_seed": 178,
   "prompt_sha256": "ac99e7381eb8f1c17a038cc0fbbb720a292a851e1556c38341563d356fd35f7a",
   "presented_output_a": "佐藤さんは鈴木さんに、レビュー後に鈴木さんが案件ID「JP-42」の報告書を送ると伝えました。佐藤さんは報告書の承認を担当します。",
@@ -23,7 +23,7 @@
       "referent_scope_terminology": 5,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "鈴木さんが送付し、佐藤さんが承認すること、レビュー後、案件ID「JP-42」を明確かつ自然に保持している。"
+      "evidence": "鈴木さんがレビュー後に報告書を送り、佐藤さんが承認を担当することと案件IDを明確かつ自然に保持している。"
     },
     "output_b": {
       "critical_preservation_failure": true,
@@ -33,20 +33,20 @@
       "preservation": 3,
       "first_pass_understanding": 5,
       "core_structure": 4,
-      "referent_scope_terminology": 5,
+      "referent_scope_terminology": 4,
       "register_preserved": true,
       "naturalness": 5,
-      "evidence": "「送るよう伝えました」は送付の指示を意味し、単に送ると伝えた原文にない指示関係を加えている。その他の事実は保持している。"
+      "evidence": "「送るよう伝えました」は送付の指示・依頼を意味し、単に送ると伝えた原文の発話内容を変更している。その他の主要事実は保持している。"
     },
     "preference": "A",
-    "preference_evidence": "Aは伝達内容を指示へ変えず、原文の全事実と役割分担を明確に保持している。"
+    "preference_evidence": "Aは発話の性質を変えず、誰が送付し誰が承認するかを曖昧さなく保持している。"
   },
-  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"鈴木さんが送付し、佐藤さんが承認すること、レビュー後、案件ID「JP-42」を明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"「送るよう伝えました」は送付の指示を意味し、単に送ると伝えた原文にない指示関係を加えている。その他の事実は保持している。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは伝達内容を指示へ変えず、原文の全事実と役割分担を明確に保持している。\"}",
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"鈴木さんがレビュー後に報告書を送り、佐藤さんが承認を担当することと案件IDを明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"「送るよう伝えました」は送付の指示・依頼を意味し、単に送ると伝えた原文の発話内容を変更している。その他の主要事実は保持している。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは発話の性質を変えず、誰が送付し誰が承認するかを曖昧さなく保持している。\"}",
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
-  "started_at": "2026-08-01T23:09:01.017763+00:00",
-  "duration_ms": 20472,
+  "harness_git_revision": "9ad5e36d198dba42742ea54a59d305d17e9d532b",
+  "started_at": "2026-08-01T23:19:09.668257+00:00",
+  "duration_ms": 17239,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -58,7 +58,7 @@
     ],
     "skill_body_injected": false
   },
-  "session_id": "019fbf96-881f-7d2b-8575-e7bba533be6e",
+  "session_id": "019fbf9f-d1ad-72bf-ad81-d62f50ef743d",
   "trace_file": "raw/judgments/ja-ambiguous-subject--r02.trace.jsonl",
   "result_file": "raw/judgments/ja-ambiguous-subject--r02.result.json"
 }
