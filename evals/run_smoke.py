@@ -63,7 +63,7 @@ def find_pi_module_index() -> Path:
     raise FileNotFoundError("could not locate the installed Pi module index")
 
 
-def normal_skill_inventory() -> list[dict[str, Any]]:
+def normal_skill_inventory(cwd: Path) -> list[dict[str, Any]]:
     pi_index = find_pi_module_index()
     script = Path(__file__).resolve().parent / "list_pi_skills.mjs"
     output = run_command(
@@ -71,7 +71,7 @@ def normal_skill_inventory() -> list[dict[str, Any]]:
             "node",
             str(script),
             str(pi_index),
-            tempfile.gettempdir(),
+            str(cwd),
             str(AGENT_DIR),
         ]
     )
@@ -175,7 +175,6 @@ def run_one(
     pi_release: str,
     revision: str,
     discovered_skill_path: Path,
-    discovered_inventory: list[dict[str, Any]],
 ) -> dict[str, Any]:
     run_id = f"{scenario['id']}--{arm}"
     raw_dir = output / "raw"
@@ -192,6 +191,12 @@ def run_one(
         normal_skill_discovery = kind == "routing"
         observed_skill_path = (
             discovered_skill_path if kind == "routing" else worktree_skill
+        )
+        session_root = tmp / "pi"
+        pi_cwd = session_root / "work"
+        pi_cwd.mkdir(parents=True)
+        skill_inventory = (
+            normal_skill_inventory(pi_cwd) if normal_skill_discovery else []
         )
 
         if kind == "routing":
@@ -216,7 +221,7 @@ def run_one(
         live_trace = execute_pi(
             prompt=prompt,
             model=model,
-            session_root=tmp / "pi",
+            session_root=session_root,
             appended_instructions=appended_instructions,
             normal_skill_discovery=normal_skill_discovery,
         )
@@ -224,7 +229,6 @@ def run_one(
         shutil.copy2(live_trace, trace_destination)
         observation = observe_trace(trace_destination, observed_skill_path)
 
-    skill_inventory = discovered_inventory if kind == "routing" else []
     loaded_skill_hash = (
         injected_skill["sha256"]
         if injected_skill is not None
@@ -295,9 +299,9 @@ def run_smoke(
     scenarios_path: Path,
     output: Path,
     model: str,
-    discovered_skill_path: Path = DEFAULT_DISCOVERED_SKILL,
 ) -> list[dict[str, Any]]:
     scenarios = load_scenarios(scenarios_path)
+    discovered_skill_path = DEFAULT_DISCOVERED_SKILL
     if not discovered_skill_path.is_file():
         raise FileNotFoundError(
             "normal Pi discovery requires an installed crystal-clear skill at "
@@ -305,7 +309,6 @@ def run_smoke(
         )
     release = pi_version()
     revision = git_revision()
-    inventory = normal_skill_inventory()
     results: list[dict[str, Any]] = []
     for scenario in scenarios["routing"]:
         results.append(
@@ -319,7 +322,6 @@ def run_smoke(
                 pi_release=release,
                 revision=revision,
                 discovered_skill_path=discovered_skill_path,
-                discovered_inventory=inventory,
             )
         )
     behavior = scenarios["behavior"][0]
@@ -335,7 +337,6 @@ def run_smoke(
                 pi_release=release,
                 revision=revision,
                 discovered_skill_path=discovered_skill_path,
-                discovered_inventory=inventory,
             )
         )
     write_reports(output, results)
@@ -347,12 +348,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--scenarios", type=Path, default=DEFAULT_SCENARIOS)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--model", default="openai-codex/gpt-5.6-sol")
-    parser.add_argument(
-        "--discovered-skill",
-        type=Path,
-        default=DEFAULT_DISCOVERED_SKILL,
-        help="resolved SKILL.md expected from normal Pi discovery",
-    )
     parser.add_argument(
         "--report-only",
         action="store_true",
@@ -369,9 +364,7 @@ def main() -> None:
             raise SystemExit(f"no raw result records under {args.output / 'raw'}")
         write_reports(args.output, results)
     else:
-        run_smoke(
-            args.scenarios, args.output, args.model, args.discovered_skill
-        )
+        run_smoke(args.scenarios, args.output, args.model)
     print(args.output / "SUMMARY.md")
 
 

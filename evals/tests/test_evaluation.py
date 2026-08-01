@@ -1,4 +1,5 @@
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -175,6 +176,32 @@ class ObserveTraceTests(unittest.TestCase):
                 "source": "system-injection",
             },
         )
+
+
+class PiInventoryBridgeTests(unittest.TestCase):
+    def test_uses_enabled_paths_without_rescanning_defaults(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            enabled = root / "enabled.md"
+            disabled = root / "disabled.md"
+            enabled.write_text("enabled")
+            disabled.write_text("disabled")
+            fake_module = root / "fake-pi.mjs"
+            fake_module.write_text(
+                f'''\nexport class SettingsManager {{\n  static create(cwd, agentDir) {{ return {{ cwd, agentDir }}; }}\n}}\nexport class DefaultPackageManager {{\n  constructor(options) {{ this.options = options; }}\n  async resolve() {{\n    return {{ skills: [\n      {{ enabled: true, path: {json.dumps(str(enabled))} }},\n      {{ enabled: false, path: {json.dumps(str(disabled))} }}\n    ] }};\n  }}\n}}\nexport function loadSkills(options) {{\n  if (options.includeDefaults !== false) throw new Error("rescanned defaults");\n  if (options.skillPaths.length !== 1 || options.skillPaths[0] !== {json.dumps(str(enabled))}) {{\n    throw new Error("disabled path was not filtered");\n  }}\n  return {{ skills: [{{\n    name: "collision-winner",\n    filePath: options.skillPaths[0],\n    disableModelInvocation: false\n  }}] }};\n}}\n'''
+            )
+            script = Path(__file__).resolve().parents[1] / "list_pi_skills.mjs"
+
+            completed = subprocess.run(
+                ["node", str(script), str(fake_module), str(root), str(root / "agent")],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            inventory = json.loads(completed.stdout)
+
+            self.assertEqual([item["name"] for item in inventory], ["collision-winner"])
+            self.assertEqual(inventory[0]["path"], str(enabled))
 
 
 class ScoreAndReportTests(unittest.TestCase):

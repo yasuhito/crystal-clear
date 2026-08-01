@@ -28,7 +28,7 @@ const loaded = loadSkills({
   cwd,
   agentDir,
   skillPaths,
-  includeDefaults: true,
+  includeDefaults: false,
 });
 
 const inventory = loaded.skills.map((skill) => ({

@@ -31,7 +31,7 @@ The command runs:
 - one direct invocation, which validates that direct loading is distinct from automatic activation; and
 - one behavior scenario under no-skill, current-skill, and candidate-skill arms.
 
-Routing scenarios use Pi's normal skill discovery. By default, the harness expects the installed skill at `~/.pi/agent/skills/crystal-clear/SKILL.md`; override this with `--discovered-skill` when needed. Before generation, the harness uses Pi's own package and skill loaders to record the complete enabled inventory that can influence routing. Automatic activation means that the model called `read` with the resolved installed path. A `/skill:crystal-clear` command injects the skill directly, so the report records it as `direct-invocation`, not `automatic-read`.
+Routing scenarios use Pi's normal skill discovery and the installed skill at `~/.pi/agent/skills/crystal-clear/SKILL.md`. Before each routing generation, the harness uses Pi's own package and skill loaders with the exact run directory to record the complete enabled inventory that can influence routing. Automatic activation means that the model called `read` with the resolved installed path. A `/skill:crystal-clear` command injects the skill directly, so the report records it as `direct-invocation`, not `automatic-read`.
 
 The behavior arms use an identical user prompt and return contract. The skill arms inject the selected skill body into the system prompt, which isolates post-loading behavior from automatic routing. Their activation source is `system-injection`.
 
