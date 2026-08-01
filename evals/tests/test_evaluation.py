@@ -8,6 +8,7 @@ from evals.evaluation import (
     observe_trace,
     render_markdown,
     score_result,
+    skill_hash_record,
     summarize_results,
 )
 
@@ -177,6 +178,12 @@ class ObserveTraceTests(unittest.TestCase):
 
 
 class ScoreAndReportTests(unittest.TestCase):
+    def test_no_skill_hash_has_schema_defined_absence(self) -> None:
+        self.assertEqual(
+            skill_hash_record(None, source="none"),
+            {"status": "absent", "source": "none", "sha256": None},
+        )
+
     def test_scores_expected_activation_and_protected_strings(self) -> None:
         result = {
             "kind": "routing",

@@ -90,6 +90,16 @@ def observe_trace(trace_path: Path, skill_path: Path) -> TraceObservation:
     )
 
 
+def skill_hash_record(
+    value: str | None, *, source: str
+) -> dict[str, str | None]:
+    return {
+        "status": "present" if value is not None else "absent",
+        "source": source,
+        "sha256": value,
+    }
+
+
 def activation_record(
     observation: TraceObservation, *, skill_body_injected: bool
 ) -> dict[str, Any]:

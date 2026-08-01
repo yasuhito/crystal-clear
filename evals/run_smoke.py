@@ -19,6 +19,7 @@ from evals.evaluation import (
     observe_trace,
     render_markdown,
     score_result,
+    skill_hash_record,
     summarize_results,
 )
 
@@ -27,8 +28,9 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SCENARIOS = Path(__file__).resolve().parent / "smoke-scenarios.json"
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "smoke"
 CURRENT_SKILL_REF = "178eaf8"
+AGENT_DIR = Path.home() / ".pi" / "agent"
 DEFAULT_DISCOVERED_SKILL = (
-    Path.home() / ".pi" / "agent" / "skills" / "crystal-clear" / "SKILL.md"
+    AGENT_DIR / "skills" / "crystal-clear" / "SKILL.md"
 )
 
 
@@ -45,6 +47,26 @@ def run_command(command: list[str], cwd: Path | None = None) -> str:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def normal_skill_inventory() -> list[dict[str, Any]]:
+    pi_executable = shutil.which("pi")
+    if pi_executable is None:
+        raise FileNotFoundError("pi executable not found")
+    pi_index = Path(pi_executable).resolve().parent / "index.js"
+    if not pi_index.is_file():
+        raise FileNotFoundError(f"Pi module index not found at {pi_index}")
+    script = Path(__file__).resolve().parent / "list_pi_skills.mjs"
+    output = run_command(
+        [
+            "node",
+            str(script),
+            str(pi_index),
+            tempfile.gettempdir(),
+            str(AGENT_DIR),
+        ]
+    )
+    return json.loads(output)
 
 
 def materialize_skill(ref: str, destination: Path) -> Path:
@@ -144,6 +166,7 @@ def run_one(
     pi_release: str,
     revision: str,
     discovered_skill_path: Path,
+    discovered_inventory: list[dict[str, Any]],
 ) -> dict[str, Any]:
     run_id = f"{scenario['id']}--{arm}"
     raw_dir = output / "raw"
@@ -192,15 +215,7 @@ def run_one(
         shutil.copy2(live_trace, trace_destination)
         observation = observe_trace(trace_destination, observed_skill_path)
 
-    skill_inventory = []
-    if kind == "routing":
-        skill_inventory.append(
-            {
-                "name": "crystal-clear",
-                "path": str(discovered_skill_path.resolve()),
-                "sha256": sha256(discovered_skill_path),
-            }
-        )
+    skill_inventory = discovered_inventory if kind == "routing" else []
     loaded_skill_hash = (
         injected_skill["sha256"]
         if injected_skill is not None
@@ -232,7 +247,14 @@ def run_one(
             "skill_body_injected": appended_instructions is not None,
         },
         "skill_inventory": skill_inventory,
-        "skill_hash": loaded_skill_hash,
+        "skill_hash": skill_hash_record(
+            loaded_skill_hash,
+            source=(
+                "system-injection"
+                if injected_skill is not None
+                else ("normal-discovery" if kind == "routing" else "none")
+            ),
+        ),
         "injected_skill": injected_skill,
         "session_id": observation.session_id,
         "activation": activation_record(
@@ -274,6 +296,7 @@ def run_smoke(
         )
     release = pi_version()
     revision = git_revision()
+    inventory = normal_skill_inventory()
     results: list[dict[str, Any]] = []
     for scenario in scenarios["routing"]:
         results.append(
@@ -287,6 +310,7 @@ def run_smoke(
                 pi_release=release,
                 revision=revision,
                 discovered_skill_path=discovered_skill_path,
+                discovered_inventory=inventory,
             )
         )
     behavior = scenarios["behavior"][0]
@@ -302,6 +326,7 @@ def run_smoke(
                 pi_release=release,
                 revision=revision,
                 discovered_skill_path=discovered_skill_path,
+                discovered_inventory=inventory,
             )
         )
     write_reports(output, results)
