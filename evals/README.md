@@ -29,19 +29,21 @@ The command runs:
 - one positive automatic-routing scenario;
 - one negative automatic-routing scenario;
 - one direct invocation, which validates that direct loading is distinct from automatic activation; and
-- one behavior scenario under no-skill, current-skill, and candidate-skill arms.
+- one behavior scenario under no-skill, current-skill, and candidate-skill arms; and
+- one preservation-only model judgment of the candidate behavior output.
 
 Routing scenarios use Pi's normal skill discovery and the installed skill at `~/.pi/agent/skills/crystal-clear/SKILL.md`. Before each routing generation, the harness uses Pi's own package and skill loaders with the exact run directory to record the complete enabled inventory that can influence routing. Automatic activation means that the model called `read` with the resolved installed path. A `/skill:crystal-clear` command injects the skill directly, so the report records it as `direct-invocation`, not `automatic-read`.
 
 The behavior arms use an identical user prompt and return contract. The skill arms inject the selected skill body into the system prompt, which isolates post-loading behavior from automatic routing. Their activation source is `system-injection`.
 
-A `harness-ok` result means only that the expected activation, non-empty output, and smoke fixture's protected strings passed. It is not a complete preservation or clarity verdict. Every result carries a structured skill-hash record. The no-skill arm uses `status: absent`, `source: none`, and a null hash rather than omitting provenance.
+A `harness-ok` result means only that the expected activation, non-empty output, smoke fixture's protected strings, and—where present—the preservation judgment passed. The strict preservation judgment checks critical failures separately from deterministic protected-string evidence; it remains model evidence, not a complete semantic or clarity verdict. Every result carries a structured skill-hash record. The no-skill arm uses `status: absent`, `source: none`, and a null hash rather than omitting provenance.
 
 Results are written under `evals/results/smoke/`:
 
 - `raw/*.trace.jsonl` — compact Pi session traces;
 - `raw/*.result.json` — normalized results and provenance;
-- `summary.json` — deterministic counts; and
+- `raw/*.judgment.json` and matching traces — preservation-only model evidence;
+- `summary.json` — deterministic and preservation-judgment counts; and
 - `SUMMARY.md` — the human-readable result index.
 
 ## Regenerate the report without calling Pi

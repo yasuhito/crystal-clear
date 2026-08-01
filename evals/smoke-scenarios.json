@@ -23,6 +23,7 @@
   "behavior": [
     {
       "id": "behavior-rewrite",
+      "source_text": "Due to the fact that API-17 is currently unavailable, users may potentially be unable to log in.",
       "prompt": "Rewrite the source as one clear status update. Preserve the identifier exactly. Return only the revised text. SOURCE: Due to the fact that API-17 is currently unavailable, users may potentially be unable to log in.",
       "protected_strings": ["API-17"]
     }

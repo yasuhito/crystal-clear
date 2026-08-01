@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scenario_version": "smoke-v1",
+  "scenario_id": "behavior-rewrite",
+  "kind": "preservation-judgment",
+  "arm": "candidate-skill",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "git_revision": "5b2c1cc658ff2762ab3b2cc6a73af7bd9b5ab0ef",
+  "started_at": "2026-08-01T23:57:35.311301+00:00",
+  "duration_ms": 7688,
+  "session_id": "019fbfc3-000e-7de4-ab2e-792fc6478fb3",
+  "judgment": {
+    "critical_preservation_failure": false,
+    "critical_failure_types": [],
+    "evidence": "The revision preserves API-17 exactly, retains its current unavailability and the possibility that users cannot log in, and keeps the status-update register."
+  },
+  "raw_judge_output": "{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"evidence\":\"The revision preserves API-17 exactly, retains its current unavailability and the possibility that users cannot log in, and keeps the status-update register.\"}",
+  "trace_file": "raw/behavior-rewrite--candidate-skill.judgment.trace.jsonl"
+}

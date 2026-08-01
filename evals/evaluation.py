@@ -10,6 +10,18 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
+CRITICAL_FAILURE_TYPES = frozenset(
+    {
+        "invented-fact",
+        "removed-constraint",
+        "changed-instruction",
+        "changed-certainty",
+        "corrupted-protected-text",
+        "broken-register",
+    }
+)
+
+
 @dataclass(frozen=True)
 class TraceObservation:
     automatic_activation: bool
@@ -116,6 +128,41 @@ def activation_record(
     }
 
 
+def parse_preservation_judgment(value: str) -> dict[str, Any]:
+    """Parse the strict model judgment used by the development smoke suite."""
+    text = value.strip()
+    if text.startswith("```"):
+        lines = text.splitlines()
+        if len(lines) >= 3 and lines[-1].strip() == "```":
+            text = "\n".join(lines[1:-1])
+    try:
+        judgment = json.loads(text)
+    except json.JSONDecodeError as error:
+        raise ValueError(f"preservation judgment is not valid JSON: {error}") from error
+
+    expected = {
+        "critical_preservation_failure",
+        "critical_failure_types",
+        "evidence",
+    }
+    if not isinstance(judgment, dict) or set(judgment) != expected:
+        raise ValueError("preservation judgment has unexpected fields")
+    failure_types = judgment["critical_failure_types"]
+    if (
+        not isinstance(judgment["critical_preservation_failure"], bool)
+        or not isinstance(failure_types, list)
+        or not all(
+            isinstance(failure_type, str)
+            and failure_type in CRITICAL_FAILURE_TYPES
+            for failure_type in failure_types
+        )
+        or judgment["critical_preservation_failure"] != bool(failure_types)
+        or not isinstance(judgment["evidence"], str)
+    ):
+        raise ValueError("preservation judgment is invalid")
+    return judgment
+
+
 def score_result(result: dict[str, Any]) -> dict[str, Any]:
     expected = result.get("expected_activation")
     activation_matches = None
@@ -135,6 +182,11 @@ def score_result(result: dict[str, Any]) -> dict[str, Any]:
 
 def summarize_results(results: Iterable[dict[str, Any]]) -> dict[str, int]:
     rows = list(results)
+    preservation_judgments = [
+        row["preservation_judgment"]
+        for row in rows
+        if row.get("preservation_judgment") is not None
+    ]
     routing_scores = [
         row["score"]["activation_matches_expectation"]
         for row in rows
@@ -149,6 +201,11 @@ def summarize_results(results: Iterable[dict[str, Any]]) -> dict[str, int]:
         ),
         "protected_string_failures": sum(
             not row["score"]["protected_strings_preserved"] for row in rows
+        ),
+        "preservation_judgments": len(preservation_judgments),
+        "critical_preservation_failures": sum(
+            judgment["critical_preservation_failure"]
+            for judgment in preservation_judgments
         ),
     }
 
@@ -167,6 +224,11 @@ def render_markdown(
         ),
         f"- Missing final outputs: {summary['missing_final_outputs']}",
         f"- Protected-string failures: {summary['protected_string_failures']}",
+        (
+            "- Critical preservation failures: "
+            f"{summary['critical_preservation_failures']} "
+            f"({summary['preservation_judgments']} judged behavior outputs)"
+        ),
         "",
         "| Scenario | Kind | Arm | Activation | Result | Evidence |",
         "|---|---|---|---|---|---|",
@@ -179,17 +241,25 @@ def render_markdown(
         ]
         if score["activation_matches_expectation"] is not None:
             checks.append(score["activation_matches_expectation"])
+        judgment = row.get("preservation_judgment")
+        if judgment is not None:
+            checks.append(not judgment["critical_preservation_failure"])
         outcome = "harness-ok" if all(checks) else "harness-fail"
         trace = row["trace_file"]
+        evidence = f"[Raw trace]({trace})"
+        if row.get("preservation_judgment_file"):
+            evidence += (
+                f"; [preservation judgment]({row['preservation_judgment_file']})"
+            )
         lines.append(
             "| {scenario} | {kind} | {arm} | {source} | {outcome} | "
-            "[Raw trace]({trace}) |".format(
+            "{evidence} |".format(
                 scenario=row["scenario_id"],
                 kind=row["kind"],
                 arm=row["arm"],
                 source=row["activation"]["source"],
                 outcome=outcome,
-                trace=trace,
+                evidence=evidence,
             )
         )
     return "\n".join(lines) + "\n"

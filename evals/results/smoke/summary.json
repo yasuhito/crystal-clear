@@ -3,5 +3,7 @@
   "routing_runs": 2,
   "routing_expectations_met": 2,
   "missing_final_outputs": 0,
-  "protected_string_failures": 0
+  "protected_string_failures": 0,
+  "preservation_judgments": 1,
+  "critical_preservation_failures": 0
 }

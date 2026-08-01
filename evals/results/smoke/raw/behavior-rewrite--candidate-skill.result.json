@@ -12,9 +12,9 @@
   ],
   "provider_model": "openai-codex/gpt-5.6-sol",
   "pi_version": "0.83.0",
-  "git_revision": "180f9e613405579373f7df695cfeef287defb973",
-  "started_at": "2026-08-01T09:05:10.642239+00:00",
-  "duration_ms": 5006,
+  "git_revision": "5b2c1cc658ff2762ab3b2cc6a73af7bd9b5ab0ef",
+  "started_at": "2026-08-01T23:57:30.056166+00:00",
+  "duration_ms": 5254,
   "system_configuration": {
     "thinking": "minimal",
     "context_files": false,
@@ -30,25 +30,32 @@
   "skill_hash": {
     "status": "present",
     "source": "system-injection",
-    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+    "sha256": "3f59efa2ac9ad622ccc6fae4a6be0534853847f0629d5c117121189954f0e2fc"
   },
   "injected_skill": {
     "condition": "candidate-skill",
     "source_ref": "worktree",
-    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+    "sha256": "3f59efa2ac9ad622ccc6fae4a6be0534853847f0629d5c117121189954f0e2fc"
   },
-  "session_id": "019fbc91-f93b-77fe-8356-3ed74decfff6",
+  "session_id": "019fbfc2-eb8c-7e6c-be82-d5bca16d2140",
   "activation": {
     "automatic": false,
     "skill_loaded": true,
     "source": "system-injection"
   },
-  "final_output": "API-17 is currently unavailable, so users may be unable to log in.",
+  "final_output": "Because API-17 is unavailable, users may be unable to log in.",
   "trace_file": "raw/behavior-rewrite--candidate-skill.trace.jsonl",
   "score": {
     "activation_matches_expectation": null,
     "final_output_present": true,
     "protected_strings_preserved": true,
     "missing_protected_strings": []
-  }
+  },
+  "preservation_judgment": {
+    "critical_preservation_failure": false,
+    "critical_failure_types": [],
+    "evidence": "The revision preserves API-17 exactly, retains its current unavailability and the possibility that users cannot log in, and keeps the status-update register."
+  },
+  "preservation_judgment_file": "raw/behavior-rewrite--candidate-skill.judgment.json",
+  "preservation_judgment_trace_file": "raw/behavior-rewrite--candidate-skill.judgment.trace.jsonl"
 }

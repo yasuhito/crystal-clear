@@ -7,6 +7,7 @@ from pathlib import Path
 from evals.evaluation import (
     activation_record,
     observe_trace,
+    parse_preservation_judgment,
     render_markdown,
     score_result,
     skill_hash_record,
@@ -205,6 +206,28 @@ class PiInventoryBridgeTests(unittest.TestCase):
 
 
 class ScoreAndReportTests(unittest.TestCase):
+    def test_parses_smoke_preservation_judgment(self) -> None:
+        judgment = parse_preservation_judgment(
+            '{"critical_preservation_failure":false,'
+            '"critical_failure_types":[],"evidence":"Meaning is intact."}'
+        )
+
+        self.assertEqual(
+            judgment,
+            {
+                "critical_preservation_failure": False,
+                "critical_failure_types": [],
+                "evidence": "Meaning is intact.",
+            },
+        )
+
+    def test_rejects_non_string_preservation_failure_type(self) -> None:
+        with self.assertRaises(ValueError):
+            parse_preservation_judgment(
+                '{"critical_preservation_failure":true,'
+                '"critical_failure_types":[{}],"evidence":"bad value"}'
+            )
+
     def test_no_skill_hash_has_schema_defined_absence(self) -> None:
         self.assertEqual(
             skill_hash_record(None, source="none"),
@@ -278,6 +301,8 @@ class ScoreAndReportTests(unittest.TestCase):
         self.assertEqual(summary["runs"], 2)
         self.assertEqual(summary["routing_expectations_met"], 1)
         self.assertEqual(summary["protected_string_failures"], 0)
+        self.assertEqual(summary["critical_preservation_failures"], 0)
+        self.assertIn("Critical preservation failures: 0", markdown)
         self.assertIn(
             "| routing-positive | routing | auto | automatic-read | harness-ok |",
             markdown,

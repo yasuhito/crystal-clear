@@ -22,7 +22,11 @@ from typing import Any, Iterable
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from evals.evaluation import observe_trace, skill_hash_record
+from evals.evaluation import (
+    CRITICAL_FAILURE_TYPES,
+    observe_trace,
+    skill_hash_record,
+)
 from evals.run_smoke import execute_pi, git_revision, pi_version, run_command, sha256
 
 
@@ -37,10 +41,6 @@ FAILURE_MODES = {
     "terminology-drift", "register-mismatch", "accidental-certainty-change",
 }
 CHECK_KINDS = ("protected-string", "fact", "number", "constraint", "condition")
-CRITICAL_FAILURE_TYPES = {
-    "invented-fact", "removed-constraint", "changed-instruction",
-    "changed-certainty", "corrupted-protected-text", "broken-register",
-}
 JUDGMENT_KEYS = {
     "critical_preservation_failure", "critical_failure_types", "preservation",
     "first_pass_understanding", "core_structure", "referent_scope_terminology",

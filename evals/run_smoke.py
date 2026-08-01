@@ -16,8 +16,10 @@ from pathlib import Path
 from typing import Any
 
 from evals.evaluation import (
+    CRITICAL_FAILURE_TYPES,
     activation_record,
     observe_trace,
+    parse_preservation_judgment,
     render_markdown,
     score_result,
     skill_hash_record,
@@ -105,6 +107,8 @@ def load_scenarios(path: Path) -> dict[str, Any]:
     data = json.loads(path.read_text())
     if not data.get("version") or not data.get("routing") or not data.get("behavior"):
         raise ValueError("scenario file must define version, routing, and behavior")
+    if any(not scenario.get("source_text") for scenario in data["behavior"]):
+        raise ValueError("every behavior smoke scenario must define source_text")
     return data
 
 
@@ -302,6 +306,76 @@ def run_one(
     return result
 
 
+def judge_candidate_preservation(
+    *,
+    scenario: dict[str, Any],
+    candidate: dict[str, Any],
+    model: str,
+    output: Path,
+    pi_release: str,
+    revision: str,
+) -> dict[str, Any]:
+    """Judge critical preservation separately from deterministic string checks."""
+    prompt = f'''Judge whether the revision has a critical preservation failure. A critical failure invents or removes a fact, changes a constraint or instruction, strengthens or weakens certainty, corrupts protected text, or breaks the requested register. Judge preservation only, not writing quality.
+
+REQUEST:
+{scenario["prompt"]}
+
+SOURCE:
+{scenario["source_text"]}
+
+REVISION:
+{candidate["final_output"]}
+
+Return only JSON with exactly this shape:
+{{"critical_preservation_failure":false,"critical_failure_types":[],"evidence":"concise evidence"}}
+Allowed failure types: {", ".join(sorted(CRITICAL_FAILURE_TYPES))}. The flag must be true exactly when the list is nonempty.'''
+    raw_dir = output / "raw"
+    trace_destination = raw_dir / f"{scenario['id']}--candidate-skill.judgment.trace.jsonl"
+    judgment_destination = raw_dir / f"{scenario['id']}--candidate-skill.judgment.json"
+    with tempfile.TemporaryDirectory(prefix="crystal-clear-smoke-judge-") as tmp_value:
+        started_at = datetime.now(timezone.utc).isoformat()
+        start = time.monotonic()
+        live_trace = execute_pi(
+            prompt=prompt,
+            model=model,
+            session_root=Path(tmp_value),
+        )
+        duration_ms = round((time.monotonic() - start) * 1000)
+        shutil.copy2(live_trace, trace_destination)
+        observation = observe_trace(trace_destination, Path("/__smoke_judge__/SKILL.md"))
+    judgment = parse_preservation_judgment(observation.final_output)
+    record = {
+        "schema_version": 1,
+        "scenario_version": candidate["scenario_version"],
+        "scenario_id": scenario["id"],
+        "kind": "preservation-judgment",
+        "arm": "candidate-skill",
+        "provider_model": model,
+        "pi_version": pi_release,
+        "git_revision": revision,
+        "started_at": started_at,
+        "duration_ms": duration_ms,
+        "session_id": observation.session_id,
+        "judgment": judgment,
+        "raw_judge_output": observation.final_output,
+        "trace_file": relative_trace_path(output, trace_destination),
+    }
+    judgment_destination.write_text(
+        json.dumps(record, indent=2, ensure_ascii=False) + "\n"
+    )
+    candidate["preservation_judgment"] = judgment
+    candidate["preservation_judgment_file"] = relative_trace_path(
+        output, judgment_destination
+    )
+    candidate["preservation_judgment_trace_file"] = relative_trace_path(
+        output, trace_destination
+    )
+    candidate_path = raw_dir / f"{scenario['id']}--candidate-skill.result.json"
+    candidate_path.write_text(json.dumps(candidate, indent=2, ensure_ascii=False) + "\n")
+    return candidate
+
+
 def load_raw_results(output: Path) -> list[dict[str, Any]]:
     return [
         json.loads(path.read_text())
@@ -346,20 +420,31 @@ def run_smoke(
             )
         )
     behavior = scenarios["behavior"][0]
+    candidate: dict[str, Any] | None = None
     for arm in ("no-skill", "current-skill", "candidate-skill"):
-        results.append(
-            run_one(
-                scenario=behavior,
-                kind="behavior",
-                arm=arm,
-                model=model,
-                scenario_version=scenarios["version"],
-                output=output,
-                pi_release=release,
-                revision=revision,
-                discovered_skill_path=discovered_skill_path,
-            )
+        result = run_one(
+            scenario=behavior,
+            kind="behavior",
+            arm=arm,
+            model=model,
+            scenario_version=scenarios["version"],
+            output=output,
+            pi_release=release,
+            revision=revision,
+            discovered_skill_path=discovered_skill_path,
         )
+        results.append(result)
+        if arm == "candidate-skill":
+            candidate = result
+    assert candidate is not None
+    judge_candidate_preservation(
+        scenario=behavior,
+        candidate=candidate,
+        model=model,
+        output=output,
+        pi_release=release,
+        revision=revision,
+    )
     write_reports(output, results)
     return results
 
