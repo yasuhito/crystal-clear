@@ -456,6 +456,28 @@ def load_environment_results(output: Path, environment: str) -> list[dict[str, A
     ]
 
 
+def _trace_reads_crystal_clear(trace_path: Path) -> bool:
+    suffix = "/skills/crystal-clear/SKILL.md"
+    for line in trace_path.read_text().splitlines():
+        if not line.strip():
+            continue
+        message = json.loads(line).get("message")
+        if not isinstance(message, dict) or message.get("role") != "assistant":
+            continue
+        for part in message.get("content", []):
+            if not isinstance(part, dict):
+                continue
+            arguments = part.get("arguments", {})
+            if (
+                part.get("type") == "toolCall"
+                and part.get("name") == "read"
+                and isinstance(arguments, dict)
+                and str(arguments.get("path", "")).endswith(suffix)
+            ):
+                return True
+    return False
+
+
 def validate_result_set(
     *,
     output: Path,
@@ -504,15 +526,50 @@ def validate_result_set(
     if any(row["environment"] != environment for row in results):
         raise ValueError(f"{environment} results contain another environment")
     scenario_by_id = {scenario["id"]: scenario for scenario in scenarios}
+    scenario_fields = (
+        "language",
+        "category",
+        "split",
+        "paraphrase_of",
+        "rationale",
+        "expected_activation",
+        "prompt",
+        "input_text",
+    )
     for row in results:
         scenario = scenario_by_id[row["scenario_id"]]
-        if row["prompt"] != scenario["prompt"]:
-            raise ValueError(f"{row['scenario_id']} result uses a stale prompt")
+        for field in scenario_fields:
+            if row.get(field) != scenario.get(field):
+                raise ValueError(
+                    f"{row['scenario_id']} result uses stale scenario field {field}"
+                )
         for link_field in ("trace_file", "result_file"):
             if not (output / environment / row[link_field]).is_file():
                 raise ValueError(
                     f"{row['scenario_id']} repeat {row['repeat']} has no {link_field}"
                 )
+        trace_path = output / environment / row["trace_file"]
+        trace_observation = observe_trace(trace_path, Path("/__not_a_skill__/SKILL.md"))
+        trace_activated = _trace_reads_crystal_clear(trace_path)
+        if row["activation"]["automatic"] != trace_activated:
+            raise ValueError(
+                f"{row['scenario_id']} repeat {row['repeat']} activation disagrees with trace"
+            )
+        if row["final_output"] != trace_observation.final_output:
+            raise ValueError(
+                f"{row['scenario_id']} repeat {row['repeat']} output disagrees with trace"
+            )
+        if row["session_id"] != trace_observation.session_id:
+            raise ValueError(
+                f"{row['scenario_id']} repeat {row['repeat']} session disagrees with trace"
+            )
+        expected_outcome = classify_selection_outcome(
+            trace_activated, scenario.get("input_text"), trace_observation.final_output
+        )
+        if row["selection_outcome"] != expected_outcome:
+            raise ValueError(
+                f"{row['scenario_id']} repeat {row['repeat']} outcome disagrees with trace"
+            )
 
 
 def write_environment_report(
