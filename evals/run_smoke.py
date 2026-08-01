@@ -49,13 +49,22 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def normal_skill_inventory() -> list[dict[str, Any]]:
+def find_pi_module_index() -> Path:
     pi_executable = shutil.which("pi")
     if pi_executable is None:
         raise FileNotFoundError("pi executable not found")
-    pi_index = Path(pi_executable).resolve().parent / "index.js"
-    if not pi_index.is_file():
-        raise FileNotFoundError(f"Pi module index not found at {pi_index}")
+    adjacent = Path(pi_executable).resolve().parent / "index.js"
+    if adjacent.is_file():
+        return adjacent
+    npm_root = Path(run_command(["npm", "root", "-g"]))
+    installed = npm_root / "@earendil-works" / "pi-coding-agent" / "dist" / "index.js"
+    if installed.is_file():
+        return installed
+    raise FileNotFoundError("could not locate the installed Pi module index")
+
+
+def normal_skill_inventory() -> list[dict[str, Any]]:
+    pi_index = find_pi_module_index()
     script = Path(__file__).resolve().parent / "list_pi_skills.mjs"
     output = run_command(
         [
