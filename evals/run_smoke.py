@@ -120,8 +120,8 @@ def execute_pi(
     provider, model_id = split_model(model)
     sessions = session_root / "sessions"
     work = session_root / "work"
-    sessions.mkdir(parents=True)
-    work.mkdir(parents=True)
+    sessions.mkdir(parents=True, exist_ok=True)
+    work.mkdir(parents=True, exist_ok=True)
     command = [
         "pi",
         "--mode",
