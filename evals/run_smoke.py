@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -63,19 +64,31 @@ def find_pi_module_index() -> Path:
     raise FileNotFoundError("could not locate the installed Pi module index")
 
 
-def normal_skill_inventory(cwd: Path) -> list[dict[str, Any]]:
+def normal_skill_inventory(
+    cwd: Path,
+    agent_dir: Path = AGENT_DIR,
+    home_dir: Path | None = None,
+) -> list[dict[str, Any]]:
     pi_index = find_pi_module_index()
     script = Path(__file__).resolve().parent / "list_pi_skills.mjs"
-    output = run_command(
+    environment = os.environ.copy()
+    if home_dir is not None:
+        home_dir.mkdir(parents=True, exist_ok=True)
+        environment["HOME"] = str(home_dir)
+    completed = subprocess.run(
         [
             "node",
             str(script),
             str(pi_index),
             str(cwd),
-            str(AGENT_DIR),
-        ]
+            str(agent_dir),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        env=environment,
     )
-    return json.loads(output)
+    return json.loads(completed.stdout)
 
 
 def materialize_skill(ref: str, destination: Path) -> Path:
@@ -116,6 +129,7 @@ def execute_pi(
     session_root: Path,
     appended_instructions: Path | None = None,
     normal_skill_discovery: bool = False,
+    agent_dir: Path | None = None,
 ) -> Path:
     provider, model_id = split_model(model)
     sessions = session_root / "sessions"
@@ -145,9 +159,16 @@ def execute_pi(
     if appended_instructions is not None:
         command.extend(["--append-system-prompt", str(appended_instructions)])
 
+    environment = os.environ.copy()
+    if agent_dir is not None:
+        isolated_home = agent_dir / ".isolated-home"
+        isolated_home.mkdir(parents=True, exist_ok=True)
+        environment["PI_CODING_AGENT_DIR"] = str(agent_dir)
+        environment["HOME"] = str(isolated_home)
     completed = subprocess.run(
         [*command, prompt],
         cwd=work,
+        env=environment,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.PIPE,
         text=True,

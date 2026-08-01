@@ -1,0 +1,26 @@
+{
+  "version": "pinned-routing-inventory-v1",
+  "description": "Formal Crystal Clear routing inventory. Fixture skill bodies are immutable benchmark inputs; crystal-clear is materialized from the requested git ref.",
+  "skills": [
+    {
+      "name": "crystal-clear",
+      "source": "git-ref",
+      "path": "SKILL.md"
+    },
+    {
+      "name": "code-helper",
+      "source": "fixture",
+      "path": "pinned-skills/code-helper/SKILL.md"
+    },
+    {
+      "name": "research-helper",
+      "source": "fixture",
+      "path": "pinned-skills/research-helper/SKILL.md"
+    },
+    {
+      "name": "creative-helper",
+      "source": "fixture",
+      "path": "pinned-skills/creative-helper/SKILL.md"
+    }
+  ]
+}

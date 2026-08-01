@@ -1,0 +1,391 @@
+{
+  "version": "routing-v1-frozen-2026-03-24",
+  "baseline_skill_ref": "178eaf8",
+  "scenarios": [
+    {
+      "id": "explicit-en-clearer-status",
+      "language": "en",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Directly asks for a clearer reader-facing status update.",
+      "prompt": "Make this clearer and return only the revised status update: We are currently experiencing a situation where some users may possibly be unable to sign in.",
+      "input_text": "We are currently experiencing a situation where some users may possibly be unable to sign in."
+    },
+    {
+      "id": "explicit-en-remove-ambiguity",
+      "language": "en",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Explicitly asks to remove ambiguity from instructions.",
+      "prompt": "Remove ambiguity from this instruction and return only the revision: After the reviewer sends the report to the author, they should archive it.",
+      "input_text": "After the reviewer sends the report to the author, they should archive it."
+    },
+    {
+      "id": "explicit-en-polish-email",
+      "language": "en",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Uses a literal polishing request for an email.",
+      "prompt": "Polish this email while keeping it friendly: Send me the figures by Friday because I need them. Return only the email body.",
+      "input_text": "Send me the figures by Friday because I need them."
+    },
+    {
+      "id": "explicit-en-proofread-readme",
+      "language": "en",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Explicitly requests proofreading of README prose.",
+      "prompt": "Proofread this README sentence and return only the corrected sentence: This commands installs the dependencies and start the server.",
+      "input_text": "This commands installs the dependencies and start the server."
+    },
+    {
+      "id": "explicit-ja-wakariyasuku",
+      "language": "ja",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Uses the literal Japanese request わかりやすくして.",
+      "prompt": "次の案内をわかりやすくして、修正文だけを返してください。設定変更後に再起動をしていただくことで反映される形となります。",
+      "input_text": "設定変更後に再起動をしていただくことで反映される形となります。"
+    },
+    {
+      "id": "explicit-ja-meikakuni",
+      "language": "ja",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Uses the literal Japanese request 明確にして.",
+      "prompt": "次の手順を明確にして、修正文だけを返してください。確認したら担当者に渡して、それを保存してください。",
+      "input_text": "確認したら担当者に渡して、それを保存してください。"
+    },
+    {
+      "id": "explicit-ja-shizen",
+      "language": "ja",
+      "category": "explicit-request",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Explicitly requests natural Japanese.",
+      "prompt": "次の文章を自然な日本語にして、修正文だけを返してください。私たちは明日にその会議を実施する予定を持っています。",
+      "input_text": "私たちは明日にその会議を実施する予定を持っています。"
+    },
+    {
+      "id": "explicit-en-clarify-status-held",
+      "language": "en",
+      "category": "explicit-request",
+      "split": "held-out",
+      "paraphrase_of": "explicit-en-clearer-status",
+      "expected_activation": true,
+      "rationale": "Held-out paraphrase of a direct clarity request.",
+      "prompt": "Rewrite this incident notice so readers understand it on the first pass. Return only the notice: At this time, a subset of customers could potentially encounter login failures.",
+      "input_text": "At this time, a subset of customers could potentially encounter login failures."
+    },
+    {
+      "id": "explicit-ja-bunshou-held",
+      "language": "ja",
+      "category": "explicit-request",
+      "split": "held-out",
+      "paraphrase_of": "explicit-ja-wakariyasuku",
+      "expected_activation": true,
+      "rationale": "Held-out Japanese paraphrase using 文章を直して.",
+      "prompt": "次の文章を直して、修正文だけを返してください。現在において一部機能が利用できない可能性がある状況です。",
+      "input_text": "現在において一部機能が利用できない可能性がある状況です。"
+    },
+    {
+      "id": "explicit-ja-suikou-held",
+      "language": "ja",
+      "category": "explicit-request",
+      "split": "held-out",
+      "paraphrase_of": "explicit-ja-shizen",
+      "expected_activation": true,
+      "rationale": "Held-out Japanese paraphrase using 推敲して and 校正して.",
+      "prompt": "次の社内連絡を推敲して校正してください。修正文だけを返してください。会議の開催については明日の予定となっております。",
+      "input_text": "会議の開催については明日の予定となっております。"
+    },
+
+    {
+      "id": "complex-en-readme",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Drafting a README requires audience fit, ordered context, and terminology consistency.",
+      "prompt": "Draft a short README section for first-time contributors. Explain that Node 22 is required, pnpm install must run before pnpm test, and generated files must not be committed. Use a heading and concise steps."
+    },
+    {
+      "id": "complex-en-procedure",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "A safety procedure depends on information order and qualification scope.",
+      "prompt": "Write a deployment rollback procedure for an on-call engineer. The database migration is backward-compatible, traffic must be drained before rollback, and rollback must stop if error rate rises above 2%."
+    },
+    {
+      "id": "complex-en-proposal",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+      "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager."
+    },
+    {
+      "id": "complex-en-ui-errors",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "UI and error copy must distinguish cause, effect, and recovery action.",
+      "prompt": "Create a dialog title, body, and primary button label for a failed file upload. The file exceeded 25 MB; the user can compress it or choose another file. Do not imply that retrying unchanged will work."
+    },
+    {
+      "id": "complex-en-agent-instructions",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Agent-facing instructions require executable conditions, priority, and unambiguous exceptions.",
+      "prompt": "Draft an AGENTS.md rule: run focused tests after each code change; run the full suite only before committing; never modify fixtures merely to make a failing test pass; generated snapshots may be updated only when behavior intentionally changes."
+    },
+    {
+      "id": "complex-ja-business-email",
+      "language": "ja",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Japanese business email drafting requires clear action, deadline, context, and consistent politeness.",
+      "prompt": "取引先へのメールを書いてください。依頼は見積書の再送、期限は3月28日17時、理由は添付ファイルが開けなかったためです。責任を相手に押しつけない丁寧な文面にしてください。"
+    },
+    {
+      "id": "complex-mixed-terminology",
+      "language": "mixed-ja-en",
+      "category": "complex-communication",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Bilingual documentation requires facts and terminology to align across languages.",
+      "prompt": "Write a bilingual English/Japanese release note. Use “workspace / ワークスペース” consistently. State that workspace export is available to admins today, member access is planned but not guaranteed for April, and existing exports are unaffected."
+    },
+    {
+      "id": "complex-en-report-held",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "held-out",
+      "paraphrase_of": "complex-en-proposal",
+      "expected_activation": true,
+      "rationale": "Held-out paraphrase of the weekly dependency-update proposal.",
+      "prompt": "Prepare a brief decision memo recommending that dependency updates move from a monthly to a weekly schedule. Explain the security benefit, acknowledge the added review load, and end with the approval needed from the engineering manager."
+    },
+    {
+      "id": "complex-ja-procedure-held",
+      "language": "ja",
+      "category": "complex-communication",
+      "split": "held-out",
+      "paraphrase_of": "complex-en-procedure",
+      "expected_activation": true,
+      "rationale": "Held-out Japanese paraphrase of the deployment rollback procedure.",
+      "prompt": "オンコール担当者向けにデプロイのロールバック手順を書いてください。データベース移行には後方互換性があり、ロールバック前にトラフィックを切り離し、エラー率が2%を超えた場合はロールバックを中止する、という条件を含めてください。"
+    },
+    {
+      "id": "complex-en-skill-held",
+      "language": "en",
+      "category": "complex-communication",
+      "split": "held-out",
+      "paraphrase_of": "complex-en-agent-instructions",
+      "expected_activation": true,
+      "rationale": "Held-out paraphrase of the same agent test rules, expressed as a SKILL.md task.",
+      "prompt": "Draft a compact SKILL.md section: after every code change, run the relevant focused tests; run the entire suite only before commit; do not alter fixtures just to hide failures; update generated snapshots only for intentional behavior changes."
+    },
+
+    {
+      "id": "control-code-change",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "A code-only implementation task does not make communication quality primary.",
+      "prompt": "In Python, implement a function fibonacci(n: int) -> int using an iterative loop. Return only the function in a code block."
+    },
+    {
+      "id": "control-factual-lookup",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "A plain factual lookup should not activate a writing skill.",
+      "prompt": "What is the capital of Portugal? Return only the city name."
+    },
+    {
+      "id": "control-math",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "Arithmetic is unrelated to reader-facing communication.",
+      "prompt": "Calculate 37 multiplied by 24. Return only the number."
+    },
+    {
+      "id": "control-debug",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "Debugging runtime behavior is primary; prose quality is incidental.",
+      "prompt": "Why does this JavaScript return NaN, and what one-line code change fixes it? const total = '12px' * 2;"
+    },
+    {
+      "id": "control-research",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "A narrow technical lookup is research, not a communication deliverable.",
+      "prompt": "Find the current stable Python version from the official Python website and cite the source."
+    },
+    {
+      "id": "control-creative-poem",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "Creative writing with intentional imagery does not inherently require clarity optimization.",
+      "prompt": "Write a four-line surreal poem about a clock learning to swim."
+    },
+    {
+      "id": "control-ja-factual",
+      "language": "ja",
+      "category": "unrelated-control",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "A Japanese factual question remains unrelated to writing revision.",
+      "prompt": "日本で最も高い山の名前を一つだけ答えてください。"
+    },
+    {
+      "id": "control-code-held",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "held-out",
+      "paraphrase_of": "control-code-change",
+      "expected_activation": false,
+      "rationale": "Held-out paraphrase of a code-only request.",
+      "prompt": "Return only TypeScript code for a function that removes duplicate numbers from an array while preserving order."
+    },
+    {
+      "id": "control-lookup-held",
+      "language": "ja",
+      "category": "unrelated-control",
+      "split": "held-out",
+      "paraphrase_of": "control-ja-factual",
+      "expected_activation": false,
+      "rationale": "Held-out Japanese paraphrase of an unrelated factual lookup.",
+      "prompt": "フランスの首都を都市名だけで答えてください。"
+    },
+    {
+      "id": "control-debug-held",
+      "language": "en",
+      "category": "unrelated-control",
+      "split": "held-out",
+      "paraphrase_of": "control-debug",
+      "expected_activation": false,
+      "rationale": "Held-out debugging paraphrase where prose is incidental.",
+      "prompt": "Diagnose this Python exception and provide the corrected expression: TypeError from '3' + 4."
+    },
+
+    {
+      "id": "boundary-error-copy-primary",
+      "language": "en",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Communication quality is primary because the requested deliverable is user-facing error copy.",
+      "prompt": "Write a clear user-facing error message for error E42. Explain that the session expired, saved work is intact, and signing in again is required. Return only the message."
+    },
+    {
+      "id": "boundary-error-code-incidental",
+      "language": "en",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "The paired task implements error handling; wording is incidental and already supplied.",
+      "prompt": "Write JavaScript that catches error code E42 and displays the existing constant SESSION_EXPIRED_MESSAGE. Return only code."
+    },
+    {
+      "id": "boundary-research-summary-primary",
+      "language": "en",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Synthesizing supplied facts for executives makes audience fit and information order primary.",
+      "prompt": "Turn these facts into a three-bullet executive summary: churn fell from 4.1% to 3.7%; trial conversion was unchanged; support tickets rose 12%; the cause of the ticket increase is unknown."
+    },
+    {
+      "id": "boundary-research-data-incidental",
+      "language": "en",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "Finding a numeric value is primary and needs no communication design.",
+      "prompt": "From these values 4.1, 3.7, 12, return only the smallest number."
+    },
+    {
+      "id": "boundary-creative-clarity-primary",
+      "language": "en",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "The user explicitly prioritizes unambiguous narrative meaning over creative ambiguity.",
+      "prompt": "Rewrite this story sentence so it is unambiguous who held the telescope: Maya watched Lena cross the bridge with the telescope. Return only the revision."
+    },
+    {
+      "id": "boundary-creative-ambiguity-intentional",
+      "language": "en",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": false,
+      "rationale": "Intentional ambiguity and voice are the creative goal, so clarity optimization is not primary.",
+      "prompt": "Write one mysterious sentence about two travelers and a telescope. Keep it intentionally ambiguous who owns the telescope."
+    },
+    {
+      "id": "boundary-ja-status-primary",
+      "language": "ja",
+      "category": "boundary",
+      "split": "train",
+      "expected_activation": true,
+      "rationale": "Drafting Japanese customer status copy makes clarity and uncertainty scope primary.",
+      "prompt": "顧客向けの障害案内を書いてください。影響は一部の決済、原因は調査中、復旧時刻は未定、次回更新は16時です。事実と未確定事項を区別してください。"
+    },
+    {
+      "id": "boundary-code-doc-held",
+      "language": "en",
+      "category": "boundary",
+      "split": "held-out",
+      "paraphrase_of": "boundary-error-copy-primary",
+      "expected_activation": true,
+      "rationale": "Held-out paraphrase where clear user-facing E42 documentation remains the deliverable.",
+      "prompt": "Draft concise help text for error E42. Tell users that an expired session caused it, their saved work remains safe, and they must sign in again. Return only the help text."
+    },
+    {
+      "id": "boundary-code-only-held",
+      "language": "en",
+      "category": "boundary",
+      "split": "held-out",
+      "paraphrase_of": "boundary-error-code-incidental",
+      "expected_activation": false,
+      "rationale": "Held-out paraphrase where implementing E42 handling remains the sole deliverable.",
+      "prompt": "Implement TypeScript handling for error E42 by rendering the existing SESSION_EXPIRED_MESSAGE constant. Return only code."
+    },
+    {
+      "id": "boundary-ja-data-held",
+      "language": "ja",
+      "category": "boundary",
+      "split": "held-out",
+      "paraphrase_of": "boundary-research-data-incidental",
+      "expected_activation": false,
+      "rationale": "Held-out negative Japanese boundary case requiring only data selection.",
+      "prompt": "障害記録の時刻 09:10、09:42、10:05 のうち、最も早い時刻だけを答えてください。"
+    }
+  ]
+}

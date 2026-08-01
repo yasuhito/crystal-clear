@@ -52,7 +52,37 @@ python3 -m evals.run_smoke --report-only
 
 This command rebuilds both summaries from the checked-in normalized result records. It does not call a model or rewrite the raw traces.
 
-## Override the model or output location
+## Run the frozen automatic-activation baseline
+
+The routing benchmark freezes 40 designed pressure tests in `routing-scenarios.json`: 10 explicit requests, 10 complex communication tasks, 10 unrelated controls, and 10 boundary cases. Twelve scenarios (30%) are precommitted held-out paraphrases. Each record declares its language, category, expected activation, rationale, and split.
+
+Run all 40 scenarios five times in both inventories:
+
+```sh
+python3 -m evals.run_routing \
+  --skill-ref 178eaf8 --repeats 5 \
+  --output evals/results/routing/178eaf8
+```
+
+The command produces two separate 200-run reports:
+
+- `pinned/` is the formal inventory from `fixtures/skills-manifest.json`. Only this result is eligible for later pass/fail comparison.
+- `installed/` snapshots the project owner's complete enabled inventory and replaces only Crystal Clear with the requested git revision. This result is ecological reference, not a release gate.
+
+Both arms use normal Pi discovery in an isolated agent directory. No skill body is injected. Every normalized result records the exact skill revision and hash, inventory snapshot, provider/model, Pi version, harness revision, system configuration, repeat, final output, and raw trace link. Reports include recall, false-positive rate, category and split metrics, and separate selection-effect labels.
+
+Regenerate reports from checked-in results without calling Pi:
+
+```sh
+python3 -m evals.run_routing \
+  --skill-ref 178eaf8 --repeats 5 \
+  --output evals/results/routing/178eaf8 \
+  --report-only
+```
+
+The frozen baseline is published at `results/routing/178eaf8/SUMMARY.md`. Do not edit `routing-scenarios.json` after testing candidate metadata; create a new version instead.
+
+## Override the smoke model or output location
 
 ```sh
 python3 -m evals.run_smoke \
