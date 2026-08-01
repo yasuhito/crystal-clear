@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r05",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 5,
+  "presentation_index": 20,
+  "judge_seed": 178,
+  "prompt_sha256": "b0590216180ac17a3048bb9d88a6228a11936381f31b5753c6d50b58c9f03580",
+  "presented_output_a": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review; retain access to the legacy exporter, and do not begin the rollout until security signs off.",
+  "presented_output_b": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; however, do not begin the rollout until security signs off, and keep the legacy exporter available.",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Changes a recommendation to a direct approval decision; otherwise preserves the date, legacy exporter availability, and security-signoff constraint."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "Changes a recommendation to a direct approval decision but faithfully retains the date, exporter availability, and rollout condition; the final coordination is slightly awkward."
+    },
+    "preference": "B",
+    "preference_evidence": "Both alter certainty, but B more exactly preserves that the legacy exporter remains available, whereas A narrows this to retaining access."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changes a recommendation to a direct approval decision; otherwise preserves the date, legacy exporter availability, and security-signoff constraint.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Changes a recommendation to a direct approval decision but faithfully retains the date, exporter availability, and rollout condition; the final coordination is slightly awkward.\"},\"preference\":\"B\",\"preference_evidence\":\"Both alter certainty, but B more exactly preserves that the legacy exporter remains available, whereas A narrows this to retaining access.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:08:48.059642+00:00",
+  "duration_ms": 15219,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf96-5576-7311-b948-c9c67c4d8157",
+  "trace_file": "raw/judgments/en-buried-answer--r05.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r05.result.json"
+}

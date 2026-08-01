@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-detached-qualification--r04",
+  "scenario_id": "en-detached-qualification",
+  "category": "english",
+  "language": "en",
+  "repeat": 4,
+  "presentation_index": 11,
+  "judge_seed": 178,
+  "prompt_sha256": "4aa613da2ff99e217206fe72464a3b80067a7908098a2999affbca851e7dd4c8",
+  "presented_output_a": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. Restoration may take up to 48 hours.",
+  "presented_output_b": "Customers with Enterprise accounts created after January 1, 2025 can restore archived workspaces, and recovery may take up to 48 hours.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the Enterprise account creation-date condition, archived-workspace restoration, and the maximum 48-hour timeframe clearly and naturally."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "Preserves all facts and constraints, though a comma after the introductory date phrase would improve readability."
+    },
+    "preference": "A",
+    "preference_evidence": "Both are accurate, but A is slightly more polished and readable due to cleaner punctuation and sentence separation."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the Enterprise account creation-date condition, archived-workspace restoration, and the maximum 48-hour timeframe clearly and naturally.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves all facts and constraints, though a comma after the introductory date phrase would improve readability.\"},\"preference\":\"A\",\"preference_evidence\":\"Both are accurate, but A is slightly more polished and readable due to cleaner punctuation and sentence separation.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:08:14.439300+00:00",
+  "duration_ms": 8087,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf95-d22f-7224-aefe-50fc2a168cd9",
+  "trace_file": "raw/judgments/en-detached-qualification--r04.trace.jsonl",
+  "result_file": "raw/judgments/en-detached-qualification--r04.result.json"
+}

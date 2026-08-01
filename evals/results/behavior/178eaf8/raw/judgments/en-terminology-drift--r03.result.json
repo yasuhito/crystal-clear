@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-terminology-drift--r03",
+  "scenario_id": "en-terminology-drift",
+  "category": "english",
+  "language": "en",
+  "repeat": 3,
+  "presentation_index": 62,
+  "judge_seed": 178,
+  "prompt_sha256": "3b5eaa994cbe7b069dc4a77b79103b066562ad4d0a38e7ed913c49b3594bef50",
+  "presented_output_a": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled to check future uploads.",
+  "presented_output_b": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled to check future uploads.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the setting instruction, Secure Review terminology, and the distinction between new uploads and existing files in clear three-sentence help text."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Identical to Output A; it preserves all facts, constraints, terminology, and the concise help-text register."
+    },
+    "preference": "tie",
+    "preference_evidence": "The outputs are identical and equally satisfy the source and output contract."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the setting instruction, Secure Review terminology, and the distinction between new uploads and existing files in clear three-sentence help text.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Identical to Output A; it preserves all facts, constraints, terminology, and the concise help-text register.\"},\"preference\":\"tie\",\"preference_evidence\":\"The outputs are identical and equally satisfy the source and output contract.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:11:26.201853+00:00",
+  "duration_ms": 8323,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf98-bf45-71df-ae7a-f3ea9f30c17a",
+  "trace_file": "raw/judgments/en-terminology-drift--r03.trace.jsonl",
+  "result_file": "raw/judgments/en-terminology-drift--r03.result.json"
+}

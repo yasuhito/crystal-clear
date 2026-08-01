@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r04",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 4,
+  "presentation_index": 56,
+  "judge_seed": 178,
+  "prompt_sha256": "f5e8fe7dc54c00b19902773f945cf893f824aaa1c7d5bf8e8e836625c21bf7d4",
+  "presented_output_a": "案件ID「JP-42」について、佐藤さんは鈴木さんに「レビュー後に鈴木さんが報告書を送る」と伝えました。佐藤さんは報告書の承認を担当します。",
+  "presented_output_b": "案件ID「JP-42」について、佐藤さんは鈴木さんに、レビュー後に鈴木さんが報告書を送るよう伝えました。佐藤さんは報告書の承認を担当します。",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "鈴木さんがレビュー後に報告書を送り、佐藤さんが承認を担当することと案件IDを明確かつ自然に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "「送るよう伝えました」は佐藤さんが鈴木さんに送付を指示・依頼した意味になり、原文の中立的な伝達にない発話意図を加えている。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは送付者の曖昧さを解消しつつ原文の伝達内容を保持するが、Bは伝達を指示・依頼へ変えている。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"鈴木さんがレビュー後に報告書を送り、佐藤さんが承認を担当することと案件IDを明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"「送るよう伝えました」は佐藤さんが鈴木さんに送付を指示・依頼した意味になり、原文の中立的な伝達にない発話意図を加えている。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは送付者の曖昧さを解消しつつ原文の伝達内容を保持するが、Bは伝達を指示・依頼へ変えている。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:10:59.718869+00:00",
+  "duration_ms": 21455,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf98-57d8-77f0-8e2c-fd069259f139",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r04.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r04.result.json"
+}

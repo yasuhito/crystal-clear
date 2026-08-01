@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "ambiguous-referent"
+  ],
+  "source_text": "佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "output_contract": "曖昧さをなくした自然な日本語だけを返してください。",
+  "prompt": "SOURCEの主語と役割が一読で分かるように書き直してください。曖昧さをなくした自然な日本語だけを返してください。新しい事実は加えないでください。SOURCE: 佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "checks": [
+    {
+      "id": "id",
+      "kind": "protected-string",
+      "values": [
+        "JP-42"
+      ]
+    },
+    {
+      "id": "people",
+      "kind": "fact",
+      "values": [
+        "佐藤さん",
+        "鈴木さん"
+      ]
+    },
+    {
+      "id": "timing",
+      "kind": "condition",
+      "values": [
+        "レビュー後"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 4,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:05:10.786024+00:00",
+  "duration_ms": 6626,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fbf93-04ca-7f45-9d38-1b8a092abd77",
+  "final_output": "案件ID「JP-42」について、佐藤さんは鈴木さんに、レビュー後に鈴木さんが報告書を送るよう伝えました。佐藤さんは報告書の承認を担当します。",
+  "trace_file": "raw/generations/ja-ambiguous-subject--no-skill--r04.trace.jsonl",
+  "result_file": "raw/generations/ja-ambiguous-subject--no-skill--r04.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "id",
+        "kind": "protected-string",
+        "values": [
+          "JP-42"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "people",
+        "kind": "fact",
+        "values": [
+          "佐藤さん",
+          "鈴木さん"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "timing",
+        "kind": "condition",
+        "values": [
+          "レビュー後"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

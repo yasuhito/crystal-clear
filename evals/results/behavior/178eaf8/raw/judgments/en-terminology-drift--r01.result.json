@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-terminology-drift--r01",
+  "scenario_id": "en-terminology-drift",
+  "category": "english",
+  "language": "en",
+  "repeat": 1,
+  "presentation_index": 60,
+  "judge_seed": 178,
+  "prompt_sha256": "62c9e950a1815719ddd43286dd5d1257c739226bf86510242a7d14f23ff82f3e",
+  "presented_output_a": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled to check future uploads.",
+  "presented_output_b": "Enable Secure Review in Settings. Secure Review checks new uploads, but Secure Review does not inspect existing files. Keep Secure Review enabled to check future uploads.",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the setting instruction, upload scope, existing-file limitation, and exact product term in clear, natural help text."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "Preserves all facts and the exact product term, but repeating Secure Review twice in one sentence is slightly unnatural."
+    },
+    "preference": "A",
+    "preference_evidence": "Both preserve the source, but A is more concise and natural without introducing referential ambiguity."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the setting instruction, upload scope, existing-file limitation, and exact product term in clear, natural help text.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves all facts and the exact product term, but repeating Secure Review twice in one sentence is slightly unnatural.\"},\"preference\":\"A\",\"preference_evidence\":\"Both preserve the source, but A is more concise and natural without introducing referential ambiguity.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:11:18.635558+00:00",
+  "duration_ms": 11272,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf98-a1ac-7010-8b3f-186b0972036c",
+  "trace_file": "raw/judgments/en-terminology-drift--r01.trace.jsonl",
+  "result_file": "raw/judgments/en-terminology-drift--r01.result.json"
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-register-certainty--r03",
+  "scenario_id": "en-register-certainty",
+  "category": "english",
+  "language": "en",
+  "repeat": 3,
+  "presentation_index": 10,
+  "judge_seed": 178,
+  "prompt_sha256": "b8ed6f4e4dea35b7910432745e01cf26bf72ac00745e3a4d0b351d26ca33818b",
+  "presented_output_a": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a potential cache issue, but the cause has not yet been confirmed.",
+  "presented_output_b": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a cache-related issue, but the cause has not been confirmed.",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the region, approximate 8% impact, cache hypothesis, and unconfirmed cause in a calm, formal update."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves all facts, scope, uncertainty, and formal incident-update register; 'cache-related issue' is faithful terminology."
+    },
+    "preference": "tie",
+    "preference_evidence": "Both outputs fully preserve the source and are equally clear, natural, and appropriately formal."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the region, approximate 8% impact, cache hypothesis, and unconfirmed cause in a calm, formal update.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, scope, uncertainty, and formal incident-update register; 'cache-related issue' is faithful terminology.\"},\"preference\":\"tie\",\"preference_evidence\":\"Both outputs fully preserve the source and are equally clear, natural, and appropriately formal.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:08:14.014880+00:00",
+  "duration_ms": 12130,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf95-d081-7714-9897-24b32e3714af",
+  "trace_file": "raw/judgments/en-register-certainty--r03.trace.jsonl",
+  "result_file": "raw/judgments/en-register-certainty--r03.result.json"
+}

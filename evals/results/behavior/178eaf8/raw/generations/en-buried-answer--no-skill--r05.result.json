@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "failure_modes": [
+    "buried-answer"
+  ],
+  "source_text": "The migration has been discussed for several weeks. The legacy exporter remains available. After reviewing the risks, we recommend approving Project Northstar by 14 June. The rollout must not begin before security signs off.",
+  "output_contract": "Return only one concise decision memo paragraph in professional English.",
+  "prompt": "Rewrite the SOURCE for first-pass understanding. Return only one concise decision memo paragraph in professional English. Preserve every fact, condition, constraint, number, and protected string exactly in meaning. SOURCE: The migration has been discussed for several weeks. The legacy exporter remains available. After reviewing the risks, we recommend approving Project Northstar by 14 June. The rollout must not begin before security signs off.",
+  "checks": [
+    {
+      "id": "project",
+      "kind": "protected-string",
+      "values": [
+        "Project Northstar"
+      ]
+    },
+    {
+      "id": "deadline",
+      "kind": "number",
+      "values": [
+        "14 June"
+      ]
+    },
+    {
+      "id": "legacy",
+      "kind": "fact",
+      "values": [
+        "legacy exporter"
+      ]
+    },
+    {
+      "id": "security",
+      "kind": "constraint",
+      "values": [
+        "security"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 5,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:03:39.892886+00:00",
+  "duration_ms": 5486,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fbf91-a1b6-7e06-907d-e732fd47f7a9",
+  "final_output": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review; retain access to the legacy exporter, and do not begin the rollout until security signs off.",
+  "trace_file": "raw/generations/en-buried-answer--no-skill--r05.trace.jsonl",
+  "result_file": "raw/generations/en-buried-answer--no-skill--r05.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "project",
+        "kind": "protected-string",
+        "values": [
+          "Project Northstar"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "deadline",
+        "kind": "number",
+        "values": [
+          "14 June"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "legacy",
+        "kind": "fact",
+        "values": [
+          "legacy exporter"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "security",
+        "kind": "constraint",
+        "values": [
+          "security"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

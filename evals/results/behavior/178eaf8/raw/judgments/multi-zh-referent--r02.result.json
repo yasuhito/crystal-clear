@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r02",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 2,
+  "presentation_index": 8,
+  "judge_seed": 178,
+  "prompt_sha256": "4ce17f5aba784c4ff7dfa2ba327819ed50b67e8613197e28dd33d7f2f1483b00",
+  "presented_output_a": "李敏告诉王伟：李敏将在审核后进行最终确认，王伟负责关闭工单 CN-88。必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏将在审核后进行最终确认，王伟负责关闭工单 CN-88。以上事项必须在周五之前完成。",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "保留了审核后最终确认、王伟关闭工单 CN-88 以及周五前完成的要求，并消除了“她”的指代冲突。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "核心事实与期限均保留，但“以上事项”将周五前完成的约束明确扩展到前述全部事项，较原文略有范围增补。"
+    },
+    "preference": "A",
+    "preference_evidence": "A在消除角色歧义的同时更少改动原文期限约束的范围。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"保留了审核后最终确认、王伟关闭工单 CN-88 以及周五前完成的要求，并消除了“她”的指代冲突。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"核心事实与期限均保留，但“以上事项”将周五前完成的约束明确扩展到前述全部事项，较原文略有范围增补。\"},\"preference\":\"A\",\"preference_evidence\":\"A在消除角色歧义的同时更少改动原文期限约束的范围。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:08:10.962193+00:00",
+  "duration_ms": 14398,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf95-c496-71df-874d-24e2486abea9",
+  "trace_file": "raw/judgments/multi-zh-referent--r02.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r02.result.json"
+}

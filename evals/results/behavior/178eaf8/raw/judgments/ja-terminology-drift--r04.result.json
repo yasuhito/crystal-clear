@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r04",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 4,
+  "presentation_index": 71,
+  "judge_seed": 178,
+  "prompt_sha256": "07a29602d826c99fe19e25c7e9804c2d12d98cc372dd1e887934c4cad514b89f",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "178eaf8",
+  "b_arm": "no-skill",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成と禁止事項、用語統一は保持しているが、「この」がなく対象範囲がやや一般化して読める。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成、操作内容、外部ユーザー招待不可の制約を保持し、「この共有スペース」で対象も明確にしている。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは「この」による指示範囲を保ちながら、用語を「共有スペース」に統一している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成と禁止事項、用語統一は保持しているが、「この」がなく対象範囲がやや一般化して読める。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成、操作内容、外部ユーザー招待不可の制約を保持し、「この共有スペース」で対象も明確にしている。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは「この」による指示範囲を保ちながら、用語を「共有スペース」に統一している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:11:55.037315+00:00",
+  "duration_ms": 22259,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf99-2fdb-7f6b-97d6-152022a80259",
+  "trace_file": "raw/judgments/ja-terminology-drift--r04.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r04.result.json"
+}

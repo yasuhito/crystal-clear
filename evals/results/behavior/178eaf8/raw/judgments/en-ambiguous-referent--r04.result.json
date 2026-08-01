@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-ambiguous-referent--r04",
+  "scenario_id": "en-ambiguous-referent",
+  "category": "english",
+  "language": "en",
+  "repeat": 4,
+  "presentation_index": 12,
+  "judge_seed": 178,
+  "prompt_sha256": "a75ef2a60c1e597a7ba778e12699ceded963ca7e56ff58c5490da82a9bd423ae",
+  "presented_output_a": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then, while Maya retains access.",
+  "presented_output_b": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "a_arm": "no-skill",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Clarifies the ambiguous pronoun and preserves all facts, timing, obligation, identifier, and Maya’s retained access."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Clarifies the ambiguous pronoun while otherwise preserving the source’s facts, structure, punctuation, timing, and professional register."
+    },
+    "preference": "B",
+    "preference_evidence": "Both fully satisfy the contract, but B is preferred because it resolves the ambiguity with the least alteration to the source."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clarifies the ambiguous pronoun and preserves all facts, timing, obligation, identifier, and Maya’s retained access.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clarifies the ambiguous pronoun while otherwise preserving the source’s facts, structure, punctuation, timing, and professional register.\"},\"preference\":\"B\",\"preference_evidence\":\"Both fully satisfy the contract, but B is preferred because it resolves the ambiguity with the least alteration to the source.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "cc1c9a9ccecffe4f67b2526da96fd4c73c86fd7f",
+  "started_at": "2026-08-01T23:08:22.526720+00:00",
+  "duration_ms": 11249,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fbf95-f1d3-7a1e-aad4-7abe13b20069",
+  "trace_file": "raw/judgments/en-ambiguous-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/en-ambiguous-referent--r04.result.json"
+}
