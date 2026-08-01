@@ -1,0 +1,219 @@
+{
+  "version": "behavior-v1",
+  "scenarios": [
+    {
+      "id": "en-buried-answer",
+      "category": "english",
+      "language": "en",
+      "failure_modes": ["buried-answer"],
+      "source_text": "The migration has been discussed for several weeks. The legacy exporter remains available. After reviewing the risks, we recommend approving Project Northstar by 14 June. The rollout must not begin before security signs off.",
+      "output_contract": "Return only one concise decision memo paragraph in professional English.",
+      "prompt": "Rewrite the SOURCE for first-pass understanding. Return only one concise decision memo paragraph in professional English. Preserve every fact, condition, constraint, number, and protected string exactly in meaning. SOURCE: The migration has been discussed for several weeks. The legacy exporter remains available. After reviewing the risks, we recommend approving Project Northstar by 14 June. The rollout must not begin before security signs off.",
+      "checks": [
+        {"id": "project", "kind": "protected-string", "values": ["Project Northstar"]},
+        {"id": "deadline", "kind": "number", "values": ["14 June"]},
+        {"id": "legacy", "kind": "fact", "values": ["legacy exporter"]},
+        {"id": "security", "kind": "constraint", "values": ["security"]}
+      ]
+    },
+    {
+      "id": "en-ambiguous-referent",
+      "category": "english",
+      "language": "en",
+      "failure_modes": ["ambiguous-referent"],
+      "source_text": "Maya told Priya that her access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+      "output_contract": "Return only the clarified text in two professional English sentences.",
+      "prompt": "Rewrite the SOURCE to remove the ambiguous referent without inventing facts. Return only the clarified text in two professional English sentences. Preserve identifiers, timing, and access distinctions. SOURCE: Maya told Priya that her access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+      "checks": [
+        {"id": "account", "kind": "protected-string", "values": ["ACCT-74"]},
+        {"id": "people", "kind": "fact", "values": ["Maya", "Priya"]},
+        {"id": "timing", "kind": "condition", "values": ["Friday"]},
+        {"id": "must-export", "kind": "constraint", "values": ["must"]}
+      ]
+    },
+    {
+      "id": "en-detached-qualification",
+      "category": "english",
+      "language": "en",
+      "failure_modes": ["detached-qualification", "accidental-certainty-change"],
+      "source_text": "Customers can restore archived workspaces. This applies only to Enterprise accounts created after 1 January 2025, and recovery may take up to 48 hours.",
+      "output_contract": "Return only a clear customer-facing explanation in English.",
+      "prompt": "Rewrite the SOURCE so each qualification is attached to the claim it limits. Return only a clear customer-facing explanation in English. Do not strengthen possibility into certainty. SOURCE: Customers can restore archived workspaces. This applies only to Enterprise accounts created after 1 January 2025, and recovery may take up to 48 hours.",
+      "checks": [
+        {"id": "tier", "kind": "protected-string", "values": ["Enterprise"]},
+        {"id": "date", "kind": "number", "values": ["1 January 2025", "48 hours"]},
+        {"id": "eligibility", "kind": "condition", "values": ["only"]},
+        {"id": "uncertainty", "kind": "fact", "values": ["may"]}
+      ]
+    },
+    {
+      "id": "en-terminology-drift",
+      "category": "english",
+      "language": "en",
+      "failure_modes": ["terminology-drift"],
+      "source_text": "Enable Secure Review in Settings. The protected review feature checks new uploads, but this scanner does not inspect existing files. Keep the product term Secure Review throughout.",
+      "output_contract": "Return only the revised three-sentence help text in English.",
+      "prompt": "Rewrite the SOURCE using one consistent product term. Return only the revised three-sentence help text in English. Preserve the limitation. SOURCE: Enable Secure Review in Settings. The protected review feature checks new uploads, but this scanner does not inspect existing files. Keep the product term Secure Review throughout.",
+      "checks": [
+        {"id": "term", "kind": "protected-string", "values": ["Secure Review", "Settings"]},
+        {"id": "new", "kind": "fact", "values": ["new uploads"]},
+        {"id": "existing", "kind": "constraint", "values": ["existing files"]}
+      ]
+    },
+    {
+      "id": "en-register-certainty",
+      "category": "english",
+      "language": "en",
+      "failure_modes": ["register-mismatch", "accidental-certainty-change"],
+      "source_text": "We are investigating elevated latency in eu-west-2. Early evidence suggests a cache issue, but the cause is not confirmed. About 8% of requests may be affected.",
+      "output_contract": "Return only a calm, formal incident update in English.",
+      "prompt": "Rewrite the SOURCE for customers. Return only a calm, formal incident update in English. Preserve all uncertainty and measurements. SOURCE: We are investigating elevated latency in eu-west-2. Early evidence suggests a cache issue, but the cause is not confirmed. About 8% of requests may be affected.",
+      "checks": [
+        {"id": "region", "kind": "protected-string", "values": ["eu-west-2"]},
+        {"id": "impact", "kind": "number", "values": ["8%"]},
+        {"id": "uncertainty", "kind": "fact", "values": ["suggests", "not confirmed", "may"]}
+      ]
+    },
+    {
+      "id": "ja-buried-action",
+      "category": "japanese",
+      "language": "ja",
+      "failure_modes": ["buried-answer", "register-mismatch"],
+      "source_text": "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
+      "output_contract": "丁寧なビジネス日本語の依頼文だけを返してください。",
+      "prompt": "SOURCEを一読で依頼内容が分かるように書き直してください。丁寧なビジネス日本語の依頼文だけを返してください。事実、期限、制約、固有表現を保持してください。SOURCE: 先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
+      "checks": [
+        {"id": "plan", "kind": "protected-string", "values": ["移行案A", "田中様"]},
+        {"id": "dates", "kind": "number", "values": ["7月末", "6月20日"]},
+        {"id": "approval", "kind": "constraint", "values": ["承認前"]}
+      ]
+    },
+    {
+      "id": "ja-ambiguous-subject",
+      "category": "japanese",
+      "language": "ja",
+      "failure_modes": ["ambiguous-referent"],
+      "source_text": "佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
+      "output_contract": "曖昧さをなくした自然な日本語だけを返してください。",
+      "prompt": "SOURCEの主語と役割が一読で分かるように書き直してください。曖昧さをなくした自然な日本語だけを返してください。新しい事実は加えないでください。SOURCE: 佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
+      "checks": [
+        {"id": "id", "kind": "protected-string", "values": ["JP-42"]},
+        {"id": "people", "kind": "fact", "values": ["佐藤さん", "鈴木さん"]},
+        {"id": "timing", "kind": "condition", "values": ["レビュー後"]}
+      ]
+    },
+    {
+      "id": "ja-detached-condition",
+      "category": "japanese",
+      "language": "ja",
+      "failure_modes": ["detached-qualification", "accidental-certainty-change"],
+      "source_text": "バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
+      "output_contract": "条件が明確な案内文だけを日本語で返してください。",
+      "prompt": "SOURCEの条件を対象となる説明の近くに置いて書き直してください。条件が明確な案内文だけを日本語で返してください。可能性を確定表現に変えないでください。SOURCE: バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
+      "checks": [
+        {"id": "plan", "kind": "protected-string", "values": ["Proプラン"]},
+        {"id": "limits", "kind": "number", "values": ["30日以内", "最大72時間"]},
+        {"id": "condition", "kind": "condition", "values": ["場合に限り"]},
+        {"id": "possibility", "kind": "fact", "values": ["可能性"]}
+      ]
+    },
+    {
+      "id": "ja-terminology-drift",
+      "category": "japanese",
+      "language": "ja",
+      "failure_modes": ["terminology-drift"],
+      "source_text": "管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+      "output_contract": "用語を統一した3文の操作説明だけを返してください。",
+      "prompt": "SOURCEの製品用語を統一して書き直してください。用語を統一した3文の操作説明だけを返してください。制約を保持してください。SOURCE: 管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+      "checks": [
+        {"id": "term", "kind": "protected-string", "values": ["共有スペース", "管理画面"]},
+        {"id": "external", "kind": "constraint", "values": ["外部ユーザー"]}
+      ]
+    },
+    {
+      "id": "ja-register-certainty",
+      "category": "japanese",
+      "language": "ja",
+      "failure_modes": ["register-mismatch", "accidental-certainty-change"],
+      "source_text": "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+      "output_contract": "丁寧で落ち着いた障害報告だけを日本語で返してください。",
+      "prompt": "SOURCEをお客様向けに書き直してください。丁寧で落ち着いた障害報告だけを日本語で返してください。不確実性と数値を保持してください。SOURCE: 現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+      "checks": [
+        {"id": "impact", "kind": "number", "values": ["12%", "18時"]},
+        {"id": "certainty", "kind": "fact", "values": ["可能性", "未確定"]}
+      ]
+    },
+    {
+      "id": "multi-es-buried-action",
+      "category": "multilingual-core",
+      "language": "es",
+      "failure_modes": ["buried-answer"],
+      "source_text": "Hemos revisado varias opciones durante dos semanas. El sistema anterior seguirá disponible. Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. No se debe iniciar la migración sin la aprobación de Seguridad.",
+      "output_contract": "Devuelve solo una solicitud clara y concisa en español.",
+      "prompt": "Reescribe el SOURCE para que la acción principal aparezca primero. Devuelve solo una solicitud clara y concisa en español. Conserva hechos, nombres, fecha y condición. SOURCE: Hemos revisado varias opciones durante dos semanas. El sistema anterior seguirá disponible. Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. No se debe iniciar la migración sin la aprobación de Seguridad.",
+      "checks": [
+        {"id": "project", "kind": "protected-string", "values": ["Proyecto Faro", "Ana"]},
+        {"id": "date", "kind": "number", "values": ["3 de mayo"]},
+        {"id": "security", "kind": "condition", "values": ["Seguridad"]}
+      ]
+    },
+    {
+      "id": "multi-zh-referent",
+      "category": "multilingual-core",
+      "language": "zh-CN",
+      "failure_modes": ["ambiguous-referent"],
+      "source_text": "李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
+      "output_contract": "只返回消除指代歧义后的简体中文文本。",
+      "prompt": "改写 SOURCE，明确每个人的职责，不要添加事实。只返回消除指代歧义后的简体中文文本。保留编号、期限和必须条件。SOURCE: 李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
+      "checks": [
+        {"id": "ticket", "kind": "protected-string", "values": ["CN-88"]},
+        {"id": "people", "kind": "fact", "values": ["李敏", "王伟"]},
+        {"id": "deadline", "kind": "condition", "values": ["周五之前"]},
+        {"id": "must", "kind": "constraint", "values": ["必须"]}
+      ]
+    },
+    {
+      "id": "multi-ar-condition",
+      "category": "multilingual-core",
+      "language": "ar",
+      "failure_modes": ["detached-qualification", "accidental-certainty-change"],
+      "source_text": "يمكن استعادة الملفات المحذوفة. ينطبق ذلك فقط على خطة Pro إذا قُدِّم الطلب خلال 14 يومًا. قد تستغرق الاستعادة حتى 24 ساعة.",
+      "output_contract": "أعد النص العربي الواضح فقط.",
+      "prompt": "أعد كتابة SOURCE بحيث تكون الشروط بجوار الادعاء الذي تقيده. أعد النص العربي الواضح فقط. لا تحوّل الاحتمال إلى يقين. SOURCE: يمكن استعادة الملفات المحذوفة. ينطبق ذلك فقط على خطة Pro إذا قُدِّم الطلب خلال 14 يومًا. قد تستغرق الاستعادة حتى 24 ساعة.",
+      "checks": [
+        {"id": "plan", "kind": "protected-string", "values": ["Pro"]},
+        {"id": "numbers", "kind": "number", "values": ["14", "24"]},
+        {"id": "condition", "kind": "condition", "values": ["إذا"]},
+        {"id": "uncertainty", "kind": "fact", "values": ["قد"]}
+      ]
+    },
+    {
+      "id": "multi-de-terminology",
+      "category": "multilingual-core",
+      "language": "de",
+      "failure_modes": ["terminology-drift", "register-mismatch"],
+      "source_text": "Aktivieren Sie Datenprüfung in den Einstellungen. Das Prüfwerkzeug untersucht neue Uploads. Dieser Scanner prüft keine vorhandenen Dateien. Verwenden Sie durchgehend den Produktnamen Datenprüfung.",
+      "output_contract": "Geben Sie nur eine formelle dreisätzige Anleitung auf Deutsch zurück.",
+      "prompt": "Überarbeiten Sie SOURCE mit einem einheitlichen Produktbegriff. Geben Sie nur eine formelle dreisätzige Anleitung auf Deutsch zurück. Bewahren Sie die Einschränkung. SOURCE: Aktivieren Sie Datenprüfung in den Einstellungen. Das Prüfwerkzeug untersucht neue Uploads. Dieser Scanner prüft keine vorhandenen Dateien. Verwenden Sie durchgehend den Produktnamen Datenprüfung.",
+      "checks": [
+        {"id": "term", "kind": "protected-string", "values": ["Datenprüfung", "Einstellungen"]},
+        {"id": "new", "kind": "fact", "values": ["neue Uploads"]},
+        {"id": "existing", "kind": "constraint", "values": ["vorhandenen Dateien"]}
+      ]
+    },
+    {
+      "id": "multi-mixed-ja-en",
+      "category": "multilingual-core",
+      "language": "mixed-ja-en",
+      "failure_modes": ["terminology-drift", "detached-qualification"],
+      "source_text": "管理者はTeam Syncを有効にしてください。この同期機能は新規メンバーを同期します。既存メンバーは対象外です。UI上の名称はTeam Syncのままにしてください。",
+      "output_contract": "日本語の説明文だけを返し、英語の製品名は変更しないでください。",
+      "prompt": "SOURCEを用語と条件が明確になるように書き直してください。日本語の説明文だけを返し、英語の製品名は変更しないでください。対象外の条件を保持してください。SOURCE: 管理者はTeam Syncを有効にしてください。この同期機能は新規メンバーを同期します。既存メンバーは対象外です。UI上の名称はTeam Syncのままにしてください。",
+      "checks": [
+        {"id": "term", "kind": "protected-string", "values": ["Team Sync", "UI"]},
+        {"id": "new", "kind": "fact", "values": ["新規メンバー"]},
+        {"id": "existing", "kind": "condition", "values": ["既存メンバー", "対象外"]}
+      ]
+    }
+  ]
+}

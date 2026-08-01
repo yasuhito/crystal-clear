@@ -82,6 +82,42 @@ python3 -m evals.run_routing \
 
 The frozen baseline is published at `results/routing/178eaf8/SUMMARY.md`. Do not edit `routing-scenarios.json` after testing candidate metadata; create a new version instead.
 
+## Run the frozen clarity-behavior baseline
+
+The behavior benchmark freezes 15 scenarios in `behavior-scenarios.json`: five English, five Japanese, and five multilingual-core scenarios. The multilingual-core set covers Spanish, Simplified Chinese, Arabic, German, and mixed Japanese/English. These languages are assessed only for core structure and preservation; the benchmark makes no native-naturalness claim for them.
+
+Run every scenario five times with no skill and with the unmodified skill at revision `178eaf8`, then create 75 blind GPT comparisons:
+
+```sh
+python3 -m evals.run_behavior \
+  --arms no-skill,178eaf8 --repeats 5 \
+  --output evals/results/behavior/178eaf8 \
+  --judge-seed 178 --jobs 4
+```
+
+Both arms use the exact same user prompt and output contract through the headless Pi seam. Skill discovery is disabled. The no-skill arm has no injected instructions; the other arm injects `SKILL.md` from `178eaf8` and materializes that revision's relative references. Completed raw records are retained, so rerunning the command resumes a partial live run. Individual failed calls are retried up to three times.
+
+The 75 comparisons pair the two arms at the same scenario and repeat. The seed reproduces shuffled presentation order and balanced anonymous A/B placement; it does not seed provider generation, which the current Pi/provider seam does not support. Judge prompts contain the source, output contract, preservation scope, and anonymous outputs—not arm identities. Strict JSON judgments score preservation and core structure. English and Japanese also receive first-pass-understanding, referent/scope/terminology, register, and naturalness scores. Multilingual-core fields outside its limited scope must be null.
+
+Evidence is labeled in three separate layers:
+
+- **Deterministic evidence** checks exact protected strings and required fact, number, constraint, and condition anchors. Literal presence cannot establish semantic correctness or clarity.
+- **GPT-judged evidence** is blind, pairwise model judgment and remains model evidence.
+- **Human-reviewed evidence** is not collected in this baseline; native-Japanese calibration is a later release step.
+
+Raw generation and judgment traces and normalized records are written under `results/behavior/178eaf8/raw/`. The category-separated published report is `results/behavior/178eaf8/SUMMARY.md`.
+
+Regenerate the summaries from checked-in evidence without calling Pi:
+
+```sh
+python3 -m evals.run_behavior \
+  --arms no-skill,178eaf8 --repeats 5 \
+  --output evals/results/behavior/178eaf8 \
+  --judge-seed 178 --report-only
+```
+
+Report-only mode validates the complete generation and judgment matrices, scenario data, prompt equality, skill provenance, deterministic scores, blind assignments, parsed judgments, and trace observations before publishing any number.
+
 ## Override the smoke model or output location
 
 ```sh
