@@ -99,7 +99,7 @@ def load_routing_scenarios(path: Path, *, frozen: bool = True) -> dict[str, Any]
         "rationale",
         "prompt",
     }
-    if len({row.get("id") for row in scenarios}) != 40:
+    if len({row.get("id") for row in scenarios}) != len(scenarios):
         raise ValueError("routing scenario ids must be unique")
     for row in scenarios:
         missing = required - row.keys()

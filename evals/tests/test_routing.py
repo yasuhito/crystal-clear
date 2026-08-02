@@ -14,6 +14,7 @@ from evals.run_routing import (
 
 
 CANDIDATES = Path(__file__).resolve().parents[1] / "routing-candidates.json"
+SEMANTIC_PROBES = Path(__file__).resolve().parents[1] / "routing-semantic-probes.json"
 
 
 SCENARIOS = Path(__file__).resolve().parents[1] / "routing-scenarios.json"
@@ -66,6 +67,15 @@ class FrozenScenarioTests(unittest.TestCase):
                 scenario_set=scenario_set,
                 repeats=5,
             )
+
+    def test_supplemental_set_can_preserve_the_frozen_benchmark(self) -> None:
+        scenario_set = load_routing_scenarios(SEMANTIC_PROBES, frozen=False)
+
+        self.assertEqual(len(scenario_set["scenarios"]), 4)
+        self.assertEqual(
+            {row["language"] for row in scenario_set["scenarios"]},
+            {"es", "zh-Hans", "ar", "de"},
+        )
 
     def test_rejects_an_invalid_frozen_set(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
