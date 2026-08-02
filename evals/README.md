@@ -150,6 +150,78 @@ python3 -m evals.run_behavior \
 
 Report-only mode validates the complete generation and judgment matrices, scenario data, prompt equality, skill provenance, deterministic scores, blind assignments, parsed judgments, and trace observations before publishing any number.
 
+## Run the release-candidate evaluation
+
+Release evaluation uses an immutable commit, not `worktree`, and requires a clean tracked worktree before live execution. The core matrix is exactly 425 generations: 200 formal pinned-inventory routing runs plus 225 behavior generations (15 scenarios × no skill/current/candidate × five repeats). The 75 blind behavior comparisons present only revision `178eaf8` and the candidate; the unjudged no-skill arm remains generation evidence and receives no inferred judgment scores.
+
+```sh
+candidate=$(git rev-parse HEAD)
+python3 -m evals.run_release \
+  --candidate-ref "$candidate" \
+  --output "evals/results/release/$candidate"
+```
+
+This also runs the separately labeled `already-clear-v1-post-candidate` supplement. Its four English/Japanese cases run five times each. Exact equality is deterministic; every changed output receives a strict semantic-equivalence judgment. The supplement is not pooled into the 425 generations, and its post-candidate design limitation is disclosed in its report.
+
+The first command ends with `pending-human-review` when all automated gates pass and writes two different Japanese-review artifacts:
+
+- `japanese-review.packet.json` contains 12 deterministic, randomized anonymous pairs, the frozen calibration policy, and a Japanese rubric. It contains no condition identities, GPT scores, or preferences.
+- `japanese-review.packet.sha256` contains the public packet hash needed in the response.
+- `japanese-review.response-template.json` is the form the project owner fills in.
+- `japanese-review.assignment-key.json` contains the condition mapping and automated scores. Keep it hidden from the reviewer until scoring is complete.
+
+The owner returns a JSON response with the packet hash and exactly 12 reviews:
+
+```json
+{
+  "packet_sha256": "copy from japanese-review.packet.sha256",
+  "reviewer_role": "project-owner",
+  "owner_attestation": true,
+  "reviews": [
+    {
+      "review_id": "JP-01",
+      "output_a": {
+        "first_pass_understanding": 5,
+        "naturalness": 5,
+        "preservation": 5,
+        "critical_meaning_change": false
+      },
+      "output_b": {
+        "first_pass_understanding": 4,
+        "naturalness": 4,
+        "preservation": 5,
+        "critical_meaning_change": false
+      },
+      "preference": "A",
+      "notes": "任意の短い根拠"
+    }
+  ]
+}
+```
+
+After all 12 rows are complete, incorporate and freeze the native-Japanese calibration:
+
+```sh
+python3 -m evals.run_release \
+  --candidate-ref "$candidate" \
+  --output "evals/results/release/$candidate" \
+  --human-response owner-japanese-response.json \
+  --report-only
+```
+
+Report-only mode revalidates every routing, behavior, boundary, provenance, packet, and response record, preserves the hashed raw owner response, and checks the owner attestation. For each shared rubric item (first-pass understanding, naturalness, preservation, and pair preference), it compares pairwise automated and human candidate-regression classifications. More than 20% disagreement removes that automated item from acceptance while retaining it as labeled non-gating evidence. Deterministic protected-string gates and human critical-meaning gates can never be removed. Candidate preference regressions must remain at or below 10%, and any candidate critical meaning change fails release.
+
+The generated `RELEASE.md` keeps routing, English, Japanese, multilingual-core, supplemental-boundary, and human evidence separate. Every failed threshold remains visible. The decision is `fail` on any gating failure, `pending-human-review` without a valid owner response, and `pass` only when every remaining gate passes.
+
+The lower-level behavior command remains available. Its historical two-arm defaults are unchanged; a release run uses explicit comparison arms:
+
+```sh
+python3 -m evals.run_behavior \
+  --arms "no-skill,178eaf8,$candidate" \
+  --compare-arms "178eaf8,$candidate" \
+  --repeats 5 --output /tmp/crystal-clear-behavior-release
+```
+
 ## Override the smoke model or output location
 
 ```sh

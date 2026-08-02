@@ -109,6 +109,18 @@ class BlindJudgmentTests(unittest.TestCase):
 
 
 class BehaviorReportTests(unittest.TestCase):
+    def test_three_arm_summary_does_not_attribute_judgment_to_uncompared_arm(self) -> None:
+        score = {"critical_preservation_failure": False, "critical_failure_types": [], "preservation": 5, "first_pass_understanding": 5, "core_structure": 5, "referent_scope_terminology": 5, "register_preserved": True, "naturalness": 5, "evidence": "ok"}
+        generations = [
+            {"scenario_id": "s", "category": "english", "arm": arm, "repeat": 1, "deterministic_score": {"output_present": True, "failures_by_kind": {}}}
+            for arm in ("no-skill", "current", "candidate")
+        ]
+        judgments = [{"category": "english", "a_arm": "current", "b_arm": "candidate", "judgment": {"output_a": score, "output_b": score, "preference": "tie"}}]
+        summary = summarize_behavior(generations, judgments)
+        self.assertEqual(summary["categories"]["english"]["arms"]["no-skill"]["gpt_judged"]["outputs"], 0)
+        self.assertEqual(summary["categories"]["english"]["arms"]["current"]["gpt_judged"]["outputs"], 1)
+        self.assertEqual(summary["categories"]["english"]["arms"]["candidate"]["gpt_judged"]["outputs"], 1)
+
     def test_summary_and_report_separate_evidence_and_categories(self) -> None:
         rows = []
         judgments = []

@@ -144,11 +144,20 @@ def _materialize_baseline_skill(
     skill_ref: str, destination: Path, *, description: str | None = None
 ) -> None:
     destination.mkdir(parents=True, exist_ok=True)
-    for name in ("SKILL.md", "language-guides.md", "elements-of-style.md"):
+    for name in (
+        "SKILL.md",
+        "language-guides.md",
+        "elements-of-style.md",
+        "references/use-cases.md",
+    ):
+        if not run_command(["git", "ls-tree", skill_ref, "--", name], cwd=REPO_ROOT):
+            continue
         content = run_command(["git", "show", f"{skill_ref}:{name}"], cwd=REPO_ROOT)
         if name == "SKILL.md" and description is not None:
             content = _replace_front_matter_description(content, description)
-        (destination / name).write_text(content + "\n")
+        target = destination / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content + "\n")
 
 
 def _safe_skill_name(name: str) -> str:

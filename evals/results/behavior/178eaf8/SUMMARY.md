@@ -1,6 +1,6 @@
-# Clarity-behavior baseline
+# Clarity-behavior evaluation
 
-This injected-behavior baseline compares no skill with Crystal Clear revision `178eaf8`. It is not automatic-routing evidence.
+This injected-behavior evaluation reports generation arms separately and blind-compares `no-skill vs 178eaf8`. It is not automatic-routing evidence.
 Frozen scenarios: `behavior-v1`; 5 repetitions per scenario and arm.
 
 English, Japanese, and multilingual-core evidence is reported separately; there is no pooled headline score.

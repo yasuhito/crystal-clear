@@ -1,0 +1,34 @@
+{
+  "version": "already-clear-v1-post-candidate",
+  "status": "supplemental-post-candidate",
+  "scenarios": [
+    {
+      "id": "clear-en-status",
+      "language": "en",
+      "source_text": "The API is available. Requests in eu-west-2 may still take up to 2 seconds. We will post the next update at 16:00 UTC.",
+      "output_contract": "Return only the final text. If it is already clear, return it unchanged.",
+      "prompt": "Review the text for first-pass clarity. Make only necessary revisions. Return only the final text. If it is already clear, return it unchanged.\n\nThe API is available. Requests in eu-west-2 may still take up to 2 seconds. We will post the next update at 16:00 UTC."
+    },
+    {
+      "id": "clear-en-procedure",
+      "language": "en",
+      "source_text": "Before continuing, save `config.toml`. Then run `crystal check`. Continue only if the command prints `Ready`.",
+      "output_contract": "Return only the final text. If it is already clear, return it unchanged.",
+      "prompt": "Review the text for first-pass clarity. Make only necessary revisions. Return only the final text. If it is already clear, return it unchanged.\n\nBefore continuing, save `config.toml`. Then run `crystal check`. Continue only if the command prints `Ready`."
+    },
+    {
+      "id": "clear-ja-status",
+      "language": "ja",
+      "source_text": "現在、サービスは復旧しています。ただし、東京リージョンでは応答に最大2秒かかる可能性があります。次回は16時に状況をお知らせします。",
+      "output_contract": "本文だけを返してください。すでに明確な場合は変更しないでください。",
+      "prompt": "初読で理解しやすいか確認し、必要な場合だけ修正してください。本文だけを返してください。すでに明確な場合は変更しないでください。\n\n現在、サービスは復旧しています。ただし、東京リージョンでは応答に最大2秒かかる可能性があります。次回は16時に状況をお知らせします。"
+    },
+    {
+      "id": "clear-ja-request",
+      "language": "ja",
+      "source_text": "田中さんは、金曜日の17時までに申請書を提出してください。承認番号がない場合は提出せず、佐藤さんに確認してください。",
+      "output_contract": "本文だけを返してください。すでに明確な場合は変更しないでください。",
+      "prompt": "初読で理解しやすいか確認し、必要な場合だけ修正してください。本文だけを返してください。すでに明確な場合は変更しないでください。\n\n田中さんは、金曜日の17時までに申請書を提出してください。承認番号がない場合は提出せず、佐藤さんに確認してください。"
+    }
+  ]
+}

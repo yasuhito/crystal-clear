@@ -32,6 +32,12 @@ from evals.run_smoke import execute_pi, git_revision, pi_version, run_command, s
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EVALS_ROOT = Path(__file__).resolve().parent
+SKILL_ARTIFACTS = (
+    "SKILL.md",
+    "language-guides.md",
+    "elements-of-style.md",
+    "references/use-cases.md",
+)
 DEFAULT_SCENARIOS = EVALS_ROOT / "behavior-scenarios.json"
 DEFAULT_OUTPUT = EVALS_ROOT / "results" / "behavior" / "178eaf8"
 CATEGORIES = ("english", "japanese", "multilingual-core")
@@ -198,6 +204,8 @@ def summarize_behavior(generations: Iterable[dict[str, Any]], judgments: Iterabl
             judged_outputs = []
             preference = Counter()
             for row in category_judgments:
+                if arm not in {row["a_arm"], row["b_arm"]}:
+                    continue
                 side = "output_a" if row["a_arm"] == arm else "output_b"
                 judged_outputs.append(row["judgment"][side])
                 preferred_arm = None
@@ -211,6 +219,10 @@ def summarize_behavior(generations: Iterable[dict[str, Any]], judgments: Iterabl
                 "gpt_judged": {
                     "outputs": len(judged_outputs),
                     "mean_preservation": _mean([row["preservation"] for row in judged_outputs]),
+                    "mean_noncritical_preservation": _mean([
+                        row["preservation"] for row in judged_outputs
+                        if not row["critical_preservation_failure"]
+                    ]),
                     "mean_first_pass_understanding": _mean([row["first_pass_understanding"] for row in judged_outputs]),
                     "mean_core_structure": _mean([row["core_structure"] for row in judged_outputs]),
                     "critical_failures": sum(row["critical_preservation_failure"] for row in judged_outputs),
@@ -228,8 +240,8 @@ def _fmt(value: float | None) -> str:
 
 def render_behavior_markdown(summary: dict[str, Any], generations: list[dict[str, Any]], judgments: list[dict[str, Any]], *, scenario_version: str, skill_ref: str, repeats: int) -> str:
     lines = [
-        "# Clarity-behavior baseline", "",
-        f"This injected-behavior baseline compares no skill with Crystal Clear revision `{skill_ref}`. It is not automatic-routing evidence.",
+        "# Clarity-behavior evaluation", "",
+        f"This injected-behavior evaluation reports generation arms separately and blind-compares `{skill_ref}`. It is not automatic-routing evidence.",
         f"Frozen scenarios: `{scenario_version}`; {repeats} repetitions per scenario and arm.", "",
         "English, Japanese, and multilingual-core evidence is reported separately; there is no pooled headline score.", "",
     ]
@@ -260,12 +272,18 @@ def render_behavior_markdown(summary: dict[str, Any], generations: list[dict[str
 def _materialize_skill(ref: str, directory: Path) -> tuple[Path, dict[str, str]]:
     directory.mkdir(parents=True)
     hashes = {}
-    for name in ("SKILL.md", "language-guides.md", "elements-of-style.md"):
+    for name in SKILL_ARTIFACTS:
         if ref == "worktree":
-            content = (REPO_ROOT / name).read_text()
+            source = REPO_ROOT / name
+            if not source.is_file():
+                continue
+            content = source.read_text()
         else:
+            if not run_command(["git", "ls-tree", ref, "--", name], cwd=REPO_ROOT):
+                continue
             content = run_command(["git", "show", f"{ref}:{name}"], cwd=REPO_ROOT) + "\n"
         path = directory / name
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
         hashes[name] = sha256(path)
     return directory / "SKILL.md", hashes
@@ -388,7 +406,7 @@ def _validate_trace(output: Path, row: dict[str, Any], output_field: str) -> Non
         raise ValueError(f"{row.get('pair_id', row.get('scenario_id'))} disagrees with its trace")
 
 
-def validate_evidence(*, output: Path, scenario_set: dict[str, Any], generations: list[dict[str, Any]], judgments: list[dict[str, Any]], arms: list[str], repeats: int, judge_seed: int) -> None:
+def validate_evidence(*, output: Path, scenario_set: dict[str, Any], generations: list[dict[str, Any]], judgments: list[dict[str, Any]], arms: list[str], compare_arms: list[str], repeats: int, judge_seed: int) -> None:
     scenarios = scenario_set["scenarios"]
     expected_generation = {(row["id"], arm, repeat) for row in scenarios for arm in arms for repeat in range(1, repeats + 1)}
     actual_generation = [(row["scenario_id"], row["arm"], row["repeat"]) for row in generations]
@@ -400,10 +418,18 @@ def validate_evidence(*, output: Path, scenario_set: dict[str, Any], generations
     for field in invariant_fields:
         if len({json.dumps(row[field], sort_keys=True) for row in generations}) != 1:
             raise ValueError(f"generation results mix {field}")
-    skill_arm = [arm for arm in arms if arm != "no-skill"][0]
-    expected_skill_revision = run_command(["git", "rev-parse", skill_arm], cwd=REPO_ROOT) if skill_arm != "worktree" else generations[0]["harness_git_revision"]
+    skill_arms = [arm for arm in arms if arm != "no-skill"]
+    expected_skill_revisions = {
+        arm: run_command(["git", "rev-parse", arm], cwd=REPO_ROOT)
+        if arm != "worktree" else generations[0]["harness_git_revision"]
+        for arm in skill_arms
+    }
+    expected_hashes_by_arm: dict[str, dict[str, str]] = {}
     with tempfile.TemporaryDirectory(prefix="crystal-clear-validation-") as tmp_value:
-        _, expected_hashes = _materialize_skill(skill_arm, Path(tmp_value) / "skill")
+        for arm in skill_arms:
+            _, expected_hashes_by_arm[arm] = _materialize_skill(
+                arm, Path(tmp_value) / arm.replace("/", "-")
+            )
     for row in generations:
         if row["scenario_version"] != scenario_set["version"]:
             raise ValueError(f"{row['scenario_id']} has stale scenario_version")
@@ -415,15 +441,23 @@ def validate_evidence(*, output: Path, scenario_set: dict[str, Any], generations
         if row["arm"] == "no-skill":
             if row["skill_ref"] is not None or row["skill_revision"] is not None or row["skill_artifact_hashes"] is not None or row["skill_hash"] != skill_hash_record(None, source="none"):
                 raise ValueError(f"{row['scenario_id']} has invalid no-skill provenance")
-        elif row["skill_ref"] != skill_arm or row["skill_revision"] != expected_skill_revision or row["skill_artifact_hashes"] != expected_hashes or row["skill_hash"] != skill_hash_record(expected_hashes["SKILL.md"], source="system-injection"):
-            raise ValueError(f"{row['scenario_id']} has invalid skill provenance")
+        else:
+            expected_hashes = expected_hashes_by_arm[row["arm"]]
+            if row["skill_ref"] != row["arm"] or row["skill_revision"] != expected_skill_revisions[row["arm"]] or row["skill_artifact_hashes"] != expected_hashes or row["skill_hash"] != skill_hash_record(expected_hashes["SKILL.md"], source="system-injection"):
+                raise ValueError(f"{row['scenario_id']} has invalid skill provenance")
         _validate_trace(output, row, "final_output")
     for scenario in scenarios:
         for repeat in range(1, repeats + 1):
             prompts = {by_key[(scenario["id"], arm, repeat)]["prompt"] for arm in arms}
             contracts = {by_key[(scenario["id"], arm, repeat)]["output_contract"] for arm in arms}
             if len(prompts) != 1 or len(contracts) != 1: raise ValueError("behavior arms do not use identical prompts and contracts")
-    expected_assignments = assign_blind_pairs([(row["id"], repeat) for row in scenarios for repeat in range(1, repeats + 1)], seed=judge_seed, skill_arm=[arm for arm in arms if arm != "no-skill"][0])
+    expected_assignments = assign_blind_pairs([(row["id"], repeat) for row in scenarios for repeat in range(1, repeats + 1)], seed=judge_seed, skill_arm=compare_arms[1])
+    for assignment in expected_assignments:
+        other = compare_arms[0]
+        if assignment["a_arm"] == "no-skill":
+            assignment["a_arm"] = other
+        if assignment["b_arm"] == "no-skill":
+            assignment["b_arm"] = other
     expected_judgments = {(row["scenario_id"], row["repeat"]): row for row in expected_assignments}
     actual_judgments = [(row["scenario_id"], row["repeat"]) for row in judgments]
     if len(actual_judgments) != len(set(actual_judgments)) or set(actual_judgments) != set(expected_judgments):
@@ -447,23 +481,30 @@ def validate_evidence(*, output: Path, scenario_set: dict[str, Any], generations
         if parse_judgment(row["raw_judge_output"], row["category"]) != row["judgment"]:
             raise ValueError(f"{row['pair_id']} has stale parsed judgment")
         trace_text = (output / row["trace_file"]).read_text()
-        if any(identity in trace_text for identity in ("no-skill", skill_arm, "Crystal Clear")):
+        if any(identity in trace_text for identity in (*arms, "Crystal Clear")):
             raise ValueError(f"{row['pair_id']} judge trace exposes an arm identity")
         _validate_trace(output, row, "raw_judge_output")
 
 
-def write_reports(output: Path, scenario_set: dict[str, Any], generations: list[dict[str, Any]], judgments: list[dict[str, Any]], *, arms: list[str], repeats: int, judge_seed: int) -> None:
-    validate_evidence(output=output, scenario_set=scenario_set, generations=generations, judgments=judgments, arms=arms, repeats=repeats, judge_seed=judge_seed)
+def write_reports(output: Path, scenario_set: dict[str, Any], generations: list[dict[str, Any]], judgments: list[dict[str, Any]], *, arms: list[str], compare_arms: list[str] | None = None, repeats: int, judge_seed: int) -> None:
+    compare_arms = compare_arms or arms
+    validate_evidence(output=output, scenario_set=scenario_set, generations=generations, judgments=judgments, arms=arms, compare_arms=compare_arms, repeats=repeats, judge_seed=judge_seed)
     summary = summarize_behavior(generations, judgments)
-    summary["scenario_version"] = scenario_set["version"]; summary["arms"] = arms; summary["repeats"] = repeats; summary["judge_seed"] = judge_seed
+    summary["scenario_version"] = scenario_set["version"]; summary["arms"] = arms; summary["compare_arms"] = compare_arms; summary["repeats"] = repeats; summary["judge_seed"] = judge_seed
     (output / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
-    (output / "SUMMARY.md").write_text(render_behavior_markdown(summary, generations, judgments, scenario_version=scenario_set["version"], skill_ref=[arm for arm in arms if arm != "no-skill"][0], repeats=repeats))
+    (output / "SUMMARY.md").write_text(render_behavior_markdown(summary, generations, judgments, scenario_version=scenario_set["version"], skill_ref=" vs ".join(compare_arms), repeats=repeats))
 
 
 def run_behavior(args: argparse.Namespace) -> None:
     scenario_set = load_behavior_scenarios(args.scenarios)
     arms = args.arms.split(",")
-    if len(arms) != 2 or "no-skill" not in arms: raise ValueError("behavior baseline requires no-skill and exactly one skill arm")
+    compare_arms = args.compare_arms.split(",") if args.compare_arms else arms
+    if len(arms) not in {2, 3} or len(set(arms)) != len(arms):
+        raise ValueError("behavior evaluation requires two or three distinct arms")
+    if len(compare_arms) != 2 or len(set(compare_arms)) != 2 or not set(compare_arms) <= set(arms):
+        raise ValueError("--compare-arms must name exactly two distinct generation arms")
+    if len(arms) == 3 and not args.compare_arms:
+        raise ValueError("three-arm evaluation requires explicit --compare-arms")
     if args.repeats != 5: raise ValueError("the frozen behavior baseline requires exactly five repeats")
     args.output.mkdir(parents=True, exist_ok=True)
     release = pi_version(); revision = git_revision(); futures = []
@@ -478,8 +519,10 @@ def run_behavior(args: argparse.Namespace) -> None:
                     futures.append(executor.submit(_retry, lambda scenario=scenario, arm=arm, repeat=repeat: _generation_run(scenario=scenario, arm=arm, repeat=repeat, model=args.model, scenario_version=scenario_set["version"], output=args.output, pi_release=release, harness_revision=revision)))
         generations.extend(future.result() for future in as_completed(futures))
     by_key = {(row["scenario_id"], row["arm"], row["repeat"]): row for row in generations}
-    skill_arm = [arm for arm in arms if arm != "no-skill"][0]
-    assignments = assign_blind_pairs([(row["id"], repeat) for row in scenario_set["scenarios"] for repeat in range(1, args.repeats + 1)], seed=args.judge_seed, skill_arm=skill_arm)
+    assignments = assign_blind_pairs([(row["id"], repeat) for row in scenario_set["scenarios"] for repeat in range(1, args.repeats + 1)], seed=args.judge_seed, skill_arm=compare_arms[1])
+    for assignment in assignments:
+        if assignment["a_arm"] == "no-skill": assignment["a_arm"] = compare_arms[0]
+        if assignment["b_arm"] == "no-skill": assignment["b_arm"] = compare_arms[0]
     scenario_by_id = {row["id"]: row for row in scenario_set["scenarios"]}; futures = []
     judgments = load_results(args.output, "judgments")
     existing_judgment_keys = {(row["scenario_id"], row["repeat"]) for row in judgments}
@@ -489,7 +532,7 @@ def run_behavior(args: argparse.Namespace) -> None:
                 continue
             futures.append(executor.submit(_retry, lambda assignment=assignment: _judgment_run(assignment=assignment, scenario=scenario_by_id[assignment["scenario_id"]], by_key=by_key, model=args.judge_model or args.model, output=args.output, pi_release=release, harness_revision=revision, judge_seed=args.judge_seed)))
         judgments.extend(future.result() for future in as_completed(futures))
-    write_reports(args.output, scenario_set, generations, judgments, arms=arms, repeats=args.repeats, judge_seed=args.judge_seed)
+    write_reports(args.output, scenario_set, generations, judgments, arms=arms, compare_arms=compare_arms, repeats=args.repeats, judge_seed=args.judge_seed)
 
 
 def parse_args() -> argparse.Namespace:
@@ -497,6 +540,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--scenarios", type=Path, default=DEFAULT_SCENARIOS)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--arms", default="no-skill,178eaf8")
+    parser.add_argument("--compare-arms", help="two comma-separated arms to present to the blind judge")
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--judge-seed", type=int, default=178)
     parser.add_argument("--model", default="openai-codex/gpt-5.6-sol")
@@ -510,7 +554,8 @@ def main() -> None:
     args = parse_args(); arms = args.arms.split(",")
     if args.report_only:
         scenario_set = load_behavior_scenarios(args.scenarios)
-        write_reports(args.output, scenario_set, load_results(args.output, "generations"), load_results(args.output, "judgments"), arms=arms, repeats=args.repeats, judge_seed=args.judge_seed)
+        compare_arms = args.compare_arms.split(",") if args.compare_arms else arms
+        write_reports(args.output, scenario_set, load_results(args.output, "generations"), load_results(args.output, "judgments"), arms=arms, compare_arms=compare_arms, repeats=args.repeats, judge_seed=args.judge_seed)
     else:
         run_behavior(args)
     print(args.output / "SUMMARY.md")

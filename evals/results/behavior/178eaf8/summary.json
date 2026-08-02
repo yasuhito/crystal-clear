@@ -17,6 +17,7 @@
           "gpt_judged": {
             "outputs": 25,
             "mean_preservation": 4.56,
+            "mean_noncritical_preservation": 4.85,
             "mean_first_pass_understanding": 5,
             "mean_core_structure": 4.76,
             "critical_failures": 5,
@@ -44,6 +45,7 @@
           "gpt_judged": {
             "outputs": 25,
             "mean_preservation": 4.68,
+            "mean_noncritical_preservation": 4.952,
             "mean_first_pass_understanding": 5,
             "mean_core_structure": 4.92,
             "critical_failures": 4,
@@ -77,6 +79,7 @@
           "gpt_judged": {
             "outputs": 25,
             "mean_preservation": 4.24,
+            "mean_noncritical_preservation": 4.524,
             "mean_first_pass_understanding": 5,
             "mean_core_structure": 4.8,
             "critical_failures": 4,
@@ -104,6 +107,7 @@
           "gpt_judged": {
             "outputs": 25,
             "mean_preservation": 4.6,
+            "mean_noncritical_preservation": 4.783,
             "mean_first_pass_understanding": 5,
             "mean_core_structure": 4.92,
             "critical_failures": 2,
@@ -137,6 +141,7 @@
           "gpt_judged": {
             "outputs": 25,
             "mean_preservation": 4.52,
+            "mean_noncritical_preservation": 4.81,
             "mean_first_pass_understanding": null,
             "mean_core_structure": 4.8,
             "critical_failures": 4,
@@ -164,6 +169,7 @@
           "gpt_judged": {
             "outputs": 25,
             "mean_preservation": 4.44,
+            "mean_noncritical_preservation": 4.81,
             "mean_first_pass_understanding": null,
             "mean_core_structure": 4.64,
             "critical_failures": 4,
@@ -184,6 +190,10 @@
   },
   "scenario_version": "behavior-v1",
   "arms": [
+    "no-skill",
+    "178eaf8"
+  ],
+  "compare_arms": [
     "no-skill",
     "178eaf8"
   ],
