@@ -1,0 +1,17 @@
+{
+  "version": "routing-metadata-candidates-v1",
+  "base_skill_ref": "ac8f935",
+  "tuning_policy": "Candidates were fixed before held-out evaluation; metadata wording may be assessed only with training-split evidence before the repeated held-out run.",
+  "candidates": [
+    {
+      "id": "concrete",
+      "variant": "agreed-concrete-description",
+      "description": "Write, rewrite, edit, proofread, or structure text and instructions for first-pass understanding. Use when communication quality is the primary task: explicit requests to clarify, simplify, make concise, readable, natural, or unambiguous, improve wording, tone, or structure, polish, rewrite, or copyedit; and complex explanations, documentation, READMEs, procedures, reports, proposals, emails, UI or error messages, summaries, prompts, agent instructions, and localized or multilingual text. Applies core clarity rules to any language, with validated language guidance for English and Japanese. Preserve facts, constraints, uncertainty, terminology, protected text, and requested voice."
+    },
+    {
+      "id": "short",
+      "variant": "shorter-description",
+      "description": "Write or improve text and instructions for first-pass understanding. Use for explicit requests to clarify, simplify, polish, rewrite, edit, or proofread, and when communication quality is primary in complex explanations, documentation, READMEs, procedures, reports, proposals, emails, UI and error messages, summaries, prompts, agent instructions, or localized and multilingual text. Apply core clarity rules in any language and validated English and Japanese guidance. Preserve facts, constraints, uncertainty, terminology, protected text, and requested voice."
+    }
+  ]
+}

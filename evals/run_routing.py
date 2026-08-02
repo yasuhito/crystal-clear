@@ -38,6 +38,7 @@ from evals.run_smoke import (
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EVALS_ROOT = Path(__file__).resolve().parent
 DEFAULT_SCENARIOS = EVALS_ROOT / "routing-scenarios.json"
+DEFAULT_CANDIDATES = EVALS_ROOT / "routing-candidates.json"
 DEFAULT_MANIFEST = EVALS_ROOT / "fixtures" / "skills-manifest.json"
 DEFAULT_OUTPUT = EVALS_ROOT / "results" / "routing" / "178eaf8"
 REQUIRED_CATEGORIES = {
@@ -57,11 +58,38 @@ class RoutingEnvironment:
     role: str
 
 
-def load_routing_scenarios(path: Path) -> dict[str, Any]:
+def load_routing_candidates(path: Path) -> dict[str, Any]:
+    data = json.loads(path.read_text())
+    candidates = data.get("candidates", [])
+    if len(candidates) < 2:
+        raise ValueError("routing candidate set must contain at least two candidates")
+    ids = [candidate.get("id") for candidate in candidates]
+    if len(set(ids)) != len(ids) or any(not value for value in ids):
+        raise ValueError("routing candidate ids must be present and unique")
+    for candidate in candidates:
+        description = candidate.get("description")
+        if not isinstance(description, str) or not description.strip():
+            raise ValueError(f"candidate {candidate['id']} must have a description")
+        if not description.isascii():
+            raise ValueError(
+                f"candidate {candidate['id']} must use ASCII English metadata"
+            )
+        if "\n" in description:
+            raise ValueError(f"candidate {candidate['id']} must be a single logical line")
+        if len(description) > 1024:
+            raise ValueError(
+                f"candidate {candidate['id']} exceeds the 1,024-character limit"
+            )
+    return data
+
+
+def load_routing_scenarios(path: Path, *, frozen: bool = True) -> dict[str, Any]:
     data = json.loads(path.read_text())
     scenarios = data.get("scenarios", [])
-    if len(scenarios) != 40:
+    if frozen and len(scenarios) != 40:
         raise ValueError("routing scenario set must contain exactly 40 scenarios")
+    if not scenarios:
+        raise ValueError("routing scenario set must not be empty")
     required = {
         "id",
         "language",
@@ -86,9 +114,11 @@ def load_routing_scenarios(path: Path) -> dict[str, Any]:
         if row["split"] == "held-out" and not row.get("paraphrase_of"):
             raise ValueError(f"held-out scenario {row['id']} must name its source paraphrase")
     category_counts = Counter(row["category"] for row in scenarios)
-    if category_counts != Counter({category: 10 for category in REQUIRED_CATEGORIES}):
+    if frozen and category_counts != Counter(
+        {category: 10 for category in REQUIRED_CATEGORIES}
+    ):
         raise ValueError("routing scenario set must contain 10 scenarios per category")
-    if sum(row["split"] == "held-out" for row in scenarios) != 12:
+    if frozen and sum(row["split"] == "held-out" for row in scenarios) != 12:
         raise ValueError("routing scenario set must reserve exactly 30% held out")
     return data
 
@@ -100,10 +130,24 @@ def _copy_auth(agent_dir: Path) -> None:
         (agent_dir / "auth.json").symlink_to(auth)
 
 
-def _materialize_baseline_skill(skill_ref: str, destination: Path) -> None:
+def _replace_front_matter_description(skill_text: str, description: str) -> str:
+    replacement = "description: " + json.dumps(description, ensure_ascii=True)
+    updated, count = re.subn(
+        r"^description:.*$", replacement, skill_text, count=1, flags=re.MULTILINE
+    )
+    if count != 1:
+        raise ValueError("SKILL.md must contain one single-line front-matter description")
+    return updated
+
+
+def _materialize_baseline_skill(
+    skill_ref: str, destination: Path, *, description: str | None = None
+) -> None:
     destination.mkdir(parents=True, exist_ok=True)
     for name in ("SKILL.md", "language-guides.md", "elements-of-style.md"):
         content = run_command(["git", "show", f"{skill_ref}:{name}"], cwd=REPO_ROOT)
+        if name == "SKILL.md" and description is not None:
+            content = _replace_front_matter_description(content, description)
         (destination / name).write_text(content + "\n")
 
 
@@ -115,7 +159,11 @@ def _safe_skill_name(name: str) -> str:
 
 
 def build_pinned_agent(
-    destination: Path, *, skill_ref: str, manifest_path: Path
+    destination: Path,
+    *,
+    skill_ref: str,
+    manifest_path: Path,
+    description: str | None = None,
 ) -> tuple[list[dict[str, Any]], str]:
     _copy_auth(destination)
     skills_root = destination / "skills"
@@ -124,7 +172,7 @@ def build_pinned_agent(
     for entry in manifest["skills"]:
         target = skills_root / _safe_skill_name(entry["name"])
         if entry["source"] == "git-ref":
-            _materialize_baseline_skill(skill_ref, target)
+            _materialize_baseline_skill(skill_ref, target, description=description)
         else:
             source = manifest_path.parent / entry["path"]
             shutil.copytree(source.parent, target)
@@ -139,7 +187,7 @@ def build_pinned_agent(
 
 
 def build_installed_agent(
-    destination: Path, *, skill_ref: str
+    destination: Path, *, skill_ref: str, description: str | None = None
 ) -> tuple[list[dict[str, Any]], str]:
     """Snapshot the owner's enabled inventory, replacing Crystal Clear with skill_ref."""
     _copy_auth(destination)
@@ -156,7 +204,7 @@ def build_installed_agent(
         seen.add(name)
         target = skills_root / _safe_skill_name(name)
         if name == "crystal-clear":
-            _materialize_baseline_skill(skill_ref, target)
+            _materialize_baseline_skill(skill_ref, target, description=description)
         else:
             shutil.copytree(Path(item["path"]).resolve().parent, target)
     executed_inventory = normal_skill_inventory(
@@ -252,6 +300,19 @@ def summarize_routing_results(results: Iterable[dict[str, Any]]) -> dict[str, An
         "splits": {
             split: _metric_group([row for row in rows if row["split"] == split])
             for split in ("train", "held-out")
+        },
+        "category_splits": {
+            category: {
+                split: _metric_group(
+                    [
+                        row
+                        for row in rows
+                        if row["category"] == category and row["split"] == split
+                    ]
+                )
+                for split in ("train", "held-out")
+            }
+            for category in sorted(REQUIRED_CATEGORIES)
         },
         "languages": {
             language: _metric_group([row for row in rows if row["language"] == language])
@@ -493,8 +554,13 @@ def validate_result_set(
     results: list[dict[str, Any]],
     scenario_set: dict[str, Any],
     repeats: int,
+    split: str = "all",
 ) -> None:
-    scenarios = scenario_set["scenarios"]
+    scenarios = [
+        scenario
+        for scenario in scenario_set["scenarios"]
+        if split == "all" or scenario["split"] == split
+    ]
     expected_keys = {
         (scenario["id"], repeat)
         for scenario in scenarios
@@ -586,6 +652,7 @@ def write_environment_report(
     results: list[dict[str, Any]],
     scenario_set: dict[str, Any],
     repeats: int,
+    split: str = "all",
 ) -> None:
     if not results:
         raise ValueError(f"no {environment} results to report")
@@ -595,6 +662,7 @@ def write_environment_report(
         results=results,
         scenario_set=scenario_set,
         repeats=repeats,
+        split=split,
     )
     summary = summarize_routing_results(results)
     environment_output = output / environment
@@ -633,9 +701,29 @@ def write_index(output: Path, environments: list[str]) -> None:
 
 
 def run_routing(args: argparse.Namespace) -> None:
-    scenario_set = load_routing_scenarios(args.scenarios)
+    scenario_set = load_routing_scenarios(
+        args.scenarios, frozen=not args.supplemental
+    )
     if args.repeats != 5:
         raise ValueError("the frozen baseline must run exactly five repeats")
+    candidate = None
+    if args.candidate is not None:
+        candidate_set = load_routing_candidates(args.candidates)
+        candidate = next(
+            (row for row in candidate_set["candidates"] if row["id"] == args.candidate),
+            None,
+        )
+        if candidate is None:
+            raise ValueError(f"unknown routing candidate {args.candidate!r}")
+        expected_base = candidate_set.get("base_skill_ref")
+        if expected_base and args.skill_ref != expected_base:
+            raise ValueError(
+                f"candidate set requires --skill-ref {expected_base}, got {args.skill_ref}"
+            )
+    description = candidate["description"] if candidate else None
+    recorded_skill_ref = (
+        f"{args.skill_ref}+metadata:{candidate['id']}" if candidate else args.skill_ref
+    )
     skill_revision = run_command(["git", "rev-parse", args.skill_ref], cwd=REPO_ROOT)
     release = pi_version()
     harness_revision = git_revision()
@@ -649,14 +737,19 @@ def run_routing(args: argparse.Namespace) -> None:
         if "pinned" in environments:
             agent_dir = root / "pinned-agent"
             inventory, snapshot = build_pinned_agent(
-                agent_dir, skill_ref=args.skill_ref, manifest_path=args.manifest
+                agent_dir,
+                skill_ref=args.skill_ref,
+                manifest_path=args.manifest,
+                description=description,
             )
             configurations["pinned"] = RoutingEnvironment(
                 agent_dir, inventory, snapshot, "formal"
             )
         if "installed" in environments:
             agent_dir = root / "installed-agent"
-            inventory, snapshot = build_installed_agent(agent_dir, skill_ref=args.skill_ref)
+            inventory, snapshot = build_installed_agent(
+                agent_dir, skill_ref=args.skill_ref, description=description
+            )
             configurations["installed"] = RoutingEnvironment(
                 agent_dir, inventory, snapshot, "ecological-reference"
             )
@@ -665,6 +758,8 @@ def run_routing(args: argparse.Namespace) -> None:
             for environment in environments:
                 configuration = configurations[environment]
                 for scenario in scenario_set["scenarios"]:
+                    if args.split != "all" and scenario["split"] != args.split:
+                        continue
                     for repeat in range(1, args.repeats + 1):
                         futures.append(
                             executor.submit(
@@ -677,7 +772,7 @@ def run_routing(args: argparse.Namespace) -> None:
                                 inventory=configuration.inventory,
                                 agent_dir=configuration.agent_dir,
                                 model=args.model,
-                                skill_ref=args.skill_ref,
+                                skill_ref=recorded_skill_ref,
                                 skill_revision=skill_revision,
                                 scenario_version=scenario_set["version"],
                                 output=args.output,
@@ -694,6 +789,7 @@ def run_routing(args: argparse.Namespace) -> None:
             load_environment_results(args.output, environment),
             scenario_set,
             args.repeats,
+            args.split,
         )
     write_index(args.output, environments)
 
@@ -701,8 +797,16 @@ def run_routing(args: argparse.Namespace) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--skill-ref", default="178eaf8")
+    parser.add_argument("--candidate", help="candidate id from --candidates")
+    parser.add_argument("--candidates", type=Path, default=DEFAULT_CANDIDATES)
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--scenarios", type=Path, default=DEFAULT_SCENARIOS)
+    parser.add_argument("--split", choices=("all", "train", "held-out"), default="all")
+    parser.add_argument(
+        "--supplemental",
+        action="store_true",
+        help="allow a non-40-scenario set outside frozen acceptance metrics",
+    )
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--model", default="openai-codex/gpt-5.6-sol")
@@ -716,7 +820,9 @@ def main() -> None:
     args = parse_args()
     environments = ["pinned", "installed"] if args.environment == "both" else [args.environment]
     if args.report_only:
-        scenario_set = load_routing_scenarios(args.scenarios)
+        scenario_set = load_routing_scenarios(
+            args.scenarios, frozen=not args.supplemental
+        )
         for environment in environments:
             write_environment_report(
                 args.output,
@@ -724,6 +830,7 @@ def main() -> None:
                 load_environment_results(args.output, environment),
                 scenario_set,
                 args.repeats,
+                args.split,
             )
         write_index(args.output, environments)
     else:

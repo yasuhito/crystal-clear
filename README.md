@@ -25,7 +25,13 @@ Or install globally:
 npx skills@latest add yasuhito/crystal-clear --global
 ```
 
-The skill is model-invoked when answering complex questions, explaining a subject, drafting user-facing prose, or revising text for clarity. You can also invoke `crystal-clear` directly.
+The skill is model-invoked for explicit editing requests and complex communication-primary tasks such as documentation, reports, emails, prompts, and agent instructions. In Pi, direct invocation remains the guaranteed fallback:
+
+```text
+/skill:crystal-clear
+```
+
+The automatic-activation metadata comparison and raw Pi evidence are published in [`evals/results/routing/metadata-v1/`](evals/results/routing/metadata-v1/).
 
 ## Contents
 

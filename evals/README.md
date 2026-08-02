@@ -84,6 +84,28 @@ python3 -m evals.run_routing \
 
 The frozen baseline is published at `results/routing/178eaf8/SUMMARY.md`. Do not edit `routing-scenarios.json` after testing candidate metadata; create a new version instead.
 
+## Compare automatic-activation metadata candidates
+
+`routing-candidates.json` freezes the agreed concrete English-only description and a shorter English-only variant. Both keep the skill body at `ac8f935`, use the unchanged frozen scenarios, and run five repeats in the formal pinned inventory. Candidate wording and the selection rule were fixed before held-out evidence was inspected.
+
+```sh
+# Run training before held-out; do not revise routing-candidates.json between them.
+for candidate in concrete short; do
+  python3 -m evals.run_routing \
+    --skill-ref ac8f935 --candidate "$candidate" --split train \
+    --environment pinned --repeats 5 \
+    --output "evals/results/routing/metadata-v1/$candidate/train"
+  python3 -m evals.run_routing \
+    --skill-ref ac8f935 --candidate "$candidate" --split held-out \
+    --environment pinned --repeats 5 \
+    --output "evals/results/routing/metadata-v1/$candidate/held-out"
+done
+python3 -m evals.compare_routing_candidates \
+  --semantic-scenarios evals/routing-semantic-probes.json
+```
+
+The generated comparison at `results/routing/metadata-v1/SUMMARY.md` reports training and held-out evidence separately, validates each result matrix and trace before comparison, checks the precommitted held-out thresholds, reports boundary cases independently, and shows deltas from `178eaf8`. Japanese and mixed-language prompts test the frozen set. Separate Spanish, Simplified Chinese, Arabic, and German probes test semantic routing without placing literal non-English triggers in metadata; these probes do not affect selection. If every candidate fails, the comparison selects none and publishes each trade-off.
+
 ## Run the frozen clarity-behavior baseline
 
 The behavior benchmark freezes 15 scenarios in `behavior-scenarios.json`: five English, five Japanese, and five multilingual-core scenarios. The multilingual-core set covers Spanish, Simplified Chinese, Arabic, German, and mixed Japanese/English. These languages are assessed only for core structure and preservation; the benchmark makes no native-naturalness claim for them.

@@ -5,11 +5,15 @@ from pathlib import Path
 
 from evals.run_routing import (
     classify_selection_outcome,
+    load_routing_candidates,
     load_routing_scenarios,
     render_routing_markdown,
     summarize_routing_results,
     validate_result_set,
 )
+
+
+CANDIDATES = Path(__file__).resolve().parents[1] / "routing-candidates.json"
 
 
 SCENARIOS = Path(__file__).resolve().parents[1] / "routing-scenarios.json"
@@ -69,6 +73,34 @@ class FrozenScenarioTests(unittest.TestCase):
             path.write_text(json.dumps({"version": "v1", "scenarios": []}))
             with self.assertRaisesRegex(ValueError, "exactly 40"):
                 load_routing_scenarios(path)
+
+
+class RoutingCandidateTests(unittest.TestCase):
+    def test_candidates_are_english_only_and_within_metadata_limit(self) -> None:
+        candidate_set = load_routing_candidates(CANDIDATES)
+
+        self.assertEqual(
+            [candidate["id"] for candidate in candidate_set["candidates"]],
+            ["concrete", "short"],
+        )
+        for candidate in candidate_set["candidates"]:
+            description = candidate["description"]
+            self.assertLessEqual(len(description), 1024)
+            self.assertTrue(description.isascii())
+            self.assertNotIn("\n", description)
+
+    def test_rejects_non_english_candidate_metadata(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "invalid.json"
+            path.write_text(json.dumps({
+                "version": "v1",
+                "candidates": [
+                    {"id": "good", "description": "Clarify text."},
+                    {"id": "bad", "description": "文章をclarifyする"},
+                ],
+            }))
+            with self.assertRaisesRegex(ValueError, "ASCII English metadata"):
+                load_routing_candidates(path)
 
 
 class RoutingReportTests(unittest.TestCase):
@@ -134,6 +166,14 @@ class RoutingReportTests(unittest.TestCase):
         self.assertEqual(summary["categories"]["explicit-request"]["recall"], 1.0)
         self.assertEqual(summary["categories"]["unrelated-control"]["false_positive_rate"], 1.0)
         self.assertEqual(summary["splits"]["held-out"]["runs"], 2)
+        self.assertEqual(
+            summary["category_splits"]["complex-communication"]["held-out"]["recall"],
+            0.0,
+        )
+        self.assertEqual(
+            summary["category_splits"]["unrelated-control"]["train"]["false_positive_rate"],
+            1.0,
+        )
         self.assertEqual(summary["selection_outcomes"]["not-selected"], 2)
 
     def test_report_labels_formal_inventory_and_links_raw_evidence(self) -> None:

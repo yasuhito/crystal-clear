@@ -1,6 +1,6 @@
 ---
 name: crystal-clear
-description: Communicate with crystal clarity in any language, with validated guidance for English and Japanese. Use when answering complex questions, explaining a subject, drafting user-facing prose, or revising text for clarity.
+description: "Write or improve text and instructions for first-pass understanding. Use for explicit requests to clarify, simplify, polish, rewrite, edit, or proofread, and when communication quality is primary in complex explanations, documentation, READMEs, procedures, reports, proposals, emails, UI and error messages, summaries, prompts, agent instructions, or localized and multilingual text. Apply core clarity rules in any language and validated English and Japanese guidance. Preserve facts, constraints, uncertainty, terminology, protected text, and requested voice."
 ---
 
 # Crystal Clear

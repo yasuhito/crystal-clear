@@ -1,0 +1,46 @@
+{
+  "version": "routing-semantic-probes-v1",
+  "purpose": "Supplemental non-English/non-Japanese semantic-routing evidence. These probes do not affect frozen candidate acceptance or selection.",
+  "scenarios": [
+    {
+      "id": "semantic-es-rewrite",
+      "language": "es",
+      "category": "explicit-request",
+      "split": "held-out",
+      "paraphrase_of": "supplemental-explicit-rewrite",
+      "expected_activation": true,
+      "rationale": "Tests an explicit Spanish clarity edit without placing Spanish trigger text in metadata.",
+      "prompt": "Reescribe este aviso para que se entienda a la primera y devuelve solo la versión revisada: Es posible que el servicio no esté disponible en algunos casos debido a trabajos que se están realizando."
+    },
+    {
+      "id": "semantic-zh-instructions",
+      "language": "zh-Hans",
+      "category": "complex-communication",
+      "split": "held-out",
+      "paraphrase_of": "supplemental-agent-instructions",
+      "expected_activation": true,
+      "rationale": "Tests a complex Simplified Chinese instruction artifact without Chinese metadata triggers.",
+      "prompt": "请起草一段简短的代理说明：每次修改代码后运行相关的单项测试；只有在任务结束时运行完整测试套件；如果单项测试失败，不要继续。"
+    },
+    {
+      "id": "semantic-ar-procedure",
+      "language": "ar",
+      "category": "complex-communication",
+      "split": "held-out",
+      "paraphrase_of": "supplemental-procedure",
+      "expected_activation": true,
+      "rationale": "Tests a complex Arabic reader-facing procedure without Arabic metadata triggers.",
+      "prompt": "اكتب إجراءً موجزًا لمهندس المناوبة للتراجع عن النشر. افصل حركة المرور أولًا، ثم نفّذ التراجع، وتوقّف إذا تجاوز معدل الأخطاء 2٪."
+    },
+    {
+      "id": "semantic-de-proofread",
+      "language": "de",
+      "category": "explicit-request",
+      "split": "held-out",
+      "paraphrase_of": "supplemental-proofread",
+      "expected_activation": true,
+      "rationale": "Tests an explicit German proofreading request without German metadata triggers.",
+      "prompt": "Überarbeite diesen Hinweis so, dass er beim ersten Lesen verständlich ist, und gib nur die neue Fassung zurück: Nach die Änderung muss das Anwendung neu gestartet werden."
+    }
+  ]
+}
