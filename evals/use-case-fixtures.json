@@ -1,0 +1,185 @@
+{
+  "version": "use-cases-v1",
+  "fixtures": [
+    {
+      "id": "direct-answer-positive",
+      "recipe": "direct-answers",
+      "kind": "positive",
+      "prompt": "Give an engineering manager a decision-ready answer about whether Atlas can deploy today. Explain the approval dependency, operational limit, and next action without changing their force.",
+      "source_text": "Atlas can deploy today if security approves change CR-18 before 15:00. The rollback plan is ready, but only the release manager may start deployment. Ask security to decide on CR-18.",
+      "expected_properties": ["conditional answer first", "reason limit and next action follow"],
+      "preserve": ["Atlas", "CR-18", "15:00", "if security approves", "only the release manager", "Ask security"]
+    },
+    {
+      "id": "direct-answer-boundary",
+      "recipe": "direct-answers",
+      "kind": "boundary",
+      "prompt": "What is 7 × 8? Return only the answer.",
+      "source_text": "",
+      "expected_properties": ["core-only short answer", "no reason or next action added"],
+      "preserve": ["56"]
+    },
+    {
+      "id": "procedure-positive",
+      "recipe": "documentation-and-procedures",
+      "kind": "positive",
+      "prompt": "Rewrite this as a safe procedure with prerequisites, ordered actions, and expected results.",
+      "source_text": "You need admin access. Run `crystal migrate --tenant ACCT-74`. Do not close the terminal until it prints `Migration complete`.",
+      "expected_properties": ["prerequisite before action", "expected result after action"],
+      "preserve": ["`crystal migrate --tenant ACCT-74`", "`Migration complete`", "Do not close the terminal"]
+    },
+    {
+      "id": "procedure-preservation",
+      "recipe": "documentation-and-procedures",
+      "kind": "preservation",
+      "prompt": "Clarify the procedure without editing commands or making optional verification mandatory.",
+      "source_text": "Optionally run `crystal verify --quick`; then save `/etc/crystal/config.toml`.",
+      "expected_properties": ["optional status remains optional", "technical strings remain exact"],
+      "preserve": ["Optionally", "`crystal verify --quick`", "`/etc/crystal/config.toml`"]
+    },
+    {
+      "id": "error-support-positive",
+      "recipe": "errors-and-support",
+      "kind": "positive",
+      "prompt": "Rewrite this customer error with what happened, its effect, and the recovery action.",
+      "source_text": "Upload failed with E-204, so report.csv was not saved. Free 20 MB and retry.",
+      "expected_properties": ["failure first", "recovery action is specific"],
+      "preserve": ["E-204", "report.csv", "20 MB", "retry"]
+    },
+    {
+      "id": "error-support-preservation",
+      "recipe": "errors-and-support",
+      "kind": "preservation",
+      "prompt": "Clarify this support response without turning the suspected cause into a fact.",
+      "source_text": "Sign-in is unavailable. A proxy configuration may be the cause. Contact support; repeated retries may lock the account.",
+      "expected_properties": ["possible cause remains uncertain", "retry warning remains"],
+      "preserve": ["may be the cause", "Contact support", "may lock the account"]
+    },
+    {
+      "id": "incident-positive",
+      "recipe": "incidents-and-status-updates",
+      "kind": "positive",
+      "prompt": "Rewrite this as a calm customer status update.",
+      "source_text": "At 14:05 UTC, about 8% of requests in eu-west-2 may be failing. We are investigating. Next update: 14:45 UTC.",
+      "expected_properties": ["time and measured impact first", "next update is explicit"],
+      "preserve": ["14:05 UTC", "about 8%", "eu-west-2", "may be failing", "14:45 UTC"]
+    },
+    {
+      "id": "incident-preservation",
+      "recipe": "incidents-and-status-updates",
+      "kind": "preservation",
+      "prompt": "Clarify the update without claiming a cause or resolution.",
+      "source_text": "Latency is elevated. Early evidence suggests cache pressure, but the cause is not confirmed. Mitigation is in progress.",
+      "expected_properties": ["hypothesis differs from confirmed cause", "incident remains unresolved"],
+      "preserve": ["suggests", "not confirmed", "in progress"]
+    },
+    {
+      "id": "proposal-positive",
+      "recipe": "proposals-and-decision-memos",
+      "kind": "positive",
+      "prompt": "Turn this into a concise decision memo.",
+      "source_text": "Recommend Option B because it cuts recovery time by 30 minutes. It costs $4,000 more and delays launch by one week. The board must decide by 9 May.",
+      "expected_properties": ["recommendation first", "trade-offs precede decision request"],
+      "preserve": ["Option B", "30 minutes", "$4,000", "one week", "9 May"]
+    },
+    {
+      "id": "proposal-boundary",
+      "recipe": "proposals-and-decision-memos",
+      "kind": "boundary",
+      "prompt": "Present these options neutrally; do not recommend one.",
+      "source_text": "Option A is faster and costs more. Option B is slower and costs less. No preference has been established.",
+      "expected_properties": ["options remain neutral", "no recommendation is invented"],
+      "preserve": ["Option A", "Option B", "No preference"]
+    },
+    {
+      "id": "email-request-positive",
+      "recipe": "emails-and-requests",
+      "kind": "positive",
+      "prompt": "Rewrite this as a concise professional email request.",
+      "source_text": "Priya needs to approve budget B-17 by Friday. Approval is required before Maya orders the hardware.",
+      "expected_properties": ["request after brief salutation", "owner deadline and condition attach to action"],
+      "preserve": ["Priya", "B-17", "Friday", "before Maya orders the hardware"]
+    },
+    {
+      "id": "email-request-preservation",
+      "recipe": "emails-and-requests",
+      "kind": "preservation",
+      "prompt": "Polish this request without adding a deadline or commitment.",
+      "source_text": "Could you review the draft when your schedule permits? We have not set a publication date.",
+      "expected_properties": ["no deadline invented", "request remains non-urgent"],
+      "preserve": ["when your schedule permits", "not set a publication date"]
+    },
+    {
+      "id": "japanese-business-positive",
+      "recipe": "japanese-business-prose",
+      "kind": "positive",
+      "prompt": "一読で依頼が分かる自然なビジネス日本語に書き直してください。",
+      "source_text": "先日の会議を踏まえ、田中様に移行案Aを6月20日までにご承認いただきたく存じます。承認前に作業を開始しないでください。",
+      "expected_properties": ["依頼が先", "期限と禁止条件が依頼の近くにある"],
+      "preserve": ["田中様", "移行案A", "6月20日", "承認前に作業を開始しない"]
+    },
+    {
+      "id": "japanese-business-boundary",
+      "recipe": "japanese-business-prose",
+      "kind": "boundary",
+      "prompt": "自然で丁寧な日本語に整えてください。不要な主語は加えないでください。",
+      "source_text": "ご確認ありがとうございます。明日までに回答いたします。",
+      "expected_properties": ["自然な主語省略を保つ", "明快な原文は変更不要"],
+      "preserve": ["ご確認ありがとうございます", "明日までに回答いたします"]
+    },
+    {
+      "id": "localized-positive",
+      "recipe": "bilingual-and-localized-text",
+      "kind": "positive",
+      "prompt": "Align the English and Japanese copy while making the Japanese natural.",
+      "source_text": "EN: Team Sync updates new members only. Existing members are excluded. JA: Team Syncは新規メンバーのみを更新します。既存メンバーは対象外です。",
+      "expected_properties": ["facts and terminology align", "Japanese uses natural information flow"],
+      "preserve": ["Team Sync", "new members only", "既存メンバーは対象外"]
+    },
+    {
+      "id": "localized-preservation",
+      "recipe": "bilingual-and-localized-text",
+      "kind": "preservation",
+      "prompt": "Localize this into natural Japanese without copying English syntax or resolving the source ambiguity by guessing.",
+      "source_text": "Alex told Sam the release was delayed after their review. The source does not identify whose review it was.",
+      "expected_properties": ["English syntax is not transplanted", "ambiguity is surfaced rather than guessed"],
+      "preserve": ["Alex", "Sam", "whose review"]
+    },
+    {
+      "id": "agent-instructions-positive",
+      "recipe": "agent-facing-instructions",
+      "kind": "positive",
+      "prompt": "Rewrite these agent instructions so their conditions, actions, exceptions, priority, terms, and completion evidence are executable.",
+      "source_text": "Run tests after editing. If a test exits nonzero, stop; except when the test is tagged flaky, retry it once. The stop rule has priority over the request to commit. Call all saved command output validation evidence. Finish only after attaching validation evidence.",
+      "expected_properties": ["observable condition maps to action", "exception and priority are explicit", "term is consistent", "completion is testable"],
+      "preserve": ["exits nonzero", "tagged flaky", "retry it once", "priority", "validation evidence"]
+    },
+    {
+      "id": "agent-instructions-preservation",
+      "recipe": "agent-facing-instructions",
+      "kind": "preservation",
+      "prompt": "Clarify these tool rules without broadening authority or weakening constraints.",
+      "source_text": "Use read only for `.md` files. Do not call bash when secrets are present. You may edit `README.md`; no other file is permitted.",
+      "expected_properties": ["permission is not broadened", "prohibition and only-condition remain binding"],
+      "preserve": ["only for `.md` files", "Do not call bash", "`README.md`", "no other file"]
+    },
+    {
+      "id": "creative-positive",
+      "recipe": "voice-sensitive-creative-text",
+      "kind": "positive",
+      "prompt": "Clarify the accidental pronoun ambiguity in this line while preserving its clipped noir voice and repetition.",
+      "source_text": "Mara watched June leave. She knew. Rain again, rain again.",
+      "expected_properties": ["referent becomes recoverable", "clipped rhythm and repetition remain"],
+      "preserve": ["Mara", "June", "Rain again, rain again"]
+    },
+    {
+      "id": "creative-boundary",
+      "recipe": "voice-sensitive-creative-text",
+      "kind": "boundary",
+      "prompt": "Polish punctuation only. Preserve dialect, fragments, repetition, and intentional ambiguity.",
+      "source_text": "Ain't no map. Not here. not ever. Maybe she came; maybe the wind did.",
+      "expected_properties": ["voice is not normalized", "intentional ambiguity remains"],
+      "preserve": ["Ain't no map", "Not here", "not ever", "Maybe she came", "maybe the wind did"]
+    }
+  ]
+}

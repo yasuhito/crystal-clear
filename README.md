@@ -37,6 +37,7 @@ The automatic-activation metadata comparison and raw Pi evidence are published i
 
 - [`SKILL.md`](SKILL.md) — the writing and revision process
 - [`language-guides.md`](language-guides.md) — concise guidance for clear English and natural Japanese
+- [`references/use-cases.md`](references/use-cases.md) — focused, conditionally loaded recipes for substantial genre-specific tasks
 - [`elements-of-style.md`](elements-of-style.md) — the public-domain reference for detailed English usage and composition, sourced from [obra/the-elements-of-style](https://github.com/obra/the-elements-of-style)
 
 ## License

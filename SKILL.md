@@ -54,6 +54,8 @@ Completion criterion: the reader can recover the main point, every dependency, a
 
 The core is sufficient for short tasks. Do not load a reference merely because the output is prose.
 
+For a substantial task whose genre materially affects its structure, read only the matching recipe in [`references/use-cases.md`](references/use-cases.md). The recipes cover direct answers, documentation and procedures, errors and support, incidents and status updates, proposals and decision memos, emails and requests, Japanese business prose, bilingual and localized text, agent-facing instructions, and voice-sensitive creative text. Treat agent-facing instructions with interacting conditions, exceptions, priorities, or constraints as substantial. Do not load the recipes for a short task that the core resolves.
+
 For substantial or ambiguous drafting or revision, or when the user explicitly requests a language pass, read only the matching section of [`language-guides.md`](language-guides.md): **Clear English**, **明快な日本語**, or both for mixed English/Japanese text. Keep facts and terminology aligned across languages. These are the validated profiles.
 
 For every other language, apply the core on a best-effort basis. Write naturally in the target language; do not treat English or Japanese grammar as universal.
