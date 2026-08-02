@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-ja-procedure-held",
+  "language": "ja",
+  "category": "complex-communication",
+  "split": "held-out",
+  "paraphrase_of": "complex-en-procedure",
+  "rationale": "Held-out Japanese paraphrase of the deployment rollback procedure.",
+  "expected_activation": true,
+  "prompt": "オンコール担当者向けにデプロイのロールバック手順を書いてください。データベース移行には後方互換性があり、ロールバック前にトラフィックを切り離し、エラー率が2%を超えた場合はロールバックを中止する、という条件を含めてください。",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:short",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:59:54.680351+00:00",
+  "duration_ms": 30846,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-hsd2_zoo/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-hsd2_zoo/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-hsd2_zoo/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-hsd2_zoo/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbffc-0ef6-75c1-8de3-64a349bd6d08",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# デプロイのロールバック手順（オンコール担当者向け）\n\n## 1. 事前確認\n\n- 対象サービス、環境、障害が発生したリリースを確認する。\n- 直前の安定版リリースを特定する。\n- ダッシュボードで現在のエラー率を確認する。\n- データベース移行には後方互換性があるため、原則としてデータベースはロールバックしない。\n\n## 2. トラフィックを切り離す\n\n1. 対象サービスへの新規トラフィックを切り離す。\n2. 処理中のリクエストが完了したことを確認する。\n3. 対象サービスにトラフィックが流れていないことをメトリクスで確認する。\n\n**トラフィックを切り離す前に、ロールバックを開始しないこと。**\n\n## 3. アプリケーションをロールバックする\n\n1. 対象サービスを直前の安定版へ戻す。\n2. デプロイ状況、ログ、ヘルスチェックを監視する。\n3. ロールバック中もエラー率を継続して確認する。\n\n> **中止条件:** エラー率が **2%を超えた場合**は、直ちにロールバックを中止する。作業を継続せず、対象サービスを安全な状態に保ったうえで、インシデント責任者または上位のオンコール担当者へエスカレーションする。\n\n## 4. 動作を確認する\n\n以下を確認する。\n\n- すべてのインスタンスが正常である。\n- ヘルスチェックが成功している。\n- 主要な機能のスモークテストが成功している。\n- エラー率が **2%以下**で安定している。\n- データベース接続および主要な読み書きが正常である。\n\n## 5. トラフィックを戻す\n\n1. トラフィックを段階的に戻す。\n2. 各段階でエラー率、レイテンシ、リソース使用率を確認する。\n3. エラー率が **2%を超えた場合**はトラフィックの復旧を停止し、再度切り離してエスカレーションする。\n4. 指標が安定していることを確認してから、通常のトラフィック量へ戻す。\n\n## 6. 作業を記録する\n\n- ロールバック対象と復旧したバージョン\n- 開始時刻と完了時刻\n- エラー率などの主要指標\n- 実施した操作と確認結果\n- データベースをロールバックしなかったこと\n- 中止またはエスカレーションがあった場合は、その理由と対応内容",
+  "trace_file": "raw/complex-ja-procedure-held--r04.trace.jsonl",
+  "result_file": "raw/complex-ja-procedure-held--r04.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

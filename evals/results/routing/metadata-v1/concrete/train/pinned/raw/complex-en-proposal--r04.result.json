@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:concrete",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:55:07.074733+00:00",
+  "duration_ms": 21728,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbff7-ab87-746d-8619-6af2fbbcbc3a",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency-update schedule for application and infrastructure repositories. Weekly updates will shorten exposure to known vulnerabilities, reduce the size and complexity of each review, and make dependency maintenance a routine engineering task rather than a monthly event.\n\n## Why Change\n\nUnder a monthly schedule, newly released security fixes may wait several weeks before entering the normal review process. Large monthly batches also combine many unrelated changes, increasing review effort and making failures harder to diagnose.\n\nA weekly schedule addresses both issues by creating smaller, more predictable updates.\n\n### Faster Security Response\n\nWeekly updates reduce the time between a dependency release and our review of that release. This is especially important when an update fixes a known vulnerability.\n\nCritical vulnerabilities should continue to follow an expedited process and should not wait for the weekly cycle. However, a weekly baseline provides faster coverage for high-, medium-, and lower-severity issues that do not require an emergency response. It also reduces the likelihood that routine security fixes accumulate unnoticed in a monthly batch.\n\n### Lower Review Workload per Update\n\nMonthly updates tend to produce large pull requests that may include several version changes, release notes, and compatibility risks. These batches require more concentrated review time and make it difficult to identify which dependency caused a test failure or regression.\n\nWeekly pull requests should be smaller and easier to evaluate. Reviewers can focus on fewer release notes and changes at a time, while automated tests provide faster feedback. Although reviews will occur more often, each review should require less effort and carry less troubleshooting risk. The total work may remain similar, but it will be distributed more evenly and should involve less rework.\n\n## Proposed Process\n\n1. Generate dependency-update pull requests once each week.\n2. Group compatible patch and minor updates where practical.\n3. Review major-version updates separately because they may require migration work.\n4. Require automated build, test, lint, and security checks before approval.\n5. Assign a rotating engineer to triage and coordinate weekly updates.\n6. Escalate critical vulnerabilities immediately rather than waiting for the scheduled cycle.\n7. Review the process after eight weeks, using update age, review time, failure rate, and deferred updates as indicators.\n\nTeams may defer an update when release notes indicate material compatibility risk or when testing is insufficient. Each deferral should include an owner, reason, and planned review date.\n\n## Decision Needed\n\nThe engineering manager is asked to approve an eight-week pilot of weekly dependency updates, designate the repositories included in the pilot, and confirm that dependency review will be part of the team’s regular weekly workload.\n\nAt the end of the pilot, engineering will recommend whether to adopt the weekly schedule permanently, adjust it, or return to monthly updates.",
+  "trace_file": "raw/complex-en-proposal--r04.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r04.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

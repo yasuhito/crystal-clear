@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 3,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:concrete",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:55:06.526019+00:00",
+  "duration_ms": 28682,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbff7-a957-7d80-901b-fedc472d8f5e",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move to Weekly Dependency Updates\n\n## Recommendation\n\nAdopt a weekly dependency-update schedule in place of the current monthly cycle. Reviewing smaller batches each week will improve our security response, reduce the complexity of each review, and make dependency maintenance a routine part of engineering work.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave known vulnerabilities unresolved until the next update cycle. Weekly updates shorten that exposure window and allow the team to evaluate security patches sooner.\n\nCritical vulnerabilities should continue to follow an expedited process rather than wait for the weekly cycle. However, a weekly cadence provides a stronger default for routine security fixes and reduces the chance that lower-severity issues will accumulate unnoticed.\n\n### More Manageable Review Workload\n\nMonthly updates often combine many unrelated changes into one large review. Large batches take longer to understand, test, and troubleshoot. If a regression occurs, identifying the responsible update can also be difficult.\n\nWeekly updates should produce smaller pull requests with fewer changes. This approach offers several benefits:\n\n- Reviewers can assess each change with less context switching.\n- Automated test failures are easier to trace to a specific update.\n- Rollbacks are smaller and lower risk.\n- Maintenance effort is distributed across the month instead of concentrated in one review period.\n\nThe team may handle dependency reviews more frequently, but each review should require less effort. Automation can further limit the workload by creating update pull requests, running tests, and grouping low-risk patch updates where appropriate.\n\n## Proposed Process\n\n1. Generate dependency-update pull requests once per week.\n2. Run the standard automated test and security checks on each update.\n3. Assign a rotating engineer to review and merge approved updates.\n4. Escalate breaking changes or major-version upgrades for separate review.\n5. Address critical security updates immediately, outside the weekly schedule.\n6. Review the process after an initial trial to assess review time, update volume, failed builds, and security response time.\n\n## Risks and Mitigations\n\nThe main risk is that more frequent notifications and pull requests could create review fatigue. We can reduce this risk by grouping compatible low-risk updates, limiting update creation to a designated day, and using a rotating reviewer.\n\nWeekly updates may also expose test instability more often. This is useful feedback: reliable automated tests are necessary for safe dependency maintenance under any schedule.\n\n## Decision Needed\n\nApproval is requested from the engineering manager to replace monthly dependency updates with a weekly cadence, beginning with a trial period. The manager should also approve:\n\n- a rotating reviewer assignment;\n- immediate handling of critical security updates; and\n- a review at the end of the trial to decide whether to adopt the process permanently.\n\nThis change would make dependency updates smaller, faster to review, and more responsive to security risks.",
+  "trace_file": "raw/complex-en-proposal--r03.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r03.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

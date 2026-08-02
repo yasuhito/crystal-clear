@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "explicit-en-clarify-status-held",
+  "language": "en",
+  "category": "explicit-request",
+  "split": "held-out",
+  "paraphrase_of": "explicit-en-clearer-status",
+  "rationale": "Held-out paraphrase of a direct clarity request.",
+  "expected_activation": true,
+  "prompt": "Rewrite this incident notice so readers understand it on the first pass. Return only the notice: At this time, a subset of customers could potentially encounter login failures.",
+  "input_text": "At this time, a subset of customers could potentially encounter login failures.",
+  "repeat": 3,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:concrete",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:58:40.224904+00:00",
+  "duration_ms": 4470,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-33b5a8gh/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-33b5a8gh/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-33b5a8gh/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-33b5a8gh/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbffa-ec62-704c-b3e5-597a2369902a",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "Some customers may be unable to log in.",
+  "trace_file": "raw/explicit-en-clarify-status-held--r03.trace.jsonl",
+  "result_file": "raw/explicit-en-clarify-status-held--r03.result.json",
+  "selection_outcome": "selected-with-visible-change"
+}

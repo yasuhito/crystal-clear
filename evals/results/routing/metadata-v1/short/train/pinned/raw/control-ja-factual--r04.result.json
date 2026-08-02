@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "control-ja-factual",
+  "language": "ja",
+  "category": "unrelated-control",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A Japanese factual question remains unrelated to writing revision.",
+  "expected_activation": false,
+  "prompt": "日本で最も高い山の名前を一つだけ答えてください。",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:short",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:57:57.842025+00:00",
+  "duration_ms": 5916,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbffa-468e-76bd-9e62-38c1c30a3471",
+  "activation": {
+    "automatic": false,
+    "skill_loaded": false,
+    "source": "none"
+  },
+  "final_output": "富士山",
+  "trace_file": "raw/control-ja-factual--r04.trace.jsonl",
+  "result_file": "raw/control-ja-factual--r04.result.json",
+  "selection_outcome": "not-selected"
+}

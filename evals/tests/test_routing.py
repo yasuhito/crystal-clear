@@ -209,6 +209,30 @@ class RoutingReportTests(unittest.TestCase):
         self.assertIn("[trace](raw/explicit-a-1.trace.jsonl)", report)
         self.assertIn("[result](raw/explicit-a-1.result.json)", report)
 
+    def test_supplemental_report_does_not_claim_frozen_acceptance(self) -> None:
+        result = self.result(
+            scenario_id="semantic-es",
+            category="explicit-request",
+            expected=True,
+            activated=True,
+            split="held-out",
+        )
+        result["result_file"] = "raw/semantic-es-1.result.json"
+        report = render_routing_markdown(
+            summary=summarize_routing_results([result]),
+            results=[result],
+            environment="pinned",
+            inventory_role="formal",
+            scenario_version="semantic-v1",
+            skill_ref="candidate:short",
+            inventory_snapshot="pinned-v1",
+            supplemental=True,
+        )
+
+        self.assertIn("Supplemental scenarios", report)
+        self.assertIn("not eligible for candidate selection", report)
+        self.assertNotIn("40 scenarios", report)
+
     def test_selection_outcome_distinguishes_unchanged_selected_output(self) -> None:
         self.assertEqual(
             classify_selection_outcome(False, "source", "source"),

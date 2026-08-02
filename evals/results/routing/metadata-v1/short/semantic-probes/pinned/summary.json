@@ -1,0 +1,234 @@
+{
+  "runs": 20,
+  "overall": {
+    "runs": 20,
+    "positive_runs": 20,
+    "negative_runs": 0,
+    "true_positives": 20,
+    "false_positives": 0,
+    "recall": 1.0,
+    "precision": 1.0,
+    "false_positive_rate": null,
+    "activation_rate": 1.0
+  },
+  "categories": {
+    "boundary": {
+      "runs": 0,
+      "positive_runs": 0,
+      "negative_runs": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "recall": null,
+      "precision": null,
+      "false_positive_rate": null,
+      "activation_rate": null
+    },
+    "complex-communication": {
+      "runs": 10,
+      "positive_runs": 10,
+      "negative_runs": 0,
+      "true_positives": 10,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    },
+    "explicit-request": {
+      "runs": 10,
+      "positive_runs": 10,
+      "negative_runs": 0,
+      "true_positives": 10,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    },
+    "unrelated-control": {
+      "runs": 0,
+      "positive_runs": 0,
+      "negative_runs": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "recall": null,
+      "precision": null,
+      "false_positive_rate": null,
+      "activation_rate": null
+    }
+  },
+  "splits": {
+    "train": {
+      "runs": 0,
+      "positive_runs": 0,
+      "negative_runs": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "recall": null,
+      "precision": null,
+      "false_positive_rate": null,
+      "activation_rate": null
+    },
+    "held-out": {
+      "runs": 20,
+      "positive_runs": 20,
+      "negative_runs": 0,
+      "true_positives": 20,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    }
+  },
+  "category_splits": {
+    "boundary": {
+      "train": {
+        "runs": 0,
+        "positive_runs": 0,
+        "negative_runs": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "recall": null,
+        "precision": null,
+        "false_positive_rate": null,
+        "activation_rate": null
+      },
+      "held-out": {
+        "runs": 0,
+        "positive_runs": 0,
+        "negative_runs": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "recall": null,
+        "precision": null,
+        "false_positive_rate": null,
+        "activation_rate": null
+      }
+    },
+    "complex-communication": {
+      "train": {
+        "runs": 0,
+        "positive_runs": 0,
+        "negative_runs": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "recall": null,
+        "precision": null,
+        "false_positive_rate": null,
+        "activation_rate": null
+      },
+      "held-out": {
+        "runs": 10,
+        "positive_runs": 10,
+        "negative_runs": 0,
+        "true_positives": 10,
+        "false_positives": 0,
+        "recall": 1.0,
+        "precision": 1.0,
+        "false_positive_rate": null,
+        "activation_rate": 1.0
+      }
+    },
+    "explicit-request": {
+      "train": {
+        "runs": 0,
+        "positive_runs": 0,
+        "negative_runs": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "recall": null,
+        "precision": null,
+        "false_positive_rate": null,
+        "activation_rate": null
+      },
+      "held-out": {
+        "runs": 10,
+        "positive_runs": 10,
+        "negative_runs": 0,
+        "true_positives": 10,
+        "false_positives": 0,
+        "recall": 1.0,
+        "precision": 1.0,
+        "false_positive_rate": null,
+        "activation_rate": 1.0
+      }
+    },
+    "unrelated-control": {
+      "train": {
+        "runs": 0,
+        "positive_runs": 0,
+        "negative_runs": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "recall": null,
+        "precision": null,
+        "false_positive_rate": null,
+        "activation_rate": null
+      },
+      "held-out": {
+        "runs": 0,
+        "positive_runs": 0,
+        "negative_runs": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "recall": null,
+        "precision": null,
+        "false_positive_rate": null,
+        "activation_rate": null
+      }
+    }
+  },
+  "languages": {
+    "ar": {
+      "runs": 5,
+      "positive_runs": 5,
+      "negative_runs": 0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    },
+    "de": {
+      "runs": 5,
+      "positive_runs": 5,
+      "negative_runs": 0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    },
+    "es": {
+      "runs": 5,
+      "positive_runs": 5,
+      "negative_runs": 0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    },
+    "zh-Hans": {
+      "runs": 5,
+      "positive_runs": 5,
+      "negative_runs": 0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": null,
+      "activation_rate": 1.0
+    }
+  },
+  "selection_outcomes": {
+    "not-selected": 0,
+    "selected-with-little-visible-change": 0,
+    "selected-with-visible-change": 0,
+    "selected-effect-not-deterministically-assessed": 20
+  }
+}

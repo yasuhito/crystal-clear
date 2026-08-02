@@ -335,6 +335,7 @@ def render_routing_markdown(
     scenario_version: str,
     skill_ref: str,
     inventory_snapshot: str,
+    supplemental: bool = False,
 ) -> str:
     overall = summary["overall"]
     lines = [
@@ -342,7 +343,11 @@ def render_routing_markdown(
         "",
         f"- Inventory role: **{inventory_role}**",
         f"- Inventory snapshot: `{inventory_snapshot}`",
-        f"- Frozen scenarios: `{scenario_version}` (40 scenarios; 12 held-out)",
+        (
+            f"- Supplemental scenarios: `{scenario_version}` ({len({row['scenario_id'] for row in results})} scenarios; outside frozen acceptance metrics)"
+            if supplemental
+            else f"- Frozen scenarios: `{scenario_version}` (40 scenarios; 12 held-out)"
+        ),
         f"- Baseline skill revision: `{skill_ref}`",
         f"- Runs: {summary['runs']}",
         f"- Recall across expected-positive runs: {_format_rate(overall['recall'])} ({overall['true_positives']}/{overall['positive_runs']})",
@@ -356,7 +361,11 @@ def render_routing_markdown(
         ),
         "",
     ]
-    if inventory_role == "formal":
+    if supplemental:
+        lines.append(
+            "This pinned-inventory result is supplemental semantic evidence only and is not eligible for candidate selection or pass/fail comparison."
+        )
+    elif inventory_role == "formal":
         lines.append("This pinned inventory is the only result eligible for later pass/fail comparison.")
     else:
         lines.append("This complete installed inventory is ecological reference only and is not eligible for pass/fail comparison.")
@@ -653,6 +662,7 @@ def write_environment_report(
     scenario_set: dict[str, Any],
     repeats: int,
     split: str = "all",
+    supplemental: bool = False,
 ) -> None:
     if not results:
         raise ValueError(f"no {environment} results to report")
@@ -679,6 +689,7 @@ def write_environment_report(
             scenario_version=first["scenario_version"],
             skill_ref=first["skill_ref"],
             inventory_snapshot=first["inventory_snapshot"],
+            supplemental=supplemental,
         )
     )
 
@@ -790,6 +801,7 @@ def run_routing(args: argparse.Namespace) -> None:
             scenario_set,
             args.repeats,
             args.split,
+            args.supplemental,
         )
     write_index(args.output, environments)
 
@@ -831,6 +843,7 @@ def main() -> None:
                 scenario_set,
                 args.repeats,
                 args.split,
+                args.supplemental,
             )
         write_index(args.output, environments)
     else:

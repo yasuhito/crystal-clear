@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "boundary-error-copy-primary",
+  "language": "en",
+  "category": "boundary",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "Communication quality is primary because the requested deliverable is user-facing error copy.",
+  "expected_activation": true,
+  "prompt": "Write a clear user-facing error message for error E42. Explain that the session expired, saved work is intact, and signing in again is required. Return only the message.",
+  "input_text": null,
+  "repeat": 5,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:concrete",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:56:08.583334+00:00",
+  "duration_ms": 7491,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbff8-9bcb-71ad-91ad-99f9de69c06c",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "E42: Your session has expired. Your saved work is intact. Please sign in again to continue.",
+  "trace_file": "raw/boundary-error-copy-primary--r05.trace.jsonl",
+  "result_file": "raw/boundary-error-copy-primary--r05.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

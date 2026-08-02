@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-procedure",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A safety procedure depends on information order and qualification scope.",
+  "expected_activation": true,
+  "prompt": "Write a deployment rollback procedure for an on-call engineer. The database migration is backward-compatible, traffic must be drained before rollback, and rollback must stop if error rate rises above 2%.",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:short",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:56:57.581522+00:00",
+  "duration_ms": 27365,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbff9-5b3e-70b4-be8e-938e178cf85e",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Deployment Rollback Procedure\n\n## Preconditions\n\n- Confirm the database migration is backward-compatible.\n- **Do not roll back the database migration.** Roll back only the application deployment.\n- Identify the last known-good application version.\n- Open the error-rate dashboard and monitor it continuously.\n- Notify the incident channel that rollback is starting.\n\n> **Stop condition:** If the error rate rises above **2%** at any point, stop the rollback immediately. Do not continue changing instances. Notify the incident lead and stabilize the service before taking further action.\n\n## Procedure\n\n1. **Record the current state**\n   - Current application version\n   - Target rollback version\n   - Current error rate\n   - Deployment and incident identifiers\n\n2. **Drain traffic**\n   - Remove the affected instances or deployment group from the load balancer.\n   - Wait until active requests and connections have drained.\n   - Confirm no new production traffic is reaching the drained instances.\n   - Do not begin rollback until draining is complete.\n\n3. **Check the stop condition**\n   - Confirm the error rate is **2% or lower**.\n   - If it is above 2%, stop and escalate.\n\n4. **Roll back the application**\n   - Deploy the last known-good application version to the drained instances.\n   - Leave the backward-compatible database migration in place.\n   - Monitor deployment logs and health checks.\n\n5. **Validate while traffic remains drained**\n   - Confirm the application starts successfully.\n   - Run readiness, health, and critical-path checks.\n   - Verify database connectivity and compatibility.\n   - Confirm there are no new rollback-related errors.\n\n6. **Check the stop condition again**\n   - Confirm the error rate remains **2% or lower**.\n   - If it rises above 2%, stop the rollback, keep affected instances out of service, and escalate.\n\n7. **Restore traffic gradually**\n   - Return the rolled-back instances to service in controlled increments.\n   - After each increment, verify health, latency, and error rate.\n   - Stop immediately if the error rate rises above 2%.\n\n8. **Complete the rollback**\n   - Confirm all intended instances are running the last known-good version.\n   - Confirm traffic is fully restored.\n   - Verify the error rate remains at or below 2%.\n   - Record completion details and notify the incident channel.\n\n## If the Rollback Stops\n\n- Make no further deployment changes.\n- Keep unhealthy or unverified instances out of rotation.\n- Notify the incident lead.\n- Preserve logs, metrics, and deployment events.\n- Resume only after the incident lead approves a revised recovery plan.",
+  "trace_file": "raw/complex-en-procedure--r01.trace.jsonl",
+  "result_file": "raw/complex-en-procedure--r01.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

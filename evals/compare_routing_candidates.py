@@ -176,18 +176,21 @@ def compare(
     semantic_probe_summary = None
     if selected and semantic_scenario_file is not None:
         semantic_output = results_root / selected["id"] / "semantic-probes"
-        if semantic_output.is_dir():
-            semantic_set = load_routing_scenarios(
-                semantic_scenario_file, frozen=False
+        if not semantic_output.is_dir():
+            raise ValueError(
+                f"selected candidate is missing semantic probe evidence at {semantic_output}"
             )
-            semantic_results = _load_validated_results(
-                semantic_output,
-                semantic_set,
-                expected_skill_ref=(
-                    f"{candidate_set['base_skill_ref']}+metadata:{selected['id']}"
-                ),
-            )
-            semantic_probe_summary = summarize_routing_results(semantic_results)
+        semantic_set = load_routing_scenarios(
+            semantic_scenario_file, frozen=False
+        )
+        semantic_results = _load_validated_results(
+            semantic_output,
+            semantic_set,
+            expected_skill_ref=(
+                f"{candidate_set['base_skill_ref']}+metadata:{selected['id']}"
+            ),
+        )
+        semantic_probe_summary = summarize_routing_results(semantic_results)
     return {
         "schema_version": 1,
         "candidate_version": candidate_set["version"],
@@ -286,11 +289,16 @@ def render_markdown(comparison: dict[str, Any]) -> str:
         "## Reproduce",
         "",
         "```sh",
-        "# Run training before held-out; do not revise routing-candidates.json between them.",
+        "# Finish both training runs before held-out; do not revise candidates between phases.",
         "for candidate in concrete short; do",
         "  python3 -m evals.run_routing --skill-ref ac8f935 --candidate \"$candidate\" --split train --environment pinned --repeats 5 --output \"evals/results/routing/metadata-v1/$candidate/train\"",
+        "done",
+        "for candidate in concrete short; do",
         "  python3 -m evals.run_routing --skill-ref ac8f935 --candidate \"$candidate\" --split held-out --environment pinned --repeats 5 --output \"evals/results/routing/metadata-v1/$candidate/held-out\"",
         "done",
+        "python3 -m evals.compare_routing_candidates",
+        "selected=$(python3 -c 'import json; print(json.load(open(\"evals/results/routing/metadata-v1/comparison.json\"))[\"selected_candidate\"])')",
+        "python3 -m evals.run_routing --skill-ref ac8f935 --candidate \"$selected\" --supplemental --scenarios evals/routing-semantic-probes.json --environment pinned --repeats 5 --output \"evals/results/routing/metadata-v1/$selected/semantic-probes\"",
         "python3 -m evals.compare_routing_candidates --semantic-scenarios evals/routing-semantic-probes.json",
         "```",
     ])

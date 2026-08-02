@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 5,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:concrete",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:55:07.173674+00:00",
+  "duration_ms": 26759,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "eb110e914b257bb97a66a4907cb1388c45065df3f3ed0fff00cc186cf8b527ed",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-4xwdy23t/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbff7-abec-73f0-a770-16e4d042883d",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update cycle in place of the current monthly cycle. More frequent updates will shorten our exposure to known vulnerabilities, reduce the size and complexity of each review, and make dependency maintenance a predictable part of engineering work.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave known vulnerabilities unresolved for several weeks unless the team initiates an exception process. Weekly updates reduce that exposure window by bringing routine security fixes into the normal maintenance cycle sooner.\n\nCritical vulnerabilities should still trigger immediate action rather than wait for the next scheduled update. The weekly cycle would complement—not replace—our emergency security response process.\n\n### Smaller, More Manageable Reviews\n\nMonthly updates tend to bundle many dependency changes into a single pull request or review period. Large batches require more time to assess, test, troubleshoot, and approve. They can also make regressions harder to isolate because several packages may have changed at once.\n\nWeekly updates should produce smaller batches. Reviewers can more easily understand release notes, identify breaking changes, and connect a failure to a specific update. Although reviews will occur more often, each review should require less effort and carry less risk.\n\n### More Predictable Workload\n\nA weekly cadence distributes maintenance work across the month instead of concentrating it in one large review. The team can reserve a small, consistent amount of capacity each week and avoid the interruptions associated with accumulated updates.\n\nTo control review volume, routine patch and minor updates can be grouped into one weekly pull request where appropriate. Major-version updates should remain separate because they may require migration planning, broader testing, or product coordination.\n\n## Proposed Process\n\n1. Generate dependency updates once per week through the existing automation or update process.\n2. Group compatible patch and minor updates when doing so keeps the review clear.\n3. Review major-version updates separately.\n4. Run the standard automated test and security checks before approval.\n5. Escalate critical vulnerabilities immediately rather than waiting for the weekly cycle.\n6. Track review time, update failures, and security exceptions during an initial trial.\n\n## Decision Needed\n\nApproval is requested from the engineering manager to run a two-month trial of weekly dependency updates. The manager should also confirm that teams may reserve recurring weekly capacity for review and remediation.\n\nAt the end of the trial, we will compare review effort, update size, failed builds or regressions, and time to apply security fixes with the previous monthly process. Unless the results show a material increase in workload or instability, weekly updates should become the standard cadence.",
+  "trace_file": "raw/complex-en-proposal--r05.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r05.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

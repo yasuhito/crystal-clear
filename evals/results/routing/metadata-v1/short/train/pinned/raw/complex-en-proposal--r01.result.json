@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "ac8f935+metadata:short",
+  "skill_revision": "ac8f9359835ad1305135c1c2c25d34c1020d4569",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39"
+  },
+  "harness_git_revision": "f46ac0f02a44215db6e87e24741c169800450972",
+  "started_at": "2026-08-02T00:57:03.011976+00:00",
+  "duration_ms": 22724,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "3e8dec53f5f5ce89acad07470477b5abd0e1936d1bbdb0774e591d5cca6e7a39",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-jwvu40l6/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fbff9-706d-7c10-9cb5-9e2b3dcbeb21",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update schedule for application and infrastructure repositories, replacing the current monthly cycle. Smaller, more frequent updates will improve security response times and reduce the effort and risk involved in each review.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave known vulnerabilities unresolved until the next update window. Weekly updates shorten this exposure period by bringing patched versions into review sooner.\n\nCritical vulnerabilities should continue to follow the emergency patch process rather than wait for the weekly cycle. The weekly schedule would improve routine security hygiene while preserving an expedited path for urgent issues.\n\n### More Manageable Review Workload\n\nMonthly update batches can contain many version changes at once. Large batches require more review time, make test failures harder to diagnose, and increase the chance that updates will be deferred because the change is too disruptive.\n\nWeekly updates create smaller pull requests with fewer changes. This should:\n\n- Reduce the scope and duration of each review\n- Make breaking changes and regressions easier to isolate\n- Lower the risk of conflicts between dependency updates\n- Spread review effort more evenly across the month\n- Make rollback decisions simpler\n\nAlthough reviewers will see update requests more often, each request should require less effort. Automation can further limit the workload by grouping compatible patch and minor updates, running the standard test suite, and flagging major-version changes for separate review.\n\n## Proposed Process\n\n1. Generate dependency update pull requests once per week.\n2. Group low-risk patch and minor updates where practical.\n3. Review major-version updates separately because they may require migration work.\n4. Require automated tests and security checks before approval.\n5. Assign a rotating engineer to review the weekly batch.\n6. Continue using the emergency process for critical vulnerabilities.\n7. Evaluate the process after an initial eight-week trial.\n\nThe trial should track review time, number of updates merged or deferred, test failures, regressions, and time to apply security fixes. These measures will show whether weekly updates improve responsiveness without creating an unacceptable operational burden.\n\n## Decision Needed\n\nThe engineering manager is asked to approve an eight-week trial of weekly dependency updates and authorize a rotating reviewer assignment. At the end of the trial, the team will review the results and decide whether to make the weekly schedule permanent, adjust it, or return to monthly updates.",
+  "trace_file": "raw/complex-en-proposal--r01.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r01.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

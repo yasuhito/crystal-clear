@@ -89,17 +89,25 @@ The frozen baseline is published at `results/routing/178eaf8/SUMMARY.md`. Do not
 `routing-candidates.json` freezes the agreed concrete English-only description and a shorter English-only variant. Both keep the skill body at `ac8f935`, use the unchanged frozen scenarios, and run five repeats in the formal pinned inventory. Candidate wording and the selection rule were fixed before held-out evidence was inspected.
 
 ```sh
-# Run training before held-out; do not revise routing-candidates.json between them.
+# Finish both training runs before held-out; do not revise candidates between phases.
 for candidate in concrete short; do
   python3 -m evals.run_routing \
     --skill-ref ac8f935 --candidate "$candidate" --split train \
     --environment pinned --repeats 5 \
     --output "evals/results/routing/metadata-v1/$candidate/train"
+done
+for candidate in concrete short; do
   python3 -m evals.run_routing \
     --skill-ref ac8f935 --candidate "$candidate" --split held-out \
     --environment pinned --repeats 5 \
     --output "evals/results/routing/metadata-v1/$candidate/held-out"
 done
+python3 -m evals.compare_routing_candidates
+selected=$(python3 -c 'import json; print(json.load(open("evals/results/routing/metadata-v1/comparison.json"))["selected_candidate"])')
+python3 -m evals.run_routing \
+  --skill-ref ac8f935 --candidate "$selected" --supplemental \
+  --scenarios evals/routing-semantic-probes.json --environment pinned --repeats 5 \
+  --output "evals/results/routing/metadata-v1/$selected/semantic-probes"
 python3 -m evals.compare_routing_candidates \
   --semantic-scenarios evals/routing-semantic-probes.json
 ```
