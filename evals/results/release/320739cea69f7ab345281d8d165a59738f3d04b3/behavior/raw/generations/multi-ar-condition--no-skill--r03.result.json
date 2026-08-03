@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "multi-ar-condition",
+  "category": "multilingual-core",
+  "language": "ar",
+  "failure_modes": [
+    "detached-qualification",
+    "accidental-certainty-change"
+  ],
+  "source_text": "يمكن استعادة الملفات المحذوفة. ينطبق ذلك فقط على خطة Pro إذا قُدِّم الطلب خلال 14 يومًا. قد تستغرق الاستعادة حتى 24 ساعة.",
+  "output_contract": "أعد النص العربي الواضح فقط.",
+  "prompt": "أعد كتابة SOURCE بحيث تكون الشروط بجوار الادعاء الذي تقيده. أعد النص العربي الواضح فقط. لا تحوّل الاحتمال إلى يقين. SOURCE: يمكن استعادة الملفات المحذوفة. ينطبق ذلك فقط على خطة Pro إذا قُدِّم الطلب خلال 14 يومًا. قد تستغرق الاستعادة حتى 24 ساعة.",
+  "checks": [
+    {
+      "id": "plan",
+      "kind": "protected-string",
+      "values": [
+        "Pro"
+      ]
+    },
+    {
+      "id": "numbers",
+      "kind": "number",
+      "values": [
+        "14",
+        "24"
+      ]
+    },
+    {
+      "id": "condition",
+      "kind": "condition",
+      "values": [
+        "إذا"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "kind": "fact",
+      "values": [
+        "قد"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 3,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "started_at": "2026-08-03T02:12:21.173836+00:00",
+  "duration_ms": 7578,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc564-bdd3-713a-83bd-46c242a715ec",
+  "final_output": "يمكن استعادة الملفات المحذوفة في خطة Pro فقط إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+  "trace_file": "raw/generations/multi-ar-condition--no-skill--r03.trace.jsonl",
+  "result_file": "raw/generations/multi-ar-condition--no-skill--r03.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "plan",
+        "kind": "protected-string",
+        "values": [
+          "Pro"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "numbers",
+        "kind": "number",
+        "values": [
+          "14",
+          "24"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "condition",
+        "kind": "condition",
+        "values": [
+          "إذا"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "uncertainty",
+        "kind": "fact",
+        "values": [
+          "قد"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-detached-condition--r04",
+  "scenario_id": "ja-detached-condition",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 4,
+  "presentation_index": 50,
+  "judge_seed": 808,
+  "prompt_sha256": "0cfa01ee44995b7ce3a0e4a5ac6974fab750b28241e9b88478a3122d19cefb55",
+  "presented_output_a": "Proプランをご利用で、障害発生から30日以内に申請した場合に限り、バックアップからデータを復元できます。復元には最大72時間かかる可能性があります。",
+  "presented_output_b": "Proプランでは、障害発生から30日以内に申請した場合に限り、バックアップからデータを復元できます。復元には最大72時間かかる可能性があります。",
+  "a_arm": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "事実・数値・条件・可能性をすべて保持しているが、「Proプランをご利用で」はやや不自然。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Proプラン、30日以内の申請条件、最大72時間という可能性を自然かつ明確に保持している。"
+    },
+    "preference": "B",
+    "preference_evidence": "両案とも内容を完全に保持しているが、Bの「Proプランでは」の方が自然で条件の提示も明確。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"事実・数値・条件・可能性をすべて保持しているが、「Proプランをご利用で」はやや不自然。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Proプラン、30日以内の申請条件、最大72時間という可能性を自然かつ明確に保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"両案とも内容を完全に保持しているが、Bの「Proプランでは」の方が自然で条件の提示も明確。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "started_at": "2026-08-03T02:16:28.399666+00:00",
+  "duration_ms": 10602,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc568-837f-7742-a46e-83f81e6bab26",
+  "trace_file": "raw/judgments/ja-detached-condition--r04.trace.jsonl",
+  "result_file": "raw/judgments/ja-detached-condition--r04.result.json"
+}

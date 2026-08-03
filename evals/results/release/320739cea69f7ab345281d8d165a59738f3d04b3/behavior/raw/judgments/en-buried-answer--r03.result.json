@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r03",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 3,
+  "presentation_index": 21,
+  "judge_seed": 808,
+  "prompt_sha256": "cd7ea2da7bcde236cc41f98e6b48b4fbb7f8e87a1638f08bc724193c8b1fb845",
+  "presented_output_a": "Approve Project Northstar by 14 June, following several weeks of discussion and a risk review; however, rollout must not begin before security signs off, and the legacy exporter remains available.",
+  "presented_output_b": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review. Do not begin the rollout until security signs off; the legacy exporter remains available.",
+  "a_arm": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "Preserves the date, discussion, risk review, exporter availability, and security condition, but changes a recommendation to an approval directive."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves all supporting facts and the rollout constraint clearly, but presents approval as a decision rather than a recommendation."
+    },
+    "preference": "B",
+    "preference_evidence": "Both alter certainty equally; B is clearer, more natural, and better structured as a concise decision memo."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Preserves the date, discussion, risk review, exporter availability, and security condition, but changes a recommendation to an approval directive.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all supporting facts and the rollout constraint clearly, but presents approval as a decision rather than a recommendation.\"},\"preference\":\"B\",\"preference_evidence\":\"Both alter certainty equally; B is clearer, more natural, and better structured as a concise decision memo.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "started_at": "2026-08-03T02:14:40.527151+00:00",
+  "duration_ms": 16285,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc566-dde1-7933-92a2-096081a4accb",
+  "trace_file": "raw/judgments/en-buried-answer--r03.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r03.result.json"
+}

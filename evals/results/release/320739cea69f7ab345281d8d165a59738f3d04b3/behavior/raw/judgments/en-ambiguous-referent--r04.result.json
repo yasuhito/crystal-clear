@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-ambiguous-referent--r04",
+  "scenario_id": "en-ambiguous-referent",
+  "category": "english",
+  "language": "en",
+  "repeat": 4,
+  "presentation_index": 61,
+  "judge_seed": 808,
+  "prompt_sha256": "17675131fa74788dd7146bc3bfcbbbc44815dfa119593f5b9804d539c7e03fc1",
+  "presented_output_a": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "presented_output_b": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before Friday; Maya retains access.",
+  "a_arm": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Resolves the ambiguous pronoun as Priya while preserving the deadline, access distinction, and professional two-sentence structure."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Clearly resolves the pronoun, but “before Friday” may impose an earlier deadline than “before then,” which refers to the Friday access-ending point."
+    },
+    "preference": "A",
+    "preference_evidence": "A preserves the original event-relative deadline exactly; B may shift it to before Friday begins."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Resolves the ambiguous pronoun as Priya while preserving the deadline, access distinction, and professional two-sentence structure.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clearly resolves the pronoun, but “before Friday” may impose an earlier deadline than “before then,” which refers to the Friday access-ending point.\"},\"preference\":\"A\",\"preference_evidence\":\"A preserves the original event-relative deadline exactly; B may shift it to before Friday begins.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "started_at": "2026-08-03T02:17:07.306538+00:00",
+  "duration_ms": 13468,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc569-1b30-727c-8146-a853053248ef",
+  "trace_file": "raw/judgments/en-ambiguous-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/en-ambiguous-referent--r04.result.json"
+}

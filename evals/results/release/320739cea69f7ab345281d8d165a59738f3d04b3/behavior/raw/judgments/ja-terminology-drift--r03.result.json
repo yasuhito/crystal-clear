@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r03",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 27,
+  "judge_seed": 808,
+  "prompt_sha256": "d3a41962989526e2c1df163de342ae1098fae81f708d71b992bdec3d397e2bcd",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。  \n共有スペースにメンバーを追加してください。  \n共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "全事実と制約を保ち、用語を「共有スペース」に統一した自然な3文です。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "全事実と制約を保ち、用語を「共有スペース」に統一した自然な3文です。"
+    },
+    "preference": "tie",
+    "preference_evidence": "改行以外に内容上の差はなく、両方とも契約と保存要件を完全に満たします。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実と制約を保ち、用語を「共有スペース」に統一した自然な3文です。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実と制約を保ち、用語を「共有スペース」に統一した自然な3文です。\"},\"preference\":\"tie\",\"preference_evidence\":\"改行以外に内容上の差はなく、両方とも契約と保存要件を完全に満たします。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "started_at": "2026-08-03T02:14:59.475889+00:00",
+  "duration_ms": 18356,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc567-27e1-73ee-b5e8-d25921c2e33b",
+  "trace_file": "raw/judgments/ja-terminology-drift--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r03.result.json"
+}

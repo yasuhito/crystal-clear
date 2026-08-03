@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-ambiguous-referent--r03",
+  "scenario_id": "en-ambiguous-referent",
+  "category": "english",
+  "language": "en",
+  "repeat": 3,
+  "presentation_index": 6,
+  "judge_seed": 808,
+  "prompt_sha256": "17675131fa74788dd7146bc3bfcbbbc44815dfa119593f5b9804d539c7e03fc1",
+  "presented_output_a": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "presented_output_b": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before Friday; Maya retains access.",
+  "a_arm": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Clarifies that the access belongs to Priya while preserving the Friday endpoint and export deadline relative to that endpoint."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-instruction"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Changing “before then” to “before Friday” may move the export deadline earlier than the stated Friday access endpoint."
+    },
+    "preference": "A",
+    "preference_evidence": "A resolves the ambiguous pronoun without changing the deadline; B potentially changes when the export must occur."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clarifies that the access belongs to Priya while preserving the Friday endpoint and export deadline relative to that endpoint.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changing “before then” to “before Friday” may move the export deadline earlier than the stated Friday access endpoint.\"},\"preference\":\"A\",\"preference_evidence\":\"A resolves the ambiguous pronoun without changing the deadline; B potentially changes when the export must occur.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "320739cea69f7ab345281d8d165a59738f3d04b3",
+  "started_at": "2026-08-03T02:13:51.693920+00:00",
+  "duration_ms": 14012,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc566-1f18-7d3c-9022-36f131a8918a",
+  "trace_file": "raw/judgments/en-ambiguous-referent--r03.trace.jsonl",
+  "result_file": "raw/judgments/en-ambiguous-referent--r03.result.json"
+}
