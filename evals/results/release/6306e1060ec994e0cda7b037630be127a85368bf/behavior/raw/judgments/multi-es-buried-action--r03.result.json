@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-es-buried-action--r03",
+  "scenario_id": "multi-es-buried-action",
+  "category": "multilingual-core",
+  "language": "es",
+  "repeat": 3,
+  "presentation_index": 43,
+  "judge_seed": 808,
+  "prompt_sha256": "f124e9ff14bf156a47c11a8ee12f397c3167dda649598f6744a2ee392ab01d25",
+  "presented_output_a": "Solicitamos que Ana apruebe Proyecto Faro antes del 3 de mayo, tras dos semanas de revisión de varias opciones; el sistema anterior seguirá disponible y la migración no debe iniciarse sin la aprobación de Seguridad.",
+  "presented_output_b": "Ana debe aprobar el Proyecto Faro antes del 3 de mayo, pero la migración no debe comenzar sin la aprobación de Seguridad; el sistema anterior seguirá disponible tras dos semanas de revisión de opciones.",
+  "a_arm": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Conserva la revisión de varias opciones durante dos semanas, la disponibilidad del sistema anterior, el plazo y la condición de aprobación de Seguridad, formulándolo como solicitud."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": null,
+      "core_structure": 3,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Vincula temporalmente la disponibilidad del sistema anterior a las dos semanas de revisión, relación ausente en la fuente, y formula una obligación más que una solicitud explícita."
+    },
+    "preference": "A",
+    "preference_evidence": "A preserva con mayor precisión todos los hechos y condiciones y cumple claramente el formato de solicitud."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Conserva la revisión de varias opciones durante dos semanas, la disponibilidad del sistema anterior, el plazo y la condición de aprobación de Seguridad, formulándolo como solicitud.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\"],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":3,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Vincula temporalmente la disponibilidad del sistema anterior a las dos semanas de revisión, relación ausente en la fuente, y formula una obligación más que una solicitud explícita.\"},\"preference\":\"A\",\"preference_evidence\":\"A preserva con mayor precisión todos los hechos y condiciones y cumple claramente el formato de solicitud.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "started_at": "2026-08-03T10:16:04.853193+00:00",
+  "duration_ms": 15864,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc71f-9b50-7495-9e3e-3046fdf9afc5",
+  "trace_file": "raw/judgments/multi-es-buried-action--r03.trace.jsonl",
+  "result_file": "raw/judgments/multi-es-buried-action--r03.result.json"
+}

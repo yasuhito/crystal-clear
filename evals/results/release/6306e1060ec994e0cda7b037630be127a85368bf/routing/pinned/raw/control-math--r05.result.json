@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "control-math",
+  "language": "en",
+  "category": "unrelated-control",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "Arithmetic is unrelated to reader-facing communication.",
+  "expected_activation": false,
+  "prompt": "Calculate 37 multiplied by 24. Return only the number.",
+  "input_text": null,
+  "repeat": 5,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "skill_revision": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "e520a4a56c5754b24d5083b525a97ac38d4dbf4fc4fd0b157ae2b560eda1983a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "e520a4a56c5754b24d5083b525a97ac38d4dbf4fc4fd0b157ae2b560eda1983a",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81",
+    "references/elements-of-style/index.md": "37bbbf437818620cfd14a3f353c67b5b608a08527f470d226544c38209e4209f",
+    "references/elements-of-style/rules/rule-01.md": "1ab5b2c6ffe23a826d55142ac4c49d9ab358116191c761091be74e29d651e168",
+    "references/elements-of-style/rules/rule-02.md": "377b2bf3efa31035b9e70424bf5d2ac7c5c4f0e320c6abe723ca8e9553fcad78",
+    "references/elements-of-style/rules/rule-03.md": "897f56446d621ae65148bc300437e785f54a384b7d0d7f2b2091adf1c6aeea2a",
+    "references/elements-of-style/rules/rule-04.md": "10fb044e24262e1049180949efdfb62460c00bbc2fd387322209b9651c305a7d",
+    "references/elements-of-style/rules/rule-05.md": "50fa6dceb7f36cc500243b20bde9a0d70d6db539495f00740f5d8631d1f14f9f",
+    "references/elements-of-style/rules/rule-06.md": "a1179940d516ae219ccec7ae477b4efa2e990d6cc30e4cbff7adb68c8d9f3fd1",
+    "references/elements-of-style/rules/rule-07.md": "31d4cfb7155d487c70c3c742aec012b40d445e7787e6de080742972b7c7439a1",
+    "references/elements-of-style/rules/rule-08.md": "3fb00038fc200412a8ca5c3211a98d041384aede2c3f21694aec772662332ed1",
+    "references/elements-of-style/rules/rule-09.md": "bc2cb54d47fc1a56e5ed2ec737e46a4397d4c814facb378bda58b255c2b8ec80",
+    "references/elements-of-style/rules/rule-10.md": "df0ce9743d4818c84678dec65bd285468abd7fb553041084a69e9742e3289b4a",
+    "references/elements-of-style/rules/rule-11.md": "bb59d80ff12c6f35919a91fb1a2f4226fd2a49a4f038ec65064c54426d6334f9",
+    "references/elements-of-style/rules/rule-12.md": "8d8966fb9c8de9008d831597089f7d9e4552ce4daea029b1a06f8467acdff6e6",
+    "references/elements-of-style/rules/rule-13.md": "d93bc72a15b3d498024f00e2f7bff188933384f42e494a57fc70f14124199310",
+    "references/elements-of-style/rules/rule-14.md": "3c33b4d2d96c7c906ab4b205fa8f87fccd8aac49f676a499f80a65778336ec03",
+    "references/elements-of-style/rules/rule-15.md": "1c9084d8cc1b9cea7f60507edd8e7191c88499694a38241bd2c226e43fdb793f",
+    "references/elements-of-style/rules/rule-16.md": "1238ff36da39292ac368b672afef38bdf81ac6d5ce77e819ca531e2e5ee507f2",
+    "references/elements-of-style/rules/rule-17.md": "0681af36a309e354e96231fa0a6129bc3b1b9f0fb05cf2e8286d430ddc79529b",
+    "references/elements-of-style/rules/rule-18.md": "1f018044cf74ef60d039f0a8cce4b89365e4f90c58b50027ea09071554ad4ffb",
+    "references/elements-of-style/source.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "references/elements-of-style/words/a-f.md": "317e963c46caa477b08c328c5cbb7233b5ab41db3605151f90b659b67c748eea",
+    "references/elements-of-style/words/g-m.md": "45267e44a069a155e72805d760673807a44c9979f756e1c8e684f8f7512179a4",
+    "references/elements-of-style/words/index.md": "10def938e316e204317eb4096af16f60f6a8919c5ff908b3449a07caf690eafc",
+    "references/elements-of-style/words/n-s.md": "821f5e4321187298536bfc1c8eda0e35b16d8a62290749e31b0f5e009d283ff6",
+    "references/elements-of-style/words/t-z.md": "195ecfbffe7e2731aeb8bcd886c2935be771b4fa327447bdd751993526893b9b",
+    "references/use-cases.md": "6c68f4afcd986e11b89a8af3297f65b457f5912ba81c965549690d05e7788be1"
+  },
+  "harness_git_revision": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "started_at": "2026-08-03T09:59:47.900098+00:00",
+  "duration_ms": 5020,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-yb1_twgs/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-yb1_twgs/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-yb1_twgs/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "e520a4a56c5754b24d5083b525a97ac38d4dbf4fc4fd0b157ae2b560eda1983a",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-yb1_twgs/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc710-b321-734f-b62a-b12ad650577b",
+  "activation": {
+    "automatic": false,
+    "skill_loaded": false,
+    "source": "none"
+  },
+  "final_output": "888",
+  "trace_file": "raw/control-math--r05.trace.jsonl",
+  "result_file": "raw/control-math--r05.result.json",
+  "selection_outcome": "not-selected"
+}

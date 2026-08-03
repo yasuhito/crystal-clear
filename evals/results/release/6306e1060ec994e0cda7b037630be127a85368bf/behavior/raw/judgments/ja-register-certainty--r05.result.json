@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-register-certainty--r05",
+  "scenario_id": "ja-register-certainty",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 5,
+  "presentation_index": 7,
+  "judge_seed": 808,
+  "prompt_sha256": "b896f60cbbc14d52ad63f71d855ceeef74314e6a551d6214175d10f27530fdbf",
+  "presented_output_a": "現在、決済処理に遅延が発生しており、原因を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、現時点で原因は特定されておりません。約12％のお客様に影響が生じている可能性があります。次回の情報更新は18時を予定しております。",
+  "presented_output_b": "現在、決済処理の遅延について調査しております。初期調査ではネットワーク障害の可能性が示されておりますが、原因は確定しておりません。約12％のお客様に影響している可能性があります。次回の更新は18時です。",
+  "a_arm": "178eaf8",
+  "b_arm": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "原因未特定、ネットワーク障害の可能性、約12％、18時更新を丁寧かつ明確に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "原文の事実、数値、不確実性、更新時刻をほぼそのまま丁寧に保持している。"
+    },
+    "preference": "B",
+    "preference_evidence": "両方とも良好だが、Bは「遅延について調査」「次回の更新は18時」と原文の表現と確定度により忠実である。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原因未特定、ネットワーク障害の可能性、約12％、18時更新を丁寧かつ明確に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原文の事実、数値、不確実性、更新時刻をほぼそのまま丁寧に保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"両方とも良好だが、Bは「遅延について調査」「次回の更新は18時」と原文の表現と確定度により忠実である。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "started_at": "2026-08-03T10:14:21.836467+00:00",
+  "duration_ms": 9805,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc71e-08f5-71bc-b171-75cbadb116a1",
+  "trace_file": "raw/judgments/ja-register-certainty--r05.trace.jsonl",
+  "result_file": "raw/judgments/ja-register-certainty--r05.result.json"
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-ambiguous-referent--r04",
+  "scenario_id": "en-ambiguous-referent",
+  "category": "english",
+  "language": "en",
+  "repeat": 4,
+  "presentation_index": 61,
+  "judge_seed": 808,
+  "prompt_sha256": "d9a564fc38d67ab8894f2317a2d4b4c46d9ed1f843e6e5e2399d43b778b1a223",
+  "presented_output_a": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before her access ends; Maya retains access.",
+  "presented_output_b": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "a_arm": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Fully preserves the deadline, obligation, account identifier, and Maya’s retained access while explicitly resolving both pronouns."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Fully preserves all facts and professionally clarifies whose access ends, though “then” remains slightly less explicit than Output A."
+    },
+    "preference": "A",
+    "preference_evidence": "Both preserve the source, but A more explicitly links the export deadline to the end of Priya’s access."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Fully preserves the deadline, obligation, account identifier, and Maya’s retained access while explicitly resolving both pronouns.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Fully preserves all facts and professionally clarifies whose access ends, though “then” remains slightly less explicit than Output A.\"},\"preference\":\"A\",\"preference_evidence\":\"Both preserve the source, but A more explicitly links the export deadline to the end of Priya’s access.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "started_at": "2026-08-03T10:17:00.739920+00:00",
+  "duration_ms": 9561,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc720-759b-74a1-a165-ad3f0ebcc502",
+  "trace_file": "raw/judgments/en-ambiguous-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/en-ambiguous-referent--r04.result.json"
+}

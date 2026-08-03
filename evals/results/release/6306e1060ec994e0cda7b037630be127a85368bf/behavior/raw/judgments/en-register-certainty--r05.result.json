@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-register-certainty--r05",
+  "scenario_id": "en-register-certainty",
+  "category": "english",
+  "language": "en",
+  "repeat": 5,
+  "presentation_index": 69,
+  "judge_seed": 808,
+  "prompt_sha256": "ab7abc7abd933737313f614b1620dc95726bc384cbc773d04ba46b19e15b6632",
+  "presented_output_a": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a cache-related issue, but the cause has not been confirmed.",
+  "presented_output_b": "We are investigating elevated latency in eu-west-2. Early evidence suggests a cache issue, but the cause has not been confirmed. Approximately 8% of requests may be affected.",
+  "a_arm": "178eaf8",
+  "b_arm": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves all facts, uncertainty, location, and the 8% estimate; minor wording and sentence-order changes do not alter meaning."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Faithfully preserves every fact, qualification, number, and the calm formal register with only negligible wording changes."
+    },
+    "preference": "B",
+    "preference_evidence": "Both are fully acceptable, but B more closely preserves the source's wording and information order."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, uncertainty, location, and the 8% estimate; minor wording and sentence-order changes do not alter meaning.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Faithfully preserves every fact, qualification, number, and the calm formal register with only negligible wording changes.\"},\"preference\":\"B\",\"preference_evidence\":\"Both are fully acceptable, but B more closely preserves the source's wording and information order.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "6306e1060ec994e0cda7b037630be127a85368bf",
+  "started_at": "2026-08-03T10:17:21.440437+00:00",
+  "duration_ms": 11121,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc720-c682-700b-a86a-46380eda30a1",
+  "trace_file": "raw/judgments/en-register-certainty--r05.trace.jsonl",
+  "result_file": "raw/judgments/en-register-certainty--r05.result.json"
+}
