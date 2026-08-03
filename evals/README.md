@@ -195,6 +195,13 @@ python3 -m evals.run_spanish_scope_regression --scope-only --repeats 5
 python3 -m evals.run_spanish_scope_regression --repeats 5  # also checks all frozen facts
 ```
 
+The already-clear English procedure regression separates the critical review-versus-execution boundary from harmless but unnecessary copyedits:
+
+```sh
+python3 -m evals.run_procedure_boundary_regression --critical-only --repeats 5
+python3 -m evals.run_procedure_boundary_regression --repeats 5  # also requires exact unchanged output
+```
+
 ## Run the release-candidate evaluation
 
 Release evaluation uses an immutable commit, not `worktree`, and requires a clean tracked worktree before live execution. The core matrix is exactly 425 generations: 200 formal pinned-inventory routing runs plus 225 behavior generations (15 scenarios × no skill/current/candidate × five repeats). The 75 blind behavior comparisons present only revision `178eaf8` and the candidate; the unjudged no-skill arm remains generation evidence and receives no inferred judgment scores.
