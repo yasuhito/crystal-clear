@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r05",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 5,
+  "presentation_index": 53,
+  "judge_seed": 808,
+  "prompt_sha256": "c42487865296e25ed98b40a2e89ebc067f91a332c1574552d5e29eb5d506e9d8",
+  "presented_output_a": "佐藤さんは鈴木さんに、レビュー後に鈴木さんが案件ID「JP-42」の報告書を送るよう伝えました。佐藤さんは報告書の承認を担当します。",
+  "presented_output_b": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "a_arm": "178eaf8",
+  "b_arm": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "「送るよう伝えました」は送付の指示を表し、送る予定だと伝えた原文の発話内容を変更している。担当者と案件IDは明確。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "鈴木さんがレビュー後に送付し、佐藤さんが承認を担当すること、案件IDをすべて保持している。引用表現はやや硬いが明確。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは発話を指示へ変えず、原文の全事実を曖昧さなく保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"「送るよう伝えました」は送付の指示を表し、送る予定だと伝えた原文の発話内容を変更している。担当者と案件IDは明確。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"鈴木さんがレビュー後に送付し、佐藤さんが承認を担当すること、案件IDをすべて保持している。引用表現はやや硬いが明確。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは発話を指示へ変えず、原文の全事実を曖昧さなく保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T06:03:37.121982+00:00",
+  "duration_ms": 24697,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc638-78b4-7de0-8c1c-7b5af0b0b129",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r05.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r05.result.json"
+}

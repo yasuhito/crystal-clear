@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-de-terminology--r02",
+  "scenario_id": "multi-de-terminology",
+  "category": "multilingual-core",
+  "language": "de",
+  "repeat": 2,
+  "presentation_index": 74,
+  "judge_seed": 808,
+  "prompt_sha256": "08646a1692d1d7020e6146dc496aad4a86d9bfe4a6cca8774bbf2f43aebdddff",
+  "presented_output_a": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Beachten Sie, dass die Datenprüfung keine vorhandenen Dateien untersucht.",
+  "presented_output_b": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Vorhandene Dateien werden von der Datenprüfung nicht geprüft.",
+  "a_arm": "178eaf8",
+  "b_arm": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Aussagen, Einschränkungen und der Produktname sind in drei formellen Sätzen erhalten."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Aussagen, Einschränkungen und der Produktname sind in drei formellen Sätzen erhalten."
+    },
+    "preference": "tie",
+    "preference_evidence": "Beide Fassungen bewahren Inhalt, Einschränkung, Terminologie und Dreisatzstruktur gleichwertig."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Aussagen, Einschränkungen und der Produktname sind in drei formellen Sätzen erhalten.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Aussagen, Einschränkungen und der Produktname sind in drei formellen Sätzen erhalten.\"},\"preference\":\"tie\",\"preference_evidence\":\"Beide Fassungen bewahren Inhalt, Einschränkung, Terminologie und Dreisatzstruktur gleichwertig.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T06:04:51.470686+00:00",
+  "duration_ms": 11469,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc639-9ae7-7109-8215-992f2a4954f8",
+  "trace_file": "raw/judgments/multi-de-terminology--r02.trace.jsonl",
+  "result_file": "raw/judgments/multi-de-terminology--r02.result.json"
+}

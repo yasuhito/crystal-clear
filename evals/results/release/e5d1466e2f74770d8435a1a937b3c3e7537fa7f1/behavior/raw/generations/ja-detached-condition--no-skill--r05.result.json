@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-detached-condition",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "detached-qualification",
+    "accidental-certainty-change"
+  ],
+  "source_text": "バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
+  "output_contract": "条件が明確な案内文だけを日本語で返してください。",
+  "prompt": "SOURCEの条件を対象となる説明の近くに置いて書き直してください。条件が明確な案内文だけを日本語で返してください。可能性を確定表現に変えないでください。SOURCE: バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
+  "checks": [
+    {
+      "id": "plan",
+      "kind": "protected-string",
+      "values": [
+        "Proプラン"
+      ]
+    },
+    {
+      "id": "limits",
+      "kind": "number",
+      "values": [
+        "30日以内",
+        "最大72時間"
+      ]
+    },
+    {
+      "id": "condition",
+      "kind": "condition",
+      "values": [
+        "場合に限り"
+      ]
+    },
+    {
+      "id": "possibility",
+      "kind": "fact",
+      "values": [
+        "可能性"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 5,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T05:57:15.021812+00:00",
+  "duration_ms": 5113,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc632-a3fc-759a-8382-75bc35425274",
+  "final_output": "Proプランをご利用で、障害発生から30日以内に申請した場合に限り、バックアップからデータを復元できます。復元には最大72時間かかる可能性があります。",
+  "trace_file": "raw/generations/ja-detached-condition--no-skill--r05.trace.jsonl",
+  "result_file": "raw/generations/ja-detached-condition--no-skill--r05.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "plan",
+        "kind": "protected-string",
+        "values": [
+          "Proプラン"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "limits",
+        "kind": "number",
+        "values": [
+          "30日以内",
+          "最大72時間"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "condition",
+        "kind": "condition",
+        "values": [
+          "場合に限り"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "possibility",
+        "kind": "fact",
+        "values": [
+          "可能性"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "failure_modes": [
+    "ambiguous-referent"
+  ],
+  "source_text": "李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
+  "output_contract": "只返回消除指代歧义后的简体中文文本。",
+  "prompt": "改写 SOURCE，明确每个人的职责，不要添加事实。只返回消除指代歧义后的简体中文文本。保留编号、期限和必须条件。SOURCE: 李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
+  "checks": [
+    {
+      "id": "ticket",
+      "kind": "protected-string",
+      "values": [
+        "CN-88"
+      ]
+    },
+    {
+      "id": "roles",
+      "kind": "fact",
+      "values": [
+        "关闭工单的人是王伟",
+        "李敏负责最终确认"
+      ]
+    },
+    {
+      "id": "deadline",
+      "kind": "condition",
+      "values": [
+        "周五之前"
+      ]
+    },
+    {
+      "id": "must",
+      "kind": "constraint",
+      "values": [
+        "必须"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 3,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T05:58:59.123033+00:00",
+  "duration_ms": 5007,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc634-3a9e-7b5a-ba14-dc0fb5f89c36",
+  "final_output": "李敏告诉王伟：李敏将在审核后进行最终确认，王伟负责关闭工单 CN-88。以上事项必须在周五之前完成。",
+  "trace_file": "raw/generations/multi-zh-referent--178eaf8--r03.trace.jsonl",
+  "result_file": "raw/generations/multi-zh-referent--178eaf8--r03.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "ticket",
+        "kind": "protected-string",
+        "values": [
+          "CN-88"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "roles",
+        "kind": "fact",
+        "values": [
+          "关闭工单的人是王伟",
+          "李敏负责最终确认"
+        ],
+        "missing": [
+          "关闭工单的人是王伟",
+          "李敏负责最终确认"
+        ],
+        "passed": false
+      },
+      {
+        "id": "deadline",
+        "kind": "condition",
+        "values": [
+          "周五之前"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "must",
+        "kind": "constraint",
+        "values": [
+          "必须"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {
+      "fact": 1
+    }
+  }
+}

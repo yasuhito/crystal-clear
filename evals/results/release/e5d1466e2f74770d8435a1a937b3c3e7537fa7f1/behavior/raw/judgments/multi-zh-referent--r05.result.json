@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r05",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 5,
+  "presentation_index": 55,
+  "judge_seed": 808,
+  "prompt_sha256": "d5b19fec51420200ed3b02a739cb42959ddbce91b1d3fff64e50e069daa05945",
+  "presented_output_a": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。李敏负责最终确认。必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏负责最终确认，王伟将在审核后关闭工单 CN-88。必须在周五之前完成。",
+  "a_arm": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确王伟在审核后关闭工单，并保留李敏最终确认、CN-88及周五前完成的约束，且基本保持原有结构。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "完整保留王伟关闭工单、李敏最终确认、审核后及周五前完成等信息，但调整了信息顺序。"
+    },
+    "preference": "A",
+    "preference_evidence": "两者事实均完整；A更贴近源文的信息顺序和核心结构。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确王伟在审核后关闭工单，并保留李敏最终确认、CN-88及周五前完成的约束，且基本保持原有结构。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"完整保留王伟关闭工单、李敏最终确认、审核后及周五前完成等信息，但调整了信息顺序。\"},\"preference\":\"A\",\"preference_evidence\":\"两者事实均完整；A更贴近源文的信息顺序和核心结构。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T06:03:46.814449+00:00",
+  "duration_ms": 18760,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc638-9e6e-79f0-8aea-373912d0c0c0",
+  "trace_file": "raw/judgments/multi-zh-referent--r05.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r05.result.json"
+}

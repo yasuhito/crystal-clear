@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r01",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 1,
+  "presentation_index": 37,
+  "judge_seed": 808,
+  "prompt_sha256": "6abad495245e200774576c127d6a5064f37a3fb96c24b87a0acc69ec8f56796f",
+  "presented_output_a": "佐藤さんは鈴木さんに、レビュー後に鈴木さんが案件ID「JP-42」の報告書を送ると伝えました。佐藤さんは報告書の承認を担当します。",
+  "presented_output_b": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "a_arm": "178eaf8",
+  "b_arm": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "送付者と承認担当は明確だが、案件IDを報告書に直接係らせており、原文より関係をやや強めている。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "鈴木さんがレビュー後に送付し、佐藤さんが承認を担当することと案件IDを、原文どおり明確に保持している。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは曖昧さを解消しつつ、案件IDと報告書の関係を原文以上に限定していない。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送付者と承認担当は明確だが、案件IDを報告書に直接係らせており、原文より関係をやや強めている。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"鈴木さんがレビュー後に送付し、佐藤さんが承認を担当することと案件IDを、原文どおり明確に保持している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは曖昧さを解消しつつ、案件IDと報告書の関係を原文以上に限定していない。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T06:02:39.511069+00:00",
+  "duration_ms": 16436,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc637-9776-71ad-9cd4-1c6e779f01b8",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r01.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r01.result.json"
+}

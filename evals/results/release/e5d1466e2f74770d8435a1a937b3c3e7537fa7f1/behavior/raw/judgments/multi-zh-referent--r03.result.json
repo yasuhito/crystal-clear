@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r03",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 3,
+  "presentation_index": 30,
+  "judge_seed": 808,
+  "prompt_sha256": "5b919e4cbb4bc04f87afe6ff5bd85cae47c0f72c88a855be8bc25d498f567cfc",
+  "presented_output_a": "李敏告诉王伟：李敏将在审核后进行最终确认，王伟负责关闭工单 CN-88。以上事项必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。李敏负责最终确认。必须在周五之前完成。",
+  "a_arm": "178eaf8",
+  "b_arm": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact",
+        "removed-constraint"
+      ],
+      "preservation": 2,
+      "first_pass_understanding": null,
+      "core_structure": 3,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "将“审核后”改为修饰李敏的最终确认，新增了原文未说明的时序关系，并丢失了关闭工单须在审核后的条件。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "依据后文明确说明，将关闭人确定为王伟，同时保留审核后关闭、李敏最终确认及周五前完成等信息。"
+    },
+    "preference": "B",
+    "preference_evidence": "B消除了指代冲突并完整保留各项事实与时序约束；A错误转移了“审核后”的作用范围。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\",\"removed-constraint\"],\"preservation\":2,\"first_pass_understanding\":null,\"core_structure\":3,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"将“审核后”改为修饰李敏的最终确认，新增了原文未说明的时序关系，并丢失了关闭工单须在审核后的条件。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"依据后文明确说明，将关闭人确定为王伟，同时保留审核后关闭、李敏最终确认及周五前完成等信息。\"},\"preference\":\"B\",\"preference_evidence\":\"B消除了指代冲突并完整保留各项事实与时序约束；A错误转移了“审核后”的作用范围。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T06:02:16.185406+00:00",
+  "duration_ms": 21000,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc637-3c6c-76a5-86f8-05ab25b86b60",
+  "trace_file": "raw/judgments/multi-zh-referent--r03.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r03.result.json"
+}

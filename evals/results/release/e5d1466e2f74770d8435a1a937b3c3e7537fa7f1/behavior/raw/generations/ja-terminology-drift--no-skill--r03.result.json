@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "terminology-drift"
+  ],
+  "source_text": "管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+  "output_contract": "用語を統一した3文の操作説明だけを返してください。",
+  "prompt": "SOURCEの製品用語を統一して書き直してください。用語を統一した3文の操作説明だけを返してください。制約を保持してください。SOURCE: 管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+  "checks": [
+    {
+      "id": "term",
+      "kind": "protected-string",
+      "values": [
+        "共有スペース",
+        "管理画面"
+      ]
+    },
+    {
+      "id": "external",
+      "kind": "constraint",
+      "values": [
+        "外部ユーザーを招待できません"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 3,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "e5d1466e2f74770d8435a1a937b3c3e7537fa7f1",
+  "started_at": "2026-08-03T05:57:36.451077+00:00",
+  "duration_ms": 5246,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc632-f7ac-7c28-9b0d-2f68bbdce84b",
+  "final_output": "管理画面で「共有スペース」を作成します。  \n共有スペースにメンバーを追加してください。  \n共有スペースには外部ユーザーを招待できません。",
+  "trace_file": "raw/generations/ja-terminology-drift--no-skill--r03.trace.jsonl",
+  "result_file": "raw/generations/ja-terminology-drift--no-skill--r03.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "term",
+        "kind": "protected-string",
+        "values": [
+          "共有スペース",
+          "管理画面"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "external",
+        "kind": "constraint",
+        "values": [
+          "外部ユーザーを招待できません"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}
