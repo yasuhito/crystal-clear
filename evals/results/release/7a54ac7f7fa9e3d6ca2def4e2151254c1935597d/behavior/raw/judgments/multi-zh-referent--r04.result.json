@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r04",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 4,
+  "presentation_index": 48,
+  "judge_seed": 808,
+  "prompt_sha256": "932e5d46f0614cbcb380c97b786145204a27c5347f6a4b747de23a55afe24cea",
+  "presented_output_a": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。李敏负责最终确认。上述事项必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：王伟将在审核后关闭工单 CN-88，李敏负责最终确认。必须在周五之前完成。",
+  "a_arm": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确王伟在审核后关闭工单 CN-88、李敏最终确认，并保留周五前完成的约束。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "准确消除“她”的歧义，完整保留关闭人、最终确认人、工单编号、审核条件和期限。"
+    },
+    "preference": "B",
+    "preference_evidence": "两者均完整保真；B更贴近原文核心结构，未额外加入“上述事项”这一概括性指称。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确王伟在审核后关闭工单 CN-88、李敏最终确认，并保留周五前完成的约束。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"准确消除“她”的歧义，完整保留关闭人、最终确认人、工单编号、审核条件和期限。\"},\"preference\":\"B\",\"preference_evidence\":\"两者均完整保真；B更贴近原文核心结构，未额外加入“上述事项”这一概括性指称。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "started_at": "2026-08-03T11:13:03.418795+00:00",
+  "duration_ms": 11860,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc753-c517-77aa-933a-e15143e7acaf",
+  "trace_file": "raw/judgments/multi-zh-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r04.result.json"
+}

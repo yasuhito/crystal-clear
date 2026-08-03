@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r02",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 2,
+  "presentation_index": 35,
+  "judge_seed": 808,
+  "prompt_sha256": "908ad250ad881ad1d1eacae337750044f4ea39d7b2f68f356868d17ab7c9160b",
+  "presented_output_a": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review; do not begin the rollout until security signs off, and keep the legacy exporter available.",
+  "presented_output_b": "The migration has been discussed for several weeks, and the legacy exporter remains available. After reviewing the risks, we recommend approving Project Northstar by 14 June; however, the rollout must not begin until security signs off.",
+  "a_arm": "178eaf8",
+  "b_arm": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-instruction",
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Changes a recommendation into a decision and recasts the exporter's current availability as an instruction to keep it available."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Faithfully preserves all facts, timing, recommendation certainty, and the security-sign-off constraint in professional prose."
+    },
+    "preference": "B",
+    "preference_evidence": "B preserves the source exactly, while A strengthens the recommendation and invents an ongoing instruction about the legacy exporter."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\",\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changes a recommendation into a decision and recasts the exporter's current availability as an instruction to keep it available.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Faithfully preserves all facts, timing, recommendation certainty, and the security-sign-off constraint in professional prose.\"},\"preference\":\"B\",\"preference_evidence\":\"B preserves the source exactly, while A strengthens the recommendation and invents an ongoing instruction about the legacy exporter.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "started_at": "2026-08-03T11:12:24.097164+00:00",
+  "duration_ms": 14670,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc753-2b8a-783f-b1cf-d01487e26f58",
+  "trace_file": "raw/judgments/en-buried-answer--r02.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r02.result.json"
+}

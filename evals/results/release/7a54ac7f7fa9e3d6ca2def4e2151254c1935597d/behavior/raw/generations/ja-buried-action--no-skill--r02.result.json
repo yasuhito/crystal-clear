@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "buried-answer",
+    "register-mismatch"
+  ],
+  "source_text": "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
+  "output_contract": "丁寧なビジネス日本語の依頼文だけを返してください。",
+  "prompt": "SOURCEを一読で依頼内容が分かるように書き直してください。丁寧なビジネス日本語の依頼文だけを返してください。事実、期限、制約、固有表現を保持してください。SOURCE: 先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
+  "checks": [
+    {
+      "id": "plan",
+      "kind": "protected-string",
+      "values": [
+        "移行案A",
+        "田中様"
+      ]
+    },
+    {
+      "id": "dates",
+      "kind": "number",
+      "values": [
+        "7月末",
+        "6月20日"
+      ]
+    },
+    {
+      "id": "approval",
+      "kind": "constraint",
+      "values": [
+        "承認前"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 2,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "started_at": "2026-08-03T11:06:48.689429+00:00",
+  "duration_ms": 5638,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc74e-0d46-7810-962c-7c9ae07e7257",
+  "final_output": "田中様におかれましては、現行環境が7月末まで利用可能であることを踏まえ、移行案Aを6月20日までにご承認くださいますようお願いいたします。なお、ご承認前に作業を開始しないようお願いいたします。",
+  "trace_file": "raw/generations/ja-buried-action--no-skill--r02.trace.jsonl",
+  "result_file": "raw/generations/ja-buried-action--no-skill--r02.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "plan",
+        "kind": "protected-string",
+        "values": [
+          "移行案A",
+          "田中様"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "dates",
+        "kind": "number",
+        "values": [
+          "7月末",
+          "6月20日"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "approval",
+        "kind": "constraint",
+        "values": [
+          "承認前"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

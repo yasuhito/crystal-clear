@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-es-buried-action--r04",
+  "scenario_id": "multi-es-buried-action",
+  "category": "multilingual-core",
+  "language": "es",
+  "repeat": 4,
+  "presentation_index": 38,
+  "judge_seed": 808,
+  "prompt_sha256": "48b1e7a26215d74c5b973accadd1ce366d06a23dd9239c13d7c0b882516bec60",
+  "presented_output_a": "Ana debe aprobar el Proyecto Faro antes del 3 de mayo; la migración solo podrá iniciarse con la aprobación de Seguridad, y el sistema anterior seguirá disponible.",
+  "presented_output_b": "Solicitamos que Ana apruebe Proyecto Faro antes del 3 de mayo, tras dos semanas de revisión de varias opciones; el sistema anterior seguirá disponible y la migración no debe iniciarse sin la aprobación de Seguridad.",
+  "a_arm": "178eaf8",
+  "b_arm": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 3,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Conserva la aprobación, la fecha, la condición de Seguridad y la disponibilidad del sistema anterior, pero omite la revisión de varias opciones durante dos semanas."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Preserva todos los hechos, el plazo, la disponibilidad del sistema anterior y la prohibición condicionada a Seguridad en una sola solicitud."
+    },
+    "preference": "B",
+    "preference_evidence": "B preserva toda la información de la fuente; A elimina el hecho de la revisión de opciones durante dos semanas."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Conserva la aprobación, la fecha, la condición de Seguridad y la disponibilidad del sistema anterior, pero omite la revisión de varias opciones durante dos semanas.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Preserva todos los hechos, el plazo, la disponibilidad del sistema anterior y la prohibición condicionada a Seguridad en una sola solicitud.\"},\"preference\":\"B\",\"preference_evidence\":\"B preserva toda la información de la fuente; A elimina el hecho de la revisión de opciones durante dos semanas.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "started_at": "2026-08-03T11:12:31.091493+00:00",
+  "duration_ms": 11392,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc753-46c8-72c7-b382-62ca49d63005",
+  "trace_file": "raw/judgments/multi-es-buried-action--r04.trace.jsonl",
+  "result_file": "raw/judgments/multi-es-buried-action--r04.result.json"
+}

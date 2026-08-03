@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r01",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 1,
+  "presentation_index": 65,
+  "judge_seed": 808,
+  "prompt_sha256": "86d88a3ba60d2563dbaed9800786de612a08721cda9f85d87b9f32db23a30655",
+  "presented_output_a": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。王伟负责关闭工单；李敏负责最终确认。上述事项必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏负责最终确认，王伟负责在审核后关闭工单 CN-88。必须在周五之前完成。",
+  "a_arm": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确王伟为审核后关闭 CN-88 的人，保留李敏最终确认、周五前完成等全部事实与约束，且结构贴近原文。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "完整保留责任分工、审核条件、工单编号和截止期限，但合并并调整了原文的信息顺序。"
+    },
+    "preference": "A",
+    "preference_evidence": "两者均准确消除歧义并保留事实；A对原文句序和核心结构的保持更好。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确王伟为审核后关闭 CN-88 的人，保留李敏最终确认、周五前完成等全部事实与约束，且结构贴近原文。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"完整保留责任分工、审核条件、工单编号和截止期限，但合并并调整了原文的信息顺序。\"},\"preference\":\"A\",\"preference_evidence\":\"两者均准确消除歧义并保留事实；A对原文句序和核心结构的保持更好。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "started_at": "2026-08-03T11:13:49.860167+00:00",
+  "duration_ms": 16786,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc754-7a82-720a-8d97-9c0e898a04aa",
+  "trace_file": "raw/judgments/multi-zh-referent--r01.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r01.result.json"
+}

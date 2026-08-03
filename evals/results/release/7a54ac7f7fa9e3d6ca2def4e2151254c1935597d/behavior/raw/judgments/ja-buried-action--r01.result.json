@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r01",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 1,
+  "presentation_index": 5,
+  "judge_seed": 808,
+  "prompt_sha256": "269c0aed1cae8bac3e3fea5be9037104fed9db8aa463a2bce873d88ec2a7c334",
+  "presented_output_a": "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。なお、承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "事実、期限、対象者、移行案A、承認前の作業開始禁止を原文の順序と丁寧な依頼調で忠実に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "全要素と制約は保持しているが、依頼を冒頭へ移し、「意見がございましたが」と逆接で現行環境の期限につなげたため、原文の論理展開がわずかに変化している。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは原文の情報順序と因果的な流れを保ち、事実・期限・禁止条件を最も忠実かつ自然に伝えている。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"事実、期限、対象者、移行案A、承認前の作業開始禁止を原文の順序と丁寧な依頼調で忠実に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全要素と制約は保持しているが、依頼を冒頭へ移し、「意見がございましたが」と逆接で現行環境の期限につなげたため、原文の論理展開がわずかに変化している。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは原文の情報順序と因果的な流れを保ち、事実・期限・禁止条件を最も忠実かつ自然に伝えている。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "7a54ac7f7fa9e3d6ca2def4e2151254c1935597d",
+  "started_at": "2026-08-03T11:10:47.228542+00:00",
+  "duration_ms": 14652,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc751-b115-7b6f-9b46-23cc837a5750",
+  "trace_file": "raw/judgments/ja-buried-action--r01.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r01.result.json"
+}
