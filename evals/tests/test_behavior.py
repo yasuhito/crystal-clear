@@ -70,7 +70,13 @@ class MeaningChangeReproTests(unittest.TestCase):
                 self.assertTrue(meaning_change_reasons(output))
 
     def test_accepts_report_that_preserves_all_invariants(self) -> None:
-        self.assertFalse(has_meaning_change(self.SAFE))
+        outputs = (
+            self.SAFE,
+            "佐藤さんは鈴木さんに、『レビュー後に鈴木さんが案件ID JP-42の報告書を送る』と伝えました。佐藤さんによる承認のタイミングは明記されていません。",
+        )
+        for output in outputs:
+            with self.subTest(output=output):
+                self.assertFalse(has_meaning_change(output))
 
 
 class DeterministicScoringTests(unittest.TestCase):

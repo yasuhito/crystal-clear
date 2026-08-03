@@ -26,7 +26,7 @@ PROMPT = """曖昧さをなくし、自然な日本語に書き直してくだ�
 INSTRUCTION_MARKERS = ("送るよう", "送ってください")
 SATO_TO_SUZUKI = re.compile(r"佐藤さん(?:は|が)[、 ]*鈴木さんに|佐藤さんから鈴木さんに")
 SUZUKI_SENDS = re.compile(r"鈴木さんが[^。]*(?:送る|送り|送付)|送付は鈴木さんが")
-SATO_APPROVES = re.compile(r"佐藤さん(?:は|が)[^。]*承認|承認(?:は|を)[^。]*佐藤さん")
+SATO_APPROVES = re.compile(r"佐藤さん(?:は|が|による)[^。]*承認|承認(?:は|を)[^。]*佐藤さん")
 REVERSED_ATTRIBUTION = re.compile(r"鈴木さん(?:は|が)[、 ]*佐藤さんに")
 EXPANDED_REPORTED_CONTENT = re.compile(r"承認[^。]*と[、 ]*佐藤さん.*伝えました|承認[^。]*と伝えました|[「『].*承認.*[」』]と伝えました")
 

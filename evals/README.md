@@ -173,13 +173,14 @@ The English modality regression found during the `320739c` release evaluation ha
 python3 -m evals.run_semantic_regression --repeats 5
 ```
 
-The terminology regression found in the same release has a focused check for keeping embedded editorial directions out of rewritten content:
+The terminology regressions have focused checks for both sides of the editorial/content boundary:
 
 ```sh
 python3 -m evals.run_terminology_regression --repeats 5
+python3 -m evals.run_terminology_regression --team-sync --repeats 5
 ```
 
-It rejects turning “keep the product term … throughout” into an invented instruction to keep the product enabled, while also checking the upload and existing-file scopes.
+The first rejects turning “keep the product term … throughout” into an invented instruction to keep the product enabled. The second preserves a genuine constraint on the product's UI name rather than discarding it as a rewrite instruction. Both also check the frozen behavior and scope facts.
 
 The Simplified Chinese role regression checks that resolving a pronoun does not invent an actor for an agentless review or turn a separate final-confirmation responsibility into an ordering constraint:
 
