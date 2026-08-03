@@ -78,7 +78,7 @@
       "passed": false,
       "actual": 0.32,
       "threshold": ">= 0.50",
-      "gating": true
+      "gating": false
     },
     {
       "id": "english-candidate-loss-rate",
@@ -86,7 +86,7 @@
       "passed": false,
       "actual": 0.2,
       "threshold": "<= 0.10",
-      "gating": true
+      "gating": false
     },
     {
       "id": "japanese-mean-noncritical-preservation",
@@ -118,7 +118,7 @@
       "passed": false,
       "actual": 0.4,
       "threshold": ">= 0.50",
-      "gating": true
+      "gating": false
     },
     {
       "id": "japanese-candidate-loss-rate",
@@ -126,7 +126,7 @@
       "passed": false,
       "actual": 0.32,
       "threshold": "<= 0.10",
-      "gating": true
+      "gating": false
     },
     {
       "id": "multilingual-core-mean-noncritical-preservation",
@@ -158,7 +158,7 @@
       "passed": false,
       "actual": 0.48,
       "threshold": ">= 0.50",
-      "gating": true
+      "gating": false
     },
     {
       "id": "multilingual-core-candidate-loss-rate",
@@ -166,7 +166,7 @@
       "passed": false,
       "actual": 0.28,
       "threshold": "<= 0.10",
-      "gating": true
+      "gating": false
     },
     {
       "id": "boundary-en-equivalent",
@@ -207,10 +207,282 @@
       "actual": true,
       "threshold": "must disclose post-candidate fixture",
       "gating": true
+    },
+    {
+      "id": "human-candidate-regressions",
+      "group": "human",
+      "passed": false,
+      "actual": 0.75,
+      "threshold": "<= 0.10",
+      "gating": true
+    },
+    {
+      "id": "human-critical-meaning-changes",
+      "group": "human",
+      "passed": false,
+      "actual": 2,
+      "threshold": "= 0",
+      "gating": true
     }
   ],
-  "removed_automated_rubric_items": [],
-  "human_review": null,
+  "removed_automated_rubric_items": [
+    "first_pass_understanding",
+    "naturalness",
+    "preference"
+  ],
+  "human_review": {
+    "valid": true,
+    "pairs": 12,
+    "candidate_regressions": 9,
+    "candidate_regression_rate": 0.75,
+    "candidate_critical_changes": 2,
+    "calibration": {
+      "first_pass_understanding": {
+        "disagreements": 6,
+        "pairs": 12,
+        "disagreement_rate": 0.5,
+        "automated_acceptance": false
+      },
+      "naturalness": {
+        "disagreements": 3,
+        "pairs": 12,
+        "disagreement_rate": 0.25,
+        "automated_acceptance": false
+      },
+      "preservation": {
+        "disagreements": 0,
+        "pairs": 12,
+        "disagreement_rate": 0.0,
+        "automated_acceptance": true
+      },
+      "critical_preservation": {
+        "disagreements": 0,
+        "pairs": 12,
+        "disagreement_rate": 0.0,
+        "automated_acceptance": true
+      },
+      "preference": {
+        "disagreements": 4,
+        "pairs": 12,
+        "disagreement_rate": 0.3333,
+        "automated_acceptance": false
+      }
+    },
+    "calibration_policy": {
+      "version": "automated-owner-regression-v1",
+      "material_disagreement_threshold": 0.2,
+      "rule": "Remove an automated item from acceptance when the automated review and project owner disagree on whether one condition regresses in more than 20% of reviewed pairs."
+    },
+    "reviewer_role": "project-owner",
+    "owner_attestation": true,
+    "raw_response_sha256": "6b6b1a77128e2e26c726f4780a75c6bf740056545d7c3d0063697359fbc6a46e",
+    "reviews": [
+      {
+        "review_id": "JP-01",
+        "output_a": {
+          "first_pass_understanding": 4,
+          "naturalness": 3,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "B",
+        "notes": "Bの方が自然で分かりやすい。"
+      },
+      {
+        "review_id": "JP-02",
+        "output_a": {
+          "first_pass_understanding": 4,
+          "naturalness": 3,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "B",
+        "notes": "Bの方が自然で分かりやすい。"
+      },
+      {
+        "review_id": "JP-03",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "tie",
+        "notes": "AとBは同じ文章。"
+      },
+      {
+        "review_id": "JP-04",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 4,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 4,
+          "naturalness": 4,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "A",
+        "notes": "Aを選択。7月末までの移行完了という関係の補足は問題ない。"
+      },
+      {
+        "review_id": "JP-05",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 2,
+          "critical_meaning_change": true
+        },
+        "preference": "A",
+        "notes": "Bは『送ると伝えた』を『送るよう指示した』に変えており、重大な意味変更。"
+      },
+      {
+        "review_id": "JP-06",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "tie",
+        "notes": "AとBは同じ文章。"
+      },
+      {
+        "review_id": "JP-07",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 4,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "A",
+        "notes": "Aの方が分かりやすい。期限と承認を結び付ける補足は問題ない。"
+      },
+      {
+        "review_id": "JP-08",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 4,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "B",
+        "notes": "Bの方がやや自然。"
+      },
+      {
+        "review_id": "JP-09",
+        "output_a": {
+          "first_pass_understanding": 4,
+          "naturalness": 3,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "B",
+        "notes": "Bの方が自然で分かりやすい。"
+      },
+      {
+        "review_id": "JP-10",
+        "output_a": {
+          "first_pass_understanding": 4,
+          "naturalness": 4,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "B",
+        "notes": "Bの方が自然で分かりやすい。"
+      },
+      {
+        "review_id": "JP-11",
+        "output_a": {
+          "first_pass_understanding": 4,
+          "naturalness": 5,
+          "preservation": 4,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "preference": "B",
+        "notes": "Bを選択。Aの謝罪文は重大ではないが、原文にない追加。"
+      },
+      {
+        "review_id": "JP-12",
+        "output_a": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_meaning_change": false
+        },
+        "output_b": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 2,
+          "critical_meaning_change": true
+        },
+        "preference": "A",
+        "notes": "Bは『送ると伝えた』を『送るよう指示した』に変えており、重大な意味変更。"
+      }
+    ]
+  },
   "language_results_are_separate": true,
   "current_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
   "candidate_artifact_hashes": {
@@ -232,6 +504,6 @@
     "japanese_packet_hash": "japanese-review.packet.sha256",
     "response_template": "japanese-review.response-template.json",
     "assignment_key": "japanese-review.assignment-key.json",
-    "owner_response": null
+    "owner_response": "japanese-review.response.json"
   }
 }
