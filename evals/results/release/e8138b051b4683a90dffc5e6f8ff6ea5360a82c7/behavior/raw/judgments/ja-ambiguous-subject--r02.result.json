@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r02",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 2,
+  "presentation_index": 40,
+  "judge_seed": 808,
+  "prompt_sha256": "3310e546859e57da2753d733cbb9c1a33598a8456634bad36c6eadb0f18289c8",
+  "presented_output_a": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは、その報告書の承認を担当します。案件IDはJP-42です。",
+  "presented_output_b": "案件ID「JP-42」について、佐藤さんは鈴木さんに、レビュー後に鈴木さんが報告書を送ると伝えました。佐藤さんは報告書の承認を担当します。",
+  "a_arm": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "送付者が鈴木さん、承認担当が佐藤さん、時点がレビュー後、案件IDがJP-42であることを明確かつ自然に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "主要事実はすべて保持しているが、「案件ID『JP-42』について」とすることで、伝達内容全体が当該案件に関するものだという結び付きを原文よりやや強めている。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは原文の事実関係と案件IDの提示範囲を変えず、送付者と承認者の曖昧さだけを解消している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送付者が鈴木さん、承認担当が佐藤さん、時点がレビュー後、案件IDがJP-42であることを明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"主要事実はすべて保持しているが、「案件ID『JP-42』について」とすることで、伝達内容全体が当該案件に関するものだという結び付きを原文よりやや強めている。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは原文の事実関係と案件IDの提示範囲を変えず、送付者と承認者の曖昧さだけを解消している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:37:37.871347+00:00",
+  "duration_ms": 16330,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc76a-44ac-74d7-8669-a10ffb335ce8",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r02.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r02.result.json"
+}

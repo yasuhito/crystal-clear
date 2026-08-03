@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r05",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 5,
+  "presentation_index": 62,
+  "judge_seed": 808,
+  "prompt_sha256": "b8e8d48279f878a02d9ba418e347a7dd71a7923b00b6018fd28a25dadae00b88",
+  "presented_output_a": "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "先日の会議で移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前に作業を開始しないようお願いいたします。",
+  "a_arm": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "事実、期限、移行案A、承認前の作業禁止をすべて保持。丁寧だが「田中様には、」の読点がやや不自然。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "全事実と制約を保持し、丁寧で自然。「が」で会議の意見と利用期限を対比的につないだ点のみ原文構造からわずかに変化。"
+    },
+    "preference": "A",
+    "preference_evidence": "両方とも適切だが、Aは原文の文構造と情報間の関係をより忠実に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"事実、期限、移行案A、承認前の作業禁止をすべて保持。丁寧だが「田中様には、」の読点がやや不自然。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実と制約を保持し、丁寧で自然。「が」で会議の意見と利用期限を対比的につないだ点のみ原文構造からわずかに変化。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも適切だが、Aは原文の文構造と情報間の関係をより忠実に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:38:49.200312+00:00",
+  "duration_ms": 12209,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc76b-5b45-7f85-a884-e48df6a3133b",
+  "trace_file": "raw/judgments/ja-buried-action--r05.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r05.result.json"
+}

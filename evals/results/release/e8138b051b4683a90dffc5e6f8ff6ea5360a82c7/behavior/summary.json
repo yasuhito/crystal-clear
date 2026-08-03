@@ -1,0 +1,268 @@
+{
+  "categories": {
+    "english": {
+      "generations": 75,
+      "judgments": 25,
+      "arms": {
+        "no-skill": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 5,
+            "number": 5,
+            "constraint": 0,
+            "condition": 5
+          },
+          "gpt_judged": {
+            "outputs": 0,
+            "mean_preservation": null,
+            "mean_noncritical_preservation": null,
+            "mean_first_pass_understanding": null,
+            "mean_core_structure": null,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 0,
+              "losses": 0,
+              "ties": 0
+            }
+          }
+        },
+        "178eaf8": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 6,
+            "number": 5,
+            "constraint": 0,
+            "condition": 5
+          },
+          "gpt_judged": {
+            "outputs": 25,
+            "mean_preservation": 3.92,
+            "mean_noncritical_preservation": 4.833,
+            "mean_first_pass_understanding": 4.92,
+            "mean_core_structure": 4.6,
+            "critical_failures": 13,
+            "critical_failure_types": {
+              "changed-certainty": 5,
+              "changed-instruction": 7,
+              "invented-fact": 3,
+              "removed-constraint": 5
+            },
+            "pair_preferences": {
+              "wins": 0,
+              "losses": 20,
+              "ties": 5
+            }
+          }
+        },
+        "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 5,
+            "number": 4,
+            "constraint": 0,
+            "condition": 5
+          },
+          "gpt_judged": {
+            "outputs": 25,
+            "mean_preservation": 5,
+            "mean_noncritical_preservation": 5,
+            "mean_first_pass_understanding": 5,
+            "mean_core_structure": 5,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 20,
+              "losses": 0,
+              "ties": 5
+            }
+          }
+        }
+      }
+    },
+    "japanese": {
+      "generations": 75,
+      "judgments": 25,
+      "arms": {
+        "no-skill": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 10,
+            "number": 1,
+            "constraint": 0,
+            "condition": 0
+          },
+          "gpt_judged": {
+            "outputs": 0,
+            "mean_preservation": null,
+            "mean_noncritical_preservation": null,
+            "mean_first_pass_understanding": null,
+            "mean_core_structure": null,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 0,
+              "losses": 0,
+              "ties": 0
+            }
+          }
+        },
+        "178eaf8": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 10,
+            "number": 3,
+            "constraint": 0,
+            "condition": 0
+          },
+          "gpt_judged": {
+            "outputs": 25,
+            "mean_preservation": 4.6,
+            "mean_noncritical_preservation": 4.6,
+            "mean_first_pass_understanding": 4.96,
+            "mean_core_structure": 4.72,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 0,
+              "losses": 15,
+              "ties": 10
+            }
+          }
+        },
+        "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 10,
+            "number": 5,
+            "constraint": 0,
+            "condition": 0
+          },
+          "gpt_judged": {
+            "outputs": 25,
+            "mean_preservation": 5,
+            "mean_noncritical_preservation": 5,
+            "mean_first_pass_understanding": 5,
+            "mean_core_structure": 5,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 15,
+              "losses": 0,
+              "ties": 10
+            }
+          }
+        }
+      }
+    },
+    "multilingual-core": {
+      "generations": 75,
+      "judgments": 25,
+      "arms": {
+        "no-skill": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 5,
+            "number": 0,
+            "constraint": 0,
+            "condition": 5
+          },
+          "gpt_judged": {
+            "outputs": 0,
+            "mean_preservation": null,
+            "mean_noncritical_preservation": null,
+            "mean_first_pass_understanding": null,
+            "mean_core_structure": null,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 0,
+              "losses": 0,
+              "ties": 0
+            }
+          }
+        },
+        "178eaf8": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 1,
+            "fact": 5,
+            "number": 0,
+            "constraint": 5,
+            "condition": 4
+          },
+          "gpt_judged": {
+            "outputs": 25,
+            "mean_preservation": 4.44,
+            "mean_noncritical_preservation": 4.714,
+            "mean_first_pass_understanding": null,
+            "mean_core_structure": 4.48,
+            "critical_failures": 4,
+            "critical_failure_types": {
+              "changed-certainty": 1,
+              "invented-fact": 2,
+              "removed-constraint": 1
+            },
+            "pair_preferences": {
+              "wins": 0,
+              "losses": 22,
+              "ties": 3
+            }
+          }
+        },
+        "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7": {
+          "runs": 25,
+          "missing_outputs": 0,
+          "deterministic_failures_by_kind": {
+            "protected-string": 0,
+            "fact": 5,
+            "number": 0,
+            "constraint": 0,
+            "condition": 4
+          },
+          "gpt_judged": {
+            "outputs": 25,
+            "mean_preservation": 5,
+            "mean_noncritical_preservation": 5,
+            "mean_first_pass_understanding": null,
+            "mean_core_structure": 5,
+            "critical_failures": 0,
+            "critical_failure_types": {},
+            "pair_preferences": {
+              "wins": 22,
+              "losses": 0,
+              "ties": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "scenario_version": "behavior-v1",
+  "arms": [
+    "no-skill",
+    "178eaf8",
+    "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7"
+  ],
+  "compare_arms": [
+    "178eaf8",
+    "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7"
+  ],
+  "repeats": 5,
+  "judge_seed": 808
+}

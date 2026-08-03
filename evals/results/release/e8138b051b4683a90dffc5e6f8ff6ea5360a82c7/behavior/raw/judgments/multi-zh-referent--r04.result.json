@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r04",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 4,
+  "presentation_index": 48,
+  "judge_seed": 808,
+  "prompt_sha256": "d87f9979f41dd8f6908ea5d8686bfda7d659cb68c98dbf513d3fa84cfa1fb243",
+  "presented_output_a": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。李敏负责最终确认。必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏负责最终确认；王伟须在审核后关闭工单 CN-88。上述事项必须在周五之前完成。",
+  "a_arm": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确王伟在审核后关闭 CN-88、李敏最终确认，并保留周五前完成的要求。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "角色、工单号、审核条件和期限均保留，但“须”较原文“将”略强化了王伟关闭工单的义务色彩。"
+    },
+    "preference": "A",
+    "preference_evidence": "A在消除指代歧义的同时更准确保留原文的陈述方式和确定性。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确王伟在审核后关闭 CN-88、李敏最终确认，并保留周五前完成的要求。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"角色、工单号、审核条件和期限均保留，但“须”较原文“将”略强化了王伟关闭工单的义务色彩。\"},\"preference\":\"A\",\"preference_evidence\":\"A在消除指代歧义的同时更准确保留原文的陈述方式和确定性。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:38:06.043480+00:00",
+  "duration_ms": 11844,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc76a-b2b3-70f6-a10b-678f988c286f",
+  "trace_file": "raw/judgments/multi-zh-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r04.result.json"
+}

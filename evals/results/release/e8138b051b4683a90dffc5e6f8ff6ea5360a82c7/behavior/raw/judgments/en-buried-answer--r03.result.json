@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r03",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 3,
+  "presentation_index": 21,
+  "judge_seed": 808,
+  "prompt_sha256": "189fd52d78e7f0acefa7e19c11ff7c8bfa2ca54e8e50869d75d95c59e5fd44b4",
+  "presented_output_a": "After several weeks of discussion and a review of the risks, we recommend approving Project Northstar by 14 June; however, the rollout must not begin before security signs off, and the legacy exporter remains available.",
+  "presented_output_b": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review; however, do not begin the rollout until security signs off, and keep the legacy exporter available.",
+  "a_arm": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the recommendation, deadline, security-sign-off constraint, discussion duration, risk review, and exporter availability in a concise professional paragraph."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-instruction",
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Changes a recommendation to a directive ('Approve') and turns the factual availability of the legacy exporter into an instruction to keep it available."
+    },
+    "preference": "A",
+    "preference_evidence": "A preserves the source's certainty and factual status, whereas B introduces stronger directives."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the recommendation, deadline, security-sign-off constraint, discussion duration, risk review, and exporter availability in a concise professional paragraph.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\",\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changes a recommendation to a directive ('Approve') and turns the factual availability of the legacy exporter into an instruction to keep it available.\"},\"preference\":\"A\",\"preference_evidence\":\"A preserves the source's certainty and factual status, whereas B introduces stronger directives.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:36:45.594503+00:00",
+  "duration_ms": 11418,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc769-787c-7853-922c-6f5f9c166a52",
+  "trace_file": "raw/judgments/en-buried-answer--r03.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r03.result.json"
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-detached-condition",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "detached-qualification",
+    "accidental-certainty-change"
+  ],
+  "source_text": "バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
+  "output_contract": "条件が明確な案内文だけを日本語で返してください。",
+  "prompt": "SOURCEの条件を対象となる説明の近くに置いて書き直してください。条件が明確な案内文だけを日本語で返してください。可能性を確定表現に変えないでください。SOURCE: バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
+  "checks": [
+    {
+      "id": "plan",
+      "kind": "protected-string",
+      "values": [
+        "Proプラン"
+      ]
+    },
+    {
+      "id": "limits",
+      "kind": "number",
+      "values": [
+        "30日以内",
+        "最大72時間"
+      ]
+    },
+    {
+      "id": "condition",
+      "kind": "condition",
+      "values": [
+        "場合に限り"
+      ]
+    },
+    {
+      "id": "possibility",
+      "kind": "fact",
+      "values": [
+        "可能性"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 3,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:32:49.843461+00:00",
+  "duration_ms": 5156,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc765-df82-7090-8de5-4846bac0abb8",
+  "final_output": "Proプランでは、障害発生から30日以内に申請した場合に限り、バックアップからデータを復元できます。復元には最大72時間かかる可能性があります。",
+  "trace_file": "raw/generations/ja-detached-condition--178eaf8--r03.trace.jsonl",
+  "result_file": "raw/generations/ja-detached-condition--178eaf8--r03.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "plan",
+        "kind": "protected-string",
+        "values": [
+          "Proプラン"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "limits",
+        "kind": "number",
+        "values": [
+          "30日以内",
+          "最大72時間"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "condition",
+        "kind": "condition",
+        "values": [
+          "場合に限り"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "possibility",
+        "kind": "fact",
+        "values": [
+          "可能性"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

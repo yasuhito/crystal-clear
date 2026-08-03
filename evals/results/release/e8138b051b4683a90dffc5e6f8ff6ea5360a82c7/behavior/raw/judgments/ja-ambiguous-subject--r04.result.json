@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r04",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 4,
+  "presentation_index": 12,
+  "judge_seed": 808,
+  "prompt_sha256": "2427399a3be12f943d239545e7c58bdc275d0f34524924ab1df0f7f9fee1eed4",
+  "presented_output_a": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは、その報告書の承認を担当します。案件IDはJP-42です。",
+  "presented_output_b": "案件ID「JP-42」について、鈴木さんがレビュー後に報告書を送付し、佐藤さんが承認を担当すると、佐藤さんが鈴木さんに伝えました。",
+  "a_arm": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "鈴木さんがレビュー後に送付し、佐藤さんが承認することと案件IDを明確かつ自然に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 4,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "全事実を保持しているが、「担当すると、佐藤さんが」の接続がやや重く、伝達内容の構造がAより読み取りにくい。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは伝達内容を引用で明示し、送付者と承認担当者を最も自然かつ明確に区別している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"鈴木さんがレビュー後に送付し、佐藤さんが承認することと案件IDを明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":4,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全事実を保持しているが、「担当すると、佐藤さんが」の接続がやや重く、伝達内容の構造がAより読み取りにくい。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは伝達内容を引用で明示し、送付者と承認担当者を最も自然かつ明確に区別している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:36:18.158841+00:00",
+  "duration_ms": 10940,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc769-0d45-7096-88d2-0f2c6614670e",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r04.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r04.result.json"
+}

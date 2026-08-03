@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r02",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 2,
+  "presentation_index": 33,
+  "judge_seed": 808,
+  "prompt_sha256": "39222403b2748fd162eec6a51a4c3f0f605dc9d0a6ddfe285be39ef5ef57f05d",
+  "presented_output_a": "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "先日の会議で移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "会議での複数意見、7月末、田中様、6月20日、移行案A、承認前の作業禁止をすべて丁寧かつ自然に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "全事実と制約を保持しているが、冒頭を「ございましたが」で接続したため、複数意見と利用期限の間に不要な逆接関係が生じている。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは原文の文間関係をそのまま保ち、Bの不要な逆接より自然で忠実である。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"会議での複数意見、7月末、田中様、6月20日、移行案A、承認前の作業禁止をすべて丁寧かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全事実と制約を保持しているが、冒頭を「ございましたが」で接続したため、複数意見と利用期限の間に不要な逆接関係が生じている。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは原文の文間関係をそのまま保ち、Bの不要な逆接より自然で忠実である。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "e8138b051b4683a90dffc5e6f8ff6ea5360a82c7",
+  "started_at": "2026-08-03T11:37:17.398747+00:00",
+  "duration_ms": 11427,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc769-f4c4-718a-b543-2d215613d90f",
+  "trace_file": "raw/judgments/ja-buried-action--r02.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r02.result.json"
+}
