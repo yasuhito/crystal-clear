@@ -31,6 +31,7 @@ Treat the action, its object, and its duration as separate protected facts. “R
 
 - facts, numbers, relationships, and essential emphasis;
 - requirements, prohibitions, conditions, exceptions, and requested actions;
+- exclusivity and eligibility markers such as `only`, `except`, `〜に限り`, and `فقط`: preserve their restrictive force explicitly; merely saying “in/on the Pro plan” does not preserve “only on the Pro plan”;
 - who each requirement or prohibition applies to: keep a general or impersonal constraint general, and never narrow it to a person merely because an adjacent action names that person; when leading with a personal action, state a separate general constraint impersonally;
 - the stated distinction between fact, inference, recommendation, and unknown;
 - each speech act, its modality, speaker, addressee, and exact content: keep a report a report, a request a request, and an instruction an instruction; never recast what someone said as what they asked or ordered, and never move an adjacent fact into attributed speech—for example, preserve the Japanese distinction between `〜すると伝えた` and `〜するよう伝えた`;

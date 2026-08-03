@@ -190,6 +190,12 @@ python3 -m evals.run_temporal_regression --repeats 5
 
 It rejects replacing `before then` with the potentially stricter `before Friday` boundary or shifting `Maya retains access` into a future prediction.
 
+The Arabic exclusivity regression checks that a Pro-plan-only eligibility restriction keeps its explicit restrictive force alongside the 14-day condition and uncertain 24-hour duration:
+
+```sh
+python3 -m evals.run_arabic_exclusivity_regression --repeats 5
+```
+
 The Simplified Chinese role regression checks that resolving a pronoun does not invent an actor for an agentless review or turn a separate final-confirmation responsibility into an ordering constraint:
 
 ```sh
