@@ -181,6 +181,13 @@ python3 -m evals.run_terminology_regression --repeats 5
 
 It rejects turning “keep the product term … throughout” into an invented instruction to keep the product enabled, while also checking the upload and existing-file scopes.
 
+The Simplified Chinese role regression checks that resolving a pronoun does not invent an actor for an agentless review or turn a separate final-confirmation responsibility into an ordering constraint:
+
+```sh
+python3 -m evals.run_chinese_role_regression --repeats 5
+python3 -m evals.run_chinese_role_regression --minimal --repeats 5
+```
+
 ## Run the release-candidate evaluation
 
 Release evaluation uses an immutable commit, not `worktree`, and requires a clean tracked worktree before live execution. The core matrix is exactly 425 generations: 200 formal pinned-inventory routing runs plus 225 behavior generations (15 scenarios × no skill/current/candidate × five repeats). The 75 blind behavior comparisons present only revision `178eaf8` and the candidate; the unjudged no-skill arm remains generation evidence and receives no inferred judgment scores.

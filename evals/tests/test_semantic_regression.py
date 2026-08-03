@@ -14,11 +14,15 @@ class RecommendationModalityTests(unittest.TestCase):
         self.assertEqual(modality_change_reasons(output), [])
 
     def test_accepts_valid_recommendation_paraphrase(self) -> None:
-        output = (
+        outputs = (
             "After several weeks of discussion and a risk review, our advice is to approve Project Northstar "
-            "by 14 June. The legacy exporter is available, and rollout can begin only after security signs off."
+            "by 14 June. The legacy exporter is available, and rollout can begin only after security signs off.",
+            "After several weeks of discussion and a review of the risks, we recommend approving Project Northstar "
+            "by 14 June, provided that rollout does not begin until security signs off; the legacy exporter remains available.",
         )
-        self.assertEqual(modality_change_reasons(output), [])
+        for output in outputs:
+            with self.subTest(output=output):
+                self.assertEqual(modality_change_reasons(output), [])
 
     def test_rejects_observed_recommendation_to_directive_change(self) -> None:
         output = (

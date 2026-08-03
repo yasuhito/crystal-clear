@@ -46,7 +46,7 @@ def modality_change_reasons(output: str) -> list[str]:
         r"\b(?:discuss(?:ed|ion)|under discussion)\b"
     )
     risk_review_preserved = positive_match(
-        r"\brisk review\b|\breview(?:ed|ing)?\s+(?:the\s+)?risks?\b|\brisks?\s+(?:were\s+)?reviewed\b"
+        r"\brisk review\b|\breview(?:ed|ing)?\s+(?:the\s+)?risks?\b|\breview\s+of\s+the\s+risks?\b|\brisks?\s+(?:were\s+)?reviewed\b"
     )
     exporter_available = bool(
         re.search(r"legacy exporter[^.!?]{0,35}\b(?:remains?|is|will be|stays?)\b[^.!?]{0,20}\bavailable\b", text, re.I)
@@ -61,7 +61,7 @@ def modality_change_reasons(output: str) -> list[str]:
     )
     security_condition = positive_security_signoff and bool(
         re.search(
-            r"(?:rollout[^.!?]{0,45}(?:must not|cannot|can't)[^.!?]{0,25}(?:before|until)[^.!?]{0,35}(?:security|approval)|"
+            r"(?:rollout[^.!?]{0,45}(?:must not|cannot|can't|does not|doesn't)[^.!?]{0,25}(?:before|until)[^.!?]{0,35}(?:security|approval)|"
             r"(?:do not|don't)[^.!?]{0,20}(?:begin|start)[^.!?]{0,20}rollout[^.!?]{0,20}until[^.!?]{0,35}(?:security|approval)|"
             r"rollout[^.!?]{0,35}(?:may|can)[^.!?]{0,15}(?:begin|start)[^.!?]{0,15}only after[^.!?]{0,35}(?:security|approval))",
             text,
