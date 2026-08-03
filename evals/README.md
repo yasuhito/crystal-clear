@@ -202,7 +202,7 @@ The Arabic exclusivity regression checks that a Pro-plan-only eligibility restri
 python3 -m evals.run_arabic_exclusivity_regression --repeats 5
 ```
 
-The Simplified Chinese role regression checks that resolving a pronoun does not invent an actor for an agentless review or turn a separate final-confirmation responsibility into an ordering constraint:
+The Simplified Chinese role regression checks that resolving a pronoun does not invent an actor for an agentless review, turn a separate final-confirmation responsibility into an ordering constraint, or narrow a shared Friday deadline to ticket closure alone:
 
 ```sh
 python3 -m evals.run_chinese_role_regression --repeats 5

@@ -60,6 +60,47 @@ def role_and_order_change_reasons(output: str, *, require_ticket: bool) -> list[
     return reasons
 
 
+def _has_shared_friday_deadline(text: str) -> bool:
+    completion = r"(?<!未)完成|办结"
+    obligation = (
+        r"(?:(?:必须|须|务必|需)(?:在)?周五(?:之前|前)[^。；;]{0,15}(?:" + completion + r")|"
+        r"周五(?:之前|前)[^。；;]{0,10}(?:必须|须|务必|需)[^。；;]{0,10}(?:" + completion + r"))"
+    )
+    negated = bool(
+        re.search(
+            r"(?:不必|无需|不需要|不一定|未必)[^。；;]{0,18}(?:必须|须|务必|需)?[^。；;]{0,12}周五(?:之前|前)|"
+            r"周五(?:之前|前)[^。；;]{0,18}(?:不必|无需|不需要|不一定|未必)|"
+            r"并非[^。；;]{0,8}必须[^。；;]{0,12}周五(?:之前|前)|"
+            r"周五(?:之前|前)[^。；;]{0,12}不得[^。；;]{0,12}(?:完成|办结)|"
+            r"周五(?:之前|前)[^。；;]{0,15}(?:保持)?未完成",
+            text,
+        )
+    )
+    contradictory = bool(
+        re.search(
+            r"(?:关闭工单|最终确认)[^。；;]{0,20}(?:改为|延至|推迟到|可在)[^。；;]{0,12}"
+            r"(?:下周一|周一|周末|周五之后|周五后)",
+            text,
+        )
+    )
+    if negated or contradictory:
+        return False
+    broad_prefix = (
+        r"(?:(?:(?:上述|以上|这)(?:两项)?(?:事项|工作|任务)|"
+        r"(?:所有|全部|相关)(?:事项|工作|任务)|(?:二者|两者))(?:均|都)?|(?:均|都))?"
+    )
+    coordinated = r"(?:关闭工单(?:和|及|与)最终确认|最终确认(?:和|及|与)关闭工单)(?:均|都)?"
+    for sentence in re.split(r"[。；;]", text):
+        sentence = re.sub(r"^\d+[.、)]", "", sentence)
+        if not sentence:
+            continue
+        broad_subject = re.fullmatch(broad_prefix + obligation, sentence)
+        explicit_both = re.search(coordinated + r"[^。；;]{0,6}" + obligation, sentence)
+        if broad_subject or explicit_both:
+            return True
+    return False
+
+
 def role_change_reasons(output: str) -> list[str]:
     """Return deterministic failures for the frozen Chinese role scenario."""
     text = "".join(output.split())
@@ -67,16 +108,7 @@ def role_change_reasons(output: str) -> list[str]:
     required = {
         "missing-li-tells-wang": bool(re.search(r"李敏[^。；;]{0,20}(?:告诉|告知|通知)[^。；;]{0,10}王伟", text)),
         "missing-li-final-confirmation": bool(re.search(r"李敏[^。；;]{0,25}(?:负责)?最终确认|最终确认[^。；;]{0,15}由李敏负责", text)),
-        "missing-friday-must-condition": bool(
-            re.search(r"(?:必须|须|务必|需)(?:在)?周五(?:之前|前)[^。；;]{0,15}完成|周五(?:之前|前)[^。；;]{0,10}(?:必须|须|务必|需)[^。；;]{0,10}完成", text)
-        ) and not bool(
-            re.search(
-                r"(?:不必|无需|不需要)[^。；;]{0,15}周五(?:之前|前)|"
-                r"周五(?:之前|前)[^。；;]{0,15}(?:不必|无需|不需要)|"
-                r"并非[^。；;]{0,8}必须[^。；;]{0,12}周五(?:之前|前)",
-                text,
-            )
-        ),
+        "missing-shared-friday-must-condition": _has_shared_friday_deadline(text),
     }
     reasons.extend(name for name, passed in required.items() if not passed)
     return reasons
