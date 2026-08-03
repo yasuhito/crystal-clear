@@ -13,6 +13,20 @@ class TerminologyInstructionTests(unittest.TestCase):
         )
         self.assertEqual(instruction_leak_reasons(output), [])
 
+    def test_accepts_split_settings_action(self) -> None:
+        output = "Open Settings. Enable Secure Review. Secure Review checks new uploads but does not inspect existing files."
+        self.assertEqual(instruction_leak_reasons(output), [])
+
+    def test_rejects_negated_settings_action(self) -> None:
+        outputs = (
+            "Do not open Settings. Enable Secure Review. Secure Review checks new uploads but does not inspect existing files.",
+            "Never open Settings. Enable Secure Review. Secure Review checks new uploads but does not inspect existing files.",
+            "Do not enable Secure Review in Settings. Secure Review checks new uploads. Secure Review does not inspect existing files.",
+        )
+        for output in outputs:
+            with self.subTest(output=output):
+                self.assertIn("missing-enable-action", instruction_leak_reasons(output))
+
     def test_rejects_observed_keep_enabled_instruction(self) -> None:
         output = (
             "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. "

@@ -26,6 +26,9 @@ Before improving style, identify what the output must preserve. A candidate cann
 
 Protect:
 
+Treat the action, its object, and its duration as separate protected facts. “Reviewed several options for two weeks” protects all three: review, options, and two weeks. A shorter phrase such as “two weeks of review” fails because it drops what was reviewed.
+
+
 - facts, numbers, relationships, and essential emphasis;
 - requirements, prohibitions, conditions, exceptions, and requested actions;
 - who each requirement or prohibition applies to: keep a general or impersonal constraint general, and never narrow it to a person merely because an adjacent action names that person; when leading with a personal action, state a separate general constraint impersonally;
@@ -36,7 +39,7 @@ Protect:
 - names and domain terminology, including user-requested terms; and
 - voice, politeness, formality, and intentional ambiguity appropriate to the audience and genre.
 
-Treat quoted or technical strings as immutable unless the user explicitly asks to edit them. Before rewriting communication, transfer, approval, or causality, map each semantic role as `actor → action → object → recipient` and keep that map unchanged. When the source leaves an action's actor, its identity with another action, or its order unspecified, keep it unspecified unless later context actually resolves it. A nearby person's responsibility for a different action is not, by itself, evidence that the person performs the unnamed action or that either action occurs first. For example, if an action occurs “after review” but the reviewer is unnamed, and a nearby sentence assigns someone final confirmation, keep the reviewer unnamed and do not make final confirmation a prerequisite for the action. When repeated concepts could drift, map each concept to one preferred term before drafting and use it consistently. Treat a source sentence whose function is to specify the preferred term for the current rewrite as an editorial direction, not artifact content. For example, “Keep the product term X throughout” means use X consistently; it never means tell the reader to keep X enabled. If three output sentences are required, split the real behavior into three sentences rather than outputting the terminology direction. If clarity conflicts with preservation, preserve the source and surface the ambiguity rather than guessing.
+Treat quoted or technical strings as immutable unless the user explicitly asks to edit them. Before rewriting communication, transfer, approval, or causality, map each semantic role as `actor → action → object → recipient` and keep that map unchanged. For every activity with a stated object or duration, separately map `actor → activity → object → duration`; shortening or nominalizing the activity must preserve every populated field. When the source leaves an action's actor, its identity with another action, or its order unspecified, keep it unspecified unless later context actually resolves it. A nearby person's responsibility for a different action is not, by itself, evidence that the person performs the unnamed action or that either action occurs first. For example, if an action occurs “after review” but the reviewer is unnamed, and a nearby sentence assigns someone final confirmation, keep the reviewer unnamed and do not make final confirmation a prerequisite for the action. When repeated concepts could drift, map each concept to one preferred term before drafting and use it consistently. Treat a source sentence whose function is to specify the preferred term for the current rewrite as an editorial direction, not artifact content. For example, “Keep the product term X throughout” means use X consistently; it never means tell the reader to keep X enabled. If three output sentences are required, split the real behavior into three sentences rather than outputting the terminology direction. If clarity conflicts with preservation, preserve the source and surface the ambiguity rather than guessing.
 
 ## 3. Build the clearest path
 
@@ -48,7 +51,7 @@ Use these language-independent composition rules:
 - Give each paragraph one purpose and each sentence one main claim unless combining claims makes their relationship clearer.
 - Use concrete nouns and verbs, consistent terms, and explicit chronology, causality, contrast, or dependency where the reader would otherwise have to infer it.
 - Keep related words together. Use headings or lists only when they expose real structure.
-- Retain examples that resolve ambiguity. Remove words only when their meaning, emphasis, rhythm, and register are genuinely redundant.
+- Retain examples that resolve ambiguity. Remove words only when their meaning, emphasis, rhythm, and register are genuinely redundant. When compressing an activity into a shorter or nominal form, retain both what the activity acted on and any stated duration.
 
 Completion criterion: the reader can recover the main point, every dependency, and every reference in one pass without losing an essential qualification.
 

@@ -24,6 +24,17 @@ def instruction_leak_reasons(output: str) -> list[str]:
     """Return deterministic failures for the frozen terminology scenario."""
     text = " ".join(output.split())
     sentence_count = len(re.findall(r"[^.!?]+[.!?](?:\s|$)", text))
+    enable_action = bool(
+        re.search(r"\benable\s+Secure Review\s+in\s+Settings\b", text, re.I)
+        or re.search(r"\bopen\s+Settings[.!?]\s+Enable\s+Secure Review\b", text, re.I)
+    ) and not bool(
+        re.search(
+            r"\b(?:do not|don't|never)\s+(?:open\s+Settings|enable\s+Secure Review)|"
+            r"\bdisable\s+Secure Review\b",
+            text,
+            re.I,
+        )
+    )
     new_upload_scope = bool(
         re.search(r"Secure Review[^.!?]{0,25}\bchecks?\b[^.!?]{0,20}\bnew uploads\b", text, re.I)
     ) and not bool(re.search(r"\b(?:not|does not|doesn't)\b[^.!?]{0,20}\bnew uploads\b", text, re.I))
@@ -39,7 +50,7 @@ def instruction_leak_reasons(output: str) -> list[str]:
     )
     required = {
         "wrong-sentence-count": sentence_count == 3,
-        "missing-enable-action": bool(re.search(r"\benable\s+Secure Review\s+in\s+Settings\b", text, re.I)),
+        "missing-enable-action": enable_action,
         "missing-new-upload-scope": new_upload_scope,
         "missing-existing-file-limitation": existing_file_limitation,
     }

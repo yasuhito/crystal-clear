@@ -192,6 +192,8 @@ The Spanish scope regression checks that leading with Ana's personal approval ac
 
 ```sh
 python3 -m evals.run_spanish_scope_regression --scope-only --repeats 5
+python3 -m evals.run_spanish_scope_regression --review-fact-only --repeats 5
+python3 -m evals.run_spanish_scope_regression --minimal-review --repeats 5
 python3 -m evals.run_spanish_scope_regression --repeats 5  # also checks all frozen facts
 ```
 

@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import unittest
 
-from evals.run_spanish_scope_regression import scope_change_reasons, scope_narrowing_reasons
+from evals.run_spanish_scope_regression import (
+    review_fact_reasons,
+    scope_change_reasons,
+    scope_narrowing_reasons,
+)
 
 
 class SpanishScopePreservationTests(unittest.TestCase):
@@ -42,6 +46,32 @@ class SpanishScopePreservationTests(unittest.TestCase):
         for output in outputs:
             with self.subTest(output=output):
                 self.assertTrue(scope_change_reasons(output))
+
+    def test_review_fact_oracle_requires_duration_action_and_object(self) -> None:
+        valid_outputs = (
+            "Tras dos semanas revisando varias opciones, seguimos adelante.",
+            "Durante dos semanas hemos revisado varias opciones.",
+            "Durante dos semanas, hemos estado revisando varias opciones.",
+        )
+        invalid = (
+            "Tras dos semanas de revisión, seguimos adelante.",
+            "Revisamos varias opciones, seguimos adelante.",
+            "No hemos revisado opciones durante dos semanas.",
+            "No se revisaron opciones durante dos semanas.",
+            "Revisamos el sistema anterior durante dos semanas. Había varias opciones.",
+            "Revisamos opciones. El sistema anterior estuvo disponible dos semanas.",
+            "Durante dos semanas el sistema anterior seguirá disponible. Revisamos opciones.",
+            "Tras dos semanas sin revisar opciones, seguimos adelante.",
+            "Durante dos semanas esperamos, revisamos opciones.",
+            "Revisamos el sistema durante dos semanas y luego revisamos opciones.",
+            "El sistema estuvo disponible durante dos semanas, revisamos opciones.",
+        )
+        for output in valid_outputs:
+            with self.subTest(output=output):
+                self.assertEqual(review_fact_reasons(output), [])
+        for output in invalid:
+            with self.subTest(output=output):
+                self.assertIn("missing-two-week-review", review_fact_reasons(output))
 
     def test_scope_oracle_ignores_unrelated_fact_omission(self) -> None:
         output = (

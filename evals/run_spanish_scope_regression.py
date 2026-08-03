@@ -18,6 +18,7 @@ from evals.run_behavior import _materialize_skill
 from evals.run_smoke import execute_pi
 
 PROMPT = """Reescribe el SOURCE para que la acción principal aparezca primero. Devuelve solo una solicitud clara y concisa en español. Conserva hechos, nombres, fecha y condición. SOURCE: Hemos revisado varias opciones durante dos semanas. El sistema anterior seguirá disponible. Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. No se debe iniciar la migración sin la aprobación de Seguridad."""
+MINIMAL_REVIEW_PROMPT = """Reescribe el SOURCE para que la acción principal aparezca primero. Devuelve solo una solicitud concisa en español y conserva todos los hechos. SOURCE: Hemos revisado varias opciones durante dos semanas. Necesitamos que Ana apruebe Proyecto Faro."""
 
 
 def scope_narrowing_reasons(output: str) -> list[str]:
@@ -50,6 +51,26 @@ def scope_narrowing_reasons(output: str) -> list[str]:
     return reasons
 
 
+def review_fact_reasons(output: str) -> list[str]:
+    """Return failures for the two-week options-review fact only."""
+    text = " ".join(output.split())
+    patterns = (
+        r"(?:hemos\s+)?revis\w*\s+(?:varias\s+)?opciones\s+durante\s+dos\s+semanas",
+        r"(?:^|[.!?;]\s*)durante\s+dos\s+semanas,?\s+(?:hemos\s+(?:estado\s+revisando|revisado)|revisamos|revisando)\s+(?:varias\s+)?opciones",
+        r"tras\s+dos\s+semanas\s+(?:de\s+revisión\s+de|revisando|de\s+revisar)\s+(?:varias\s+)?opciones",
+        r"tras\s+(?:haber\s+)?revis\w*\s+(?:varias\s+)?opciones\s+durante\s+dos\s+semanas",
+        r"después\s+de\s+haber\s+revis\w*\s+(?:varias\s+)?opciones\s+durante\s+dos\s+semanas",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match is None:
+            continue
+        window = text[max(0, match.start() - 20) : match.end()]
+        if not re.search(r"\b(?:no|sin|nunca)\b", window, re.I):
+            return []
+    return ["missing-two-week-review"]
+
+
 def scope_change_reasons(output: str) -> list[str]:
     """Return all deterministic failures for the frozen Spanish scenario."""
     text = " ".join(output.split())
@@ -57,12 +78,7 @@ def scope_change_reasons(output: str) -> list[str]:
     ana_approval = bool(
         re.search(r"(?:necesitamos\s+que\s+)?Ana\s+(?:apruebe|debe aprobar)|(?:por favor,?\s*)?Ana,?\s+aprueba", text, re.I)
     ) and not bool(re.search(r"\bno\s+(?:necesitamos\s+que\s+)?Ana\s+(?:apruebe|debe aprobar)", text, re.I))
-    review_preserved = (
-        "dos semanas" in lower
-        and bool(re.search(r"revis", text, re.I))
-        and "opciones" in lower
-        and not bool(re.search(r"\bno\s+(?:hemos\s+)?revis", text, re.I))
-    )
+    review_preserved = not review_fact_reasons(output)
     old_system_available = (
         "sistema anterior" in lower
         and bool(re.search(r"(?:seguirá|permanece(?:rá)?|continuará)\s+disponible", text, re.I))
@@ -80,7 +96,7 @@ def scope_change_reasons(output: str) -> list[str]:
     return reasons
 
 
-def run_once(repeat: int, model: str) -> tuple[int, str]:
+def run_once(repeat: int, model: str, *, minimal_review: bool) -> tuple[int, str]:
     with tempfile.TemporaryDirectory(prefix="crystal-clear-spanish-scope-regression-") as tmp:
         root = Path(tmp)
         session_root = root / "pi"
@@ -92,7 +108,7 @@ def run_once(repeat: int, model: str) -> tuple[int, str]:
             + skill.read_text()
         )
         live_trace = execute_pi(
-            prompt=PROMPT,
+            prompt=MINIMAL_REVIEW_PROMPT if minimal_review else PROMPT,
             model=model,
             session_root=session_root,
             appended_instructions=instructions,
@@ -108,18 +124,28 @@ def main() -> None:
     parser.add_argument("--model", default="openai-codex/gpt-5.6-sol")
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--scope-only", action="store_true")
+    parser.add_argument("--review-fact-only", action="store_true")
+    parser.add_argument("--minimal-review", action="store_true")
     args = parser.parse_args()
     if args.repeats < 1:
         raise ValueError("--repeats must be positive")
 
     rows: list[tuple[int, str]] = []
     with ThreadPoolExecutor(max_workers=args.repeats) as executor:
-        futures = [executor.submit(run_once, repeat, args.model) for repeat in range(1, args.repeats + 1)]
+        futures = [
+            executor.submit(run_once, repeat, args.model, minimal_review=args.minimal_review)
+            for repeat in range(1, args.repeats + 1)
+        ]
         rows.extend(future.result() for future in as_completed(futures))
 
     regressions = 0
     for repeat, output in sorted(rows):
-        reasons = scope_narrowing_reasons(output) if args.scope_only else scope_change_reasons(output)
+        if args.scope_only:
+            reasons = scope_narrowing_reasons(output)
+        elif args.review_fact_only or args.minimal_review:
+            reasons = review_fact_reasons(output)
+        else:
+            reasons = scope_change_reasons(output)
         regressions += bool(reasons)
         suffix = f" ({', '.join(reasons)})" if reasons else ""
         print(f"[{repeat}] {'REGRESSION' if reasons else 'preserved'}{suffix}: {output}")
