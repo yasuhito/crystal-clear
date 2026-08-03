@@ -5,6 +5,7 @@ import unittest
 from evals.run_japanese_preference_regression import (
     business_request_reasons,
     condition_scope_reasons,
+    status_certainty_reasons,
     terminology_style_reasons,
 )
 
@@ -57,6 +58,33 @@ class JapanesePreferenceTests(unittest.TestCase):
         self.assertIn("missing-initial-term-quote", terminology_style_reasons(unquoted))
         self.assertIn("missing-initial-term-quote", terminology_style_reasons(quoted_later))
         self.assertIn("repeated-term-quotes", terminology_style_reasons(bad))
+
+    def test_status_keeps_fixed_update_time_definite(self) -> None:
+        good = "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。"
+        definite_variant = good.replace("次回更新は18時です", "次回更新は18時となります")
+        weakened = (
+            good.replace("次回更新は18時です", "次回更新は18時を予定しております"),
+            good.replace("次回更新は18時です", "次回更新予定は18時です"),
+            good.replace("次回更新は18時です", "次回更新は暫定的に18時です"),
+        )
+        self.assertEqual(status_certainty_reasons(good), [])
+        self.assertEqual(status_certainty_reasons(definite_variant), [])
+        for output in weakened:
+            with self.subTest(output=output):
+                self.assertIn("fixed-update-time-weakened", status_certainty_reasons(output))
+
+    def test_status_rejects_fact_polarity_and_number_changes(self) -> None:
+        outputs = (
+            "現在、決済処理の遅延は調査しておりません。ネットワーク障害の可能性がありますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+            "現在、決済処理の遅延を調査しております。ネットワーク障害が原因で確定しています。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+            "現在、決済処理の遅延を調査しております。ネットワーク障害の可能性がありますが、原因は未確定です。約21%のお客様に影響している可能性があります。次回更新は18時です。",
+            "現在、決済処理の遅延を調査しております。ネットワーク障害の可能性はありませんが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+            "現在、決済処理の遅延を調査しております。ネットワーク障害の可能性がありますが、原因は未確定です。約12%ではなく約21%のお客様に影響している可能性があります。次回更新は18時です。",
+            "現在、決済処理の遅延を調査しております。ネットワーク障害の可能性がありますが、原因は未確定です。約12%のお客様に影響していない可能性があります。次回更新は18時です。",
+        )
+        for output in outputs:
+            with self.subTest(output=output):
+                self.assertTrue(status_certainty_reasons(output))
 
     def test_defined_term_rejects_action_polarity_reversals(self) -> None:
         outputs = (

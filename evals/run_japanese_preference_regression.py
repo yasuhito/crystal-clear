@@ -22,6 +22,7 @@ SCENARIOS: dict[str, str] = {
     "business": "SOURCEを一読で依頼内容が分かるように書き直してください。丁寧なビジネス日本語の依頼文だけを返してください。事実、期限、制約、固有表現を保持してください。SOURCE: 先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
     "condition": "SOURCEの条件を対象となる説明の近くに置いて書き直してください。条件が明確な案内文だけを日本語で返してください。可能性を確定表現に変えないでください。SOURCE: バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
     "terminology": "SOURCEの製品用語を統一して書き直してください。用語を統一した3文の操作説明だけを返してください。制約を保持してください。SOURCE: 管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+    "status": "SOURCEをお客様向けに書き直してください。丁寧で落ち着いた障害報告だけを日本語で返してください。不確実性と数値を保持してください。SOURCE: 現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
 }
 
 
@@ -119,10 +120,45 @@ def terminology_style_reasons(output: str) -> list[str]:
     return reasons
 
 
+def status_certainty_reasons(output: str) -> list[str]:
+    investigation = bool(re.search(r"決済処理[^。]{0,20}遅延[^。]{0,20}調査|調査[^。]{0,20}決済処理[^。]{0,20}遅延", output)) and not bool(
+        re.search(r"(?:調査して|調査をして|調査はして)(?:いません|おりません)", output)
+    )
+    uncertain_cause = bool(re.search(r"ネットワーク障害[^。]{0,20}可能性", output)) and not bool(
+        re.search(r"ネットワーク障害[^。]{0,20}可能性(?:は|が)?(?:ありません|ない)", output)
+    ) and bool(
+        re.search(r"原因[^。]{0,15}(?:未確定|確定して(?:いません|おりません)|特定(?:できて|されて)(?:いません|おりません)|確認できて(?:いません|おりません))", output)
+    )
+    uncertain_impact = bool(re.search(r"(?:約)?12[%％][^。]{0,25}影響[^。]{0,20}可能性|影響[^。]{0,20}可能性[^。]{0,15}(?:約)?12[%％]", output)) and not bool(
+        re.search(r"12[%％](?:ではなく|でなく)|21[%％]|影響(?:して|が生じて|が及んで)(?:いない|おりません)[^。]{0,10}可能性", output)
+    )
+    fixed_update = bool(
+        re.search(
+            r"次回(?:の更新|更新)?(?:は)?[^。]{0,12}18時(?:です|となります|に[^。]{0,15}(?:更新|お知らせ)[^。]{0,8}(?:ます|いたします))",
+            output,
+        )
+    ) and not bool(
+        re.search(
+            r"次回[^。]{0,25}(?:予定|暫定|見込み|目安|可能性)[^。]{0,15}18時|"
+            r"次回[^。]{0,15}18時[^。]{0,15}(?:予定|暫定|見込み|目安|可能性)|"
+            r"18時[^。]{0,12}(?:予定|暫定|見込み|目安)",
+            output,
+        )
+    )
+    required = {
+        "missing-delay-investigation": investigation,
+        "missing-uncertain-cause": uncertain_cause,
+        "missing-uncertain-impact": uncertain_impact,
+        "fixed-update-time-weakened": fixed_update,
+    }
+    return [name for name, passed in required.items() if not passed]
+
+
 CHECKERS: dict[str, Callable[[str], list[str]]] = {
     "business": business_request_reasons,
     "condition": condition_scope_reasons,
     "terminology": terminology_style_reasons,
+    "status": status_certainty_reasons,
 }
 
 
