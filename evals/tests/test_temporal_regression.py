@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from evals.run_temporal_regression import temporal_reasons
+from evals.run_temporal_regression import minimal_wording_reasons, temporal_reasons
 
 
 class TemporalPreservationTests(unittest.TestCase):
@@ -16,6 +16,12 @@ class TemporalPreservationTests(unittest.TestCase):
         for output in outputs:
             with self.subTest(output=output):
                 self.assertEqual(temporal_reasons(output), [])
+
+    def test_minimal_wording_keeps_already_clear_relative_reference(self) -> None:
+        minimal = "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access."
+        expanded = minimal.replace("before then", "before her access ends")
+        self.assertEqual(minimal_wording_reasons(minimal), [])
+        self.assertIn("unnecessary-relative-reference-expansion", minimal_wording_reasons(expanded))
 
     def test_rejects_observed_timing_and_tense_changes(self) -> None:
         output = "Maya told Priya that Priya’s access to ACCT-74 would end Friday, while Maya would retain access. Priya must export the audit log before Friday."

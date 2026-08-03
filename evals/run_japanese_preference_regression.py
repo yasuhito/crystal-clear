@@ -103,7 +103,16 @@ def terminology_style_reasons(output: str) -> list[str]:
         "missing-external-user-prohibition": external_user_prohibition,
     }
     reasons = [name for name, passed in required.items() if not passed]
-    if len(re.findall(r"「共有スペース」", output)) > 1:
+    quoted_mentions = len(re.findall(r"「共有スペース」", output))
+    first_term = output.find("共有スペース")
+    first_term_is_quoted = (
+        first_term > 0
+        and output[first_term - 1] == "「"
+        and output[first_term + len("共有スペース"):first_term + len("共有スペース") + 1] == "」"
+    )
+    if not first_term_is_quoted:
+        reasons.append("missing-initial-term-quote")
+    if quoted_mentions > 1:
         reasons.append("repeated-term-quotes")
     if "共同エリア" in output or "ワークスペース" in output:
         reasons.append("terminology-drift")

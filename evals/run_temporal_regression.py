@@ -112,6 +112,14 @@ def temporal_reasons(output: str) -> list[str]:
     return reasons
 
 
+def minimal_wording_reasons(output: str) -> list[str]:
+    """Add the frozen preference for leaving an already-clear relative reference unchanged."""
+    reasons = temporal_reasons(output)
+    if not re.search(r"\bbefore then\b", output, re.I):
+        reasons.append("unnecessary-relative-reference-expansion")
+    return reasons
+
+
 def run_once(repeat: int, model: str) -> tuple[int, str]:
     with tempfile.TemporaryDirectory(prefix="crystal-clear-temporal-regression-") as tmp:
         root = Path(tmp)
@@ -139,6 +147,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default="openai-codex/gpt-5.6-sol")
     parser.add_argument("--repeats", type=int, default=5)
+    parser.add_argument("--minimal-wording", action="store_true")
     args = parser.parse_args()
     if args.repeats < 1:
         raise ValueError("--repeats must be positive")
@@ -153,7 +162,7 @@ def main() -> None:
 
     regressions = 0
     for repeat, output in sorted(rows):
-        reasons = temporal_reasons(output)
+        reasons = minimal_wording_reasons(output) if args.minimal_wording else temporal_reasons(output)
         regressions += bool(reasons)
         suffix = f" ({', '.join(reasons)})" if reasons else ""
         print(f"[{repeat}] {'REGRESSION' if reasons else 'preserved'}{suffix}: {output}")

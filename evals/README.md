@@ -186,6 +186,7 @@ The temporal regression preserves an event-relative deadline and a present acces
 
 ```sh
 python3 -m evals.run_temporal_regression --repeats 5
+python3 -m evals.run_temporal_regression --minimal-wording --repeats 5
 ```
 
 It rejects replacing `before then` with the potentially stricter `before Friday` boundary or shifting `Maya retains access` into a future prediction.
@@ -194,6 +195,12 @@ The remaining Japanese preference checks cover restrained business politeness, l
 
 ```sh
 python3 -m evals.run_japanese_preference_regression --repeats 5
+```
+
+Focused English and German preference checks cover a natural exclusive-subject construction and terminology-only replacement that retains the original behavior verbs:
+
+```sh
+python3 -m evals.run_wording_preference_regression --repeats 5
 ```
 
 The Arabic exclusivity regression checks that a Pro-plan-only eligibility restriction keeps its explicit restrictive force alongside the 14-day condition and uncertain 24-hour duration:

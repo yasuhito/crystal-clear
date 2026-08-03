@@ -51,7 +51,11 @@ class JapanesePreferenceTests(unittest.TestCase):
     def test_defined_term_does_not_repeat_visual_quotes(self) -> None:
         good = "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
         bad = "管理画面で「共有スペース」を作成します。「共有スペース」にメンバーを追加してください。「共有スペース」には外部ユーザーを招待できません。"
+        unquoted = "管理画面で共有スペースを作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
+        quoted_later = "管理画面で共有スペース（以下「共有スペース」）を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
         self.assertEqual(terminology_style_reasons(good), [])
+        self.assertIn("missing-initial-term-quote", terminology_style_reasons(unquoted))
+        self.assertIn("missing-initial-term-quote", terminology_style_reasons(quoted_later))
         self.assertIn("repeated-term-quotes", terminology_style_reasons(bad))
 
     def test_defined_term_rejects_action_polarity_reversals(self) -> None:

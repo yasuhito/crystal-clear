@@ -63,7 +63,7 @@ def role_and_order_change_reasons(output: str, *, require_ticket: bool) -> list[
 def _has_shared_friday_deadline(text: str) -> bool:
     completion = r"(?<!未)完成|办结"
     obligation = (
-        r"(?:(?:必须|须|务必|需)(?:在)?周五(?:之前|前)[^。；;]{0,15}(?:" + completion + r")|"
+        r"(?:(?:必须|须|务必|需)(?:在|于)?周五(?:之前|前)[^。；;]{0,15}(?:" + completion + r")|"
         r"周五(?:之前|前)[^。；;]{0,10}(?:必须|须|务必|需)[^。；;]{0,10}(?:" + completion + r"))"
     )
     negated = bool(
@@ -78,8 +78,8 @@ def _has_shared_friday_deadline(text: str) -> bool:
     )
     contradictory = bool(
         re.search(
-            r"(?:关闭工单|最终确认)[^。；;]{0,20}(?:改为|延至|推迟到|可在)[^。；;]{0,12}"
-            r"(?:下周一|周一|周末|周五之后|周五后)",
+            r"(?:关闭工单|最终确认)[^。；;]{0,20}(?:改为|延至|推迟到|可|可以)[^。；;]{0,12}"
+            r"(?:下周|周[一二三四五六日天]|周末|周五之后|周五后)",
             text,
         )
     )
