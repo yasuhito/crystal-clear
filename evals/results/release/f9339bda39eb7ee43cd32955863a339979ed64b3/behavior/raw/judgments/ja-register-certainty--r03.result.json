@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-register-certainty--r03",
+  "scenario_id": "ja-register-certainty",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 8,
+  "judge_seed": 808,
+  "prompt_sha256": "a313a9449d210ce58b9ec228390321f19734c223d91b7392d67c6e61714657c2",
+  "presented_output_a": "現在、決済処理の遅延について調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、原因は確定しておりません。約12%のお客様に影響が生じている可能性がございます。次回の更新は18時を予定しております。",
+  "presented_output_b": "現在、決済処理の遅延について調査しております。初期調査ではネットワーク障害の可能性が示されていますが、現時点で原因は確定しておりません。約12％のお客様に影響が生じている可能性があります。次回の状況更新は18時を予定しております。",
+  "a_arm": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "遅延、ネットワーク障害の可能性、原因未確定、約12%、18時という全情報と丁寧で落ち着いた文体を保持しています。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "原文の事実、数値、不確実性、更新時刻を忠実に保ち、丁寧で自然な障害報告になっています。"
+    },
+    "preference": "B",
+    "preference_evidence": "両方とも要件を満たしますが、Bは「調査しております」など原文により近い表現で、簡潔さと自然さをわずかに上回ります。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"遅延、ネットワーク障害の可能性、原因未確定、約12%、18時という全情報と丁寧で落ち着いた文体を保持しています。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"原文の事実、数値、不確実性、更新時刻を忠実に保ち、丁寧で自然な障害報告になっています。\"},\"preference\":\"B\",\"preference_evidence\":\"両方とも要件を満たしますが、Bは「調査しております」など原文により近い表現で、簡潔さと自然さをわずかに上回ります。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "started_at": "2026-08-03T05:08:11.535182+00:00",
+  "duration_ms": 11414,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc605-b9fb-77d9-bb99-851483cf32ca",
+  "trace_file": "raw/judgments/ja-register-certainty--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-register-certainty--r03.result.json"
+}

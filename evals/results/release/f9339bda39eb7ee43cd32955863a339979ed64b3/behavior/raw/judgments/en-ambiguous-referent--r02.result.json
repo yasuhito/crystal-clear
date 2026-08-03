@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-ambiguous-referent--r02",
+  "scenario_id": "en-ambiguous-referent",
+  "category": "english",
+  "language": "en",
+  "repeat": 2,
+  "presentation_index": 58,
+  "judge_seed": 808,
+  "prompt_sha256": "2d740643dd479ef62545fb9244238ea7cb73b6a90af580d3c6806a0f21b3acf5",
+  "presented_output_a": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "presented_output_b": "Maya told Priya that Priya’s access to ACCT-74 would end Friday, while Maya would retain access. Priya must export the audit log before Friday.",
+  "a_arm": "178eaf8",
+  "b_arm": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Resolves the pronoun unambiguously while preserving ACCT-74, the Friday access end, the export deadline, and Maya’s retained access."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "removed-constraint"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Clear and professional, but “before Friday” is stricter than “before then,” which refers to the Friday access-ending event; it also recasts Maya’s present retained access as future."
+    },
+    "preference": "A",
+    "preference_evidence": "A clarifies the referent without altering the deadline or tense of Maya’s access."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Resolves the pronoun unambiguously while preserving ACCT-74, the Friday access end, the export deadline, and Maya’s retained access.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"removed-constraint\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Clear and professional, but “before Friday” is stricter than “before then,” which refers to the Friday access-ending event; it also recasts Maya’s present retained access as future.\"},\"preference\":\"A\",\"preference_evidence\":\"A clarifies the referent without altering the deadline or tense of Maya’s access.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "started_at": "2026-08-03T05:10:45.113316+00:00",
+  "duration_ms": 16219,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc608-11d9-7bad-8f5a-40fbf17dcce8",
+  "trace_file": "raw/judgments/en-ambiguous-referent--r02.trace.jsonl",
+  "result_file": "raw/judgments/en-ambiguous-referent--r02.result.json"
+}

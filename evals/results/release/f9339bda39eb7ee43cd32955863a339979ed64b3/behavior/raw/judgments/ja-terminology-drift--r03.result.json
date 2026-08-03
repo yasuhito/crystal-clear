@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r03",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 27,
+  "judge_seed": 808,
+  "prompt_sha256": "ba387052d73003bb3049a94d949b3d4e52025d49f576e0882e43d50da7382039",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成を守り、作成・メンバー追加・外部ユーザー招待不可の全情報を保持し、用語も「共有スペース」に統一している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成を守り、作成・メンバー追加・外部ユーザー招待不可の全情報を保持し、用語も「共有スペース」に統一している。"
+    },
+    "preference": "tie",
+    "preference_evidence": "両出力は完全に同一で、保存性・明瞭性・自然さに差がない。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成を守り、作成・メンバー追加・外部ユーザー招待不可の全情報を保持し、用語も「共有スペース」に統一している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成を守り、作成・メンバー追加・外部ユーザー招待不可の全情報を保持し、用語も「共有スペース」に統一している。\"},\"preference\":\"tie\",\"preference_evidence\":\"両出力は完全に同一で、保存性・明瞭性・自然さに差がない。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "started_at": "2026-08-03T05:09:10.397364+00:00",
+  "duration_ms": 12630,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc606-9fe9-70ff-b70e-82bad7795d11",
+  "trace_file": "raw/judgments/ja-terminology-drift--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r03.result.json"
+}

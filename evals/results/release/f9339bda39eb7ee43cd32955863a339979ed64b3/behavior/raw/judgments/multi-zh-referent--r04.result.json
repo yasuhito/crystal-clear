@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r04",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 4,
+  "presentation_index": 48,
+  "judge_seed": 808,
+  "prompt_sha256": "d5b19fec51420200ed3b02a739cb42959ddbce91b1d3fff64e50e069daa05945",
+  "presented_output_a": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。李敏负责最终确认。必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏负责最终确认，王伟将在审核后关闭工单 CN-88。必须在周五之前完成。",
+  "a_arm": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确王伟关闭工单、李敏最终确认，并完整保留审核后、CN-88及周五前完成等信息。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "完整保留责任分工、审核条件、工单编号和截止时间，但调整了信息顺序。"
+    },
+    "preference": "A",
+    "preference_evidence": "两者事实均完整；A更贴近原文的信息顺序和核心结构。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确王伟关闭工单、李敏最终确认，并完整保留审核后、CN-88及周五前完成等信息。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"完整保留责任分工、审核条件、工单编号和截止时间，但调整了信息顺序。\"},\"preference\":\"A\",\"preference_evidence\":\"两者事实均完整；A更贴近原文的信息顺序和核心结构。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "started_at": "2026-08-03T05:10:15.309929+00:00",
+  "duration_ms": 11779,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc607-9d76-7b53-ac41-4ab2fa48636b",
+  "trace_file": "raw/judgments/multi-zh-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r04.result.json"
+}

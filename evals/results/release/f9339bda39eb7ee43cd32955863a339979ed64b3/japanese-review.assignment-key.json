@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "packet_sha256": "ec1996151618756a5e6fbee2710de2577e2447b10204ef1660b71e4fa9dde6ed",
+  "candidate_revision": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "current_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "pairs": [
+    {
+      "review_id": "JP-01",
+      "pair_id": "ja-detached-condition--r02",
+      "candidate_label": "A",
+      "current_label": "B",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "tie",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-02",
+      "pair_id": "ja-detached-condition--r05",
+      "candidate_label": "A",
+      "current_label": "B",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "A",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-03",
+      "pair_id": "ja-terminology-drift--r01",
+      "candidate_label": "B",
+      "current_label": "A",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "tie",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-04",
+      "pair_id": "ja-buried-action--r05",
+      "candidate_label": "B",
+      "current_label": "A",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 4,
+          "naturalness": 3,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "A",
+      "gpt_candidate_label": "A"
+    },
+    {
+      "review_id": "JP-05",
+      "pair_id": "ja-ambiguous-subject--r05",
+      "candidate_label": "B",
+      "current_label": "A",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 4,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "B",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-06",
+      "pair_id": "ja-terminology-drift--r04",
+      "candidate_label": "A",
+      "current_label": "B",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 4,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "A",
+      "gpt_candidate_label": "A"
+    },
+    {
+      "review_id": "JP-07",
+      "pair_id": "ja-buried-action--r03",
+      "candidate_label": "B",
+      "current_label": "A",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "B",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-08",
+      "pair_id": "ja-terminology-drift--r05",
+      "candidate_label": "A",
+      "current_label": "B",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "A",
+      "gpt_candidate_label": "A"
+    },
+    {
+      "review_id": "JP-09",
+      "pair_id": "ja-detached-condition--r03",
+      "candidate_label": "A",
+      "current_label": "B",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "tie",
+      "gpt_candidate_label": "A"
+    },
+    {
+      "review_id": "JP-10",
+      "pair_id": "ja-register-certainty--r01",
+      "candidate_label": "A",
+      "current_label": "B",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 4,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "B",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-11",
+      "pair_id": "ja-register-certainty--r02",
+      "candidate_label": "B",
+      "current_label": "A",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        }
+      },
+      "gpt_preference": "B",
+      "gpt_candidate_label": "B"
+    },
+    {
+      "review_id": "JP-12",
+      "pair_id": "ja-ambiguous-subject--r04",
+      "candidate_label": "B",
+      "current_label": "A",
+      "scores": {
+        "candidate": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 5,
+          "critical_preservation": false
+        },
+        "current": {
+          "first_pass_understanding": 5,
+          "naturalness": 5,
+          "preservation": 4,
+          "critical_preservation": true
+        }
+      },
+      "gpt_preference": "A",
+      "gpt_candidate_label": "A"
+    }
+  ]
+}

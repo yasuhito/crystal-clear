@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r03",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 3,
+  "presentation_index": 30,
+  "judge_seed": 808,
+  "prompt_sha256": "18878135e3e9cd8c4e8faf374fa5cbd47a17666715a26b25361bf5efef99df6c",
+  "presented_output_a": "李敏告诉王伟：李敏将在审核后进行最终确认，王伟负责关闭工单 CN-88。以上事项必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。王伟负责关闭工单；李敏负责最终确认。必须在周五之前完成。",
+  "a_arm": "178eaf8",
+  "b_arm": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact",
+        "removed-constraint"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "将“审核后”错误地关联到李敏的最终确认，新增了原文没有的时序关系，并删除了关闭工单须在审核后的条件。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确王伟在审核后关闭 CN-88、李敏负责最终确认，并保留周五前完成的期限。"
+    },
+    "preference": "B",
+    "preference_evidence": "B完整保留角色分工、审核后关闭的条件、工单编号和截止期限；A改变了审核条件的作用对象。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\",\"removed-constraint\"],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"将“审核后”错误地关联到李敏的最终确认，新增了原文没有的时序关系，并删除了关闭工单须在审核后的条件。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确王伟在审核后关闭 CN-88、李敏负责最终确认，并保留周五前完成的期限。\"},\"preference\":\"B\",\"preference_evidence\":\"B完整保留角色分工、审核后关闭的条件、工单编号和截止期限；A改变了审核条件的作用对象。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "f9339bda39eb7ee43cd32955863a339979ed64b3",
+  "started_at": "2026-08-03T05:09:20.324108+00:00",
+  "duration_ms": 21372,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc606-c6a1-7dba-a508-2c906e06f4d0",
+  "trace_file": "raw/judgments/multi-zh-referent--r03.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r03.result.json"
+}
