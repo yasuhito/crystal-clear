@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r02",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 2,
+  "presentation_index": 44,
+  "judge_seed": 808,
+  "prompt_sha256": "ba387052d73003bb3049a94d949b3d4e52025d49f576e0882e43d50da7382039",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "全3文で事実・制約・指示を保持し、用語を「共有スペース」に統一している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "全3文で事実・制約・指示を保持し、用語を「共有スペース」に統一している。"
+    },
+    "preference": "tie",
+    "preference_evidence": "両出力は完全に同一で、保存性・明瞭性・自然さに差がない。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全3文で事実・制約・指示を保持し、用語を「共有スペース」に統一している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全3文で事実・制約・指示を保持し、用語を「共有スペース」に統一している。\"},\"preference\":\"tie\",\"preference_evidence\":\"両出力は完全に同一で、保存性・明瞭性・自然さに差がない。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "started_at": "2026-08-03T08:39:23.628771+00:00",
+  "duration_ms": 9334,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6c7-1699-7da2-b29c-0c94df1b384f",
+  "trace_file": "raw/judgments/ja-terminology-drift--r02.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r02.result.json"
+}

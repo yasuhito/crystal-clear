@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-de-terminology--r03",
+  "scenario_id": "multi-de-terminology",
+  "category": "multilingual-core",
+  "language": "de",
+  "repeat": 3,
+  "presentation_index": 22,
+  "judge_seed": 808,
+  "prompt_sha256": "f2355119a114f7ad9776fe71d39b75ca26a3d021a9c70e126a5d7d47606e0dd2",
+  "presented_output_a": "Aktivieren Sie Datenprüfung in den Einstellungen. Datenprüfung untersucht neue Uploads. Datenprüfung prüft keine vorhandenen Dateien.",
+  "presented_output_b": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Die Datenprüfung prüft keine vorhandenen Dateien.",
+  "a_arm": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Fakten und die Einschränkung bleiben in drei formellen Sätzen erhalten; der Produktname wird durchgehend exakt verwendet."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Fakten und die Dreisatzstruktur bleiben erhalten, der geschützte Produktname wird jedoch jeweils mit einem Artikel versehen."
+    },
+    "preference": "A",
+    "preference_evidence": "A bewahrt den vorgegebenen Produktnamen Datenprüfung durchgehend in seiner exakten Form."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und die Einschränkung bleiben in drei formellen Sätzen erhalten; der Produktname wird durchgehend exakt verwendet.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und die Dreisatzstruktur bleiben erhalten, der geschützte Produktname wird jedoch jeweils mit einem Artikel versehen.\"},\"preference\":\"A\",\"preference_evidence\":\"A bewahrt den vorgegebenen Produktnamen Datenprüfung durchgehend in seiner exakten Form.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "started_at": "2026-08-03T08:38:12.748136+00:00",
+  "duration_ms": 13021,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6c6-0169-7f4c-bce2-28bfa4d7aaaf",
+  "trace_file": "raw/judgments/multi-de-terminology--r03.trace.jsonl",
+  "result_file": "raw/judgments/multi-de-terminology--r03.result.json"
+}

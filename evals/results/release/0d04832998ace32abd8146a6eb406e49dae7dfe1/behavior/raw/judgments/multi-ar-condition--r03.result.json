@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-ar-condition--r03",
+  "scenario_id": "multi-ar-condition",
+  "category": "multilingual-core",
+  "language": "ar",
+  "repeat": 3,
+  "presentation_index": 16,
+  "judge_seed": 808,
+  "prompt_sha256": "d70a609208de3b784da5a8d6d1590b59c0eb8159dd2d19ab649357e9cdb57799",
+  "presented_output_a": "في خطة Pro فقط، يمكن استعادة الملفات المحذوفة إذا قُدِّم الطلب خلال 14 يومًا. وقد تستغرق الاستعادة حتى 24 ساعة.",
+  "presented_output_b": "يمكن استعادة الملفات المحذوفة في خطة Pro فقط إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+  "a_arm": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "يحفظ إمكانية الاستعادة وقصرها على خطة Pro وشرط تقديم الطلب خلال 14 يومًا والمدة القصوى البالغة 24 ساعة."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "يحفظ جميع الحقائق والقيود والأرقام واليقين دون إضافة أو حذف."
+    },
+    "preference": "tie",
+    "preference_evidence": "كلا النصين يعيدان ترتيب المصدر مع الحفاظ الكامل على المعنى والشروط والبنية الأساسية."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"يحفظ إمكانية الاستعادة وقصرها على خطة Pro وشرط تقديم الطلب خلال 14 يومًا والمدة القصوى البالغة 24 ساعة.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"يحفظ جميع الحقائق والقيود والأرقام واليقين دون إضافة أو حذف.\"},\"preference\":\"tie\",\"preference_evidence\":\"كلا النصين يعيدان ترتيب المصدر مع الحفاظ الكامل على المعنى والشروط والبنية الأساسية.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "started_at": "2026-08-03T08:37:53.124408+00:00",
+  "duration_ms": 12041,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6c5-b4ca-70db-91e2-517e51c1390b",
+  "trace_file": "raw/judgments/multi-ar-condition--r03.trace.jsonl",
+  "result_file": "raw/judgments/multi-ar-condition--r03.result.json"
+}

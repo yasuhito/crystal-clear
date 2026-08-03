@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "multi-mixed-ja-en",
+  "category": "multilingual-core",
+  "language": "mixed-ja-en",
+  "failure_modes": [
+    "terminology-drift",
+    "detached-qualification"
+  ],
+  "source_text": "管理者はTeam Syncを有効にしてください。この同期機能は新規メンバーを同期します。既存メンバーは対象外です。UI上の名称はTeam Syncのままにしてください。",
+  "output_contract": "日本語の説明文だけを返し、英語の製品名は変更しないでください。",
+  "prompt": "SOURCEを用語と条件が明確になるように書き直してください。日本語の説明文だけを返し、英語の製品名は変更しないでください。対象外の条件を保持してください。SOURCE: 管理者はTeam Syncを有効にしてください。この同期機能は新規メンバーを同期します。既存メンバーは対象外です。UI上の名称はTeam Syncのままにしてください。",
+  "checks": [
+    {
+      "id": "term",
+      "kind": "protected-string",
+      "values": [
+        "Team Sync",
+        "UI"
+      ]
+    },
+    {
+      "id": "new",
+      "kind": "fact",
+      "values": [
+        "新規メンバー"
+      ]
+    },
+    {
+      "id": "existing",
+      "kind": "condition",
+      "values": [
+        "既存メンバーは対象外"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 5,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "0d04832998ace32abd8146a6eb406e49dae7dfe1",
+  "started_at": "2026-08-03T08:36:44.956221+00:00",
+  "duration_ms": 5448,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc6c4-aa87-71cf-9ffc-2d669c228a66",
+  "final_output": "管理者はTeam Syncを有効にしてください。Team Syncの同期対象は新規メンバーのみであり、既存メンバーは対象外です。UI上の名称は「Team Sync」から変更しないでください。",
+  "trace_file": "raw/generations/multi-mixed-ja-en--no-skill--r05.trace.jsonl",
+  "result_file": "raw/generations/multi-mixed-ja-en--no-skill--r05.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "term",
+        "kind": "protected-string",
+        "values": [
+          "Team Sync",
+          "UI"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "new",
+        "kind": "fact",
+        "values": [
+          "新規メンバー"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "existing",
+        "kind": "condition",
+        "values": [
+          "既存メンバーは対象外"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}
