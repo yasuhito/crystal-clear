@@ -100,23 +100,28 @@ def condition_scope_reasons(output: str) -> list[str]:
 
 def terminology_style_reasons(output: str) -> list[str]:
     sentences = [part for part in re.findall(r"[^。]+。", output) if part.strip()]
+    compact = "".join(output.split())
     create_action = bool(re.search(r"共有スペース[^。]{0,20}作成(?:します|してください)", output)) and not bool(
-        re.search(r"共有スペース[^。]{0,20}作成しない", output)
+        re.search(r"共有スペース[^。]{0,30}(?:作成しない|作成できません)|作成します[^。]{0,25}(?:実際には)?作成できません", output)
     )
     add_member_action = bool(
         re.search(r"共有スペース[^。]{0,25}メンバー[^。]{0,15}追加(?:します|してください)", output)
-    ) and not bool(re.search(r"メンバー[^。]{0,15}追加しない", output))
+    ) and not bool(re.search(r"メンバー[^。]{0,25}(?:追加しない|追加できません)|追加してください[^。]{0,25}追加しない", output))
     external_user_prohibition = bool(
-        re.search(r"(?:^|。)この共有スペースには[^。]{0,20}外部ユーザー[^。]{0,20}招待(?:することは)?できません。", output)
+        re.search(r"(?:^|。\s*)共有スペースには[^。]{0,20}外部ユーザー[^。]{0,20}招待(?:することは)?できません。", output)
     ) and not bool(
-        re.search(r"招待できないわけでは(?:ありません|ない)|招待できませんでした|招待できませんが[^。]{0,15}招待できます", output)
+        re.search(
+            r"招待できないわけでは(?:ありません|ない)|招待できませんでした|招待できませんが[^。]{0,15}招待できます|"
+            r"外部ユーザー[^。]{0,20}(?:招待できます|招待しても(?:よい|構いません))",
+            output,
+        )
     )
     required = {
         "wrong-sentence-count": len(sentences) == 3,
         "missing-preferred-term": output.count("共有スペース") >= 3,
         "missing-create-action": create_action,
         "missing-add-member-action": add_member_action,
-        "missing-demonstrative-scope-or-external-user-prohibition": external_user_prohibition,
+        "invented-demonstrative-identity-or-missing-external-user-prohibition": external_user_prohibition,
     }
     reasons = [name for name, passed in required.items() if not passed]
     quoted_mentions = len(re.findall(r"「共有スペース」", output))
@@ -132,6 +137,8 @@ def terminology_style_reasons(output: str) -> list[str]:
         reasons.append("repeated-term-quotes")
     if "共同エリア" in output or "ワークスペース" in output:
         reasons.append("terminology-drift")
+    if re.search(r"このワークスペース(?:と同一|です|である)", compact):
+        reasons.append("invented-workspace-identity")
     return reasons
 
 

@@ -35,6 +35,7 @@ def scope_narrowing_reasons(output: str) -> list[str]:
         rf"la\s+migración\s+(?:solo|únicamente)\s+se\s+iniciará\s+con\s+{security_approval}",
         rf"(?:solo|únicamente)\s+se\s+(?:puede|podrá)\s+iniciar\s+la\s+migración\s+con\s+{security_approval}",
         rf"tras\s+{security_approval},?\s+(?:puede|podrá)\s+iniciarse\s+la\s+migración",
+        rf"después\s+de\s+{security_approval},?\s+(?:puede|podrá)\s+iniciarse\s+la\s+migración",
     )
     general_prohibition = any(re.search(pattern, text, re.I) for pattern in general_patterns)
     reasons = []
@@ -49,6 +50,22 @@ def scope_narrowing_reasons(output: str) -> list[str]:
     ):
         reasons.append("general-prohibition-narrowed-to-ana")
     return reasons
+
+
+def invented_approval_order_reasons(output: str) -> list[str]:
+    """Reject making Ana's approval an unstated prerequisite for migration."""
+    text = " ".join(output.split())
+    patterns = (
+        r"Ana[^.!?;]{0,70}(?:apruebe|aprueba|debe aprobar)[^.!?;]{0,60}[;.]?\s*"
+        r"(?:después|luego|a continuación)\s*,[^.!?;]{0,70}migración",
+        r"migración[^.!?;]{0,55}(?:después|luego|tras|una vez|hasta)\s+(?:de\s+)?(?:que\s+)?"
+        r"Ana[^.!?;]{0,20}(?:apruebe|aprueba|haya aprobado)",
+        r"(?:aprobación|visto bueno)\s+de\s+Ana[^.!?;]{0,35}(?:necesari[ao]|requisito|condición)"
+        r"[^.!?;]{0,35}(?:iniciar|inicio)\s+la\s+migración",
+        r"(?:iniciar|inicio)\s+la\s+migración[^.!?;]{0,35}(?:requiere|necesita|depende de)"
+        r"[^.!?;]{0,25}(?:aprobación|visto bueno)\s+de\s+Ana",
+    )
+    return ["invented-ana-approval-before-migration"] if any(re.search(pattern, text, re.I) for pattern in patterns) else []
 
 
 def review_fact_reasons(output: str) -> list[str]:
@@ -76,7 +93,7 @@ def scope_change_reasons(output: str) -> list[str]:
     text = " ".join(output.split())
     lower = text.lower()
     ana_approval = bool(
-        re.search(r"(?:necesitamos\s+que\s+)?Ana\s+(?:apruebe|debe aprobar)|(?:por favor,?\s*)?Ana,?\s+aprueba", text, re.I)
+        re.search(r"(?:necesitamos\s+que\s+)?Ana\s+(?:apruebe|debe aprobar)|(?:por favor,?\s*)?Ana,?\s+(?:aprueba|necesitamos\s+que\s+apruebes)", text, re.I)
     ) and not bool(re.search(r"\bno\s+(?:necesitamos\s+que\s+)?Ana\s+(?:apruebe|debe aprobar)", text, re.I))
     review_preserved = not review_fact_reasons(output)
     old_system_available = (
@@ -85,6 +102,7 @@ def scope_change_reasons(output: str) -> list[str]:
         and not bool(re.search(r"sistema anterior[^.!?;]{0,25}\bno\s+(?:seguirá|permanecerá|continuará)\s+disponible", text, re.I))
     )
     reasons = scope_narrowing_reasons(output)
+    reasons.extend(invented_approval_order_reasons(output))
     required = {
         "missing-ana-approval": ana_approval,
         "missing-project": "Proyecto Faro" in text,

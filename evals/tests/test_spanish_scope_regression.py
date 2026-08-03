@@ -16,6 +16,11 @@ class SpanishScopePreservationTests(unittest.TestCase):
             "sistema anterior seguirá disponible. No se debe iniciar la migración sin la aprobación de Seguridad."
         )
         self.assertEqual(scope_change_reasons(output), [])
+        direct_address = (
+            "Ana, necesitamos que apruebes Proyecto Faro antes del 3 de mayo. Hemos revisado varias opciones durante "
+            "dos semanas y el sistema anterior seguirá disponible. No se debe iniciar la migración sin la aprobación de Seguridad."
+        )
+        self.assertEqual(scope_change_reasons(direct_address), [])
 
     def test_accepts_natural_impersonal_paraphrases(self) -> None:
         outputs = (
@@ -72,6 +77,21 @@ class SpanishScopePreservationTests(unittest.TestCase):
         for output in invalid:
             with self.subTest(output=output):
                 self.assertIn("missing-two-week-review", review_fact_reasons(output))
+
+    def test_rejects_invented_ana_approval_order(self) -> None:
+        outputs = (
+            "Ana debe aprobar Proyecto Faro antes del 3 de mayo; después, y solo con la aprobación de Seguridad, se podrá iniciar la migración, tras dos semanas de revisión de varias opciones, mientras el sistema anterior seguirá disponible.",
+            "Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. La migración podrá iniciarse una vez que Ana haya aprobado, siempre que Seguridad también la apruebe. Hemos revisado varias opciones durante dos semanas y el sistema anterior seguirá disponible.",
+            "Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. No se podrá iniciar la migración hasta que Ana apruebe y Seguridad dé su aprobación. Hemos revisado varias opciones durante dos semanas y el sistema anterior seguirá disponible.",
+            "Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. La aprobación de Ana será necesaria para iniciar la migración, además de la aprobación de Seguridad. Hemos revisado varias opciones durante dos semanas y el sistema anterior seguirá disponible.",
+        )
+        for output in outputs:
+            with self.subTest(output=output):
+                self.assertIn("invented-ana-approval-before-migration", scope_change_reasons(output))
+
+    def test_accepts_security_approval_order_without_linking_ana(self) -> None:
+        output = "Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo, tras revisar varias opciones durante dos semanas. El sistema anterior seguirá disponible. Después de la aprobación de Seguridad, podrá iniciarse la migración."
+        self.assertEqual(scope_change_reasons(output), [])
 
     def test_scope_oracle_ignores_unrelated_fact_omission(self) -> None:
         output = (

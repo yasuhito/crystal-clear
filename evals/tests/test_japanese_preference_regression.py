@@ -53,17 +53,25 @@ class JapanesePreferenceTests(unittest.TestCase):
                 self.assertTrue(condition_scope_reasons(output))
 
     def test_defined_term_does_not_repeat_visual_quotes(self) -> None:
-        good = "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースには外部ユーザーを招待できません。"
+        good = "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
         bad = "管理画面で「共有スペース」を作成します。「共有スペース」にメンバーを追加してください。「共有スペース」には外部ユーザーを招待できません。"
         unquoted = "管理画面で共有スペースを作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
         quoted_later = "管理画面で共有スペース（以下「共有スペース」）を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
         self.assertEqual(terminology_style_reasons(good), [])
+        self.assertEqual(terminology_style_reasons(good.replace("。共有スペース", "。\n共有スペース")), [])
         self.assertIn("missing-initial-term-quote", terminology_style_reasons(unquoted))
         self.assertIn("missing-initial-term-quote", terminology_style_reasons(quoted_later))
         self.assertIn("repeated-term-quotes", terminology_style_reasons(bad))
-        self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "共有スペース")))
-        self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "当該共有スペース")))
-        self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペースには", "この共有スペースでは")))
+        self.assertIn("invented-demonstrative-identity-or-missing-external-user-prohibition", terminology_style_reasons(good.replace("共有スペースには外部ユーザー", "この共有スペースには外部ユーザー")))
+        self.assertIn("invented-demonstrative-identity-or-missing-external-user-prohibition", terminology_style_reasons(good.replace("共有スペースには外部ユーザー", "当該共有スペースには外部ユーザー")))
+        adversaries = (
+            good.replace("作成します", "作成しますが、実際には作成できません"),
+            good.replace("共有スペースには外部ユーザーを招待できません", "外部ユーザーを招待できます。共有スペースには外部ユーザーを招待できません"),
+            good.replace("共有スペースには", "このワーク\nスペースと同一の共有スペースには"),
+        )
+        for output in adversaries:
+            with self.subTest(output=output):
+                self.assertTrue(terminology_style_reasons(output))
 
     def test_role_object_makes_report_approval_explicit(self) -> None:
         good = "佐藤さんは鈴木さんに、『レビュー後に鈴木さんが案件ID JP-42の報告書を送る』と伝えました。佐藤さんは、その報告書の承認を担当します。"
