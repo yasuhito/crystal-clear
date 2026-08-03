@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r04",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 4,
+  "presentation_index": 67,
+  "judge_seed": 808,
+  "prompt_sha256": "79a78acae66510dec9fefccaadbb5f4ed979f141376d73a86f5994bd4a4de645",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースでは外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成、操作内容、外部ユーザー招待不可の制約を保持し、用語を「共有スペース」に統一している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "内容と制約を保持し、用語も統一しているが、最終文で「この」による対象の限定がやや弱い。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは「この共有スペース」として、原文の対象範囲をより明確に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成、操作内容、外部ユーザー招待不可の制約を保持し、用語を「共有スペース」に統一している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"内容と制約を保持し、用語も統一しているが、最終文で「この」による対象の限定がやや弱い。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは「この共有スペース」として、原文の対象範囲をより明確に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "started_at": "2026-08-03T09:44:15.567849+00:00",
+  "duration_ms": 15141,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc702-7929-7a00-85a8-fe7b1aa93d55",
+  "trace_file": "raw/judgments/ja-terminology-drift--r04.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r04.result.json"
+}

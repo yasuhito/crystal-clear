@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "failure_modes": [
+    "ambiguous-referent"
+  ],
+  "source_text": "李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
+  "output_contract": "只返回消除指代歧义后的简体中文文本。",
+  "prompt": "改写 SOURCE，明确每个人的职责，不要添加事实。只返回消除指代歧义后的简体中文文本。保留编号、期限和必须条件。SOURCE: 李敏告诉王伟，她将在审核后关闭工单 CN-88。关闭工单的人是王伟；李敏负责最终确认。必须在周五之前完成。",
+  "checks": [
+    {
+      "id": "ticket",
+      "kind": "protected-string",
+      "values": [
+        "CN-88"
+      ]
+    },
+    {
+      "id": "roles",
+      "kind": "fact",
+      "values": [
+        "关闭工单的人是王伟",
+        "李敏负责最终确认"
+      ]
+    },
+    {
+      "id": "deadline",
+      "kind": "condition",
+      "values": [
+        "周五之前"
+      ]
+    },
+    {
+      "id": "must",
+      "kind": "constraint",
+      "values": [
+        "必须"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 1,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "started_at": "2026-08-03T09:39:11.924314+00:00",
+  "duration_ms": 5365,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc6fd-d70f-710f-adb8-7f4e8f89fb77",
+  "final_output": "李敏告诉王伟：李敏负责最终确认，王伟将在审核后关闭工单 CN-88。必须在周五之前完成。",
+  "trace_file": "raw/generations/multi-zh-referent--no-skill--r01.trace.jsonl",
+  "result_file": "raw/generations/multi-zh-referent--no-skill--r01.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "ticket",
+        "kind": "protected-string",
+        "values": [
+          "CN-88"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "roles",
+        "kind": "fact",
+        "values": [
+          "关闭工单的人是王伟",
+          "李敏负责最终确认"
+        ],
+        "missing": [
+          "关闭工单的人是王伟"
+        ],
+        "passed": false
+      },
+      {
+        "id": "deadline",
+        "kind": "condition",
+        "values": [
+          "周五之前"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "must",
+        "kind": "constraint",
+        "values": [
+          "必须"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {
+      "fact": 1
+    }
+  }
+}

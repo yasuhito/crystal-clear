@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-register-certainty",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "register-mismatch",
+    "accidental-certainty-change"
+  ],
+  "source_text": "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+  "output_contract": "丁寧で落ち着いた障害報告だけを日本語で返してください。",
+  "prompt": "SOURCEをお客様向けに書き直してください。丁寧で落ち着いた障害報告だけを日本語で返してください。不確実性と数値を保持してください。SOURCE: 現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+  "checks": [
+    {
+      "id": "impact",
+      "kind": "number",
+      "values": [
+        "12%",
+        "18時"
+      ]
+    },
+    {
+      "id": "certainty",
+      "kind": "fact",
+      "values": [
+        "可能性",
+        "未確定"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 2,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "started_at": "2026-08-03T09:38:18.462402+00:00",
+  "duration_ms": 6477,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc6fd-0655-7e8d-a619-9d670b9d60b4",
+  "final_output": "現在、決済処理に遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、現時点で原因は確定しておりません。約12%のお客様に影響している可能性がございます。次回の更新は18時を予定しております。ご不便をおかけしておりますことをお詫び申し上げます。",
+  "trace_file": "raw/generations/ja-register-certainty--no-skill--r02.trace.jsonl",
+  "result_file": "raw/generations/ja-register-certainty--no-skill--r02.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "impact",
+        "kind": "number",
+        "values": [
+          "12%",
+          "18時"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "certainty",
+        "kind": "fact",
+        "values": [
+          "可能性",
+          "未確定"
+        ],
+        "missing": [
+          "未確定"
+        ],
+        "passed": false
+      }
+    ],
+    "failures_by_kind": {
+      "fact": 1
+    }
+  }
+}

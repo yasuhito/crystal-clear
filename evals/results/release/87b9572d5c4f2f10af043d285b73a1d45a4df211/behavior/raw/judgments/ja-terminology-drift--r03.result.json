@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r03",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 27,
+  "judge_seed": 808,
+  "prompt_sha256": "0944c30f0f56c27cd5c6f821833e0127b53ae367e59ad2a9970e2ccebe622ff2",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。  \n共有スペースにメンバーを追加してください。  \nこの共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成を守り、「共同エリア」を「共有スペース」に統一しつつ、作成・メンバー追加・外部招待不可の全情報を保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文で全操作と制約を保持し、用語も統一されているが、第3文で「この」が省かれ、対象範囲がわずかに一般化して見える。"
+    },
+    "preference": "A",
+    "preference_evidence": "両方とも契約を満たすが、Aは「この共有スペース」により元のワークスペース固有の制約範囲をより明確に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成を守り、「共同エリア」を「共有スペース」に統一しつつ、作成・メンバー追加・外部招待不可の全情報を保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文で全操作と制約を保持し、用語も統一されているが、第3文で「この」が省かれ、対象範囲がわずかに一般化して見える。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも契約を満たすが、Aは「この共有スペース」により元のワークスペース固有の制約範囲をより明確に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "started_at": "2026-08-03T09:42:12.140450+00:00",
+  "duration_ms": 12428,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc700-9707-7521-b489-b205d9aac708",
+  "trace_file": "raw/judgments/ja-terminology-drift--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r03.result.json"
+}

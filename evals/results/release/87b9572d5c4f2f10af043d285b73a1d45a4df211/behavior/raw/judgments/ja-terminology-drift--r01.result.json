@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r01",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 1,
+  "presentation_index": 25,
+  "judge_seed": 808,
+  "prompt_sha256": "e0c881e2d5d94b7f05730fea4e9b792b4a8ee7ccd00ec0bdc5c6b3f4c62cbee8",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースでは外部ユーザーを招待できません。",
+  "a_arm": "178eaf8",
+  "b_arm": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成と禁止条件、用語統一を保持。ただし「この」がなく、対象範囲がやや一般化している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成、禁止条件、用語統一を保持し、「この」によって対象のワークスペース相当の範囲も明確。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは用語を統一しつつ、「この」で元の指示対象と範囲をより忠実に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成と禁止条件、用語統一を保持。ただし「この」がなく、対象範囲がやや一般化している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成、禁止条件、用語統一を保持し、「この」によって対象のワークスペース相当の範囲も明確。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは用語を統一しつつ、「この」で元の指示対象と範囲をより忠実に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "87b9572d5c4f2f10af043d285b73a1d45a4df211",
+  "started_at": "2026-08-03T09:42:04.863438+00:00",
+  "duration_ms": 12066,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc700-7a9d-7d9e-a588-7e4614077679",
+  "trace_file": "raw/judgments/ja-terminology-drift--r01.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r01.result.json"
+}
