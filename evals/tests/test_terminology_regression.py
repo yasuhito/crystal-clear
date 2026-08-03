@@ -97,6 +97,9 @@ class UiNameConstraintTests(unittest.TestCase):
             "管理者はTeam Syncを有効にしてください。Team Syncは新規メンバーのみを同期し、既存メンバーは対象外です。",
             "管理者はTeam Syncを有効にしてください。新規メンバーのみが同期され、既存メンバーは対象外です。UI上の名称はTeam Syncから変更しても構いません。",
             "管理者はTeam Syncを有効にしてください。新規メンバーのみが同期され、既存メンバーは対象外です。Team SyncはUI上の名称ではありません。",
+            "管理者は、UI上の名称が「Team Sync」の同期機能を有効にしてください。Team Syncは新規メンバーのみを同期し、既存メンバーは対象外です。",
+            "管理者はTeam Syncを有効にしてください。新規メンバーのみが同期され、既存メンバーは対象外です。UI上では「Team Sync」という名称が使用されています。",
+            "管理者はTeam Syncを有効にしてください。新規メンバーのみが同期され、既存メンバーは対象外です。UI上では「Team Sync」という名称が維持されています。",
         )
         for output in outputs:
             with self.subTest(output=output):

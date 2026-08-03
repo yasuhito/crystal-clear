@@ -94,14 +94,14 @@ def terminology_style_reasons(output: str) -> list[str]:
         re.search(r"共有スペース[^。]{0,25}メンバー[^。]{0,15}追加(?:します|してください)", output)
     ) and not bool(re.search(r"メンバー[^。]{0,15}追加しない", output))
     external_user_prohibition = bool(
-        re.search(r"共有スペース[^。]{0,25}外部ユーザー[^。]{0,20}招待でき(?:ません|ない)", output)
+        re.search(r"この共有スペース[^。]{0,25}外部ユーザー[^。]{0,20}招待でき(?:ません|ない)", output)
     ) and not bool(re.search(r"招待できないわけでは(?:ありません|ない)", output))
     required = {
         "wrong-sentence-count": len(sentences) == 3,
         "missing-preferred-term": output.count("共有スペース") >= 3,
         "missing-create-action": create_action,
         "missing-add-member-action": add_member_action,
-        "missing-external-user-prohibition": external_user_prohibition,
+        "missing-demonstrative-scope-or-external-user-prohibition": external_user_prohibition,
     }
     reasons = [name for name, passed in required.items() if not passed]
     quoted_mentions = len(re.findall(r"「共有スペース」", output))
@@ -145,9 +145,11 @@ def status_certainty_reasons(output: str) -> list[str]:
             output,
         )
     )
+    cause_wording = bool(re.search(r"原因[^。]{0,15}確定しておりません", output))
     required = {
         "missing-delay-investigation": investigation,
         "missing-uncertain-cause": uncertain_cause,
+        "cause-uncertainty-terminology-drift": cause_wording,
         "missing-uncertain-impact": uncertain_impact,
         "fixed-update-time-weakened": fixed_update,
     }

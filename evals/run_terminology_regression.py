@@ -97,7 +97,11 @@ def ui_name_constraint_reasons(output: str) -> list[str]:
     ui_name_constraint = any(
         re.search(r"UI|ユーザーインターフェース", sentence, re.I)
         and re.search(r"Team Sync", sentence, re.I)
-        and re.search(r"まま|変更しない|変えない|維持|使用", sentence)
+        and re.search(
+            r"(?:ままにして|変更しないで|変えないで|維持して|使用して|保って)ください|"
+            r"(?:変更|改称)しては(?:いけません|なりません)|(?:維持|使用)する必要があります",
+            sentence,
+        )
         and not re.search(
             r"(?:使用|維持)しない|(?:使用|維持)しません|変更しても|変更でき|変えても|"
             r"(?:名称|名前)では(?:ありません|ない)",

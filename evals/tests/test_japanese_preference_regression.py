@@ -50,7 +50,7 @@ class JapanesePreferenceTests(unittest.TestCase):
                 self.assertTrue(condition_scope_reasons(output))
 
     def test_defined_term_does_not_repeat_visual_quotes(self) -> None:
-        good = "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
+        good = "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースには外部ユーザーを招待できません。"
         bad = "管理画面で「共有スペース」を作成します。「共有スペース」にメンバーを追加してください。「共有スペース」には外部ユーザーを招待できません。"
         unquoted = "管理画面で共有スペースを作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
         quoted_later = "管理画面で共有スペース（以下「共有スペース」）を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。"
@@ -58,10 +58,17 @@ class JapanesePreferenceTests(unittest.TestCase):
         self.assertIn("missing-initial-term-quote", terminology_style_reasons(unquoted))
         self.assertIn("missing-initial-term-quote", terminology_style_reasons(quoted_later))
         self.assertIn("repeated-term-quotes", terminology_style_reasons(bad))
+        self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "共有スペース")))
+        self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "当該共有スペース")))
 
     def test_status_keeps_fixed_update_time_definite(self) -> None:
-        good = "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。"
+        good = "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は確定しておりません。約12%のお客様に影響している可能性があります。次回更新は18時です。"
         definite_variant = good.replace("次回更新は18時です", "次回更新は18時となります")
+        changed_cause_wording = (
+            good.replace("原因は確定しておりません", "原因は特定されておりません"),
+            good.replace("原因は確定しておりません", "原因は未確定です"),
+            good.replace("原因は確定しておりません", "原因は確定していません"),
+        )
         weakened = (
             good.replace("次回更新は18時です", "次回更新は18時を予定しております"),
             good.replace("次回更新は18時です", "次回更新予定は18時です"),
@@ -69,6 +76,9 @@ class JapanesePreferenceTests(unittest.TestCase):
         )
         self.assertEqual(status_certainty_reasons(good), [])
         self.assertEqual(status_certainty_reasons(definite_variant), [])
+        for output in changed_cause_wording:
+            with self.subTest(output=output):
+                self.assertIn("cause-uncertainty-terminology-drift", status_certainty_reasons(output))
         for output in weakened:
             with self.subTest(output=output):
                 self.assertIn("fixed-update-time-weakened", status_certainty_reasons(output))
