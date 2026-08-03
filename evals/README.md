@@ -173,6 +173,14 @@ The English modality regression found during the `320739c` release evaluation ha
 python3 -m evals.run_semantic_regression --repeats 5
 ```
 
+The terminology regression found in the same release has a focused check for keeping embedded editorial directions out of rewritten content:
+
+```sh
+python3 -m evals.run_terminology_regression --repeats 5
+```
+
+It rejects turning “keep the product term … throughout” into an invented instruction to keep the product enabled, while also checking the upload and existing-file scopes.
+
 ## Run the release-candidate evaluation
 
 Release evaluation uses an immutable commit, not `worktree`, and requires a clean tracked worktree before live execution. The core matrix is exactly 425 generations: 200 formal pinned-inventory routing runs plus 225 behavior generations (15 scenarios × no skill/current/candidate × five repeats). The 75 blind behavior comparisons present only revision `178eaf8` and the candidate; the unjudged no-skill arm remains generation evidence and receives no inferred judgment scores.

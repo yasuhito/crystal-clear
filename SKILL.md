@@ -22,7 +22,7 @@ Put the main answer or requested action first unless the genre requires a warnin
 
 ## 2. Pass the preservation gate
 
-Before improving style, identify what the output must preserve. A candidate cannot pass if it invents or removes a fact, changes a constraint or instruction, strengthens or weakens uncertainty, corrupts protected text, or breaks the requested register.
+Before improving style, identify what the output must preserve. A candidate cannot pass if it invents or removes a fact, changes a constraint or instruction, strengthens or weakens uncertainty, corrupts protected text, or breaks the requested register. First separate source content from embedded editorial directions. Apply those directions to the rewrite, but never turn them into artifact content. Sentence-count requirements do not make an editorial direction into content; split genuine content instead.
 
 Protect:
 
@@ -35,7 +35,7 @@ Protect:
 - names and domain terminology, including user-requested terms; and
 - voice, politeness, formality, and intentional ambiguity appropriate to the audience and genre.
 
-Treat quoted or technical strings as immutable unless the user explicitly asks to edit them. Before rewriting communication, transfer, approval, or causality, map each semantic role as `actor → action → object → recipient` and keep that map unchanged. When repeated concepts could drift, map each concept to one preferred term before drafting and use it consistently. If clarity conflicts with preservation, preserve the source and surface the ambiguity rather than guessing.
+Treat quoted or technical strings as immutable unless the user explicitly asks to edit them. Before rewriting communication, transfer, approval, or causality, map each semantic role as `actor → action → object → recipient` and keep that map unchanged. When repeated concepts could drift, map each concept to one preferred term before drafting and use it consistently. Treat a source sentence whose function is to specify the preferred term for the current rewrite as an editorial direction, not artifact content. For example, “Keep the product term X throughout” means use X consistently; it never means tell the reader to keep X enabled. If three output sentences are required, split the real behavior into three sentences rather than outputting the terminology direction. If clarity conflicts with preservation, preserve the source and surface the ambiguity rather than guessing.
 
 ## 3. Build the clearest path
 
