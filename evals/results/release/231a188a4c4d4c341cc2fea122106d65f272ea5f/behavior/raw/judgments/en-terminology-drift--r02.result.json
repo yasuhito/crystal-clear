@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-terminology-drift--r02",
+  "scenario_id": "en-terminology-drift",
+  "category": "english",
+  "language": "en",
+  "repeat": 2,
+  "presentation_index": 10,
+  "judge_seed": 808,
+  "prompt_sha256": "fad7c65e4fff3212ea620b53a363aced4fdd21e1471662c5cc636b964cbd0230",
+  "presented_output_a": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled to check future uploads.",
+  "presented_output_b": "Enable Secure Review in Settings. Secure Review checks new uploads. Secure Review does not inspect existing files.",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact",
+        "changed-instruction"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the product term and scanner limits, but adds an unsupported instruction to keep Secure Review enabled."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Faithfully preserves the enablement instruction, product term, and distinction between new uploads and existing files."
+    },
+    "preference": "B",
+    "preference_evidence": "B preserves all source content without adding a new ongoing-enablement instruction."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\",\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the product term and scanner limits, but adds an unsupported instruction to keep Secure Review enabled.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Faithfully preserves the enablement instruction, product term, and distinction between new uploads and existing files.\"},\"preference\":\"B\",\"preference_evidence\":\"B preserves all source content without adding a new ongoing-enablement instruction.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:28:00.127209+00:00",
+  "duration_ms": 12055,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc685-b9c7-7774-a93c-f9da3d28c2cc",
+  "trace_file": "raw/judgments/en-terminology-drift--r02.trace.jsonl",
+  "result_file": "raw/judgments/en-terminology-drift--r02.result.json"
+}

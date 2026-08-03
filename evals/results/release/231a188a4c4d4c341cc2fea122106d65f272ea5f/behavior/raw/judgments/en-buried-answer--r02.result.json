@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r02",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 2,
+  "presentation_index": 35,
+  "judge_seed": 808,
+  "prompt_sha256": "d2900a236f2d9af94548ec3e9afe3d4ed86efc5e98b97430a03619279ebbf26f",
+  "presented_output_a": "Decision: Approve Project Northstar by 14 June after several weeks of discussion and risk review, but do not begin the rollout until security signs off; the legacy exporter remains available.",
+  "presented_output_b": "After several weeks of discussion and a review of the risks, we recommend approving Project Northstar by 14 June; however, rollout must not begin until security signs off, and the legacy exporter remains available.",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "Recasts a recommendation as a firm decision to approve, changing certainty; otherwise preserves the date, security condition, discussion, risk review, and exporter availability."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Faithfully preserves the recommendation, date, prior discussion and risk review, mandatory security sign-off condition, and continued exporter availability."
+    },
+    "preference": "B",
+    "preference_evidence": "B preserves the source's recommendation-level certainty, while A incorrectly presents approval as an established decision."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"Recasts a recommendation as a firm decision to approve, changing certainty; otherwise preserves the date, security condition, discussion, risk review, and exporter availability.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Faithfully preserves the recommendation, date, prior discussion and risk review, mandatory security sign-off condition, and continued exporter availability.\"},\"preference\":\"B\",\"preference_evidence\":\"B preserves the source's recommendation-level certainty, while A incorrectly presents approval as an established decision.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:29:24.685383+00:00",
+  "duration_ms": 14270,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc687-0424-7458-9d89-40be06150654",
+  "trace_file": "raw/judgments/en-buried-answer--r02.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r02.result.json"
+}

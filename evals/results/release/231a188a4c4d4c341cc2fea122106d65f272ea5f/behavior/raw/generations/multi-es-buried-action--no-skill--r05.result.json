@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "multi-es-buried-action",
+  "category": "multilingual-core",
+  "language": "es",
+  "failure_modes": [
+    "buried-answer"
+  ],
+  "source_text": "Hemos revisado varias opciones durante dos semanas. El sistema anterior seguirá disponible. Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. No se debe iniciar la migración sin la aprobación de Seguridad.",
+  "output_contract": "Devuelve solo una solicitud clara y concisa en español.",
+  "prompt": "Reescribe el SOURCE para que la acción principal aparezca primero. Devuelve solo una solicitud clara y concisa en español. Conserva hechos, nombres, fecha y condición. SOURCE: Hemos revisado varias opciones durante dos semanas. El sistema anterior seguirá disponible. Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo. No se debe iniciar la migración sin la aprobación de Seguridad.",
+  "checks": [
+    {
+      "id": "project",
+      "kind": "protected-string",
+      "values": [
+        "Proyecto Faro",
+        "Ana"
+      ]
+    },
+    {
+      "id": "date",
+      "kind": "number",
+      "values": [
+        "3 de mayo"
+      ]
+    },
+    {
+      "id": "security",
+      "kind": "condition",
+      "values": [
+        "Seguridad"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 5,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:25:35.946102+00:00",
+  "duration_ms": 6034,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc683-86a0-7a90-9c3a-61f5a7fe774a",
+  "final_output": "Necesitamos que Ana apruebe Proyecto Faro antes del 3 de mayo; no se debe iniciar la migración sin la aprobación de Seguridad, y el sistema anterior seguirá disponible tras dos semanas de revisar opciones.",
+  "trace_file": "raw/generations/multi-es-buried-action--no-skill--r05.trace.jsonl",
+  "result_file": "raw/generations/multi-es-buried-action--no-skill--r05.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "project",
+        "kind": "protected-string",
+        "values": [
+          "Proyecto Faro",
+          "Ana"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "date",
+        "kind": "number",
+        "values": [
+          "3 de mayo"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "security",
+        "kind": "condition",
+        "values": [
+          "Seguridad"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

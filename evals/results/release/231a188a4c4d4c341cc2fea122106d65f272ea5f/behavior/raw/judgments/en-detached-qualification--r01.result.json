@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-detached-qualification--r01",
+  "scenario_id": "en-detached-qualification",
+  "category": "english",
+  "language": "en",
+  "repeat": 1,
+  "presentation_index": 15,
+  "judge_seed": 808,
+  "prompt_sha256": "c18ea1355f8cac7fb18cb8413ba03195fb8aba383397e4cf13eb9bbfbac95dc5",
+  "presented_output_a": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. The restoration process may take up to 48 hours.",
+  "presented_output_b": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. Restoration may take up to 48 hours.",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Fully preserves the Enterprise account creation-date restriction, restoration capability, and maximum 48-hour recovery time in clear customer-facing language."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Fully preserves the Enterprise account creation-date restriction, restoration capability, and maximum 48-hour recovery time in clear customer-facing language."
+    },
+    "preference": "tie",
+    "preference_evidence": "Both revisions are equally accurate, clear, natural, and faithful; the minor wording difference does not affect meaning."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Fully preserves the Enterprise account creation-date restriction, restoration capability, and maximum 48-hour recovery time in clear customer-facing language.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Fully preserves the Enterprise account creation-date restriction, restoration capability, and maximum 48-hour recovery time in clear customer-facing language.\"},\"preference\":\"tie\",\"preference_evidence\":\"Both revisions are equally accurate, clear, natural, and faithful; the minor wording difference does not affect meaning.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:28:15.494843+00:00",
+  "duration_ms": 9080,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc685-f5d3-7046-bfc6-6713ff65e96e",
+  "trace_file": "raw/judgments/en-detached-qualification--r01.trace.jsonl",
+  "result_file": "raw/judgments/en-detached-qualification--r01.result.json"
+}

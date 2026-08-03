@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "buried-answer",
+    "register-mismatch"
+  ],
+  "source_text": "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
+  "output_contract": "丁寧なビジネス日本語の依頼文だけを返してください。",
+  "prompt": "SOURCEを一読で依頼内容が分かるように書き直してください。丁寧なビジネス日本語の依頼文だけを返してください。事実、期限、制約、固有表現を保持してください。SOURCE: 先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できます。つきましては、田中様に6月20日までに移行案Aの承認をお願いいたします。承認前に作業を開始しないでください。",
+  "checks": [
+    {
+      "id": "plan",
+      "kind": "protected-string",
+      "values": [
+        "移行案A",
+        "田中様"
+      ]
+    },
+    {
+      "id": "dates",
+      "kind": "number",
+      "values": [
+        "7月末",
+        "6月20日"
+      ]
+    },
+    {
+      "id": "approval",
+      "kind": "constraint",
+      "values": [
+        "承認前"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 1,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:23:30.798442+00:00",
+  "duration_ms": 6006,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc681-9dc6-78ad-837f-b699a59449de",
+  "final_output": "田中様\n\n現行環境は7月末まで利用可能です。先日の会議では移行時期について複数の意見がございましたが、6月20日までに移行案Aをご承認くださいますようお願いいたします。\n\nなお、ご承認前には作業を開始しないようお願いいたします。",
+  "trace_file": "raw/generations/ja-buried-action--178eaf8--r01.trace.jsonl",
+  "result_file": "raw/generations/ja-buried-action--178eaf8--r01.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "plan",
+        "kind": "protected-string",
+        "values": [
+          "移行案A",
+          "田中様"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "dates",
+        "kind": "number",
+        "values": [
+          "7月末",
+          "6月20日"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "approval",
+        "kind": "constraint",
+        "values": [
+          "承認前"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

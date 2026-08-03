@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r05",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 5,
+  "presentation_index": 55,
+  "judge_seed": 808,
+  "prompt_sha256": "6a8bbc5e313679e37523be195a0acc626ba6b94495f4c0909fccb6f0ff9091b0",
+  "presented_output_a": "李敏告诉王伟，王伟将在审核后关闭工单 CN-88。李敏负责最终确认。关闭工单和最终确认必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏负责最终确认，王伟将在审核后关闭工单 CN-88。必须在周五之前完成。",
+  "a_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "明确保留王伟关闭工单、李敏最终确认及周五期限，但将期限具体解释为两项工作均须完成，略微扩展了原文未明示的范围。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "准确保留责任分工、审核条件、工单编号和周五期限；仅调整信息顺序和引述结构。"
+    },
+    "preference": "B",
+    "preference_evidence": "B对原文期限范围的推断更少，事实与约束保留更严格；虽有轻微结构重排，但不改变核心内容。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"明确保留王伟关闭工单、李敏最终确认及周五期限，但将期限具体解释为两项工作均须完成，略微扩展了原文未明示的范围。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"准确保留责任分工、审核条件、工单编号和周五期限；仅调整信息顺序和引述结构。\"},\"preference\":\"B\",\"preference_evidence\":\"B对原文期限范围的推断更少，事实与约束保留更严格；虽有轻微结构重排，但不改变核心内容。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:30:28.929714+00:00",
+  "duration_ms": 37523,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc687-ff2c-7603-b0c5-6478a4887cba",
+  "trace_file": "raw/judgments/multi-zh-referent--r05.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r05.result.json"
+}

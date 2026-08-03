@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-de-terminology--r02",
+  "scenario_id": "multi-de-terminology",
+  "category": "multilingual-core",
+  "language": "de",
+  "repeat": 2,
+  "presentation_index": 74,
+  "judge_seed": 808,
+  "prompt_sha256": "837317dc4d3596f3706d44419754e743445691b76df4f8060dd69149666a9e20",
+  "presented_output_a": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Die Datenprüfung prüft keine bereits vorhandenen Dateien.",
+  "presented_output_b": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Die Datenprüfung prüft keine vorhandenen Dateien.",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Aussagen und die dreisätzige Struktur bleiben erhalten; der Produktname wird durchgehend verwendet."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Aussagen, Einschränkungen und die dreisätzige Struktur werden nahezu wortgetreu bewahrt; der Produktname bleibt konsistent."
+    },
+    "preference": "B",
+    "preference_evidence": "B bewahrt insbesondere „keine vorhandenen Dateien“ exakt, während A mit „bereits“ eine geringfügige, wenn auch bedeutungsgleiche Ergänzung vornimmt."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Aussagen und die dreisätzige Struktur bleiben erhalten; der Produktname wird durchgehend verwendet.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Aussagen, Einschränkungen und die dreisätzige Struktur werden nahezu wortgetreu bewahrt; der Produktname bleibt konsistent.\"},\"preference\":\"B\",\"preference_evidence\":\"B bewahrt insbesondere „keine vorhandenen Dateien“ exakt, während A mit „bereits“ eine geringfügige, wenn auch bedeutungsgleiche Ergänzung vornimmt.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:31:48.500167+00:00",
+  "duration_ms": 11067,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc689-35e5-7f61-a66e-f3a7355151bd",
+  "trace_file": "raw/judgments/multi-de-terminology--r02.trace.jsonl",
+  "result_file": "raw/judgments/multi-de-terminology--r02.result.json"
+}

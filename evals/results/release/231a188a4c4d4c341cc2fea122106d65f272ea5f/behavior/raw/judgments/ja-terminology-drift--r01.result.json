@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r01",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 1,
+  "presentation_index": 25,
+  "judge_seed": 808,
+  "prompt_sha256": "16a14ddcee9d3ff0a0b1c891bf139ee150474734ddf8594521aa39c54c03dedd",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で共有スペースを作成します。  \n共有スペースにメンバーを追加してください。  \n共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成を守り、用語を「共有スペース」に統一し、外部ユーザーを招待できない制約も保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "内容、3文構成、用語統一、招待制約は保持しているが、原文の「共有スペース」の鉤括弧を省略している。"
+    },
+    "preference": "A",
+    "preference_evidence": "両方とも明確で要件を満たすが、Aは原文の用語表記までより忠実に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成を守り、用語を「共有スペース」に統一し、外部ユーザーを招待できない制約も保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"内容、3文構成、用語統一、招待制約は保持しているが、原文の「共有スペース」の鉤括弧を省略している。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも明確で要件を満たすが、Aは原文の用語表記までより忠実に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:28:43.470947+00:00",
+  "duration_ms": 21697,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc686-6328-7df2-b9b1-6804d93dc568",
+  "trace_file": "raw/judgments/ja-terminology-drift--r01.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r01.result.json"
+}

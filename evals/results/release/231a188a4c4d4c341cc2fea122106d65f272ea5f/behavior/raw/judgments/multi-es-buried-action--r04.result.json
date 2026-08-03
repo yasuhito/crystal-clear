@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-es-buried-action--r04",
+  "scenario_id": "multi-es-buried-action",
+  "category": "multilingual-core",
+  "language": "es",
+  "repeat": 4,
+  "presentation_index": 38,
+  "judge_seed": 808,
+  "prompt_sha256": "438aba2fd6bfbefa4f7850fc3e70809c8648264a2bbed18b8052c8b7cbb13359",
+  "presented_output_a": "Necesitamos que Ana apruebe el Proyecto Faro antes del 3 de mayo; tras la aprobación de Seguridad, podrá iniciarse la migración, mientras el sistema anterior seguirá disponible.",
+  "presented_output_b": "Solicitamos que Ana apruebe Proyecto Faro antes del 3 de mayo; tras dos semanas de revisar varias opciones, el sistema anterior seguirá disponible y la migración no debe iniciarse sin la aprobación de Seguridad.",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Omite la revisión de opciones durante dos semanas y convierte la aprobación de Seguridad, que era una condición necesaria, en habilitación expresa para iniciar la migración."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Conserva la revisión de opciones durante dos semanas, la disponibilidad del sistema anterior, el plazo de Ana y la prohibición de migrar sin aprobación de Seguridad."
+    },
+    "preference": "B",
+    "preference_evidence": "B preserva todos los hechos y restricciones; A omite un antecedente y altera el alcance de la condición de Seguridad."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Omite la revisión de opciones durante dos semanas y convierte la aprobación de Seguridad, que era una condición necesaria, en habilitación expresa para iniciar la migración.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Conserva la revisión de opciones durante dos semanas, la disponibilidad del sistema anterior, el plazo de Ana y la prohibición de migrar sin aprobación de Seguridad.\"},\"preference\":\"B\",\"preference_evidence\":\"B preserva todos los hechos y restricciones; A omite un antecedente y altera el alcance de la condición de Seguridad.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:29:31.472309+00:00",
+  "duration_ms": 17041,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc687-1ea6-7d62-b11f-1b0e7f8a5c5f",
+  "trace_file": "raw/judgments/multi-es-buried-action--r04.trace.jsonl",
+  "result_file": "raw/judgments/multi-es-buried-action--r04.result.json"
+}

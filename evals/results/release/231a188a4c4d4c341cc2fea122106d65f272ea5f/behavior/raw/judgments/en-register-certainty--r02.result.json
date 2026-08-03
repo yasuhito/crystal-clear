@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-register-certainty--r02",
+  "scenario_id": "en-register-certainty",
+  "category": "english",
+  "language": "en",
+  "repeat": 2,
+  "presentation_index": 49,
+  "judge_seed": 808,
+  "prompt_sha256": "bd9bce24e99d5911098fa15a9dd240e79ddd572dc85bae2c4fa0bb5a1d95d3cd",
+  "presented_output_a": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a cache issue, but the cause has not been confirmed.",
+  "presented_output_b": "We are investigating elevated latency in eu-west-2. Approximately 8% of requests may be affected. Early evidence suggests a cache issue, but the cause has not been confirmed.",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves all facts, the 8% estimate, uncertainty, and formal incident register; adding “region” slightly expands the location label but does not alter meaning."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves all facts, terminology, the 8% estimate, uncertainty, and formal incident register exactly in substance."
+    },
+    "preference": "B",
+    "preference_evidence": "Both are strong, but B preserves the source terminology more exactly without adding “region.”"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, the 8% estimate, uncertainty, and formal incident register; adding “region” slightly expands the location label but does not alter meaning.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all facts, terminology, the 8% estimate, uncertainty, and formal incident register exactly in substance.\"},\"preference\":\"B\",\"preference_evidence\":\"Both are strong, but B preserves the source terminology more exactly without adding “region.”\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:30:10.476823+00:00",
+  "duration_ms": 10800,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc687-b716-7dbe-9fb2-502320819844",
+  "trace_file": "raw/judgments/en-register-certainty--r02.trace.jsonl",
+  "result_file": "raw/judgments/en-register-certainty--r02.result.json"
+}

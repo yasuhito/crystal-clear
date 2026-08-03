@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "ambiguous-referent"
+  ],
+  "source_text": "佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "output_contract": "曖昧さをなくした自然な日本語だけを返してください。",
+  "prompt": "SOURCEの主語と役割が一読で分かるように書き直してください。曖昧さをなくした自然な日本語だけを返してください。新しい事実は加えないでください。SOURCE: 佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "checks": [
+    {
+      "id": "id",
+      "kind": "protected-string",
+      "values": [
+        "JP-42"
+      ]
+    },
+    {
+      "id": "roles",
+      "kind": "fact",
+      "values": [
+        "報告書を送るのは鈴木さん",
+        "佐藤さんは承認"
+      ]
+    },
+    {
+      "id": "timing",
+      "kind": "condition",
+      "values": [
+        "レビュー後"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 2,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:23:58.592826+00:00",
+  "duration_ms": 13555,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc682-0a4d-7458-9fed-c28eae313b0d",
+  "final_output": "佐藤さんは鈴木さんに、レビュー後に鈴木さんが案件ID「JP-42」の報告書を送ると伝えました。佐藤さんは報告書の承認を担当します。",
+  "trace_file": "raw/generations/ja-ambiguous-subject--178eaf8--r02.trace.jsonl",
+  "result_file": "raw/generations/ja-ambiguous-subject--178eaf8--r02.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "id",
+        "kind": "protected-string",
+        "values": [
+          "JP-42"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "roles",
+        "kind": "fact",
+        "values": [
+          "報告書を送るのは鈴木さん",
+          "佐藤さんは承認"
+        ],
+        "missing": [
+          "報告書を送るのは鈴木さん",
+          "佐藤さんは承認"
+        ],
+        "passed": false
+      },
+      {
+        "id": "timing",
+        "kind": "condition",
+        "values": [
+          "レビュー後"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {
+      "fact": 1
+    }
+  }
+}

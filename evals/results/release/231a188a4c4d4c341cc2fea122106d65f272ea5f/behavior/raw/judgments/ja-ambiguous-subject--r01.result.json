@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r01",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 1,
+  "presentation_index": 37,
+  "judge_seed": 808,
+  "prompt_sha256": "587c1c691d516f4129286a702f2cce089f03a61e07e31c1779ab62a929fa73ef",
+  "presented_output_a": "案件ID「JP-42」について、佐藤さんは鈴木さんに、レビュー後に鈴木さんが報告書を送るよう伝えました。佐藤さんは報告書の承認を担当します。",
+  "presented_output_b": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "a_arm": "178eaf8",
+  "b_arm": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "送信者が鈴木さん、承認担当が佐藤さん、案件IDがJP-42である点は明確。ただし「送ると伝えました」を「送るよう伝えました」とし、伝達を指示寄りに変えている。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 4,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "送信者、時点、承認担当、案件IDをすべて保持し、伝達内容の性質も維持している。ただし鈴木さん本人への発話で「鈴木さんが」とする引用はやや不自然で、承認対象も若干省略的。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bはやや不自然だが、Aのように伝達を指示へ変えず、原文の事実関係と発話内容をより忠実に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送信者が鈴木さん、承認担当が佐藤さん、案件IDがJP-42である点は明確。ただし「送ると伝えました」を「送るよう伝えました」とし、伝達を指示寄りに変えている。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":4,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"送信者、時点、承認担当、案件IDをすべて保持し、伝達内容の性質も維持している。ただし鈴木さん本人への発話で「鈴木さんが」とする引用はやや不自然で、承認対象も若干省略的。\"},\"preference\":\"B\",\"preference_evidence\":\"Bはやや不自然だが、Aのように伝達を指示へ変えず、原文の事実関係と発話内容をより忠実に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "231a188a4c4d4c341cc2fea122106d65f272ea5f",
+  "started_at": "2026-08-03T07:29:30.868184+00:00",
+  "duration_ms": 14876,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc687-1c39-7716-8a98-720d72b3fc61",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r01.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r01.result.json"
+}
