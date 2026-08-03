@@ -182,6 +182,14 @@ python3 -m evals.run_terminology_regression --team-sync --repeats 5
 
 The first rejects turning “keep the product term … throughout” into an invented instruction to keep the product enabled. The second preserves a genuine constraint on the product's UI name rather than discarding it as a rewrite instruction. Both also check the frozen behavior and scope facts.
 
+The temporal regression preserves an event-relative deadline and a present access state while resolving an English referent:
+
+```sh
+python3 -m evals.run_temporal_regression --repeats 5
+```
+
+It rejects replacing `before then` with the potentially stricter `before Friday` boundary or shifting `Maya retains access` into a future prediction.
+
 The Simplified Chinese role regression checks that resolving a pronoun does not invent an actor for an agentless review or turn a separate final-confirmation responsibility into an ordering constraint:
 
 ```sh
