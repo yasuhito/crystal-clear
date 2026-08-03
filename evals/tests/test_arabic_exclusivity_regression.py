@@ -17,6 +17,17 @@ class ArabicExclusivityTests(unittest.TestCase):
             with self.subTest(output=output):
                 self.assertEqual(exclusivity_reasons(output), [])
 
+    def test_rejects_recasting_plan_scope_as_subscribers(self) -> None:
+        outputs = (
+            "يمكن فقط لمشتركي خطة Pro استعادة الملفات المحذوفة إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+            "يمكن لمستخدمي خطة Pro فقط استعادة الملفات المحذوفة إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+            "يمكن فقط للمشتركين في خطة Pro استعادة الملفات المحذوفة إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+            "يمكن للمستخدمين في خطة Pro فقط استعادة الملفات المحذوفة إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+        )
+        for output in outputs:
+            with self.subTest(output=output):
+                self.assertIn("plan-recast-as-subscribers", exclusivity_reasons(output))
+
     def test_rejects_omitted_or_broadened_exclusivity(self) -> None:
         outputs = (
             "في خطة Pro، يمكن استعادة الملفات المحذوفة إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",

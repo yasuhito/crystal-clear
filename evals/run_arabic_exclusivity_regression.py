@@ -75,7 +75,14 @@ def exclusivity_reasons(output: str) -> list[str]:
         "missing-14-day-condition": deadline,
         "missing-uncertain-24-hour-duration": uncertain_duration,
     }
-    return [name for name, passed in required.items() if not passed]
+    reasons = [name for name, passed in required.items() if not passed]
+    if re.search(
+        r"(?:مشتركي|مستخدمي)\s+(?:خطة\s+)?Pro|(?:للمشتركين|للمستخدمين|المشتركين|المستخدمين)\s+في\s+(?:خطة\s+)?Pro",
+        text,
+        re.I,
+    ):
+        reasons.append("plan-recast-as-subscribers")
+    return reasons
 
 
 def run_once(repeat: int, model: str) -> tuple[int, str]:
