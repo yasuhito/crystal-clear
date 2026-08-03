@@ -150,6 +150,16 @@ python3 -m evals.run_behavior \
 
 Report-only mode validates the complete generation and judgment matrices, scenario data, prompt equality, skill provenance, deterministic scores, blind assignments, parsed judgments, and trace observations before publishing any number.
 
+### Run the Japanese speech-act regression
+
+The release review found that a report (`〜すると伝えた`) was sometimes rewritten as an instruction (`〜するよう伝えた`). This focused live check runs the exact behavior seam five times and also rejects speaker/addressee reversal, expanded attributed content, and invented approval ordering:
+
+```sh
+python3 -m evals.run_japanese_regression --repeats 5
+```
+
+A passing run reports zero meaning-change regressions. It is a fast regression check, not a substitute for the full release matrix.
+
 ## Run the release-candidate evaluation
 
 Release evaluation uses an immutable commit, not `worktree`, and requires a clean tracked worktree before live execution. The core matrix is exactly 425 generations: 200 formal pinned-inventory routing runs plus 225 behavior generations (15 scenarios × no skill/current/candidate × five repeats). The 75 blind behavior comparisons present only revision `178eaf8` and the candidate; the unjudged no-skill arm remains generation evidence and receives no inferred judgment scores.

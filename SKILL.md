@@ -29,12 +29,13 @@ Protect:
 - facts, numbers, relationships, and essential emphasis;
 - requirements, prohibitions, conditions, exceptions, and requested actions;
 - the stated distinction between fact, inference, recommendation, and unknown;
+- each speech act, its modality, speaker, addressee, and exact content: keep a report a report, a request a request, and an instruction an instruction; never recast what someone said as what they asked or ordered, and never move an adjacent fact into attributed speech—for example, preserve the Japanese distinction between `〜すると伝えた` and `〜するよう伝えた`;
 - uncertainty, confidence, attribution, and evidential limits;
 - quotations, code, commands, paths, identifiers, and formatting that carries meaning;
 - names and domain terminology, including user-requested terms; and
 - voice, politeness, formality, and intentional ambiguity appropriate to the audience and genre.
 
-Treat quoted or technical strings as immutable unless the user explicitly asks to edit them. When repeated concepts could drift, map each concept to one preferred term before drafting and use it consistently. If clarity conflicts with preservation, preserve the source and surface the ambiguity rather than guessing.
+Treat quoted or technical strings as immutable unless the user explicitly asks to edit them. Before rewriting communication, transfer, approval, or causality, map each semantic role as `actor → action → object → recipient` and keep that map unchanged. When repeated concepts could drift, map each concept to one preferred term before drafting and use it consistently. If clarity conflicts with preservation, preserve the source and surface the ambiguity rather than guessing.
 
 ## 3. Build the clearest path
 
@@ -81,11 +82,11 @@ Read the candidate once as the intended reader. Check every item before returnin
 1. **Opening position:** After any required warning, subject line, or brief salutation, does the first line contain the main answer, action, or purpose?
 2. **Unique referents:** Does every pronoun, demonstrative, omitted subject, and cross-reference have one recoverable meaning?
 3. **Qualification scope:** Is every condition, exception, reason, modifier, and uncertainty marker attached to the claim it limits?
-4. **Claim status:** Can the reader distinguish fact, inference, recommendation, and unknown without guessing?
+4. **Claim and speech-act status:** Can the reader distinguish fact, inference, recommendation, and unknown without guessing? Does every report, request, instruction, promise, confirmation, and permission remain the same kind of speech act as in the source?
 5. **Terminology:** Does one concept keep one term, including across languages?
 6. **Paragraph purpose:** Does each paragraph perform one clear job in the reader's path?
 7. **Preservation:** Are all facts, constraints, instructions, quotations, protected strings, names, and essential emphasis intact?
 8. **Register:** Are voice, politeness, formality, and intentional ambiguity preserved where requested?
 9. **Output-first delivery:** Does the response follow its mode contract without an activation notice or unnecessary editorial preface?
 
-If a check fails, revise and run the preservation gate again. Return the result only when every check passes.
+If a check fails, revise and run the preservation gate again. Before returning a rewrite, preserve each speech act and who said what to whom: never turn a report about an action into a request, command, instruction, promise, confirmation, or permission. In Japanese, restore an omitted subject inside the reported proposition when the source clarifies it elsewhere; do not resolve it by swapping the speaker and addressee. For example, when later context says that `X` is B's action, preserve `AがBに、Xすると伝えた` as `AはBに「BがXする」と伝えた`; keep facts outside that reported proposition outside it, and do not invent their order. Explicitly check that `〜すると伝えた` has not become `〜するよう伝えた` and that `AはBに伝えた` has not become `BはAに伝えた`. Return the result only when every check passes.

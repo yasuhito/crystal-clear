@@ -4,6 +4,7 @@ import unittest
 from collections import Counter
 from pathlib import Path
 
+from evals.run_japanese_regression import has_meaning_change, meaning_change_reasons
 from evals.run_behavior import (
     _judge_prompt,
     assign_blind_pairs,
@@ -49,6 +50,27 @@ class BehaviorScenarioTests(unittest.TestCase):
             path.write_text(json.dumps(data))
             with self.assertRaisesRegex(ValueError, "five scenarios"):
                 load_behavior_scenarios(path)
+
+
+class MeaningChangeReproTests(unittest.TestCase):
+    SAFE = "佐藤さんは鈴木さんに、『レビュー後に鈴木さんが案件ID JP-42の報告書を送る』と伝えました。佐藤さんは承認を担当します。"
+
+    def test_detects_observed_and_adversarial_meaning_changes(self) -> None:
+        cases = {
+            "instruction": self.SAFE.replace("送る』と", "送るよう』と"),
+            "reversed attribution": self.SAFE.replace("佐藤さんは鈴木さんに", "鈴木さんは佐藤さんに"),
+            "expanded attribution": "佐藤さんは鈴木さんに、『レビュー後に鈴木さんが案件ID JP-42の報告書を送り、佐藤さんが承認する』と伝えました。",
+            "invented order": self.SAFE.replace("レビュー後に", "佐藤さんの承認後に"),
+            "missing id": self.SAFE.replace("案件ID JP-42の", ""),
+            "missing timing": self.SAFE.replace("レビュー後に", ""),
+            "bare assertion": "レビュー後に鈴木さんが案件ID JP-42の報告書を送ります。佐藤さんは承認を担当します。",
+        }
+        for label, output in cases.items():
+            with self.subTest(label=label):
+                self.assertTrue(meaning_change_reasons(output))
+
+    def test_accepts_report_that_preserves_all_invariants(self) -> None:
+        self.assertFalse(has_meaning_change(self.SAFE))
 
 
 class DeterministicScoringTests(unittest.TestCase):
