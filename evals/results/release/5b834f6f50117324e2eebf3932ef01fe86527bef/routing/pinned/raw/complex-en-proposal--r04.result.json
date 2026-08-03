@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:47:05.280289+00:00",
+  "duration_ms": 33353,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4df-bf66-7bf2-b897-13380242a626",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update schedule in place of the current monthly cycle. Weekly updates will shorten our exposure to known vulnerabilities, reduce the size and complexity of each review, and make dependency changes easier to test and troubleshoot.\n\n## Why Change the Schedule\n\n### Faster Security Response\n\nA monthly schedule can leave a known vulnerability unresolved for several weeks, even when a safe upgrade is available. Weekly updates reduce that routine exposure window by allowing the team to review and deploy security fixes sooner.\n\nCritical vulnerabilities should continue to follow the existing emergency response process rather than wait for the weekly cycle. The weekly schedule would improve our response to lower-severity and non-emergency security updates that do not justify immediate disruption but should not remain open for a month.\n\n### Smaller, More Predictable Reviews\n\nMonthly updates accumulate many version changes into a single review. Larger batches require more release-note analysis, create more test combinations, and make failures harder to trace to a specific dependency.\n\nWeekly updates should produce smaller pull requests with fewer changes. Reviewers can assess each update more quickly, and engineers can identify the likely cause of a regression without investigating a month’s worth of upgrades. The total number of review events will increase, but each review should be narrower and easier to schedule.\n\nTo control workload, routine patch and minor updates can be grouped into one weekly pull request where appropriate. Major-version upgrades should remain separate because they often require migration work and broader testing.\n\n## Proposed Process\n\n1. Generate dependency updates once each week through the current automation or maintenance process.\n2. Group compatible patch and minor updates into a manageable pull request.\n3. Review release notes, automated test results, and security impact.\n4. Merge updates that pass review and testing.\n5. Track major upgrades separately and schedule them according to effort and risk.\n6. Continue to handle critical vulnerabilities immediately.\n\nAfter an initial trial period, the team should compare review time, update backlog, failed builds, and dependency-related incidents with the monthly process. If weekly updates create excessive interruption, the team can adjust batching rules or review ownership without returning immediately to a monthly cadence.\n\n## Trade-offs\n\nThe change will create more frequent notifications and require a consistent weekly owner. It may also expose gaps in automated testing because updates will reach validation sooner. These costs are manageable through batching, rotation of review responsibility, and clear criteria for separating routine updates from major upgrades.\n\nThe change is operational rather than irreversible. The team can revise the cadence if the measured workload outweighs the security and review benefits.\n\n## Decision Needed\n\nThe engineering manager should approve:\n\n- replacing the monthly dependency update cycle with a weekly cycle;\n- keeping critical security updates on the immediate-response path;\n- batching routine patch and minor updates while reviewing major upgrades separately; and\n- assigning weekly review ownership and evaluating the process after a defined trial period.\n\nApproval will allow the team to establish the rotation, configure the update schedule, and begin the trial.",
+  "trace_file": "raw/complex-en-proposal--r04.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r04.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

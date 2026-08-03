@@ -1,0 +1,211 @@
+{
+  "packet_sha256": "0a6c91f775c51520525dc922ac8caadcb5390a399d42a4b33af819f7bf4a8744",
+  "reviewer_role": "project-owner",
+  "owner_attestation": true,
+  "reviews": [
+    {
+      "review_id": "JP-01",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-02",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-03",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-04",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-05",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-06",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-07",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-08",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-09",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-10",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-11",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    },
+    {
+      "review_id": "JP-12",
+      "output_a": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "output_b": {
+        "first_pass_understanding": null,
+        "naturalness": null,
+        "preservation": null,
+        "critical_meaning_change": null
+      },
+      "preference": null,
+      "notes": ""
+    }
+  ]
+}

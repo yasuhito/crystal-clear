@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-ja-procedure-held",
+  "language": "ja",
+  "category": "complex-communication",
+  "split": "held-out",
+  "paraphrase_of": "complex-en-procedure",
+  "rationale": "Held-out Japanese paraphrase of the deployment rollback procedure.",
+  "expected_activation": true,
+  "prompt": "オンコール担当者向けにデプロイのロールバック手順を書いてください。データベース移行には後方互換性があり、ロールバック前にトラフィックを切り離し、エラー率が2%を超えた場合はロールバックを中止する、という条件を含めてください。",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:48:25.380727+00:00",
+  "duration_ms": 24404,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4e0-f85c-7ff4-b7c0-3d8368867795",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# デプロイのロールバック手順\n\n## 前提\n\n- データベース移行には後方互換性があるため、データベースのロールバックは行いません。\n- 実際のコマンドや操作対象は、対象サービスの運用手順に従ってください。\n\n## 手順\n\n1. **インシデント対応を開始する**\n   - 対象サービス、デプロイバージョン、開始時刻、ロールバック理由を記録します。\n\n2. **トラフィックを切り離す**\n   - ロールバック対象のインスタンスまたは環境を、ロードバランサーやルーティング設定から切り離します。\n   - 対象への新規リクエストが停止したことを確認します。\n   - 処理中のリクエストが完了するまで待ちます。\n\n3. **エラー率を確認する**\n   - サービス全体のエラー率を監視します。\n   - **エラー率が2%を超えた場合は、ロールバックを中止します。**\n   - 中止した場合は変更を追加せず、トラフィックを安全な経路に維持したまま、インシデント対応手順に従ってエスカレーションします。\n\n4. **アプリケーションをロールバックする**\n   - 直前の正常なアプリケーションバージョンへ戻します。\n   - データベース移行は後方互換性があるため、現在のスキーマを維持します。\n\n5. **動作を確認する**\n   - ヘルスチェック、主要API、主要ユーザーフローを確認します。\n   - ログとメトリクスに新たな異常がないことを確認します。\n   - エラー率が2%以下で安定していることを確認します。\n\n6. **トラフィックを段階的に戻す**\n   - 少量のトラフィックから再開し、エラー率とレイテンシーを監視します。\n   - **再開中にエラー率が2%を超えた場合は、トラフィックの復旧を停止し、安全な経路へ戻します。**\n\n7. **完了を記録する**\n   - ロールバック後のバージョン、復旧時刻、確認結果、エラー率を記録します。\n   - 関係者へ復旧状況を共有し、必要に応じて事後レビューを開始します。\n\n## 完了条件\n\n- 正常なアプリケーションバージョンへ戻っている\n- データベーススキーマが維持されている\n- トラフィックが復旧している\n- エラー率が2%以下で安定している",
+  "trace_file": "raw/complex-ja-procedure-held--r01.trace.jsonl",
+  "result_file": "raw/complex-ja-procedure-held--r01.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-ja-procedure-held",
+  "language": "ja",
+  "category": "complex-communication",
+  "split": "held-out",
+  "paraphrase_of": "complex-en-procedure",
+  "rationale": "Held-out Japanese paraphrase of the deployment rollback procedure.",
+  "expected_activation": true,
+  "prompt": "オンコール担当者向けにデプロイのロールバック手順を書いてください。データベース移行には後方互換性があり、ロールバック前にトラフィックを切り離し、エラー率が2%を超えた場合はロールバックを中止する、という条件を含めてください。",
+  "input_text": null,
+  "repeat": 4,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:48:31.826541+00:00",
+  "duration_ms": 27735,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4e1-110f-7854-bd0e-b384b2a89b1d",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# デプロイのロールバック手順（オンコール担当者向け）\n\n## 1. ロールバック開始条件を確認する\n\n1. 障害が直近のデプロイに起因している可能性を確認します。\n2. 現在のデプロイバージョンと、戻す対象の安定版バージョンを特定します。\n3. データベース移行に後方互換性があることを確認します。  \n   **データベース自体はロールバックせず、アプリケーションのみを以前のバージョンへ戻します。**\n4. インシデント対応チャネルで、ロールバックを開始することを共有します。\n\n## 2. トラフィックを切り離す\n\n1. 対象サービスをロードバランサーまたはルーティング先から外します。\n2. 新規トラフィックが対象サービスへ到達していないことを確認します。\n3. 実行中のリクエストが完了するまで待ちます。\n\n> **重要:** トラフィックを切り離す前にロールバックを開始しないでください。\n\n## 3. ロールバックを実行する\n\n1. 対象サービスを、直前の安定版バージョンへ戻します。\n2. デプロイ状況、アプリケーションログ、エラー率を継続して監視します。\n3. ヘルスチェックが成功することを確認します。\n\n### 中止条件\n\nロールバック中に**エラー率が2%を超えた場合は、直ちにロールバックを中止**します。\n\n中止した場合は次の対応を行います。\n\n- トラフィックを切り離した状態に保つ\n- 追加の変更や再実行を行わない\n- インシデント対応チャネルへ状況を共有する\n- インシデント責任者または上位エスカレーション先へ連絡する\n\n## 4. 動作を確認する\n\n次の項目を確認します。\n\n- ヘルスチェックがすべて成功している\n- エラー率が2%以下で安定している\n- 主要なリクエストが正常に処理される\n- ログに新たな重大エラーがない\n- データベースとの互換性に関するエラーがない\n\n## 5. トラフィックを戻す\n\n1. 対象サービスを段階的にルーティング先へ戻します。\n2. 各段階でエラー率、レイテンシー、リソース使用率を確認します。\n3. エラー率が2%を超えた場合は、トラフィックを再度切り離し、インシデント責任者へ連絡します。\n4. 指標が安定していることを確認してから、トラフィックを全面復旧します。\n\n## 6. 完了を報告する\n\nインシデント対応チャネルに以下を記録します。\n\n- ロールバック前後のバージョン\n- 開始時刻と完了時刻\n- ロールバックの成否\n- 最大エラー率\n- トラフィック復旧状況\n- 残っている問題と追加対応の担当者",
+  "trace_file": "raw/complex-ja-procedure-held--r04.trace.jsonl",
+  "result_file": "raw/complex-ja-procedure-held--r04.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

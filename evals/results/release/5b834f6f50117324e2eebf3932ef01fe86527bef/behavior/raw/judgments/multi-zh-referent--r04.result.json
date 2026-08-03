@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-zh-referent--r04",
+  "scenario_id": "multi-zh-referent",
+  "category": "multilingual-core",
+  "language": "zh-CN",
+  "repeat": 4,
+  "presentation_index": 48,
+  "judge_seed": 808,
+  "prompt_sha256": "268d9e5308800b1c09de4ee41e7c08bf23d61edec0ea7b1bc7933dfdb806632f",
+  "presented_output_a": "李敏告诉王伟：李敏负责最终确认；审核后，王伟将关闭工单 CN-88。以上事项必须在周五之前完成。",
+  "presented_output_b": "李敏告诉王伟：李敏将在审核后进行最终确认，王伟负责关闭工单 CN-88。上述事项必须在周五之前完成。",
+  "a_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "保留了王伟关闭工单 CN-88、李敏最终确认、关闭须在审核后以及周五前完成等信息。"
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "invented-fact",
+        "removed-constraint"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": null,
+      "core_structure": 4,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "将“审核后”错误地关联到李敏的最终确认，因而新增了确认时序并移除了王伟审核后关闭工单的约束。"
+    },
+    "preference": "A",
+    "preference_evidence": "A依据明确的角色说明消除了指代歧义，并正确保留“审核后关闭工单”的时序；B改变了该条件的作用对象。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"保留了王伟关闭工单 CN-88、李敏最终确认、关闭须在审核后以及周五前完成等信息。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"invented-fact\",\"removed-constraint\"],\"preservation\":3,\"first_pass_understanding\":null,\"core_structure\":4,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"将“审核后”错误地关联到李敏的最终确认，因而新增了确认时序并移除了王伟审核后关闭工单的约束。\"},\"preference\":\"A\",\"preference_evidence\":\"A依据明确的角色说明消除了指代歧义，并正确保留“审核后关闭工单”的时序；B改变了该条件的作用对象。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:01:37.104819+00:00",
+  "duration_ms": 20658,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ed-0ca7-77d9-9afc-0c53f7926d6d",
+  "trace_file": "raw/judgments/multi-zh-referent--r04.trace.jsonl",
+  "result_file": "raw/judgments/multi-zh-referent--r04.result.json"
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r02",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 2,
+  "presentation_index": 33,
+  "judge_seed": 808,
+  "prompt_sha256": "74ab64446451bfeff15083a6c7d425a8b57f1399c2ab9984fd7535f036521346",
+  "presented_output_a": "先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "先日の会議で移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "期限、移行案A、田中様、承認前の作業禁止をすべて保持し、丁寧で自然です。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "全事実と制約を保持し、依頼文として丁寧かつ自然です。"
+    },
+    "preference": "A",
+    "preference_evidence": "両者とも適切ですが、Aの「会議では」が原文の助詞まで忠実に保持しています。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"期限、移行案A、田中様、承認前の作業禁止をすべて保持し、丁寧で自然です。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"全事実と制約を保持し、依頼文として丁寧かつ自然です。\"},\"preference\":\"A\",\"preference_evidence\":\"両者とも適切ですが、Aの「会議では」が原文の助詞まで忠実に保持しています。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:00:46.352439+00:00",
+  "duration_ms": 13941,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ec-465a-7021-b532-93322274ae53",
+  "trace_file": "raw/judgments/ja-buried-action--r02.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r02.result.json"
+}

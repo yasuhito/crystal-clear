@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "boundary-research-data-incidental",
+  "language": "en",
+  "category": "boundary",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "Finding a numeric value is primary and needs no communication design.",
+  "expected_activation": false,
+  "prompt": "From these values 4.1, 3.7, 12, return only the smallest number.",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:51:33.404643+00:00",
+  "duration_ms": 4665,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4e3-d67d-7ad7-9846-3cb29da49c08",
+  "activation": {
+    "automatic": false,
+    "skill_loaded": false,
+    "source": "none"
+  },
+  "final_output": "3.7",
+  "trace_file": "raw/boundary-research-data-incidental--r01.trace.jsonl",
+  "result_file": "raw/boundary-research-data-incidental--r01.result.json",
+  "selection_outcome": "not-selected"
+}

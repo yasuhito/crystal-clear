@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-ja-procedure-held",
+  "language": "ja",
+  "category": "complex-communication",
+  "split": "held-out",
+  "paraphrase_of": "complex-en-procedure",
+  "rationale": "Held-out Japanese paraphrase of the deployment rollback procedure.",
+  "expected_activation": true,
+  "prompt": "オンコール担当者向けにデプロイのロールバック手順を書いてください。データベース移行には後方互換性があり、ロールバック前にトラフィックを切り離し、エラー率が2%を超えた場合はロールバックを中止する、という条件を含めてください。",
+  "input_text": null,
+  "repeat": 5,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:48:49.785968+00:00",
+  "duration_ms": 25138,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4e1-5773-7103-9572-cc0ac556f602",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# デプロイのロールバック手順\n\n## 1. ロールバック開始条件を確認する\n\n- 対象のリリース、サービス、環境を確認する。\n- 障害の影響範囲と現在のエラー率を記録する。\n- データベース移行には後方互換性があるため、アプリケーションのみを直前の安定版へ戻す。データベース移行は原則として戻さない。\n- インシデント対応チャンネルでロールバック開始を宣言する。\n\n## 2. 対象環境からトラフィックを切り離す\n\n1. ロードバランサーまたはサービスメッシュから、ロールバック対象を切り離す。\n2. 新規リクエストが流入していないことを確認する。\n3. 処理中のリクエストが完了するまで待つ。\n4. 対象外の環境でサービスを継続できていることを確認する。\n\n> **必須:** トラフィックを切り離す前にロールバックを実行しないこと。\n\n## 3. エラー率を確認する\n\nロールバックの開始前と実行中は、サービス全体のエラー率を継続して監視する。\n\n- **エラー率が2%以下:** ロールバックを続行する。\n- **エラー率が2%を超えた場合:** ロールバックを直ちに中止する。変更を追加せず、インシデント責任者へエスカレーションする。\n\n## 4. アプリケーションを安定版へ戻す\n\n1. 直前の安定版のバージョンを確認する。\n2. 対象環境へ安定版をデプロイする。\n3. デプロイの完了と、全インスタンスの正常起動を確認する。\n4. ヘルスチェック、ログ、依存サービスへの接続を確認する。\n5. データベース移行は後方互換性があるため、そのまま維持する。\n\n## 5. トラフィックを段階的に戻す\n\n1. 少量のトラフィックを対象環境へ戻す。\n2. エラー率、レイテンシー、リソース使用率を確認する。\n3. エラー率が2%以下で、異常がない場合のみトラフィックを段階的に増やす。\n4. **エラー率が2%を超えた場合は復旧操作を中止し、対象環境を再度切り離してエスカレーションする。**\n5. 問題がなければ、通常のトラフィック配分へ戻す。\n\n## 6. 完了確認と記録\n\n- 稼働中のアプリケーションが安定版であることを確認する。\n- エラー率が2%以下で安定していることを確認する。\n- 主要機能の動作確認を行う。\n- 実施時刻、対象バージョン、監視結果、判断内容をインシデント記録へ残す。\n- 関係者へロールバック完了を通知する。",
+  "trace_file": "raw/complex-ja-procedure-held--r05.trace.jsonl",
+  "result_file": "raw/complex-ja-procedure-held--r05.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-es-buried-action--r05",
+  "scenario_id": "multi-es-buried-action",
+  "category": "multilingual-core",
+  "language": "es",
+  "repeat": 5,
+  "presentation_index": 71,
+  "judge_seed": 808,
+  "prompt_sha256": "ca5f676b4ddd782be66f44c08c8390699e7f67139990e4ed24e59bf02005c3fa",
+  "presented_output_a": "Ana debe aprobar Proyecto Faro antes del 3 de mayo; la migración no debe iniciarse sin la aprobación de Seguridad, y el sistema anterior seguirá disponible.",
+  "presented_output_b": "Ana debe aprobar Proyecto Faro antes del 3 de mayo; la migración solo podrá iniciarse con la aprobación de Seguridad, y el sistema anterior seguirá disponible.",
+  "a_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Preserva la aprobación de Ana, Proyecto Faro, la fecha, la condición de Seguridad y la disponibilidad del sistema anterior; omite la revisión de opciones durante dos semanas."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Preserva los elementos operativos y reformula correctamente la aprobación de Seguridad como condición necesaria; omite la revisión de opciones durante dos semanas."
+    },
+    "preference": "A",
+    "preference_evidence": "A reproduce de forma más directa la prohibición original; ambas conservan lo esencial y omiten el mismo antecedente contextual."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Preserva la aprobación de Ana, Proyecto Faro, la fecha, la condición de Seguridad y la disponibilidad del sistema anterior; omite la revisión de opciones durante dos semanas.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Preserva los elementos operativos y reformula correctamente la aprobación de Seguridad como condición necesaria; omite la revisión de opciones durante dos semanas.\"},\"preference\":\"A\",\"preference_evidence\":\"A reproduce de forma más directa la prohibición original; ambas conservan lo esencial y omiten el mismo antecedente contextual.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:02:57.392833+00:00",
+  "duration_ms": 18484,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ee-4671-7ffa-b9a6-ad4ee44f24e8",
+  "trace_file": "raw/judgments/multi-es-buried-action--r05.trace.jsonl",
+  "result_file": "raw/judgments/multi-es-buried-action--r05.result.json"
+}

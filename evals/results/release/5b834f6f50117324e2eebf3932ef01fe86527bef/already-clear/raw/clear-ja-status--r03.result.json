@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "fixture_version": "already-clear-v1-post-candidate",
+  "fixture_status": "supplemental-post-candidate",
+  "scenario_id": "clear-ja-status",
+  "language": "ja",
+  "source_text": "現在、サービスは復旧しています。ただし、東京リージョンでは応答に最大2秒かかる可能性があります。次回は16時に状況をお知らせします。",
+  "prompt": "初読で理解しやすいか確認し、必要な場合だけ修正してください。本文だけを返してください。すでに明確な場合は変更しないでください。\n\n現在、サービスは復旧しています。ただし、東京リージョンでは応答に最大2秒かかる可能性があります。次回は16時に状況をお知らせします。",
+  "repeat": 3,
+  "candidate_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "candidate_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "references/use-cases.md": "6c68f4afcd986e11b89a8af3297f65b457f5912ba81c965549690d05e7788be1"
+  },
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:06:13.973998+00:00",
+  "duration_ms": 5511,
+  "final_output": "現在、サービスは復旧しています。ただし、東京リージョンでは応答に最大2秒かかる可能性があります。次回は16時に状況をお知らせします。",
+  "session_id": "019fc4f1-467b-7fc2-be84-fca9446f3e06",
+  "unchanged": true,
+  "equivalence": {
+    "equivalent": true,
+    "critical_meaning_change": false,
+    "evidence": "Exact string equality."
+  },
+  "judgment_trace_file": null,
+  "raw_judgment_output": null,
+  "judgment_prompt_sha256": null,
+  "trace_file": "raw/clear-ja-status--r03.trace.jsonl",
+  "result_file": "raw/clear-ja-status--r03.result.json"
+}

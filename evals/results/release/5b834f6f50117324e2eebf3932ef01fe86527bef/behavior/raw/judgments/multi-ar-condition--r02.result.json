@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-ar-condition--r02",
+  "scenario_id": "multi-ar-condition",
+  "category": "multilingual-core",
+  "language": "ar",
+  "repeat": 2,
+  "presentation_index": 64,
+  "judge_seed": 808,
+  "prompt_sha256": "11bffb67cf154ae4cc85e32c6175dd74e157fa4e3fbe5c3b9044d1f923bc31eb",
+  "presented_output_a": "يمكن استعادة الملفات المحذوفة في خطة Pro فقط إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+  "presented_output_b": "يمكن استعادة الملفات المحذوفة ضمن خطة Pro فقط، إذا قُدِّم الطلب خلال 14 يومًا، وقد تستغرق الاستعادة حتى 24 ساعة.",
+  "a_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "يحفظ إمكانية الاستعادة وقيد خطة Pro وشرط 14 يومًا والمدة القصوى 24 ساعة."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "يحفظ جميع الحقائق والقيود والأرقام، مع فصل الشرط بفاصلة لا تغيّر المعنى."
+    },
+    "preference": "A",
+    "preference_evidence": "كلاهما يحفظ المصدر، لكن A يربط قيدي الخطة والمهلة مباشرة دون فصل قد يوحي بانقطاع الشرط."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"يحفظ إمكانية الاستعادة وقيد خطة Pro وشرط 14 يومًا والمدة القصوى 24 ساعة.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"يحفظ جميع الحقائق والقيود والأرقام، مع فصل الشرط بفاصلة لا تغيّر المعنى.\"},\"preference\":\"A\",\"preference_evidence\":\"كلاهما يحفظ المصدر، لكن A يربط قيدي الخطة والمهلة مباشرة دون فصل قد يوحي بانقطاع الشرط.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:02:32.589420+00:00",
+  "duration_ms": 13156,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ed-e551-7487-98ff-1cb203180bd4",
+  "trace_file": "raw/judgments/multi-ar-condition--r02.trace.jsonl",
+  "result_file": "raw/judgments/multi-ar-condition--r02.result.json"
+}

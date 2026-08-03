@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-mixed-ja-en--r03",
+  "scenario_id": "multi-mixed-ja-en",
+  "category": "multilingual-core",
+  "language": "mixed-ja-en",
+  "repeat": 3,
+  "presentation_index": 68,
+  "judge_seed": 808,
+  "prompt_sha256": "7cc6e1056022c52380db0d5f6adfeb5b5002a9afc14a8cbb4ff47c14a070787c",
+  "presented_output_a": "管理者はTeam Syncを有効にしてください。Team Syncの同期対象は新規メンバーのみで、既存メンバーは対象外です。UI上の名称は「Team Sync」のまま変更しないでください。",
+  "presented_output_b": "管理者はTeam Syncを有効にしてください。Team Syncの同期対象は新規メンバーのみで、既存メンバーは対象外です。UI上の名称は「Team Sync」から変更しないでください。",
+  "a_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "有効化、新規メンバーのみが同期対象、既存メンバーは対象外、UI名称を維持するという全要件を保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "有効化、同期対象の範囲、既存メンバーの除外、UI名称を変更しない制約をすべて保持している。"
+    },
+    "preference": "A",
+    "preference_evidence": "両方とも内容を完全に保持しているが、Aは原文の「ままにしてください」により近い。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"有効化、新規メンバーのみが同期対象、既存メンバーは対象外、UI名称を維持するという全要件を保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"有効化、同期対象の範囲、既存メンバーの除外、UI名称を変更しない制約をすべて保持している。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも内容を完全に保持しているが、Aは原文の「ままにしてください」により近い。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:02:45.746356+00:00",
+  "duration_ms": 15322,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ee-18bc-7fcc-ba15-40e3360d3b5c",
+  "trace_file": "raw/judgments/multi-mixed-ja-en--r03.trace.jsonl",
+  "result_file": "raw/judgments/multi-mixed-ja-en--r03.result.json"
+}

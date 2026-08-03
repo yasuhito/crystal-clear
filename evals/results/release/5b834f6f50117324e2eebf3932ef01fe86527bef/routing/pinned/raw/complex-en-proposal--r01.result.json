@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 1,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:46:46.341315+00:00",
+  "duration_ms": 30998,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4df-7507-793c-ae74-2733dec731a9",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates from Monthly to Weekly\n\n## Recommendation\n\nAdopt a weekly dependency update cycle in place of the current monthly cycle. Smaller, more frequent updates will improve our security response and make changes easier to review, test, and troubleshoot.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave known vulnerabilities unresolved for several weeks. Weekly updates shorten that exposure window and make routine security fixes part of normal maintenance.\n\nCritical vulnerabilities should still follow the existing emergency response process rather than wait for the weekly cycle.\n\n### Lower Review Workload per Update\n\nMonthly updates tend to combine many dependency changes into one large pull request. These batches require more review effort, increase the chance of interacting changes, and make failures harder to isolate.\n\nWeekly updates should produce smaller pull requests with:\n\n- Fewer release notes and breaking changes to assess\n- More focused automated and manual testing\n- Simpler rollback and troubleshooting\n- Less context switching during each review\n\nThe total number of update pull requests may increase, but each review should be faster and lower risk. To control interruptions, the team can review dependency updates in one scheduled block each week.\n\n## Proposed Process\n\n1. Run the dependency update tool on a fixed day each week.\n2. Group compatible patch and minor updates where practical.\n3. Keep major-version upgrades separate because they require deeper review.\n4. Require the standard automated test and approval checks before merging.\n5. Escalate critical security fixes immediately instead of waiting for the scheduled run.\n6. Reassess the process after an initial trial period using review time, update backlog, failed builds, and security remediation time.\n\n## Trade-offs and Risks\n\nWeekly updates will create more frequent notifications and may add process overhead if poorly grouped. Automated updates can also introduce regressions, so the existing test and approval controls must remain in place.\n\nThese costs are manageable through scheduled review time, sensible grouping, and separate handling for high-risk upgrades. The change is also reversible if the trial shows that weekly updates create more workload than they reduce.\n\n## Decision Needed\n\nThe engineering manager should approve a trial of weekly dependency updates and authorize the team to replace the monthly update batch with the proposed process. Approval should also confirm:\n\n- The day assigned for weekly review\n- The approach to grouping patch and minor updates\n- The requirement to handle critical vulnerabilities immediately\n- The measures used to evaluate the trial\n\nAt the end of the trial, the engineering manager can decide whether to make the weekly schedule permanent, adjust it, or return to monthly updates.",
+  "trace_file": "raw/complex-en-proposal--r01.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r01.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

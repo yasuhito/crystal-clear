@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r01",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 1,
+  "presentation_index": 66,
+  "judge_seed": 808,
+  "prompt_sha256": "497fd886ab2f7efeed88462f05ec635b7e24ad097080312b4949b177b4046d75",
+  "presented_output_a": "Decision: Approve Project Northstar by 14 June, following several weeks of discussion and risk review; the rollout must not begin before security signs off, and the legacy exporter remains available.",
+  "presented_output_b": "Approve Project Northstar by 14 June after several weeks of discussion and risk review; however, the rollout must not begin until security signs off, and the legacy exporter remains available.",
+  "a_arm": "178eaf8",
+  "b_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the date, prior discussion, risk review, exporter availability, and security prerequisite, but recasts a recommendation as a finalized decision."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty"
+      ],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves all substantive facts and constraints, but the imperative wording omits the source's explicit recommendation framing."
+    },
+    "preference": "B",
+    "preference_evidence": "Both alter certainty, but B is less explicit than A in portraying the recommendation as an already-made decision."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the date, prior discussion, risk review, exporter availability, and security prerequisite, but recasts a recommendation as a finalized decision.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\"],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves all substantive facts and constraints, but the imperative wording omits the source's explicit recommendation framing.\"},\"preference\":\"B\",\"preference_evidence\":\"Both alter certainty, but B is less explicit than A in portraying the recommendation as an already-made decision.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:02:42.664760+00:00",
+  "duration_ms": 14727,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ee-0ca7-75a4-9f9e-0445d73412d0",
+  "trace_file": "raw/judgments/en-buried-answer--r01.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r01.result.json"
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "en-detached-qualification",
+  "category": "english",
+  "language": "en",
+  "failure_modes": [
+    "detached-qualification",
+    "accidental-certainty-change"
+  ],
+  "source_text": "Customers can restore archived workspaces. This applies only to Enterprise accounts created after 1 January 2025, and recovery may take up to 48 hours.",
+  "output_contract": "Return only a clear customer-facing explanation in English.",
+  "prompt": "Rewrite the SOURCE so each qualification is attached to the claim it limits. Return only a clear customer-facing explanation in English. Do not strengthen possibility into certainty. SOURCE: Customers can restore archived workspaces. This applies only to Enterprise accounts created after 1 January 2025, and recovery may take up to 48 hours.",
+  "checks": [
+    {
+      "id": "tier",
+      "kind": "protected-string",
+      "values": [
+        "Enterprise"
+      ]
+    },
+    {
+      "id": "date",
+      "kind": "number",
+      "values": [
+        "1 January 2025",
+        "48 hours"
+      ]
+    },
+    {
+      "id": "eligibility",
+      "kind": "condition",
+      "values": [
+        "only"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "kind": "fact",
+      "values": [
+        "may"
+      ]
+    }
+  ],
+  "arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "repeat": 5,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "references/use-cases.md": "6c68f4afcd986e11b89a8af3297f65b457f5912ba81c965549690d05e7788be1"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:54:11.040766+00:00",
+  "duration_ms": 4787,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc4e6-3e28-7220-8f30-668e03b5b9b1",
+  "final_output": "Customers with Enterprise accounts created after January 1, 2025, can restore archived workspaces. Restoration may take up to 48 hours.",
+  "trace_file": "raw/generations/en-detached-qualification--5b834f6f50117324e2eebf3932ef01fe86527bef--r05.trace.jsonl",
+  "result_file": "raw/generations/en-detached-qualification--5b834f6f50117324e2eebf3932ef01fe86527bef--r05.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "tier",
+        "kind": "protected-string",
+        "values": [
+          "Enterprise"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "date",
+        "kind": "number",
+        "values": [
+          "1 January 2025",
+          "48 hours"
+        ],
+        "missing": [
+          "1 January 2025"
+        ],
+        "passed": false
+      },
+      {
+        "id": "eligibility",
+        "kind": "condition",
+        "values": [
+          "only"
+        ],
+        "missing": [
+          "only"
+        ],
+        "passed": false
+      },
+      {
+        "id": "uncertainty",
+        "kind": "fact",
+        "values": [
+          "may"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {
+      "condition": 1,
+      "number": 1
+    }
+  }
+}

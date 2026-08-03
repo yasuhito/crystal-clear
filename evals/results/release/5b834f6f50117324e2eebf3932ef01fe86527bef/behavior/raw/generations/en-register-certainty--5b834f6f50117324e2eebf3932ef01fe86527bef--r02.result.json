@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "en-register-certainty",
+  "category": "english",
+  "language": "en",
+  "failure_modes": [
+    "register-mismatch",
+    "accidental-certainty-change"
+  ],
+  "source_text": "We are investigating elevated latency in eu-west-2. Early evidence suggests a cache issue, but the cause is not confirmed. About 8% of requests may be affected.",
+  "output_contract": "Return only a calm, formal incident update in English.",
+  "prompt": "Rewrite the SOURCE for customers. Return only a calm, formal incident update in English. Preserve all uncertainty and measurements. SOURCE: We are investigating elevated latency in eu-west-2. Early evidence suggests a cache issue, but the cause is not confirmed. About 8% of requests may be affected.",
+  "checks": [
+    {
+      "id": "region",
+      "kind": "protected-string",
+      "values": [
+        "eu-west-2"
+      ]
+    },
+    {
+      "id": "impact",
+      "kind": "number",
+      "values": [
+        "8%"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "kind": "fact",
+      "values": [
+        "suggests",
+        "not confirmed",
+        "may"
+      ]
+    }
+  ],
+  "arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "repeat": 2,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "references/use-cases.md": "6c68f4afcd986e11b89a8af3297f65b457f5912ba81c965549690d05e7788be1"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:54:52.096041+00:00",
+  "duration_ms": 5421,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc4e6-de78-7823-a1aa-7af4336bc239",
+  "final_output": "We are investigating elevated latency in eu-west-2. Approximately 8% of requests may be affected. Early evidence suggests a cache issue, but the cause has not been confirmed.",
+  "trace_file": "raw/generations/en-register-certainty--5b834f6f50117324e2eebf3932ef01fe86527bef--r02.trace.jsonl",
+  "result_file": "raw/generations/en-register-certainty--5b834f6f50117324e2eebf3932ef01fe86527bef--r02.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "region",
+        "kind": "protected-string",
+        "values": [
+          "eu-west-2"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "impact",
+        "kind": "number",
+        "values": [
+          "8%"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "uncertainty",
+        "kind": "fact",
+        "values": [
+          "suggests",
+          "not confirmed",
+          "may"
+        ],
+        "missing": [
+          "not confirmed"
+        ],
+        "passed": false
+      }
+    ],
+    "failures_by_kind": {
+      "fact": 1
+    }
+  }
+}

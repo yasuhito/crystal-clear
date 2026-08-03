@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-detached-condition--r04",
+  "scenario_id": "ja-detached-condition",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 4,
+  "presentation_index": 50,
+  "judge_seed": 808,
+  "prompt_sha256": "0cfa01ee44995b7ce3a0e4a5ac6974fab750b28241e9b88478a3122d19cefb55",
+  "presented_output_a": "Proプランをご利用で、障害発生から30日以内に申請した場合に限り、バックアップからデータを復元できます。復元には最大72時間かかる可能性があります。",
+  "presented_output_b": "Proプランでは、障害発生から30日以内に申請した場合に限り、バックアップからデータを復元できます。復元には最大72時間かかる可能性があります。",
+  "a_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Proプラン利用、障害発生から30日以内の申請、最大72時間という全条件を明確かつ自然に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "対象プラン、申請期限、復元所要時間の可能性を過不足なく明確に保持している。"
+    },
+    "preference": "tie",
+    "preference_evidence": "両案とも原文の事実・条件・数値・確実性を完全に保持し、案内文として自然で明確である。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Proプラン利用、障害発生から30日以内の申請、最大72時間という全条件を明確かつ自然に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"対象プラン、申請期限、復元所要時間の可能性を過不足なく明確に保持している。\"},\"preference\":\"tie\",\"preference_evidence\":\"両案とも原文の事実・条件・数値・確実性を完全に保持し、案内文として自然で明確である。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:01:42.078547+00:00",
+  "duration_ms": 9889,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4ed-2001-7495-bfa0-8c9547c6d24d",
+  "trace_file": "raw/judgments/ja-detached-condition--r04.trace.jsonl",
+  "result_file": "raw/judgments/ja-detached-condition--r04.result.json"
+}

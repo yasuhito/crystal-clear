@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-mixed-ja-en--r01",
+  "scenario_id": "multi-mixed-ja-en",
+  "category": "multilingual-core",
+  "language": "mixed-ja-en",
+  "repeat": 1,
+  "presentation_index": 18,
+  "judge_seed": 808,
+  "prompt_sha256": "754d6cc49509358afb1f0da829b19c750aac1f95fbc28f639c558e0d4f779ed1",
+  "presented_output_a": "管理者はTeam Syncを有効にしてください。Team Syncは新規メンバーのみを同期し、既存メンバーは同期の対象外です。UI上の製品名は「Team Sync」から変更しないでください。",
+  "presented_output_b": "管理者はTeam Syncを有効にしてください。Team Syncの同期対象は新規メンバーのみで、既存メンバーは対象外です。UI上の名称は「Team Sync」のまま変更しないでください。",
+  "a_arm": "178eaf8",
+  "b_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "新規メンバーのみが同期対象で既存メンバーは対象外という条件とTeam Syncの表記維持を保存しているが、「名称」を「製品名」とやや限定している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "有効化の指示、新規メンバーのみという同期範囲、既存メンバーの除外、UI上の名称をTeam Syncのままにする制約をすべて保存している。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは原文の「UI上の名称」をそのまま維持しており、Aの「製品名」という限定より忠実である。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"新規メンバーのみが同期対象で既存メンバーは対象外という条件とTeam Syncの表記維持を保存しているが、「名称」を「製品名」とやや限定している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"有効化の指示、新規メンバーのみという同期範囲、既存メンバーの除外、UI上の名称をTeam Syncのままにする制約をすべて保存している。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは原文の「UI上の名称」をそのまま維持しており、Aの「製品名」という限定より忠実である。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:00:00.875115+00:00",
+  "duration_ms": 13288,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4eb-94da-73c0-b3c4-481ff4322b0f",
+  "trace_file": "raw/judgments/multi-mixed-ja-en--r01.trace.jsonl",
+  "result_file": "raw/judgments/multi-mixed-ja-en--r01.result.json"
+}

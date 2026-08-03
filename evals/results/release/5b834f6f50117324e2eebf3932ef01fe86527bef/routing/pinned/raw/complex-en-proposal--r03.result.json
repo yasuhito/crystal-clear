@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scenario_version": "routing-v1-frozen-2026-03-24",
+  "scenario_id": "complex-en-proposal",
+  "language": "en",
+  "category": "complex-communication",
+  "split": "train",
+  "paraphrase_of": null,
+  "rationale": "A decision proposal needs recommendation, rationale, trade-offs, and a clear ask.",
+  "expected_activation": true,
+  "prompt": "Write a one-page proposal recommending weekly dependency updates instead of monthly updates. Address security response, review workload, and the decision needed from the engineering manager.",
+  "input_text": null,
+  "repeat": 3,
+  "environment": "pinned",
+  "inventory_role": "formal",
+  "inventory_snapshot": "pinned-routing-inventory-v1",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "git-ref",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-02T23:46:48.036814+00:00",
+  "duration_ms": 19613,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_prompt": {
+    "status": "pi-generated-not-exported",
+    "reconstruction_inputs": [
+      "pi_version",
+      "provider_model",
+      "system_configuration",
+      "skill_inventory"
+    ]
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": true,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false,
+    "agent_directory_isolated": true
+  },
+  "skill_inventory": [
+    {
+      "name": "code-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/code-helper/SKILL.md",
+      "sha256": "740554192be041c8d313e9e74740d9f3d05339a6b28f47ff046ab3762cdcc95e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "creative-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/creative-helper/SKILL.md",
+      "sha256": "3a5663c21467de39f73f4e34bead4993125a69e569da19914b574f5583947a63",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "crystal-clear",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/crystal-clear/SKILL.md",
+      "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+      "disable_model_invocation": false
+    },
+    {
+      "name": "research-helper",
+      "path": "/tmp/crystal-clear-routing-inventories-_rzy8dp8/pinned-agent/skills/research-helper/SKILL.md",
+      "sha256": "4265ff650727f5b9b742da5eedf9f6471f440c1ae2dee9c205980905b3faff3d",
+      "disable_model_invocation": false
+    }
+  ],
+  "session_id": "019fc4df-7bab-7de2-933b-0d8057926ff0",
+  "activation": {
+    "automatic": true,
+    "skill_loaded": true,
+    "source": "automatic-read"
+  },
+  "final_output": "# Proposal: Move Dependency Updates to a Weekly Cadence\n\n## Recommendation\n\nAdopt a weekly dependency-update schedule in place of the current monthly cadence. Smaller, more frequent updates will improve our security response and make reviews easier without materially increasing total maintenance work.\n\n## Why Change\n\n### Faster Security Response\n\nA monthly schedule can leave known vulnerabilities unresolved for several weeks. Weekly updates shorten that exposure window and make security maintenance part of routine engineering work.\n\nCritical vulnerabilities should continue to bypass the schedule and receive immediate attention. The weekly cadence would improve handling of routine security patches, not replace the emergency response process.\n\n### More Manageable Reviews\n\nMonthly updates tend to bundle many dependency changes into one large pull request. These batches are harder to review because they may contain multiple breaking changes, release-note sets, and test failures.\n\nWeekly updates should produce smaller pull requests with fewer changes. This makes it easier to:\n\n- identify the dependency responsible for a regression;\n- review release notes and breaking changes;\n- resolve compatibility issues;\n- revert an update when necessary; and\n- keep automated updates moving instead of allowing a large backlog to accumulate.\n\nAlthough reviews would occur more often, each review should require less effort. The total workload is expected to remain similar or decrease because troubleshooting and remediation will be more focused.\n\n## Trade-offs and Controls\n\nThe primary cost is more frequent review activity and CI usage. Weekly updates may also create notification fatigue if every patch is handled separately.\n\nTo control this overhead, we should:\n\n- group compatible, low-risk updates into one weekly pull request;\n- keep major-version upgrades separate;\n- rely on automated tests and dependency scanning before manual review;\n- assign a rotating reviewer or team owner; and\n- monitor review time, update backlog, and update-related failures.\n\nWe can run the weekly process as a limited trial and return to the monthly cadence if it creates more work than expected.\n\n## Decision Needed\n\nThe engineering manager should approve a trial of weekly dependency updates and designate an owner for weekly review. After the trial, the team should assess security-patch latency, review effort, CI usage, and update-related incidents before making the cadence permanent.",
+  "trace_file": "raw/complex-en-proposal--r03.trace.jsonl",
+  "result_file": "raw/complex-en-proposal--r03.result.json",
+  "selection_outcome": "selected-effect-not-deterministically-assessed"
+}

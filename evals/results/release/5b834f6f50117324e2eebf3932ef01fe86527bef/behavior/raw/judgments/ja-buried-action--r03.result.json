@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r03",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 24,
+  "judge_seed": 808,
+  "prompt_sha256": "5550769da836ed49719a8a129f5c141454a16363bc488a32076c1cde58afc4b3",
+  "presented_output_a": "田中様\n\n現行環境の利用期限が7月末までのため、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、先日の会議では移行時期について複数の意見が出ておりますが、承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "田中様\n\n現行環境は7月末まで利用可能です。先日の会議では移行時期について複数の意見が出ましたが、移行案Aについて、6月20日までにご承認くださいますようお願いいたします。\n\nなお、ご承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "178eaf8",
+  "b_arm": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "全事実・期限・承認依頼・承認前の作業禁止を保持。ただし、現行環境の利用期限を承認期限の直接的理由として再構成している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "会議での複数意見、7月末までの利用、6月20日までの移行案A承認依頼、承認前の作業禁止を自然な敬語で忠実に保持。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは原文の情報関係と提示順をより忠実に保ち、依頼文としても自然である。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全事実・期限・承認依頼・承認前の作業禁止を保持。ただし、現行環境の利用期限を承認期限の直接的理由として再構成している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"会議での複数意見、7月末までの利用、6月20日までの移行案A承認依頼、承認前の作業禁止を自然な敬語で忠実に保持。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは原文の情報関係と提示順をより忠実に保ち、依頼文としても自然である。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:00:19.776237+00:00",
+  "duration_ms": 13541,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc4eb-de83-7555-be90-d4860956f453",
+  "trace_file": "raw/judgments/ja-buried-action--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r03.result.json"
+}

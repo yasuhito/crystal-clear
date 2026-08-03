@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "core_generations": 425,
+  "decision": "fail",
+  "gates": [
+    {
+      "id": "core-generation-matrix",
+      "group": "provenance",
+      "passed": true,
+      "actual": 425,
+      "threshold": "exactly 200 routing + 225 behavior = 425",
+      "gating": true
+    },
+    {
+      "id": "routing-explicit-recall",
+      "group": "routing",
+      "passed": true,
+      "actual": 1.0,
+      "threshold": ">= 0.95",
+      "gating": true
+    },
+    {
+      "id": "routing-complex-recall",
+      "group": "routing",
+      "passed": true,
+      "actual": 1.0,
+      "threshold": ">= 0.85",
+      "gating": true
+    },
+    {
+      "id": "routing-unrelated-fpr",
+      "group": "routing",
+      "passed": true,
+      "actual": 0.0,
+      "threshold": "<= 0.10",
+      "gating": true
+    },
+    {
+      "id": "behavior-arm-provenance",
+      "group": "provenance",
+      "passed": true,
+      "actual": [
+        "no-skill",
+        "178eaf8",
+        "5b834f6f50117324e2eebf3932ef01fe86527bef"
+      ],
+      "threshold": "exact release arms and comparison",
+      "gating": true
+    },
+    {
+      "id": "english-mean-noncritical-preservation",
+      "group": "behavior",
+      "passed": true,
+      "actual": 4.947,
+      "threshold": ">= 4.5",
+      "gating": true
+    },
+    {
+      "id": "english-critical-failures",
+      "group": "behavior",
+      "passed": false,
+      "actual": 6,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "english-protected-string-changes",
+      "group": "behavior",
+      "passed": true,
+      "actual": 0,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "english-candidate-win-rate",
+      "group": "behavior",
+      "passed": false,
+      "actual": 0.32,
+      "threshold": ">= 0.50",
+      "gating": true
+    },
+    {
+      "id": "english-candidate-loss-rate",
+      "group": "behavior",
+      "passed": false,
+      "actual": 0.2,
+      "threshold": "<= 0.10",
+      "gating": true
+    },
+    {
+      "id": "japanese-mean-noncritical-preservation",
+      "group": "behavior",
+      "passed": true,
+      "actual": 4.952,
+      "threshold": ">= 4.5",
+      "gating": true
+    },
+    {
+      "id": "japanese-critical-failures",
+      "group": "behavior",
+      "passed": false,
+      "actual": 4,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "japanese-protected-string-changes",
+      "group": "behavior",
+      "passed": true,
+      "actual": 0,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "japanese-candidate-win-rate",
+      "group": "behavior",
+      "passed": false,
+      "actual": 0.4,
+      "threshold": ">= 0.50",
+      "gating": true
+    },
+    {
+      "id": "japanese-candidate-loss-rate",
+      "group": "behavior",
+      "passed": false,
+      "actual": 0.32,
+      "threshold": "<= 0.10",
+      "gating": true
+    },
+    {
+      "id": "multilingual-core-mean-noncritical-preservation",
+      "group": "behavior",
+      "passed": true,
+      "actual": 4.857,
+      "threshold": ">= 4.5",
+      "gating": true
+    },
+    {
+      "id": "multilingual-core-critical-failures",
+      "group": "behavior",
+      "passed": false,
+      "actual": 4,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "multilingual-core-protected-string-changes",
+      "group": "behavior",
+      "passed": true,
+      "actual": 0,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "multilingual-core-candidate-win-rate",
+      "group": "behavior",
+      "passed": false,
+      "actual": 0.48,
+      "threshold": ">= 0.50",
+      "gating": true
+    },
+    {
+      "id": "multilingual-core-candidate-loss-rate",
+      "group": "behavior",
+      "passed": false,
+      "actual": 0.28,
+      "threshold": "<= 0.10",
+      "gating": true
+    },
+    {
+      "id": "boundary-en-equivalent",
+      "group": "boundary",
+      "passed": false,
+      "actual": 0.8,
+      "threshold": ">= 0.90",
+      "gating": true
+    },
+    {
+      "id": "boundary-en-critical-changes",
+      "group": "boundary",
+      "passed": false,
+      "actual": 2,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "boundary-ja-equivalent",
+      "group": "boundary",
+      "passed": true,
+      "actual": 1.0,
+      "threshold": ">= 0.90",
+      "gating": true
+    },
+    {
+      "id": "boundary-ja-critical-changes",
+      "group": "boundary",
+      "passed": true,
+      "actual": 0,
+      "threshold": "= 0",
+      "gating": true
+    },
+    {
+      "id": "boundary-post-candidate-disclosure",
+      "group": "boundary",
+      "passed": true,
+      "actual": true,
+      "threshold": "must disclose post-candidate fixture",
+      "gating": true
+    }
+  ],
+  "removed_automated_rubric_items": [],
+  "human_review": null,
+  "language_results_are_separate": true,
+  "current_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "candidate_artifact_hashes": {
+    "SKILL.md": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "references/use-cases.md": "6c68f4afcd986e11b89a8af3297f65b457f5912ba81c965549690d05e7788be1"
+  },
+  "execution_provenance": {
+    "provider_model": "openai-codex/gpt-5.6-sol",
+    "pi_version": "0.83.0",
+    "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef"
+  },
+  "artifacts": {
+    "routing": "routing/pinned/SUMMARY.md",
+    "behavior": "behavior/SUMMARY.md",
+    "boundary": "already-clear/SUMMARY.md",
+    "japanese_packet": "japanese-review.packet.json",
+    "japanese_packet_hash": "japanese-review.packet.sha256",
+    "response_template": "japanese-review.response-template.json",
+    "assignment_key": "japanese-review.assignment-key.json",
+    "owner_response": null
+  }
+}

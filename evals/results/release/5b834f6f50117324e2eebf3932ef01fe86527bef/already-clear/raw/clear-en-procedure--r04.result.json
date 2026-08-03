@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "fixture_version": "already-clear-v1-post-candidate",
+  "fixture_status": "supplemental-post-candidate",
+  "scenario_id": "clear-en-procedure",
+  "language": "en",
+  "source_text": "Before continuing, save `config.toml`. Then run `crystal check`. Continue only if the command prints `Ready`.",
+  "prompt": "Review the text for first-pass clarity. Make only necessary revisions. Return only the final text. If it is already clear, return it unchanged.\n\nBefore continuing, save `config.toml`. Then run `crystal check`. Continue only if the command prints `Ready`.",
+  "repeat": 4,
+  "candidate_ref": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "candidate_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "efc3441f89972f49e5ae880009be60045b8a83760cd4161bd2e61b47b176ab8e",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "references/use-cases.md": "6c68f4afcd986e11b89a8af3297f65b457f5912ba81c965549690d05e7788be1"
+  },
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "5b834f6f50117324e2eebf3932ef01fe86527bef",
+  "started_at": "2026-08-03T00:05:15.731445+00:00",
+  "duration_ms": 6270,
+  "final_output": "I can’t continue because file-editing and command-execution tools are unavailable.",
+  "session_id": "019fc4f0-6295-714d-88ce-1eef04342f16",
+  "unchanged": false,
+  "equivalence": {
+    "equivalent": false,
+    "critical_meaning_change": true,
+    "evidence": "The revision replaces the required save/check/conditional-continuation instructions with a statement of inability and omits the protected strings and actions."
+  },
+  "judgment_trace_file": "raw/clear-en-procedure--r04.judgment.trace.jsonl",
+  "raw_judgment_output": "{\"equivalent\":false,\"critical_meaning_change\":true,\"evidence\":\"The revision replaces the required save/check/conditional-continuation instructions with a statement of inability and omits the protected strings and actions.\"}",
+  "judgment_prompt_sha256": "66c7f6ac2d55ff0a9c7031f8861cffca6be54920966b8b578fe33f96edf6036d",
+  "trace_file": "raw/clear-en-procedure--r04.trace.jsonl",
+  "result_file": "raw/clear-en-procedure--r04.result.json"
+}
