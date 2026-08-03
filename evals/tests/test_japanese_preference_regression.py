@@ -12,9 +12,9 @@ from evals.run_japanese_preference_regression import (
 
 class JapanesePreferenceTests(unittest.TestCase):
     def test_business_request_avoids_redundant_deferential_frame(self) -> None:
-        good = "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様に6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前に作業を開始しないでください。"
-        bad = good.replace("田中様に6月20日", "田中様におかれましては、6月20日")
-        paraphrase = "先日の会議では、移行時期についてさまざまな意見が出ました。現行の環境は7月末まで使えます。田中様には、移行案Aを6月20日までにご承認いただきますようお願いいたします。承認前に作業へ着手しないでください。"
+        good = "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。"
+        bad = good.replace("田中様には6月20日", "田中様におかれましては、6月20日")
+        paraphrase = "先日の会議では、移行時期についてさまざまな意見がございました。現行の環境は7月末まで使えます。つきましては、田中様には移行案Aを6月20日までにご承認いただきますようお願いいたします。ご承認前には作業へ着手しないようお願いいたします。"
         self.assertEqual(business_request_reasons(good), [])
         self.assertEqual(business_request_reasons(paraphrase), [])
         self.assertIn("redundant-deferential-frame", business_request_reasons(bad))
@@ -25,6 +25,8 @@ class JapanesePreferenceTests(unittest.TestCase):
             "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できません。田中様には6月20日までに移行案Aをご承認ください。承認前に作業を開始しないでください。",
             "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用可能です。田中様は6月20日以降に移行案Aを承認しました。承認前に作業を開始しないでください。",
             "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用可能です。田中様には6月20日までに移行案Aをご承認ください。承認前に作業へ着手しないわけではありません。",
+            "先日の会議では移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。ご承認前には作業を開始しないようお願いいたしますが、作業を開始してください。",
+            "先日の会議では移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。ご承認前には作業を開始しないようお願いいたしますが、開始してください。",
         )
         for output in outputs:
             with self.subTest(output=output):
@@ -60,6 +62,7 @@ class JapanesePreferenceTests(unittest.TestCase):
         self.assertIn("repeated-term-quotes", terminology_style_reasons(bad))
         self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "共有スペース")))
         self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "当該共有スペース")))
+        self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペースには", "この共有スペースでは")))
 
     def test_status_keeps_fixed_update_time_definite(self) -> None:
         good = "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は確定しておりません。約12%のお客様に影響している可能性があります。次回更新は18時です。"
@@ -68,6 +71,8 @@ class JapanesePreferenceTests(unittest.TestCase):
             good.replace("原因は確定しておりません", "原因は特定されておりません"),
             good.replace("原因は確定しておりません", "原因は未確定です"),
             good.replace("原因は確定しておりません", "原因は確定していません"),
+            good.replace("原因は確定しておりません", "原因は確定しておりませんでした"),
+            good.replace("原因は確定しておりません", "原因は確定しておりませんが、現在は確定しています"),
         )
         weakened = (
             good.replace("次回更新は18時です", "次回更新は18時を予定しております"),
@@ -101,6 +106,8 @@ class JapanesePreferenceTests(unittest.TestCase):
             "管理画面で共有スペースを作成しないでください。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
             "管理画面で共有スペースを作成します。共有スペースにメンバーを追加しないでください。共有スペースには外部ユーザーを招待できません。",
             "管理画面で共有スペースを作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できないわけではありません。",
+            "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースには外部ユーザーを招待できませんでした。",
+            "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースには外部ユーザーを招待できませんが、招待できます。",
         )
         for output in outputs:
             with self.subTest(output=output):

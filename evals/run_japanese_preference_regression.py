@@ -47,12 +47,23 @@ def business_request_reasons(output: str) -> list[str]:
     ) and not bool(re.search(r"6月20日(?:以降|より後|を過ぎ)[^。]{0,30}(?:承認|ご承認)", output))
     preapproval_prohibition = bool(
         re.search(r"承認前[^。]{0,25}作業[^。]{0,20}(?:開始|着手)しない(?:でください|よう|こと)?", output)
-    ) and not bool(re.search(r"承認前[^。]{0,30}(?:開始|着手)しないわけでは", output))
+    ) and not bool(
+        re.search(r"承認前[^。]{0,30}(?:開始|着手)しないわけでは", output)
+        or re.search(r"(?:作業[^。]{0,15})?(?:開始|着手)(?:してください|します|いたします|できます)", output)
+    )
+    consistent_politeness = (
+        "ございました" in output
+        and "つきましては" in output
+        and "田中様には" in output
+        and bool(re.search(r"ご承認(?:くださいます|いただきます)ようお願いいたします", output))
+        and bool(re.search(r"ご承認前には[^。]{0,25}(?:開始|着手)しないようお願いいたします", output))
+    )
     required = {
         "missing-meeting-context": meeting_context,
         "missing-current-environment-deadline": environment_available,
         "missing-approval-request": approval_request,
         "missing-preapproval-prohibition": preapproval_prohibition,
+        "inconsistent-business-politeness": consistent_politeness,
     }
     reasons = [name for name, passed in required.items() if not passed]
     if "におかれましては" in output:
@@ -94,8 +105,10 @@ def terminology_style_reasons(output: str) -> list[str]:
         re.search(r"共有スペース[^。]{0,25}メンバー[^。]{0,15}追加(?:します|してください)", output)
     ) and not bool(re.search(r"メンバー[^。]{0,15}追加しない", output))
     external_user_prohibition = bool(
-        re.search(r"この共有スペース[^。]{0,25}外部ユーザー[^。]{0,20}招待でき(?:ません|ない)", output)
-    ) and not bool(re.search(r"招待できないわけでは(?:ありません|ない)", output))
+        re.search(r"(?:^|。)この共有スペースには[^。]{0,20}外部ユーザー[^。]{0,20}招待(?:することは)?できません。", output)
+    ) and not bool(
+        re.search(r"招待できないわけでは(?:ありません|ない)|招待できませんでした|招待できませんが[^。]{0,15}招待できます", output)
+    )
     required = {
         "wrong-sentence-count": len(sentences) == 3,
         "missing-preferred-term": output.count("共有スペース") >= 3,
@@ -145,7 +158,9 @@ def status_certainty_reasons(output: str) -> list[str]:
             output,
         )
     )
-    cause_wording = bool(re.search(r"原因[^。]{0,15}確定しておりません", output))
+    cause_wording = bool(re.search(r"原因[^。]{0,15}確定しておりません(?:。|$)", output)) and not bool(
+        re.search(r"原因[^。]{0,15}確定しておりませんでした|確定しておりませんが[^。]{0,20}(?:確定しています|判明しています)", output)
+    )
     required = {
         "missing-delay-investigation": investigation,
         "missing-uncertain-cause": uncertain_cause,
