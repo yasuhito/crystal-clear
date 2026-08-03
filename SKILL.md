@@ -18,7 +18,7 @@ Identify the reader, target language, requested register, and the user's main qu
 - **Rewrite:** Return the revised text first. Add notes only when the user requests them or needs them to decide something. If the source is already clear, return it unchanged.
 - **Audit:** For each material problem, return `issue → misreading risk → proposed revision`. Do not silently rewrite the whole source unless requested. If there is no material problem, say so directly.
 
-Put the main answer or requested action first unless the genre requires a warning, subject line, or brief salutation before it.
+Put the main answer or requested action first unless the genre requires a warning, subject line, or brief salutation before it. Move the whole claim, including its fact, inference, recommendation, or uncertainty marker: lead a recommendation with its recommendation marker (for example, “We recommend”), never with a bare imperative.
 
 ## 2. Pass the preservation gate
 

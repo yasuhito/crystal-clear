@@ -167,6 +167,12 @@ python3 -m evals.run_japanese_regression --repeats 5
 
 A passing run reports zero meaning-change regressions. It is a fast regression check, not a substitute for the full release matrix.
 
+The English modality regression found during the `320739c` release evaluation has its own focused live check. It rejects rewriting a recommendation as a bare approval directive while also checking the frozen deadline, availability, and security constraint:
+
+```sh
+python3 -m evals.run_semantic_regression --repeats 5
+```
+
 ## Run the release-candidate evaluation
 
 Release evaluation uses an immutable commit, not `worktree`, and requires a clean tracked worktree before live execution. The core matrix is exactly 425 generations: 200 formal pinned-inventory routing runs plus 225 behavior generations (15 scenarios × no skill/current/candidate × five repeats). The 75 blind behavior comparisons present only revision `178eaf8` and the candidate; the unjudged no-skill arm remains generation evidence and receives no inferred judgment scores.
