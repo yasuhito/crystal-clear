@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-register-certainty",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "register-mismatch",
+    "accidental-certainty-change"
+  ],
+  "source_text": "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+  "output_contract": "丁寧で落ち着いた障害報告だけを日本語で返してください。",
+  "prompt": "SOURCEをお客様向けに書き直してください。丁寧で落ち着いた障害報告だけを日本語で返してください。不確実性と数値を保持してください。SOURCE: 現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+  "checks": [
+    {
+      "id": "impact",
+      "kind": "number",
+      "values": [
+        "12%",
+        "18時"
+      ]
+    },
+    {
+      "id": "certainty",
+      "kind": "fact",
+      "values": [
+        "可能性",
+        "未確定"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 1,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:38:46.042877+00:00",
+  "duration_ms": 5783,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc734-6070-7ee9-b7e5-68b816364121",
+  "final_output": "現在、決済処理に遅延が発生しており、調査を進めております。初期調査ではネットワーク障害の可能性が示されておりますが、原因は現時点では特定されておりません。約12％のお客様に影響が及んでいる可能性がございます。次回の状況更新は18時を予定しております。",
+  "trace_file": "raw/generations/ja-register-certainty--178eaf8--r01.trace.jsonl",
+  "result_file": "raw/generations/ja-register-certainty--178eaf8--r01.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": false,
+    "checks": [
+      {
+        "id": "impact",
+        "kind": "number",
+        "values": [
+          "12%",
+          "18時"
+        ],
+        "missing": [
+          "12%"
+        ],
+        "passed": false
+      },
+      {
+        "id": "certainty",
+        "kind": "fact",
+        "values": [
+          "可能性",
+          "未確定"
+        ],
+        "missing": [
+          "未確定"
+        ],
+        "passed": false
+      }
+    ],
+    "failures_by_kind": {
+      "fact": 1,
+      "number": 1
+    }
+  }
+}

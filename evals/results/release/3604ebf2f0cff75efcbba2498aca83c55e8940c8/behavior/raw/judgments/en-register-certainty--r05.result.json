@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-register-certainty--r05",
+  "scenario_id": "en-register-certainty",
+  "category": "english",
+  "language": "en",
+  "repeat": 5,
+  "presentation_index": 69,
+  "judge_seed": 808,
+  "prompt_sha256": "082287d2d327218bbcf00b24c1f66303e2377b5044f66270bbeb69a96db022ed",
+  "presented_output_a": "We are investigating elevated latency in the eu-west-2 region. Approximately 8% of requests may be affected. Early evidence suggests a cache-related issue, but the cause has not been confirmed.",
+  "presented_output_b": "We are investigating elevated latency in eu-west-2. Approximately 8% of requests may be affected. Early evidence suggests a cache issue, but the cause remains unconfirmed.",
+  "a_arm": "178eaf8",
+  "b_arm": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the region, approximately 8% impact, cache-related hypothesis, and unconfirmed cause in a calm, formal register."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Faithfully preserves all facts, uncertainty, impact estimate, terminology, and the requested calm, formal register."
+    },
+    "preference": "tie",
+    "preference_evidence": "Both revisions are clear, natural, and fully preserve the source facts and certainty."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the region, approximately 8% impact, cache-related hypothesis, and unconfirmed cause in a calm, formal register.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Faithfully preserves all facts, uncertainty, impact estimate, terminology, and the requested calm, formal register.\"},\"preference\":\"tie\",\"preference_evidence\":\"Both revisions are clear, natural, and fully preserve the source facts and certainty.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:44:01.975248+00:00",
+  "duration_ms": 8406,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc739-3292-7f63-8c7a-1d0dd8221482",
+  "trace_file": "raw/judgments/en-register-certainty--r05.trace.jsonl",
+  "result_file": "raw/judgments/en-register-certainty--r05.result.json"
+}

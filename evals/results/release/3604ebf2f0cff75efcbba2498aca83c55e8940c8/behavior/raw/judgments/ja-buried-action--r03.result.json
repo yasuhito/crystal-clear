@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r03",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 24,
+  "judge_seed": 808,
+  "prompt_sha256": "d0ad150e249ef6f7fed5ff0f1818f23ee3f85cecdcad6d165271c6bb8e29d503",
+  "presented_output_a": "先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
+  "presented_output_b": "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用できます。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "178eaf8",
+  "b_arm": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "事実・期限・依頼先・禁止条件は保持。ただし「が」で冒頭2文を逆接的に接続し、原文にない対比をわずかに加えている。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "会議での複数意見、7月末、田中様、6月20日、移行案A、承認前の作業禁止をすべて自然なビジネス日本語で忠実に保持。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは原文の文間関係と構造をより忠実に保ち、不要な逆接の含意も加えていない。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"事実・期限・依頼先・禁止条件は保持。ただし「が」で冒頭2文を逆接的に接続し、原文にない対比をわずかに加えている。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"会議での複数意見、7月末、田中様、6月20日、移行案A、承認前の作業禁止をすべて自然なビジネス日本語で忠実に保持。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは原文の文間関係と構造をより忠実に保ち、不要な逆接の含意も加えていない。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:42:04.136332+00:00",
+  "duration_ms": 11618,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc737-6644-7282-a2cd-95920935d337",
+  "trace_file": "raw/judgments/ja-buried-action--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r03.result.json"
+}

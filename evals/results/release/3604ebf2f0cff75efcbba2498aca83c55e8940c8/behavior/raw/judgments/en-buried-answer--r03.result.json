@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "en-buried-answer--r03",
+  "scenario_id": "en-buried-answer",
+  "category": "english",
+  "language": "en",
+  "repeat": 3,
+  "presentation_index": 21,
+  "judge_seed": 808,
+  "prompt_sha256": "8de84b415481798aa076363ea5838daa87d949b145e7f7b4a08e1c82703644e6",
+  "presented_output_a": "After discussing the migration for several weeks and reviewing the risks, we recommend approving Project Northstar by 14 June; however, the rollout must not begin before security signs off, and the legacy exporter remains available.",
+  "presented_output_b": "Approve Project Northstar by 14 June, but do not begin the rollout until security signs off; the legacy exporter remains available, and the migration has been under discussion for several weeks.",
+  "a_arm": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Preserves the discussion period, exporter availability, risk review, recommendation, deadline, and security-sign-off constraint in professional prose."
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-certainty",
+        "changed-instruction"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "Changes a recommendation into a direct approval command and omits that the recommendation followed a risk review, though it preserves the date and rollout constraint."
+    },
+    "preference": "A",
+    "preference_evidence": "A fully preserves the source’s facts, rationale, recommendation strength, and rollout condition; B materially strengthens the recommendation into an instruction."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Preserves the discussion period, exporter availability, risk review, recommendation, deadline, and security-sign-off constraint in professional prose.\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-certainty\",\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"Changes a recommendation into a direct approval command and omits that the recommendation followed a risk review, though it preserves the date and rollout constraint.\"},\"preference\":\"A\",\"preference_evidence\":\"A fully preserves the source’s facts, rationale, recommendation strength, and rollout condition; B materially strengthens the recommendation into an instruction.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:41:58.406710+00:00",
+  "duration_ms": 10669,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc737-4fdb-7b0d-9155-cc482380d18a",
+  "trace_file": "raw/judgments/en-buried-answer--r03.trace.jsonl",
+  "result_file": "raw/judgments/en-buried-answer--r03.result.json"
+}

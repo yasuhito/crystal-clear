@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "failure_modes": [
+    "terminology-drift"
+  ],
+  "source_text": "管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+  "output_contract": "用語を統一した3文の操作説明だけを返してください。",
+  "prompt": "SOURCEの製品用語を統一して書き直してください。用語を統一した3文の操作説明だけを返してください。制約を保持してください。SOURCE: 管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
+  "checks": [
+    {
+      "id": "term",
+      "kind": "protected-string",
+      "values": [
+        "共有スペース",
+        "管理画面"
+      ]
+    },
+    {
+      "id": "external",
+      "kind": "constraint",
+      "values": [
+        "外部ユーザーを招待できません"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 3,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:38:19.204469+00:00",
+  "duration_ms": 5376,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc733-f7a4-7526-9903-0037b8d85e19",
+  "final_output": "管理画面で「共有スペース」を作成します。  \n「共有スペース」にメンバーを追加してください。  \n「共有スペース」には外部ユーザーを招待できません。",
+  "trace_file": "raw/generations/ja-terminology-drift--178eaf8--r03.trace.jsonl",
+  "result_file": "raw/generations/ja-terminology-drift--178eaf8--r03.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "term",
+        "kind": "protected-string",
+        "values": [
+          "共有スペース",
+          "管理画面"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "external",
+        "kind": "constraint",
+        "values": [
+          "外部ユーザーを招待できません"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

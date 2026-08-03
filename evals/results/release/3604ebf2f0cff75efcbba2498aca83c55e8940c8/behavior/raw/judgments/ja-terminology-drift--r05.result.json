@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-terminology-drift--r05",
+  "scenario_id": "ja-terminology-drift",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 5,
+  "presentation_index": 29,
+  "judge_seed": 808,
+  "prompt_sha256": "6d14cfa8d87393352548b4a540c996d008c99e9f35103545c26de18375e88af7",
+  "presented_output_a": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。この共有スペースには外部ユーザーを招待できません。",
+  "presented_output_b": "管理画面で「共有スペース」を作成します。共有スペースにメンバーを追加してください。共有スペースには外部ユーザーを招待できません。",
+  "a_arm": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "3文構成を守り、用語を「共有スペース」に統一しつつ、「この」による対象範囲と外部ユーザー招待不可の制約を保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "内容と3文構成は保たれているが、第3文で「この」が省かれ、特定の対象に限定された制約が一般的な制約にも読める。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは用語統一に加え、原文の「この」が示す対象範囲もより忠実に保持している。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"3文構成を守り、用語を「共有スペース」に統一しつつ、「この」による対象範囲と外部ユーザー招待不可の制約を保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"内容と3文構成は保たれているが、第3文で「この」が省かれ、特定の対象に限定された制約が一般的な制約にも読める。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは用語統一に加え、原文の「この」が示す対象範囲もより忠実に保持している。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:42:15.755141+00:00",
+  "duration_ms": 12766,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc737-93b7-74d2-b776-43ccb93c4e4b",
+  "trace_file": "raw/judgments/ja-terminology-drift--r05.trace.jsonl",
+  "result_file": "raw/judgments/ja-terminology-drift--r05.result.json"
+}

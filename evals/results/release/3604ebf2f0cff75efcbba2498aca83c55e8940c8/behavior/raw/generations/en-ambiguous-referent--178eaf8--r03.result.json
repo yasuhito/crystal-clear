@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "en-ambiguous-referent",
+  "category": "english",
+  "language": "en",
+  "failure_modes": [
+    "ambiguous-referent"
+  ],
+  "source_text": "Maya told Priya that her access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "output_contract": "Return only the clarified text in two professional English sentences.",
+  "prompt": "Rewrite the SOURCE to remove the ambiguous referent without inventing facts. Return only the clarified text in two professional English sentences. Preserve identifiers, timing, and access distinctions. SOURCE: Maya told Priya that her access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "checks": [
+    {
+      "id": "account",
+      "kind": "protected-string",
+      "values": [
+        "ACCT-74"
+      ]
+    },
+    {
+      "id": "roles",
+      "kind": "fact",
+      "values": [
+        "Priya must export the audit log",
+        "Maya retains access"
+      ]
+    },
+    {
+      "id": "timing",
+      "kind": "condition",
+      "values": [
+        "Friday"
+      ]
+    },
+    {
+      "id": "must-export",
+      "kind": "constraint",
+      "values": [
+        "must"
+      ]
+    }
+  ],
+  "arm": "178eaf8",
+  "repeat": 3,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": "178eaf8",
+  "skill_revision": "178eaf89b5aabf23c09ab18834ef70033104592b",
+  "skill_hash": {
+    "status": "present",
+    "source": "system-injection",
+    "sha256": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a"
+  },
+  "skill_artifact_hashes": {
+    "SKILL.md": "b9149c13a07bfcf4d07c3e7c911791612a8b65ca31085384df8d01273e68436a",
+    "elements-of-style.md": "d0edf854b5d39e22da68793603830e5bbdddb9266d272007993bcb821ba2799d",
+    "language-guides.md": "762ca74b7e04eb95b159cd7141227b542f51307d25e883cb6b1ecd7c652c3e81"
+  },
+  "harness_git_revision": "3604ebf2f0cff75efcbba2498aca83c55e8940c8",
+  "started_at": "2026-08-03T10:35:39.847988+00:00",
+  "duration_ms": 6215,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": true
+  },
+  "skill_inventory": [],
+  "session_id": "019fc731-8929-7986-941e-45f3991e7e33",
+  "final_output": "Maya told Priya that Priya’s access to ACCT-74 would end Friday. Priya must export the audit log before then; Maya retains access.",
+  "trace_file": "raw/generations/en-ambiguous-referent--178eaf8--r03.trace.jsonl",
+  "result_file": "raw/generations/en-ambiguous-referent--178eaf8--r03.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "account",
+        "kind": "protected-string",
+        "values": [
+          "ACCT-74"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "roles",
+        "kind": "fact",
+        "values": [
+          "Priya must export the audit log",
+          "Maya retains access"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "timing",
+        "kind": "condition",
+        "values": [
+          "Friday"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "must-export",
+        "kind": "constraint",
+        "values": [
+          "must"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}
