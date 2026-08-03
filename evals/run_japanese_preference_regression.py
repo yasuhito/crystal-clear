@@ -16,6 +16,7 @@ if __package__ in {None, ""}:
 
 from evals.evaluation import observe_trace
 from evals.run_behavior import _materialize_skill
+from evals.run_japanese_regression import meaning_change_reasons
 from evals.run_smoke import execute_pi
 
 SCENARIOS: dict[str, str] = {
@@ -23,6 +24,7 @@ SCENARIOS: dict[str, str] = {
     "condition": "SOURCEの条件を対象となる説明の近くに置いて書き直してください。条件が明確な案内文だけを日本語で返してください。可能性を確定表現に変えないでください。SOURCE: バックアップからデータを復元できます。対象はProプランで、障害発生から30日以内に申請した場合に限ります。復元には最大72時間かかる可能性があります。",
     "terminology": "SOURCEの製品用語を統一して書き直してください。用語を統一した3文の操作説明だけを返してください。制約を保持してください。SOURCE: 管理画面で「共有スペース」を作成します。共同エリアにメンバーを追加してください。このワークスペースでは外部ユーザーを招待できません。用語は「共有スペース」に統一してください。",
     "status": "SOURCEをお客様向けに書き直してください。丁寧で落ち着いた障害報告だけを日本語で返してください。不確実性と数値を保持してください。SOURCE: 現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は未確定です。約12%のお客様に影響している可能性があります。次回更新は18時です。",
+    "role-object": "曖昧さをなくし、自然な日本語に書き直してください。出力条件：曖昧さをなくした自然な日本語だけを返してください。佐藤さんが鈴木さんに、レビュー後に報告書を送ると伝えました。報告書を送るのは鈴木さんで、佐藤さんは承認を担当します。案件IDはJP-42です。",
 }
 
 
@@ -56,7 +58,7 @@ def business_request_reasons(output: str) -> list[str]:
         and "つきましては" in output
         and "田中様には" in output
         and bool(re.search(r"ご承認(?:くださいます|いただきます)ようお願いいたします", output))
-        and bool(re.search(r"ご承認前には[^。]{0,25}(?:開始|着手)しないようお願いいたします", output))
+        and bool(re.search(r"なお、ご承認前には[^。]{0,25}(?:開始|着手)しないようお願いいたします", output))
     )
     required = {
         "missing-meeting-context": meeting_context,
@@ -171,11 +173,28 @@ def status_certainty_reasons(output: str) -> list[str]:
     return [name for name, passed in required.items() if not passed]
 
 
+def role_object_preference_reasons(output: str) -> list[str]:
+    reasons = meaning_change_reasons(output)
+    approval_object = bool(
+        re.search(
+            r"佐藤さん[^。]{0,12}(?:その)?報告書(?:の承認を担当(?:します|しております)|を承認(?:します|いたします))|"
+            r"(?:その)?報告書の承認[^。]{0,10}佐藤さん(?:が|は)担当(?:します|しております)",
+            output,
+        )
+    ) and not bool(
+        re.search(r"報告書ではなく[^。]{0,15}承認|(?:報告書の)?承認(?:を担当)?しません", output)
+    )
+    if not approval_object:
+        reasons.append("approval-object-left-implicit")
+    return reasons
+
+
 CHECKERS: dict[str, Callable[[str], list[str]]] = {
     "business": business_request_reasons,
     "condition": condition_scope_reasons,
     "terminology": terminology_style_reasons,
     "status": status_certainty_reasons,
+    "role-object": role_object_preference_reasons,
 }
 
 

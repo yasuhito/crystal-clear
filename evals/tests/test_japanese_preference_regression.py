@@ -5,6 +5,7 @@ import unittest
 from evals.run_japanese_preference_regression import (
     business_request_reasons,
     condition_scope_reasons,
+    role_object_preference_reasons,
     status_certainty_reasons,
     terminology_style_reasons,
 )
@@ -14,7 +15,7 @@ class JapanesePreferenceTests(unittest.TestCase):
     def test_business_request_avoids_redundant_deferential_frame(self) -> None:
         good = "先日の会議では、移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたします。"
         bad = good.replace("田中様には6月20日", "田中様におかれましては、6月20日")
-        paraphrase = "先日の会議では、移行時期についてさまざまな意見がございました。現行の環境は7月末まで使えます。つきましては、田中様には移行案Aを6月20日までにご承認いただきますようお願いいたします。ご承認前には作業へ着手しないようお願いいたします。"
+        paraphrase = "先日の会議では、移行時期についてさまざまな意見がございました。現行の環境は7月末まで使えます。つきましては、田中様には移行案Aを6月20日までにご承認いただきますようお願いいたします。なお、ご承認前には作業へ着手しないようお願いいたします。"
         self.assertEqual(business_request_reasons(good), [])
         self.assertEqual(business_request_reasons(paraphrase), [])
         self.assertIn("redundant-deferential-frame", business_request_reasons(bad))
@@ -25,8 +26,8 @@ class JapanesePreferenceTests(unittest.TestCase):
             "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用できません。田中様には6月20日までに移行案Aをご承認ください。承認前に作業を開始しないでください。",
             "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用可能です。田中様は6月20日以降に移行案Aを承認しました。承認前に作業を開始しないでください。",
             "先日の会議では移行時期について複数の意見が出ました。現行環境は7月末まで利用可能です。田中様には6月20日までに移行案Aをご承認ください。承認前に作業へ着手しないわけではありません。",
-            "先日の会議では移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。ご承認前には作業を開始しないようお願いいたしますが、作業を開始してください。",
-            "先日の会議では移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。ご承認前には作業を開始しないようお願いいたしますが、開始してください。",
+            "先日の会議では移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたしますが、作業を開始してください。",
+            "先日の会議では移行時期について複数の意見がございました。現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始しないようお願いいたしますが、開始してください。",
         )
         for output in outputs:
             with self.subTest(output=output):
@@ -63,6 +64,19 @@ class JapanesePreferenceTests(unittest.TestCase):
         self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "共有スペース")))
         self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペース", "当該共有スペース")))
         self.assertIn("missing-demonstrative-scope-or-external-user-prohibition", terminology_style_reasons(good.replace("この共有スペースには", "この共有スペースでは")))
+
+    def test_role_object_makes_report_approval_explicit(self) -> None:
+        good = "佐藤さんは鈴木さんに、『レビュー後に鈴木さんが案件ID JP-42の報告書を送る』と伝えました。佐藤さんは、その報告書の承認を担当します。"
+        invalid = (
+            good.replace("その報告書の承認", "承認"),
+            good.replace("その報告書の承認を担当します", "その報告書を読み、承認を担当します"),
+            good.replace("その報告書の承認", "その報告書ではなく申請書の承認"),
+            good.replace("その報告書の承認を担当します", "その報告書の承認を担当しません"),
+        )
+        self.assertEqual(role_object_preference_reasons(good), [])
+        for output in invalid:
+            with self.subTest(output=output):
+                self.assertIn("approval-object-left-implicit", role_object_preference_reasons(output))
 
     def test_status_keeps_fixed_update_time_definite(self) -> None:
         good = "現在、決済処理の遅延を調査しております。初期調査ではネットワーク障害の可能性が示されていますが、原因は確定しておりません。約12%のお客様に影響している可能性があります。次回更新は18時です。"
