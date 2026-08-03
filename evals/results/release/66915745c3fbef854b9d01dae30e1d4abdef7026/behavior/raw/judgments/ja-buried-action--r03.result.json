@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r03",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 24,
+  "judge_seed": 808,
+  "prompt_sha256": "5597c640ddf506477037cf8c4b35ed4115ee924b4a9f2d08cc07c75ebe8bb36d",
+  "presented_output_a": "先日の会議では移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、ご承認前には作業を開始されませんようお願いいたします。",
+  "presented_output_b": "先日の会議では移行時期について複数の意見が出ましたが、現行環境は7月末まで利用可能です。つきましては、田中様には6月20日までに移行案Aをご承認いただきますようお願いいたします。なお、承認前に作業を開始しないでください。",
+  "a_arm": "178eaf8",
+  "b_arm": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "期限、移行案A、田中様、現行環境の利用期限、承認前の作業開始禁止をすべて保持し、丁寧なビジネス表現で自然です。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "全事実と制約を正確に保持していますが、末尾の「開始しないでください」は前文に比べてやや直接的です。"
+    },
+    "preference": "A",
+    "preference_evidence": "両方とも内容を保持していますが、Aのほうが依頼文全体の敬意とビジネス上の丁寧さが一貫しています。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"期限、移行案A、田中様、現行環境の利用期限、承認前の作業開始禁止をすべて保持し、丁寧なビジネス表現で自然です。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全事実と制約を正確に保持していますが、末尾の「開始しないでください」は前文に比べてやや直接的です。\"},\"preference\":\"A\",\"preference_evidence\":\"両方とも内容を保持していますが、Aのほうが依頼文全体の敬意とビジネス上の丁寧さが一貫しています。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "started_at": "2026-08-03T09:11:15.324537+00:00",
+  "duration_ms": 16415,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6e4-41d3-7dde-99ac-6afe61aa859a",
+  "trace_file": "raw/judgments/ja-buried-action--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r03.result.json"
+}

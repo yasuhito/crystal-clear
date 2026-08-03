@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "multi-de-terminology--r05",
+  "scenario_id": "multi-de-terminology",
+  "category": "multilingual-core",
+  "language": "de",
+  "repeat": 5,
+  "presentation_index": 73,
+  "judge_seed": 808,
+  "prompt_sha256": "d05b54cbf59df4b19fdaf0a86eed9dbc33bf8d00a3169b251a139021578249ec",
+  "presented_output_a": "Aktivieren Sie Datenprüfung in den Einstellungen. Datenprüfung untersucht neue Uploads. Datenprüfung prüft keine vorhandenen Dateien.",
+  "presented_output_b": "Aktivieren Sie die Datenprüfung in den Einstellungen. Die Datenprüfung untersucht neue Uploads. Die Datenprüfung untersucht keine bereits vorhandenen Dateien.",
+  "a_arm": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Fakten und die Beschränkung auf neue Uploads sind erhalten; der Produktname Datenprüfung wird durchgehend unverändert verwendet."
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": null,
+      "core_structure": 5,
+      "referent_scope_terminology": null,
+      "register_preserved": null,
+      "naturalness": null,
+      "evidence": "Alle Kernaussagen und die dreisätzige Struktur bleiben erhalten, jedoch wird dem vorgegebenen Produktnamen durchgehend ein Artikel vorangestellt."
+    },
+    "preference": "A",
+    "preference_evidence": "A bewahrt den geschützten Produktnamen Datenprüfung exakt und durchgehend, während B ihn jeweils mit einem Artikel versieht."
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Fakten und die Beschränkung auf neue Uploads sind erhalten; der Produktname Datenprüfung wird durchgehend unverändert verwendet.\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":null,\"core_structure\":5,\"referent_scope_terminology\":null,\"register_preserved\":null,\"naturalness\":null,\"evidence\":\"Alle Kernaussagen und die dreisätzige Struktur bleiben erhalten, jedoch wird dem vorgegebenen Produktnamen durchgehend ein Artikel vorangestellt.\"},\"preference\":\"A\",\"preference_evidence\":\"A bewahrt den geschützten Produktnamen Datenprüfung exakt und durchgehend, während B ihn jeweils mit einem Artikel versieht.\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "started_at": "2026-08-03T09:13:44.455350+00:00",
+  "duration_ms": 11512,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6e6-8876-7a6e-a270-f3a3801e6ccd",
+  "trace_file": "raw/judgments/multi-de-terminology--r05.trace.jsonl",
+  "result_file": "raw/judgments/multi-de-terminology--r05.result.json"
+}

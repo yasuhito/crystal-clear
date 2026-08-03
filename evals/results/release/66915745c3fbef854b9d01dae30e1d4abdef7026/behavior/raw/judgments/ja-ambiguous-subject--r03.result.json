@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r03",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 3,
+  "presentation_index": 1,
+  "judge_seed": 808,
+  "prompt_sha256": "d93d9a9d560382117e80703feb2d4bc10635c4cb500fe35dd8b2e0e30b24983b",
+  "presented_output_a": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "presented_output_b": "案件ID「JP-42」について、佐藤さんは鈴木さんに、レビュー後に鈴木さんが報告書を送るよう伝えました。佐藤さんは報告書の承認を担当します。",
+  "a_arm": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "送付者が鈴木さん、承認担当が佐藤さん、案件IDがJP-42であることを明確かつ忠実に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": true,
+      "critical_failure_types": [
+        "changed-instruction"
+      ],
+      "preservation": 3,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 4,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "担当者と案件IDは保持しているが、「送ると伝えました」を「送るよう伝えました」とし、事実の伝達を依頼・指示に変えている。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは曖昧さを解消しつつ原文の伝達内容を保持するが、Bは送付を依頼・指示したという意味に変えている。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送付者が鈴木さん、承認担当が佐藤さん、案件IDがJP-42であることを明確かつ忠実に保持している。\"},\"output_b\":{\"critical_preservation_failure\":true,\"critical_failure_types\":[\"changed-instruction\"],\"preservation\":3,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":4,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"担当者と案件IDは保持しているが、「送ると伝えました」を「送るよう伝えました」とし、事実の伝達を依頼・指示に変えている。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは曖昧さを解消しつつ原文の伝達内容を保持するが、Bは送付を依頼・指示したという意味に変えている。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "started_at": "2026-08-03T09:10:06.672972+00:00",
+  "duration_ms": 12024,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6e3-35cb-716e-8a5b-fdbecc9862ee",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r03.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r03.result.json"
+}

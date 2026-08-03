@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-buried-action--r02",
+  "scenario_id": "ja-buried-action",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 2,
+  "presentation_index": 33,
+  "judge_seed": 808,
+  "prompt_sha256": "97457c61d9bc4ae8f285cb045db29172d10704d0371502bdd35bed78d41eefcb",
+  "presented_output_a": "先日の会議では、移行時期について複数の意見が出ました。現行環境は7月末まで利用可能です。田中様には、移行案Aを6月20日までにご承認いただきますようお願いいたします。なお、承認前には作業を開始しないでください。",
+  "presented_output_b": "先日の会議で移行時期について複数の意見がございましたが、現行環境は7月末まで利用可能です。つきましては、田中様におかれましては、6月20日までに移行案Aをご承認くださいますようお願いいたします。なお、承認前には作業を開始しないようお願いいたします。",
+  "a_arm": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "b_arm": "178eaf8",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "期限、対象者、移行案A、現行環境の利用期限、承認前の作業禁止をすべて明確に保持している。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "全事実と制約を保持しているが、「意見がございましたが」という逆接は原文にない関係を示し、「におかれましては」はやや過剰に格式的である。"
+    },
+    "preference": "A",
+    "preference_evidence": "Aは原文の論理関係と禁止表現をより忠実に保ちつつ、自然で丁寧なビジネス文になっている。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"期限、対象者、移行案A、現行環境の利用期限、承認前の作業禁止をすべて明確に保持している。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"全事実と制約を保持しているが、「意見がございましたが」という逆接は原文にない関係を示し、「におかれましては」はやや過剰に格式的である。\"},\"preference\":\"A\",\"preference_evidence\":\"Aは原文の論理関係と禁止表現をより忠実に保ちつつ、自然で丁寧なビジネス文になっている。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "started_at": "2026-08-03T09:11:43.477992+00:00",
+  "duration_ms": 14918,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6e4-afd7-72b2-8a89-befe179e87e7",
+  "trace_file": "raw/judgments/ja-buried-action--r02.trace.jsonl",
+  "result_file": "raw/judgments/ja-buried-action--r02.result.json"
+}

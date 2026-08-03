@@ -1,0 +1,23 @@
+{
+  "post_candidate_fixture": true,
+  "runs": 20,
+  "languages": {
+    "en": {
+      "runs": 10,
+      "unchanged": 10,
+      "equivalent": 10,
+      "equivalent_rate": 1.0,
+      "critical_meaning_changes": 0
+    },
+    "ja": {
+      "runs": 10,
+      "unchanged": 10,
+      "equivalent": 10,
+      "equivalent_rate": 1.0,
+      "critical_meaning_changes": 0
+    }
+  },
+  "fixture_version": "already-clear-v1-post-candidate",
+  "candidate_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "repeats": 5
+}

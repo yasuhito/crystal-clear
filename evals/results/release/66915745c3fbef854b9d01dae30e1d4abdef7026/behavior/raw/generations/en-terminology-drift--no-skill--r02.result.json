@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "scenario_id": "en-terminology-drift",
+  "category": "english",
+  "language": "en",
+  "failure_modes": [
+    "terminology-drift"
+  ],
+  "source_text": "Enable Secure Review in Settings. The protected review feature checks new uploads, but this scanner does not inspect existing files. Keep the product term Secure Review throughout.",
+  "output_contract": "Return only the revised three-sentence help text in English.",
+  "prompt": "Rewrite the SOURCE using one consistent product term. Return only the revised three-sentence help text in English. Preserve the limitation. SOURCE: Enable Secure Review in Settings. The protected review feature checks new uploads, but this scanner does not inspect existing files. Keep the product term Secure Review throughout.",
+  "checks": [
+    {
+      "id": "term",
+      "kind": "protected-string",
+      "values": [
+        "Secure Review",
+        "Settings"
+      ]
+    },
+    {
+      "id": "new",
+      "kind": "fact",
+      "values": [
+        "new uploads"
+      ]
+    },
+    {
+      "id": "existing",
+      "kind": "constraint",
+      "values": [
+        "does not inspect existing files"
+      ]
+    }
+  ],
+  "arm": "no-skill",
+  "repeat": 2,
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "skill_ref": null,
+  "skill_revision": null,
+  "skill_hash": {
+    "status": "absent",
+    "source": "none",
+    "sha256": null
+  },
+  "skill_artifact_hashes": null,
+  "harness_git_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "started_at": "2026-08-03T09:04:45.669174+00:00",
+  "duration_ms": 8042,
+  "random_seed": {
+    "status": "unsupported-by-pi-cli-and-provider",
+    "value": null
+  },
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "skill_inventory": [],
+  "session_id": "019fc6de-53f0-76ca-a4b2-5ace85d1ec42",
+  "final_output": "Enable Secure Review in Settings. Secure Review checks new uploads but does not inspect existing files. Keep Secure Review enabled for future uploads.",
+  "trace_file": "raw/generations/en-terminology-drift--no-skill--r02.trace.jsonl",
+  "result_file": "raw/generations/en-terminology-drift--no-skill--r02.result.json",
+  "deterministic_score": {
+    "output_present": true,
+    "passed": true,
+    "checks": [
+      {
+        "id": "term",
+        "kind": "protected-string",
+        "values": [
+          "Secure Review",
+          "Settings"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "new",
+        "kind": "fact",
+        "values": [
+          "new uploads"
+        ],
+        "missing": [],
+        "passed": true
+      },
+      {
+        "id": "existing",
+        "kind": "constraint",
+        "values": [
+          "does not inspect existing files"
+        ],
+        "missing": [],
+        "passed": true
+      }
+    ],
+    "failures_by_kind": {}
+  }
+}

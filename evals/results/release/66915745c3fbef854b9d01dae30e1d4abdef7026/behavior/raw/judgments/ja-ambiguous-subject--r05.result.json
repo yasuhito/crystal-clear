@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "scenario_version": "behavior-v1",
+  "pair_id": "ja-ambiguous-subject--r05",
+  "scenario_id": "ja-ambiguous-subject",
+  "category": "japanese",
+  "language": "ja",
+  "repeat": 5,
+  "presentation_index": 53,
+  "judge_seed": 808,
+  "prompt_sha256": "8724e65a0b1252ccba70000f882d6c988dc6700f2ea88b039aa1d2adb59b45d1",
+  "presented_output_a": "佐藤さんは鈴木さんに、レビュー後に報告書を送るよう伝えました。報告書の送付は鈴木さん、承認は佐藤さんが担当します。案件IDはJP-42です。",
+  "presented_output_b": "佐藤さんは鈴木さんに、「鈴木さんがレビュー後に報告書を送る」と伝えました。佐藤さんは承認を担当します。案件IDはJP-42です。",
+  "a_arm": "178eaf8",
+  "b_arm": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "judgment": {
+    "output_a": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 4,
+      "first_pass_understanding": 5,
+      "core_structure": 5,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 5,
+      "evidence": "送付者・承認者・案件IDは明確に保持されているが、「送ると伝えた」を「送るよう伝えた」とし、指示のニュアンスを加えている。"
+    },
+    "output_b": {
+      "critical_preservation_failure": false,
+      "critical_failure_types": [],
+      "preservation": 5,
+      "first_pass_understanding": 5,
+      "core_structure": 4,
+      "referent_scope_terminology": 5,
+      "register_preserved": true,
+      "naturalness": 4,
+      "evidence": "鈴木さんがレビュー後に送付し、佐藤さんが承認するという全事実を明示している。鈴木さん本人への発言で名前を反復する点はやや不自然。"
+    },
+    "preference": "B",
+    "preference_evidence": "Bは指示へ意味を変えずに送付者の曖昧さを解消しており、事実保存を優先するとAより優れる。"
+  },
+  "raw_judge_output": "{\"output_a\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":4,\"first_pass_understanding\":5,\"core_structure\":5,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":5,\"evidence\":\"送付者・承認者・案件IDは明確に保持されているが、「送ると伝えた」を「送るよう伝えた」とし、指示のニュアンスを加えている。\"},\"output_b\":{\"critical_preservation_failure\":false,\"critical_failure_types\":[],\"preservation\":5,\"first_pass_understanding\":5,\"core_structure\":4,\"referent_scope_terminology\":5,\"register_preserved\":true,\"naturalness\":4,\"evidence\":\"鈴木さんがレビュー後に送付し、佐藤さんが承認するという全事実を明示している。鈴木さん本人への発言で名前を反復する点はやや不自然。\"},\"preference\":\"B\",\"preference_evidence\":\"Bは指示へ意味を変えずに送付者の曖昧さを解消しており、事実保存を優先するとAより優れる。\"}",
+  "provider_model": "openai-codex/gpt-5.6-sol",
+  "pi_version": "0.83.0",
+  "harness_git_revision": "66915745c3fbef854b9d01dae30e1d4abdef7026",
+  "started_at": "2026-08-03T09:12:41.269886+00:00",
+  "duration_ms": 27066,
+  "system_configuration": {
+    "thinking": "minimal",
+    "context_files": false,
+    "extensions": false,
+    "prompt_templates": false,
+    "automatic_skill_discovery": false,
+    "tools": [
+      "read"
+    ],
+    "skill_body_injected": false
+  },
+  "session_id": "019fc6e5-918e-7b6c-9314-67c8aab505b1",
+  "trace_file": "raw/judgments/ja-ambiguous-subject--r05.trace.jsonl",
+  "result_file": "raw/judgments/ja-ambiguous-subject--r05.result.json"
+}
