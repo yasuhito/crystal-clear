@@ -9,7 +9,7 @@ Crystal Clear:
 - makes references, qualifications, and logical connections explicit
 - preserves meaning, emphasis, constraints, and uncertainty while editing
 - applies dedicated English and Japanese guidance
-- loads the 12,000-token *Elements of Style* reference only when the task needs it
+- uses a small *Elements of Style* index for targeted reference loading
 
 ## Install
 
@@ -38,7 +38,9 @@ The automatic-activation metadata comparison and raw Pi evidence are published i
 - [`SKILL.md`](SKILL.md) — the writing and revision process
 - [`language-guides.md`](language-guides.md) — concise guidance for clear English and natural Japanese
 - [`references/use-cases.md`](references/use-cases.md) — focused, conditionally loaded recipes for substantial genre-specific tasks
-- [`elements-of-style.md`](elements-of-style.md) — the public-domain reference for detailed English usage and composition, sourced from [obra/the-elements-of-style](https://github.com/obra/the-elements-of-style)
+- [`references/elements-of-style/index.md`](references/elements-of-style/index.md) — the task router and complete rule index
+- [`references/elements-of-style/source.md`](references/elements-of-style/source.md) — the canonical public-domain source, with generated verbatim rule and word-usage files under the same directory; sourced from [obra/the-elements-of-style](https://github.com/obra/the-elements-of-style)
+- [`scripts/generate_elements_of_style.py`](scripts/generate_elements_of_style.py) — the deterministic reference generator (`--check` validates checked-in outputs)
 
 ## License
 

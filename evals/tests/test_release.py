@@ -10,6 +10,7 @@ from evals.run_release import (
     evaluate_release,
     human_response_template,
     import_human_response,
+    validate_routing_candidate_provenance,
 )
 
 
@@ -65,6 +66,32 @@ class BoundaryTests(unittest.TestCase):
         self.assertTrue(parse_equivalence('{"equivalent":true,"critical_meaning_change":false,"evidence":"same"}')["equivalent"])
         with self.assertRaises(ValueError):
             parse_equivalence('{"equivalent":true,"critical_meaning_change":false,"evidence":"same","arm":"candidate"}')
+
+
+class ReleaseProvenanceTests(unittest.TestCase):
+    def test_rejects_tampered_recursive_routing_artifact_hashes(self):
+        revision = "a" * 40
+        expected = {
+            "SKILL.md": "skill-hash",
+            "references/elements-of-style/index.md": "index-hash",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            routing = Path(tmp)
+            raw = routing / "pinned/raw"
+            raw.mkdir(parents=True)
+            row = {
+                "skill_ref": revision,
+                "skill_revision": revision,
+                "skill_hash": {"sha256": "skill-hash"},
+                "skill_artifact_hashes": expected,
+            }
+            for index in range(200):
+                (raw / f"{index:03}.result.json").write_text(json.dumps(row))
+            validate_routing_candidate_provenance(routing, revision, expected)
+            row["skill_artifact_hashes"] = {**expected, "references/elements-of-style/index.md": "tampered"}
+            (raw / "000.result.json").write_text(json.dumps(row))
+            with self.assertRaisesRegex(ValueError, "stale or incomplete"):
+                validate_routing_candidate_provenance(routing, revision, expected)
 
 
 class ReleaseGateTests(unittest.TestCase):

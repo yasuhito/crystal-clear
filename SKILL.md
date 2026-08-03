@@ -63,15 +63,11 @@ For every other language, apply the core on a best-effort basis. Write naturally
 
 ### Load *The Elements of Style* only when needed
 
-[`elements-of-style.md`](elements-of-style.md) consumes about 12,000 tokens. Load it only for:
+Short tasks use the core only. Do not load an Elements reference merely because the output is prose.
 
-- a specific English grammar, punctuation, or usage question that needs its detailed rules or examples;
-- a comprehensive English copyedit or formal style pass; or
-- an explicit request to apply Strunk's rules.
+For substantial writing or revision where grammar, punctuation, usage, or composition materially matters, every language may consult the same [`Elements of Style` index](references/elements-of-style/index.md). Read the index, then at most two relevant rule or word-usage chunk files. Apply a rule only when it is natural and useful in the target language. Target-language grammar, convention, information structure, and the applicable language guide override the reference; avoid direct transplantation of English-specific forms.
 
-For a specific question, locate and read only the relevant section: **II** for grammar and punctuation, **III** for composition, or **V** for word usage. Read the full reference only for a comprehensive pass. If the full reference would crowd the working context, a subagent may perform the reference pass as an optional optimization.
-
-For non-English text, the reference may inform transferable composition choices such as information order, paragraph unity, and concrete expression. Adapt those principles to the target language. Do not transplant English-specific grammar, punctuation, word order, idiom, or historical usage rules.
+For a comprehensive English copyedit, formal style pass, or explicit request for a full Strunk pass, read the canonical [`source.md`](references/elements-of-style/source.md). For comprehensive work in any other language, continue to use the index and targeted rules rather than blindly importing the full English grammar.
 
 Treat the reference's 1918 usage advice as historical guidance. Current usage, audience needs, the preservation gate, and the user's house style take precedence.
 

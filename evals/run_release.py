@@ -16,6 +16,7 @@ if __package__ in {None, ""}:
 
 from evals.run_behavior import load_behavior_scenarios
 from evals.run_smoke import run_command
+from evals.skill_artifacts import skill_artifact_hashes
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EVALS_ROOT = Path(__file__).resolve().parent
@@ -214,21 +215,27 @@ def _read(path: Path) -> Any: return json.loads(path.read_text())
 
 
 def candidate_artifact_hashes(revision: str) -> dict[str, str]:
-    hashes = {}
-    for name in ("SKILL.md", "language-guides.md", "elements-of-style.md", "references/use-cases.md"):
-        content = run_command(["git", "show", f"{revision}:{name}"], cwd=REPO_ROOT) + "\n"
-        hashes[name] = hashlib.sha256(content.encode()).hexdigest()
-    return hashes
+    return skill_artifact_hashes(revision)
 
 
-def validate_routing_candidate_provenance(routing_dir: Path, revision: str, expected_skill_hash: str) -> None:
+def validate_routing_candidate_provenance(
+    routing_dir: Path, revision: str, expected_artifact_hashes: dict[str, str]
+) -> None:
     rows = [_read(path) for path in sorted((routing_dir / "pinned" / "raw").glob("*.result.json"))]
     if len(rows) != 200:
         raise ValueError("release routing evidence must contain exactly 200 raw results")
     if any(row.get("skill_ref") != revision or row.get("skill_revision") != revision for row in rows):
         raise ValueError("release routing evidence does not use the exact immutable candidate revision")
+    expected_skill_hash = expected_artifact_hashes["SKILL.md"]
     if any(row.get("skill_hash", {}).get("sha256") != expected_skill_hash for row in rows):
         raise ValueError("release routing evidence does not use the recorded candidate SKILL.md hash")
+    recorded_maps = [row.get("skill_artifact_hashes") for row in rows]
+    requires_recursive_provenance = "references/elements-of-style/index.md" in expected_artifact_hashes
+    if requires_recursive_provenance and any(value is None for value in recorded_maps):
+        raise ValueError("indexed release evidence is missing recursive artifact provenance")
+    for recorded in recorded_maps:
+        if recorded is not None and recorded != expected_artifact_hashes:
+            raise ValueError("release routing evidence has stale or incomplete artifact provenance")
 
 
 def validate_clean_tracked_worktree() -> None:
@@ -284,7 +291,7 @@ def main() -> None:
         _run([python, "-m", "evals.run_behavior", "--arms", f"no-skill,{CURRENT_REF},{revision}", "--compare-arms", f"{CURRENT_REF},{revision}", "--repeats", "5", "--judge-seed", str(args.judge_seed), "--output", str(behavior_dir), "--report-only"])
         _run([python, "-m", "evals.run_boundary", "--candidate-ref", revision, "--output", str(boundary_dir), "--report-only"])
     artifact_hashes = candidate_artifact_hashes(revision)
-    validate_routing_candidate_provenance(routing_dir, revision, artifact_hashes["SKILL.md"])
+    validate_routing_candidate_provenance(routing_dir, revision, artifact_hashes)
     judgments = [json.loads(path.read_text()) for path in sorted((behavior_dir / "raw" / "judgments").glob("*.result.json"))]
     scenario_data = load_behavior_scenarios(EVALS_ROOT / "behavior-scenarios.json")
     provenance = validate_cross_suite_provenance(routing_dir, behavior_dir, boundary_dir)

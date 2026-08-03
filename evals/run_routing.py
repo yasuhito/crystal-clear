@@ -33,6 +33,11 @@ from evals.run_smoke import (
     run_command,
     sha256,
 )
+from evals.skill_artifacts import (
+    materialize_skill_artifacts,
+    materialized_skill_artifact_hashes,
+    skill_artifact_hashes,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -143,21 +148,12 @@ def _replace_front_matter_description(skill_text: str, description: str) -> str:
 def _materialize_baseline_skill(
     skill_ref: str, destination: Path, *, description: str | None = None
 ) -> None:
-    destination.mkdir(parents=True, exist_ok=True)
-    for name in (
-        "SKILL.md",
-        "language-guides.md",
-        "elements-of-style.md",
-        "references/use-cases.md",
-    ):
-        if not run_command(["git", "ls-tree", skill_ref, "--", name], cwd=REPO_ROOT):
-            continue
-        content = run_command(["git", "show", f"{skill_ref}:{name}"], cwd=REPO_ROOT)
+    def transform(name: str, content: bytes) -> bytes:
         if name == "SKILL.md" and description is not None:
-            content = _replace_front_matter_description(content, description)
-        target = destination / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(content + "\n")
+            return _replace_front_matter_description(content.decode(), description).encode()
+        return content
+
+    materialize_skill_artifacts(skill_ref, destination, transform=transform)
 
 
 def _safe_skill_name(name: str) -> str:
@@ -489,6 +485,7 @@ def _run_one(
         "skill_ref": skill_ref,
         "skill_revision": skill_revision,
         "skill_hash": skill_hash_record(sha256(observed_skill), source="git-ref"),
+        "skill_artifact_hashes": materialized_skill_artifact_hashes(observed_skill.parent),
         "harness_git_revision": harness_revision,
         "started_at": started_at,
         "duration_ms": duration_ms,
@@ -593,6 +590,9 @@ def validate_result_set(
         raise ValueError(
             f"{environment} result set is incomplete or stale; missing={missing}, extra={extra}"
         )
+    artifact_hash_presence = {"skill_artifact_hashes" in row for row in results}
+    if len(artifact_hash_presence) != 1:
+        raise ValueError(f"{environment} results mix artifact-hash provenance schemas")
     invariant_fields = (
         "scenario_version",
         "environment",
@@ -603,6 +603,7 @@ def validate_result_set(
         "skill_ref",
         "skill_revision",
         "skill_hash",
+        *(("skill_artifact_hashes",) if True in artifact_hash_presence else ()),
         "harness_git_revision",
         "random_seed",
         "system_prompt",
@@ -613,6 +614,21 @@ def validate_result_set(
         values = {json.dumps(row[field], sort_keys=True) for row in results}
         if len(values) != 1:
             raise ValueError(f"{environment} results mix incompatible {field} values")
+    if True in artifact_hash_presence:
+        artifact_hashes = results[0]["skill_artifact_hashes"]
+        if (
+            not isinstance(artifact_hashes, dict)
+            or artifact_hashes.get("SKILL.md") != results[0]["skill_hash"]["sha256"]
+        ):
+            raise ValueError(f"{environment} results have invalid artifact-hash provenance")
+        expected_artifacts = skill_artifact_hashes(results[0]["skill_revision"])
+        if set(artifact_hashes) != set(expected_artifacts):
+            raise ValueError(f"{environment} results have incomplete artifact-hash provenance")
+        for name, expected_hash in expected_artifacts.items():
+            if name != "SKILL.md" and artifact_hashes[name] != expected_hash:
+                raise ValueError(f"{environment} results have stale artifact {name}")
+        if "+metadata:" not in results[0]["skill_ref"] and artifact_hashes["SKILL.md"] != expected_artifacts["SKILL.md"]:
+            raise ValueError(f"{environment} results have stale SKILL.md provenance")
     if results[0]["scenario_version"] != scenario_set["version"]:
         raise ValueError(f"{environment} results use a stale scenario version")
     if any(row["environment"] != environment for row in results):

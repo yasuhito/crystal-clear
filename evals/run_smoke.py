@@ -25,6 +25,7 @@ from evals.evaluation import (
     skill_hash_record,
     summarize_results,
 )
+from evals.skill_artifacts import materialize_skill_artifacts
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -94,13 +95,8 @@ def normal_skill_inventory(
 
 
 def materialize_skill(ref: str, destination: Path) -> Path:
-    if ref == "worktree":
-        source = REPO_ROOT / "SKILL.md"
-        shutil.copy2(source, destination)
-        return destination
-    content = run_command(["git", "show", f"{ref}:SKILL.md"], cwd=REPO_ROOT)
-    destination.write_text(content + "\n")
-    return destination
+    skill, _ = materialize_skill_artifacts(ref, destination)
+    return skill
 
 
 def load_scenarios(path: Path) -> dict[str, Any]:
@@ -229,16 +225,17 @@ def run_one(
                 prompt = f"/skill:crystal-clear {prompt}"
         elif arm != "no-skill":
             ref = CURRENT_SKILL_REF if arm == "current-skill" else "worktree"
-            source = materialize_skill(ref, tmp / f"{arm}.md")
+            source, artifact_hashes = materialize_skill_artifacts(ref, pi_cwd)
             appended_instructions = tmp / f"{arm}-system-prompt.md"
             appended_instructions.write_text(
-                "Apply the following writing skill to the user's task.\n\n"
+                "Apply the following writing skill to the user's task. Its relative references are available in the working directory.\n\n"
                 + source.read_text()
             )
             injected_skill = {
                 "condition": arm,
                 "source_ref": ref,
                 "sha256": sha256(source),
+                "artifact_hashes": artifact_hashes,
             }
 
         started_at = datetime.now(timezone.utc).isoformat()

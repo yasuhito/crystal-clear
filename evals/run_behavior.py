@@ -27,17 +27,12 @@ from evals.evaluation import (
     observe_trace,
     skill_hash_record,
 )
-from evals.run_smoke import execute_pi, git_revision, pi_version, run_command, sha256
+from evals.run_smoke import execute_pi, git_revision, pi_version, run_command
+from evals.skill_artifacts import materialize_skill_artifacts
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EVALS_ROOT = Path(__file__).resolve().parent
-SKILL_ARTIFACTS = (
-    "SKILL.md",
-    "language-guides.md",
-    "elements-of-style.md",
-    "references/use-cases.md",
-)
 DEFAULT_SCENARIOS = EVALS_ROOT / "behavior-scenarios.json"
 DEFAULT_OUTPUT = EVALS_ROOT / "results" / "behavior" / "178eaf8"
 CATEGORIES = ("english", "japanese", "multilingual-core")
@@ -270,23 +265,8 @@ def render_behavior_markdown(summary: dict[str, Any], generations: list[dict[str
 
 
 def _materialize_skill(ref: str, directory: Path) -> tuple[Path, dict[str, str]]:
-    directory.mkdir(parents=True)
-    hashes = {}
-    for name in SKILL_ARTIFACTS:
-        if ref == "worktree":
-            source = REPO_ROOT / name
-            if not source.is_file():
-                continue
-            content = source.read_text()
-        else:
-            if not run_command(["git", "ls-tree", ref, "--", name], cwd=REPO_ROOT):
-                continue
-            content = run_command(["git", "show", f"{ref}:{name}"], cwd=REPO_ROOT) + "\n"
-        path = directory / name
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content)
-        hashes[name] = sha256(path)
-    return directory / "SKILL.md", hashes
+    """Compatibility wrapper around recursive artifact materialization."""
+    return materialize_skill_artifacts(ref, directory)
 
 
 def _generation_run(*, scenario: dict[str, Any], arm: str, repeat: int, model: str, scenario_version: str, output: Path, pi_release: str, harness_revision: str) -> dict[str, Any]:

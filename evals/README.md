@@ -16,7 +16,14 @@ The smoke suite is a harness check, not an activation or quality benchmark. The 
 python3 -m unittest discover -s evals/tests -v
 ```
 
-These tests cover trace observation, deterministic scoring, and report generation. They do not call a model.
+These tests cover trace observation, deterministic scoring, report generation, recursive skill-artifact materialization, and the generated *Elements of Style* index. They do not call a model. `reference-loading-scenarios.json` freezes focused policy expectations: short tasks read no reference, targeted tasks read the index and no more than two selected files, and comprehensive English passes read the canonical source.
+
+Validate the generated reference directly with:
+
+```sh
+python3 scripts/generate_elements_of_style.py --check
+python3 -m unittest evals.tests.test_elements_of_style -v
+```
 
 ## Run the live smoke suite
 
@@ -127,7 +134,7 @@ python3 -m evals.run_behavior \
   --judge-seed 178 --jobs 4
 ```
 
-Both arms use the exact same user prompt and output contract through the headless Pi seam. Skill discovery is disabled. The no-skill arm has no injected instructions; the other arm injects `SKILL.md` from `178eaf8` and materializes that revision's relative references. Completed raw records are retained, so rerunning the command resumes a partial live run. Individual failed calls are retried up to three times.
+Both arms use the exact same user prompt and output contract through the headless Pi seam. Skill discovery is disabled. The no-skill arm has no injected instructions; the other arm injects `SKILL.md` from `178eaf8` and materializes that revision's relative references. Materialization discovers `references/` recursively for current revisions and retains historical compatibility at the evaluation boundary for refs such as `178eaf8`, whose skill links to a root `elements-of-style.md`. The current skill itself has no root-path compatibility adapter. Completed raw records are retained, so rerunning the command resumes a partial live run. Individual failed calls are retried up to three times.
 
 The 75 comparisons pair the two arms at the same scenario and repeat. The seed reproduces shuffled presentation order and balanced anonymous A/B placement; it does not seed provider generation, which the current Pi/provider seam does not support. Judge prompts contain the source, output contract, preservation scope, and anonymous outputs—not arm identities. Strict JSON judgments score preservation and core structure. English and Japanese also receive first-pass-understanding, referent/scope/terminology, register, and naturalness scores. Multilingual-core fields outside its limited scope must be null.
 
@@ -222,6 +229,14 @@ python3 -m evals.run_release \
 Report-only mode revalidates every routing, behavior, boundary, provenance, packet, and response record, preserves the hashed raw owner response, and checks the owner attestation. For each shared rubric item (first-pass understanding, naturalness, preservation, critical preservation, and pair preference), it compares pairwise automated and human candidate-regression classifications. More than 20% disagreement removes that automated item from acceptance while retaining it as labeled non-gating evidence. Deterministic protected-string gates and human critical-meaning gates can never be removed. A pair counts as a candidate regression when any owner score is lower, the candidate alone has a critical meaning change, or the owner prefers the current output. Candidate regressions must remain at or below 10%, and any candidate critical meaning change fails release.
 
 The generated `RELEASE.md` keeps routing, English, Japanese, multilingual-core, supplemental-boundary, and human evidence separate. Every failed threshold remains visible. The decision is `fail` on any gating failure, `pending-human-review` without a valid owner response, and `pass` only when every remaining gate passes.
+
+Verify the reference-loading policy through four live headless Pi traces (short, targeted English, targeted Spanish, and comprehensive English):
+
+```sh
+python3 -m evals.run_reference_loading --output /tmp/crystal-clear-reference-loading
+```
+
+The command fails if observed Elements read paths differ from the frozen policy, if a targeted task reads more than two selected files, or if a targeted task reads the full source.
 
 The lower-level behavior command remains available. Its historical two-arm defaults are unchanged; a release run uses explicit comparison arms:
 

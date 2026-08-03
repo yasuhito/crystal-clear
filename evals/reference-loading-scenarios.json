@@ -1,0 +1,42 @@
+{
+  "version": "reference-loading-v1",
+  "description": "Focused live fixtures for the Elements of Style loading policy. Paths are expected Elements reference reads after SKILL.md is active.",
+  "scenarios": [
+    {
+      "id": "short-clear-sentence",
+      "mode": "short",
+      "language": "en",
+      "prompt": "Polish this sentence: We shipped the fix today.",
+      "expected_reference_reads": []
+    },
+    {
+      "id": "targeted-dangling-modifier",
+      "mode": "targeted",
+      "language": "en",
+      "prompt": "Consult the indexed Elements of Style reference rather than relying on memory. Fix this dangling introductory phrase, return the revision, and briefly name the relevant rule: Walking to the station, the rain soaked Maya.",
+      "expected_reference_reads": [
+        "references/elements-of-style/index.md",
+        "references/elements-of-style/rules/rule-07.md"
+      ]
+    },
+    {
+      "id": "targeted-spanish-concrete-language",
+      "mode": "targeted-other-language",
+      "language": "es",
+      "prompt": "Reescribe este aviso en español natural. Consulta el índice de Elements of Style y aplica únicamente el principio transferible sobre lenguaje definido, específico y concreto: Se produjo una situación con el servicio y se tomarán medidas pronto.",
+      "expected_reference_reads": [
+        "references/elements-of-style/index.md",
+        "references/elements-of-style/rules/rule-12.md"
+      ]
+    },
+    {
+      "id": "comprehensive-english-strunk-pass",
+      "mode": "comprehensive-english",
+      "language": "en",
+      "prompt": "Perform a comprehensive English copyedit using the full Elements of Style. Return only the revision: There are many users who are currently experiencing delays, and this is due to the fact that the server is busy.",
+      "expected_reference_reads": [
+        "references/elements-of-style/source.md"
+      ]
+    }
+  ]
+}
