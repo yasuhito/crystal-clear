@@ -141,6 +141,21 @@ class JapanesePacketTests(unittest.TestCase):
         self.assertEqual(len(template["reviews"]), 12)
         self.assertIsNone(template["reviews"][0]["preference"])
 
+    def test_score_regression_counts_even_when_preference_is_tie(self):
+        scenarios = {f"ja-{i}": {"source_text": f"原文{i}", "output_contract": "本文のみ"} for i in range(5)}
+        packet, key = build_japanese_packet(self._judgments(), scenarios, candidate_revision="c" * 40, seed=808, count=12)
+        response = human_response_template(packet)
+        for review, assignment in zip(response["reviews"], key["pairs"]):
+            candidate_key = "output_" + assignment["candidate_label"].lower()
+            current_key = "output_" + assignment["current_label"].lower()
+            review[candidate_key] = {"first_pass_understanding": 4, "naturalness": 5, "preservation": 5, "critical_meaning_change": False}
+            review[current_key] = {"first_pass_understanding": 5, "naturalness": 5, "preservation": 5, "critical_meaning_change": False}
+            review["preference"] = "tie"
+        imported = import_human_response(packet, key, response)
+        self.assertEqual(imported["candidate_regressions"], 12)
+        self.assertEqual(imported["candidate_regression_rate"], 1.0)
+        self.assertIn("critical_preservation", imported["calibration"])
+
     def test_import_rejects_missing_pairs(self):
         scenarios = {f"ja-{i}": {"source_text": f"原文{i}", "output_contract": "本文のみ"} for i in range(5)}
         packet, key = build_japanese_packet(self._judgments(), scenarios, candidate_revision="c" * 40, seed=808, count=12)

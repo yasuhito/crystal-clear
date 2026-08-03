@@ -13,12 +13,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "tie",
@@ -33,12 +35,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 4,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "A",
@@ -53,12 +57,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "tie",
@@ -73,12 +79,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 4,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 4,
           "naturalness": 3,
-          "preservation": 3
+          "preservation": 3,
+          "critical_preservation": true
         }
       },
       "gpt_preference": "A",
@@ -93,12 +101,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 3
+          "preservation": 3,
+          "critical_preservation": true
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "A",
@@ -113,12 +123,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "tie",
@@ -133,12 +145,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 4,
-          "preservation": 4
+          "preservation": 4,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "B",
@@ -153,12 +167,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 4
+          "preservation": 4,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "A",
@@ -173,12 +189,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 4,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "B",
@@ -193,12 +211,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "A",
@@ -213,12 +233,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 4
+          "preservation": 4,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "B",
@@ -233,12 +255,14 @@
         "candidate": {
           "first_pass_understanding": 5,
           "naturalness": 5,
-          "preservation": 3
+          "preservation": 3,
+          "critical_preservation": true
         },
         "current": {
           "first_pass_understanding": 5,
           "naturalness": 4,
-          "preservation": 5
+          "preservation": 5,
+          "critical_preservation": false
         }
       },
       "gpt_preference": "B",

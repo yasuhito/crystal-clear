@@ -21,7 +21,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 EVALS_ROOT = Path(__file__).resolve().parent
 CURRENT_REF = "178eaf8"
 RUBRIC_ITEMS = ("first_pass_understanding", "naturalness", "preservation")
-CALIBRATION_ITEMS = (*RUBRIC_ITEMS, "preference")
+CRITICAL_CALIBRATION_ITEM = "critical_preservation"
+CALIBRATION_ITEMS = (*RUBRIC_ITEMS, CRITICAL_CALIBRATION_ITEM, "preference")
 CALIBRATION_POLICY = {
     "version": "automated-owner-regression-v1",
     "material_disagreement_threshold": 0.20,
@@ -57,7 +58,16 @@ def build_japanese_packet(judgments: list[dict[str, Any]], scenarios: dict[str, 
         public_pairs.append({"review_id": review_id, "source_text": scenario["source_text"], "output_contract": scenario["output_contract"], "output_a": output_a, "output_b": output_b})
         key_pairs.append({
             "review_id": review_id, "pair_id": row["pair_id"], "candidate_label": candidate_label, "current_label": current_label,
-            "scores": {"candidate": {item: _score_for_arm(row, candidate_revision)[item] for item in RUBRIC_ITEMS}, "current": {item: _score_for_arm(row, CURRENT_REF)[item] for item in RUBRIC_ITEMS}},
+            "scores": {
+                "candidate": {
+                    **{item: _score_for_arm(row, candidate_revision)[item] for item in RUBRIC_ITEMS},
+                    CRITICAL_CALIBRATION_ITEM: _score_for_arm(row, candidate_revision)["critical_preservation_failure"],
+                },
+                "current": {
+                    **{item: _score_for_arm(row, CURRENT_REF)[item] for item in RUBRIC_ITEMS},
+                    CRITICAL_CALIBRATION_ITEM: _score_for_arm(row, CURRENT_REF)["critical_preservation_failure"],
+                },
+            },
             "gpt_preference": row["judgment"]["preference"],
             "gpt_candidate_label": "A" if row["a_arm"] == candidate_revision else "B",
         })
@@ -128,15 +138,21 @@ def import_human_response(packet: dict[str, Any], key: dict[str, Any], response:
             if any(type(score[item]) is not int or not 1 <= score[item] <= 5 for item in RUBRIC_ITEMS):
                 raise ValueError(f"review {review_id} scores must be integers from 1 to 5")
         candidate_key = "output_" + assignment["candidate_label"].lower(); current_key = "output_" + assignment["current_label"].lower()
-        if review["preference"] == assignment["current_label"]: regressions += 1
-        critical += int(review[candidate_key]["critical_meaning_change"])
+        candidate_critical = review[candidate_key]["critical_meaning_change"]
+        current_critical = review[current_key]["critical_meaning_change"]
+        score_regression = any(review[candidate_key][item] < review[current_key][item] for item in RUBRIC_ITEMS)
+        critical_regression = candidate_critical and not current_critical
+        preference_regression = review["preference"] == assignment["current_label"]
+        regressions += int(score_regression or critical_regression or preference_regression)
+        critical += int(candidate_critical)
         for item in RUBRIC_ITEMS:
             human_regression = review[candidate_key][item] < review[current_key][item]
             gpt_regression = assignment["scores"]["candidate"][item] < assignment["scores"]["current"][item]
             comparisons[item]["disagreements"] += human_regression != gpt_regression
-        human_preference_regression = review["preference"] == assignment["current_label"]
+        gpt_critical_regression = assignment["scores"]["candidate"][CRITICAL_CALIBRATION_ITEM] and not assignment["scores"]["current"][CRITICAL_CALIBRATION_ITEM]
+        comparisons[CRITICAL_CALIBRATION_ITEM]["disagreements"] += critical_regression != gpt_critical_regression
         gpt_preference_regression = assignment["gpt_preference"] != "tie" and assignment["gpt_preference"] != assignment["gpt_candidate_label"]
-        comparisons["preference"]["disagreements"] += human_preference_regression != gpt_preference_regression
+        comparisons["preference"]["disagreements"] += preference_regression != gpt_preference_regression
     calibration = {}
     threshold = packet["calibration_policy"]["material_disagreement_threshold"]
     for item, values in comparisons.items():
@@ -173,11 +189,12 @@ def evaluate_release(*, candidate_revision: str, routing: dict[str, Any], behavi
     for category in ("english", "japanese", "multilingual-core"):
         arm = behavior["categories"][category]["arms"][candidate_revision]; judged = arm["gpt_judged"]; prefs = judged["pair_preferences"]; pairs = sum(prefs.values())
         preservation_gating = "preservation" not in excluded
+        critical_gating = CRITICAL_CALIBRATION_ITEM not in excluded
         preference_gating = "preference" not in excluded
         noncritical_preservation = judged["mean_noncritical_preservation"]
         gates += [
             _gate(f"{category}-mean-noncritical-preservation", noncritical_preservation >= 4.5, noncritical_preservation, ">= 4.5", group="behavior", gating=preservation_gating),
-            _gate(f"{category}-critical-failures", judged["critical_failures"] == 0, judged["critical_failures"], "= 0", group="behavior"),
+            _gate(f"{category}-critical-failures", judged["critical_failures"] == 0, judged["critical_failures"], "= 0", group="behavior", gating=critical_gating),
             _gate(f"{category}-protected-string-changes", arm["deterministic_failures_by_kind"]["protected-string"] == 0, arm["deterministic_failures_by_kind"]["protected-string"], "= 0", group="behavior"),
             _gate(f"{category}-candidate-win-rate", prefs["wins"] / pairs >= .5, round(prefs["wins"] / pairs, 4), ">= 0.50", group="behavior", gating=preference_gating),
             _gate(f"{category}-candidate-loss-rate", prefs["losses"] / pairs <= .1, round(prefs["losses"] / pairs, 4), "<= 0.10", group="behavior", gating=preference_gating),
