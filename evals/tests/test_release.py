@@ -98,6 +98,21 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertTrue(all(not gate["passed"] and not gate["gating"] for gate in preservation))
         self.assertEqual(report["decision"], "pass")
 
+    def test_critical_calibration_can_remove_automated_gate_but_not_human_gate(self):
+        candidate = "b" * 40
+        behavior = behavior_summary(candidate, critical=1)
+        routing = {"runs": 200, "categories": {"explicit-request": {"recall": .96}, "complex-communication": {"recall": .88}, "unrelated-control": {"false_positive_rate": .1}}}
+        boundary = {"post_candidate_fixture": True, "languages": {"en": {"equivalent_rate": 1}, "ja": {"equivalent_rate": 1}}}
+        human = {"valid": True, "candidate_regression_rate": 0, "candidate_critical_changes": 0, "calibration": {"critical_preservation": {"automated_acceptance": False}}}
+        report = evaluate_release(candidate_revision=candidate, routing=routing, behavior=behavior, boundary=boundary, human=human)
+        automated_critical = [gate for gate in report["gates"] if gate["id"].endswith("-critical-failures")]
+        self.assertTrue(all(not gate["passed"] and not gate["gating"] for gate in automated_critical))
+        self.assertEqual(report["decision"], "pass")
+        human["candidate_critical_changes"] = 1
+        report = evaluate_release(candidate_revision=candidate, routing=routing, behavior=behavior, boundary=boundary, human=human)
+        self.assertEqual(report["decision"], "fail")
+        self.assertTrue(next(gate for gate in report["gates"] if gate["id"] == "human-critical-meaning-changes")["gating"])
+
     def test_failed_language_gate_remains_visible_and_fails(self):
         human = {"valid": True, "candidate_regressions": 0, "candidate_regression_rate": 0, "pairs": 12, "candidate_critical_changes": 0, "calibration": {}}
         report = evaluate_release(
